@@ -1,0 +1,401 @@
+{
+  "site": {
+    "name": "우리스마트바이오",
+    "shortName": "WSB",
+    "slogan": "Engineered by Data, Grown by Design.",
+    "tagline": "데이터 기반 정밀제어 스마트팜에서 모든 배치 동일 품질의 식물의약품 원료를 생산합니다."
+  },
+  "nav": {
+    "company": "Company",
+    "technology": "Technology",
+    "business": "Business",
+    "rnd": "R&D",
+    "news": "News",
+    "contact": "Contact",
+    "languageLabel": "언어",
+    "skipToContent": "본문으로 건너뛰기"
+  },
+  "cta": {
+    "partnership": "Discuss a Partnership",
+    "exploreTech": "Explore the Technology",
+    "contact": "Contact Us",
+    "viewMore": "자세히 보기",
+    "external": "외부 사이트로 이동"
+  },
+  "footer": {
+    "address": "경기도 연천군 연천읍 차옥로 149",
+    "tel": "031-834-4515",
+    "email": "contact@woorismartbio.com",
+    "copyright": "© 2026 Woori Smart Bio. All rights reserved.",
+    "brandPromise": "데이터 기반 정밀제어 스마트팜에서 식물을 길러냅니다. 모든 배치에서 동일한 품질의 식물의약품 원료를 만드는 것이 우리의 단일한 약속입니다.",
+    "explore": "EXPLORE",
+    "contactLabel": "CONTACT",
+    "brandPromiseLabel": "BRAND PROMISE"
+  },
+  "home": {
+    "hero": {
+      "tag": "WSB · BOTANICAL DRUG INGREDIENT",
+      "subhead": "데이터 기반 정밀제어 스마트팜에서 모든 배치 동일 품질의 식물의약품 원료를 생산합니다.",
+      "batchMeta": "BATCH · WSB-2026-001",
+      "overlayLabel1": "SAPONIN · +8×",
+      "overlayLabel2": "pH 5.8 · EC 1.4",
+      "overlayLabel3": "μmol UV-B · 285nm"
+    },
+    "kpi": {
+      "sectionTag": "PROVEN IN NUMBERS",
+      "sectionTitle": "데이터로 입증된 기술 해자",
+      "sectionMeta": "00 / EVIDENCE · 2026",
+      "items": {
+        "saponin": {
+          "label": "SAPONIN ↑",
+          "value": "+8×",
+          "caption": "대조군 대비 진세노사이드 함량 증대"
+        },
+        "batch": {
+          "label": "BATCH VARIATION",
+          "value": "<10%",
+          "caption": "배치 간 전 성분 오차 범위"
+        },
+        "fda": {
+          "label": "FDA GUIDELINE",
+          "value": "5/5",
+          "caption": "5대 가이드라인 완전 충족"
+        },
+        "traction": {
+          "label": "B2B TRACTION",
+          "value": "₩100억+",
+          "caption": "중국 4D BIOS 4년 솔루션 계약"
+        }
+      }
+    },
+    "problem": {
+      "sectionTag": "MARKET CONTEXT",
+      "sectionMeta": "01 / PROBLEM · OPPORTUNITY",
+      "heading": "표준화의 벽에 막힌 천연물 시장.\n60조 식물의약품 시장이 답을 기다립니다.",
+      "problem": {
+        "label": "PROBLEM",
+        "title": "표준화 불가능한 천연물",
+        "body": "노지와 온실 재배는 기후 토양 채집 시기 농약 오염 등 통제 불가능한 변수에 노출됩니다. 동일 식물이라도 유효성분 함량과 화학적 구성이 매번 달라져 의약품 표준화가 사실상 불가능합니다."
+      },
+      "opportunity": {
+        "label": "OPPORTUNITY",
+        "title": "60조 식물의약품 시장",
+        "body": "FDA 가이드라인 기반의 글로벌 식물의약품 시장이 2024년 60조원에서 2033년 108조원으로 성장합니다. 시장 진입의 전제는 단 하나. 표준화된 원료의약품(API) 공급 능력입니다.",
+        "metrics": [
+          { "label": "GLOBAL MARKET 2024", "value": "₩60조" },
+          { "label": "CAGR 2024 ~ 2033", "value": "+6.7%" },
+          { "label": "MARKET 2033E", "value": "₩108조" }
+        ]
+      }
+    },
+    "mat": {
+      "sectionTag": "CORE TECHNOLOGY",
+      "sectionMeta": "02 / MAT",
+      "heading": "MAT.\n식물 본연의 방어 기전을 깨워\n유효성분을 의도적으로 끌어냅니다.",
+      "diagram": {
+        "stressLabel": "STRESS · 4 INPUTS",
+        "plantLabel": "PANAX · MAT",
+        "outputLabel": "API YIELD",
+        "outputValue": "+8×"
+      },
+      "body": "MAT(Metabolite Agriculture Technology)는 생육이 아닌 유효성분의 극대화를 목표로 합니다. 특정 파장의 UV-B 단기 열충격 수분 결핍 미네랄 조합 등 정밀한 스트레스 인자를 단계별로 적용합니다. 식물 본연의 잠재력을 100% 이상 끌어냅니다.",
+      "stressors": [
+        {
+          "label": "STRESSOR 01",
+          "title": "UV-B Light",
+          "value": "285nm",
+          "caption": "특정 파장 자외선 정밀 조사로 2차 대사산물 합성 유도"
+        },
+        {
+          "label": "STRESSOR 02",
+          "title": "Thermal Shock",
+          "value": "±ΔT",
+          "caption": "단기 열충격과 저온 처리로 방어 기전 자극"
+        },
+        {
+          "label": "STRESSOR 03",
+          "title": "Water Deficit",
+          "value": "−40% H₂O",
+          "caption": "가뭄 스트레스 유도용 수분 공급 정밀 제어"
+        },
+        {
+          "label": "STRESSOR 04",
+          "title": "Mineral Cue",
+          "value": "EC 1.4",
+          "caption": "특정 영양분 조합으로 유효성분 생성 경로 활성화"
+        }
+      ]
+    },
+    "fda": {
+      "sectionTag": "REGULATORY FIT",
+      "sectionMeta": "03 / FDA STANDARDIZATION",
+      "heading": "FDA 5대 가이드라인.\nWSB는 이미 모두 충족합니다.",
+      "lede": "미국 FDA가 식물의약품 허가를 위해 제시하는 5가지 핵심 기준입니다. 기존 농업 방식으로는 충족이 사실상 불가능한 시장 진입 장벽입니다. WSB의 정밀제어 스마트팜과 MAT는 5가지 기준을 1:1로 충족합니다.",
+      "rows": [
+        {
+          "label": "01",
+          "fda": "원료의 식물학적 동일성",
+          "wsb": "유전 형질이 검증된 종자만 사용. DNA 마커로 동일성 검증"
+        },
+        {
+          "label": "02",
+          "fda": "우수 농업·채집 기준 (GACP)",
+          "wsb": "디지털 재배 레시피(SOP)로 환경 변수 정밀 제어 및 전 과정 데이터 기록"
+        },
+        {
+          "label": "03",
+          "fda": "오염물질 관리",
+          "wsb": "Closed-type 완전 격리 설비. 중금속 잔류 농약 미생물 원천 차단"
+        },
+        {
+          "label": "04",
+          "fda": "품질의 일관성",
+          "wsb": "배치 간 유효성분 함량 일관성 확보. 화학적 지문 DB 구축"
+        },
+        {
+          "label": "05",
+          "fda": "장기 안정성",
+          "wsb": "365일 연중 동일 조건 생산. 장기 공급 안정성 데이터 확보"
+        }
+      ],
+      "matchTag": "MATCH RATIO",
+      "matchValue": "5/5"
+    },
+    "traction": {
+      "sectionTag": "PROVEN TRACTION",
+      "sectionMeta": "04 / GLOBAL PARTNERS",
+      "heading": "데이터로 입증된 기술.\n글로벌 파트너로 입증된 사업.",
+      "lede": "MAT와 정밀제어 스마트팜은 한국과 글로벌 시장의 실제 계약으로 검증되고 있습니다. 매출과 임상 그리고 솔루션 수출이 동시에 일어나는 구조입니다.",
+      "kpis": {
+        "saponin": {
+          "label": "SAPONIN ↑",
+          "value": "+8×",
+          "caption": "대조군 대비 진세노사이드 함량 증대"
+        },
+        "batch": {
+          "label": "BATCH VARIATION",
+          "value": "<10%",
+          "caption": "배치 간 전 성분 오차 범위"
+        },
+        "traction": {
+          "label": "B2B SOLUTION",
+          "value": "₩100억+",
+          "caption": "중국 4D BIOS 4년 솔루션 계약 진행"
+        },
+        "clinical": {
+          "label": "CLINICAL API",
+          "value": "100kg",
+          "caption": "크론병 타겟 대청 임상 원료 납품 완료"
+        }
+      },
+      "partnersTag": "PARTNERS · LOGOS PENDING",
+      "partners": [
+        { "name": "한국맥도날드", "tag": "B2B SOLUTION · KR" },
+        { "name": "4D BIOS", "tag": "B2B SOLUTION · CN" },
+        { "name": "엠테라파마", "tag": "CLINICAL API · KR" },
+        { "name": "HICOM", "tag": "B2C BRAND · JP" },
+        { "name": "코토부기물산", "tag": "B2C BRAND · JP" },
+        { "name": "Farm66", "tag": "B2B MATERIAL · HK" },
+        { "name": "Farmary", "tag": "B2B MATERIAL · HK" },
+        { "name": "DI JIE", "tag": "B2B MATERIAL · TW" },
+        { "name": "PICHTR", "tag": "B2B SOLUTION · US" },
+        { "name": "AFAFA", "tag": "B2B SOLUTION · CN" }
+      ]
+    },
+    "business": {
+      "sectionTag": "BUSINESS MODEL",
+      "sectionMeta": "05 / 3 PILLARS",
+      "heading": "기술. 소재. 브랜드.\n3축 수직계열화.",
+      "lede": "동일한 MAT와 정밀제어 스마트팜 기술이 솔루션 판매 소재 공급 그리고 자체 브랜드까지 3개 사업으로 확장됩니다. 한 줄기의 R&D가 세 갈래의 매출을 만듭니다.",
+      "pillars": [
+        {
+          "label": "PILLAR 01",
+          "title": "B2B Solution",
+          "subtitle": "기술 자체 판매",
+          "body": "MAT 디지털 재배 레시피 정밀제어 운영 소프트웨어 그리고 정밀제어 스마트팜 설비를 통합 솔루션으로 공급합니다. 고객사의 기술 격차를 한 번에 메웁니다.",
+          "metricLabel": "ACTIVE DEAL",
+          "metricValue": "₩100억+",
+          "metricCaption": "중국 4D BIOS 4년 계약",
+          "cases": ["한국맥도날드 · Smart Ark 1차 진입", "중국 4D BIOS · 인삼 기술 수출"]
+        },
+        {
+          "label": "PILLAR 02",
+          "title": "B2B Material",
+          "subtitle": "표준화된 원료 공급",
+          "body": "cGMP 기준 식물의약품 API 고기능성 건강기능식품 원료 효능 검증 화장품 천연물 소재를 직접 생산해 공급합니다. 안정적인 캐시카우입니다.",
+          "metricLabel": "CLINICAL API DELIVERED",
+          "metricValue": "100kg",
+          "metricCaption": "크론병 타겟 대청 임상 원료",
+          "cases": ["엠테라파마 · 크론병 임상 원료 납품", "건기식·화장품 다수 ODM 협업"]
+        },
+        {
+          "label": "PILLAR 03",
+          "title": "Phytopresso",
+          "subtitle": "자체 브랜드로 기술 검증",
+          "body": "Phytochemical Espresso. 천연 기능성 물질의 고농축 라인. 청삼 수경인삼을 베이스로 한 프리미엄 헬스케어 제품군으로 기술 가치를 시장에서 직접 검증합니다.",
+          "metricLabel": "PRODUCT LINE",
+          "metricValue": "3 SKU",
+          "metricCaption": "수경인삼 SHOT · 참당귀 DECURSIN · 황칠 CGA",
+          "cases": ["커넥트101 · B2C 판매 위탁", "별도 판매 사이트로 운영"],
+          "externalLabel": "Visit Phytopresso Store",
+          "externalHref": "#"
+        }
+      ]
+    },
+    "pipeline": {
+      "sectionTag": "R&D PIPELINE",
+      "sectionMeta": "06 / 6 BOTANICALS",
+      "heading": "인삼을 시작으로 6개 파이프라인.\n동일 플랫폼이 계속 확장됩니다.",
+      "lede": "같은 정밀제어 스마트팜과 MAT 위에서 식물 종이 추가될 때마다 신규 API가 추가됩니다. 인삼은 이미 상용화 단계 대청은 임상 원료 납품 단계 그리고 4종은 R&D 완료 상태입니다.",
+      "stages": ["탐색", "R&D", "상용화 준비", "상용화"],
+      "items": [
+        {
+          "name": "수경인삼",
+          "latin": "Panax ginseng",
+          "api": "Ginsenoside Rh2 · Ck",
+          "indication": "면역 강화 · 피로 회복",
+          "stage": 3
+        },
+        {
+          "name": "대청엽",
+          "latin": "Isatis indigotica",
+          "api": "Indirubin",
+          "indication": "만성 염증성 장질환 (크론병)",
+          "stage": 2
+        },
+        {
+          "name": "참당귀",
+          "latin": "Angelica gigas",
+          "api": "Decursin",
+          "indication": "혈관 확장 · 항염 · 중성지방 개선",
+          "stage": 2
+        },
+        {
+          "name": "황칠",
+          "latin": "Dendropanax morbifera",
+          "api": "Chlorogenic Acid",
+          "indication": "간 기능 · 신경 보호 · 수면 유도",
+          "stage": 1
+        },
+        {
+          "name": "살리초",
+          "latin": "잎고추 F1",
+          "api": "Alpha-Glucosidase Inhibitor",
+          "indication": "항당뇨",
+          "stage": 1
+        },
+        {
+          "name": "콩새싹",
+          "latin": "Soybean Leaf",
+          "api": "Isoflavone",
+          "indication": "여성 갱년기 증상 완화",
+          "stage": 1
+        }
+      ]
+    },
+    "news": {
+      "sectionTag": "LATEST UPDATES",
+      "sectionMeta": "08 / NEWS",
+      "heading": "최신 소식.",
+      "lede": "신규 계약 임상 진행 인증 그리고 미디어 노출. 어드민에서 직접 등록 운영합니다.",
+      "viewAll": "모든 보도자료 보기",
+      "items": [
+        {
+          "date": "2025.04",
+          "category": "Certification",
+          "title": "그린바이오 기업 인정 취득",
+          "summary": "농림축산식품부 그린바이오 산업 인정 기업으로 선정. 식물 기반 기능성 소재 사업 가속화의 기반 마련."
+        },
+        {
+          "date": "2025.02",
+          "category": "Business",
+          "title": "중국 4D BIOS와 약 100억 규모 계약 진행",
+          "summary": "4년간 인삼 수경 재배 기술 공급과 대량 묘삼 생산 솔루션 수출. 중국 시장 핵심 레퍼런스 구축."
+        },
+        {
+          "date": "2024.11",
+          "category": "Clinical",
+          "title": "크론병 임상 원료 100kg 납품 완료",
+          "summary": "엠테라파마 협업. 대청엽 기반 인디루빈 임상 원료 100kg 납품. 2027년 임상 2상 진입 예정."
+        }
+      ]
+    },
+    "contact": {
+      "sectionTag": "PARTNERSHIP INQUIRY",
+      "sectionMeta": "09 / CONTACT",
+      "heading": "글로벌 파트너십을\n시작하세요.",
+      "lede": "API 공급 기술 솔루션 도입 임상 협업 등 모든 사업 문의에 대해 영업일 기준 2일 이내 회신드립니다.",
+      "form": {
+        "company": "회사명",
+        "name": "담당자명",
+        "email": "이메일",
+        "phone": "연락처 (선택)",
+        "country": "국가 또는 지역",
+        "category": "문의 카테고리",
+        "categoryOptions": [
+          "B2B Solution",
+          "B2B Material",
+          "Brand Partnership",
+          "기타"
+        ],
+        "message": "문의 내용",
+        "messagePlaceholder": "회사 소개와 협업하고 싶은 영역을 자유롭게 적어주세요.",
+        "consent": "개인정보 수집·이용에 동의합니다.",
+        "submit": "문의 보내기",
+        "required": "필수",
+        "successHeading": "문의가 정상 접수되었습니다.",
+        "successBody": "영업일 기준 2일 이내에 담당자가 등록하신 이메일로 회신드리겠습니다. 확인 메일도 함께 발송되었습니다.",
+        "errorFallback": "전송에 실패했습니다. 잠시 후 다시 시도해 주세요."
+      },
+      "info": {
+        "addressLabel": "HEADQUARTERS",
+        "addressValue": "경기도 연천군 연천읍 차옥로 149",
+        "telLabel": "TEL",
+        "telValue": "031-834-4515",
+        "emailLabel": "EMAIL",
+        "emailValue": "contact@woorismartbio.com",
+        "hoursLabel": "RESPONSE TIME",
+        "hoursValue": "영업일 기준 2일 이내 회신"
+      },
+      "mapPlaceholder": "PLACEHOLDER · GOOGLE MAPS EMBED · 연천 본사"
+    },
+    "roadmap": {
+      "sectionTag": "GROWTH ROADMAP",
+      "sectionMeta": "07 / 3 PHASES",
+      "heading": "Phase 1 기반.\nPhase 2 확장.\nPhase 3 표준 선점.",
+      "lede": "FDA 가이드라인 충족과 국내 트랙션 확보를 1단계로 글로벌 진출과 cGMP 확장을 2단계로 그리고 보태니컬 데이터 플랫폼으로의 진화를 3단계 목표로 둡니다.",
+      "phases": [
+        {
+          "label": "PHASE 01",
+          "period": "~ 2027",
+          "title": "기반 구축과 검증",
+          "bullets": [
+            "GACP 인증 및 미국 FDA 식물의약품 가이드라인 충족",
+            "B2B 고기능성 바이오 소재 시장 선점",
+            "인삼 외 3종 이상 핵심 파이프라인 상용화"
+          ]
+        },
+        {
+          "label": "PHASE 02",
+          "period": "~ 2030",
+          "title": "글로벌 확장과 스케일업",
+          "bullets": [
+            "MAT-AI 스마트팜 솔루션 수출 본격화",
+            "미국 FDA 식물의약품 원료 공급자 등록",
+            "원료의약품 대량생산을 위한 cGMP 인증 시설 운영"
+          ]
+        },
+        {
+          "label": "PHASE 03",
+          "period": "2031 ~",
+          "title": "시장 선도와 표준 확립",
+          "bullets": [
+            "글로벌 식물의약품 시장의 핵심 API 공급자 포지셔닝",
+            "식물 재배 및 유효성분 데이터를 독점하는 보태니컬 데이터 플랫폼",
+            "AI 기반 신약·소재 발굴 및 맞춤형 헬스케어 솔루션"
+          ]
+        }
+      ]
+    }
+  }
+}

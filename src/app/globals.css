@@ -1,26 +1,103 @@
+@import url("https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css");
 @import "tailwindcss";
 
+/*
+  WSB Brand Guide v1.0 (2026.04) — Design Tokens
+  - Slogan: "Engineered by Data, Grown by Design."
+  - 3-tone minimal system, no accent colors
+*/
+
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  /* Brand Colors */
+  --color-primary: #0F5132;       /* Deep Cultivation Green */
+  --color-structural: #1A1F1B;    /* Carbon */
+  --color-canvas: #FAFBF9;        /* Lab White. Named "canvas" to avoid clash with Tailwind v4 reserved text-base (font-size). */
+
+  /* Semantic mapping */
+  --background: var(--color-canvas);
+  --foreground: var(--color-structural);
 }
 
 @theme inline {
+  /* Brand palette */
+  --color-primary: var(--color-primary);
+  --color-structural: var(--color-structural);
+  --color-canvas: var(--color-canvas);
   --color-background: var(--background);
   --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+
+  /* Typography */
+  --font-sans: var(--font-pretendard), "Pretendard Variable", Pretendard,
+    -apple-system, BlinkMacSystemFont, system-ui, sans-serif;
+  --font-mono: var(--font-jetbrains-mono), "JetBrains Mono", ui-monospace,
+    SFMono-Regular, Menlo, monospace;
+
+  /* Grid (8 / 16 / 32 modular) */
+  --spacing-grid-1: 0.5rem;   /* 8px */
+  --spacing-grid-2: 1rem;     /* 16px */
+  --spacing-grid-4: 2rem;     /* 32px */
+
+  /* Type scale per brand guide */
+  --text-display: 3.75rem;    /* 60 / 800 */
+  --text-display--font-weight: 800;
+  --text-h1: 2rem;            /* 32 / 700 */
+  --text-h1--font-weight: 700;
+  --text-h2: 1.375rem;        /* 22 / 600 */
+  --text-h2--font-weight: 600;
+  --text-body: 0.875rem;      /* 14 / 400 */
+  --text-body--font-weight: 400;
+  --text-caption: 0.6875rem;  /* 11 / 500 */
+  --text-caption--font-weight: 500;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+html {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
 }
 
 body {
   background: var(--background);
   color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: var(--font-sans);
+  font-size: var(--text-body);
+  line-height: 1.6;
+}
+
+/* Subtle modular grid overlay utility (Data Overlay primitive) */
+.bg-grid {
+  background-image:
+    linear-gradient(to right, rgba(26, 31, 27, 0.04) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(26, 31, 27, 0.04) 1px, transparent 1px);
+  background-size: 32px 32px;
+}
+
+/* Mono label (section tag, data point, batch ID).
+   Note: color and opacity are intentionally NOT set here. The class only
+   defines the type treatment. Each usage site decides the color and alpha
+   via Tailwind utilities (e.g. text-primary, text-canvas/55, text-structural/60).
+   This avoids the cumulative-opacity trap where .mono-label { opacity: 0.7 }
+   would compound with text-canvas/60 and make labels nearly invisible. */
+.mono-label {
+  font-family: var(--font-mono);
+  font-size: 0.6875rem;
+  font-weight: 500;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+/* Ambient grid drift (subtle background motion) */
+@keyframes grid-drift {
+  0%   { background-position: 0 0; }
+  100% { background-position: 32px -32px; }
+}
+.animate-grid-drift {
+  animation: grid-drift 28s linear infinite;
+}
+
+/* Respect reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  .animate-grid-drift {
+    animation: none;
+  }
 }

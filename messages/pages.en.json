@@ -1,0 +1,348 @@
+{
+  "company": {
+    "hero": {
+      "tag": "COMPANY",
+      "meta": "01 / WSB OVERVIEW",
+      "title": "We program nature's code\nand engineer biological output.",
+      "lede": "A green bio company founded in 2018. By pairing a data-driven precision smart farm with proprietary MAT bio technology, we produce standardized botanical drug ingredients with the same quality in every batch."
+    },
+    "overview": {
+      "sectionTag": "AT A GLANCE",
+      "items": [
+        { "label": "FOUNDED", "value": "Jun 2018" },
+        { "label": "HEADCOUNT", "value": "7" },
+        { "label": "HQ", "value": "Yeoncheon, KR" },
+        { "label": "SLOGAN", "value": "Engineered by Data, Grown by Design." }
+      ]
+    },
+    "ceo": {
+      "sectionTag": "CEO MESSAGE",
+      "name": "Ju Jong-Moon",
+      "role": "Founder & CEO",
+      "title": "Technology only becomes an industry\nonce data proves it.",
+      "body": "Pursuing both pharmacy and engineering led me to a single question: how do we lift the latent value of plants up to the standards of medicine? We found the answer in a precision-controlled smart farm and MAT technology. Producing the same-quality material in every batch is the single promise of Woori Smart Bio.",
+      "credentials": [
+        "Ph.D. in Pharmacy · Kyungsung Univ. (2023) — Botanical drug API characterization with MAT in plant factories",
+        "Ph.D. in Industrial Engineering · Kyungnam Univ. (2003)",
+        "MBA · Pusan National Univ.",
+        "Former Tech Advisor at Greenlabs · Former BOD at N.thing",
+        "Concurrent Director, Smart Farm Division at Woori Technology"
+      ],
+      "photoPlaceholder": "PLACEHOLDER · CEO HEADSHOT"
+    },
+    "leadership": {
+      "sectionTag": "LEADERSHIP",
+      "sectionTitle": "Key executives",
+      "members": [
+        {
+          "name": "Ju Jong-Moon",
+          "role": "CEO",
+          "bio": "Ph.D. in Pharmacy and Engineering. 25+ years in smart farming and plant biology. Holds multiple original MAT patents."
+        },
+        {
+          "name": "Jeong Tae-Sung",
+          "role": "Director",
+          "bio": "Ph.D. in Pharmacy. Natural-product drug development and commercialization. Former R&D head at Cellmedicine, Wellisup Research, and Gbio."
+        },
+        {
+          "name": "Byun Jae-Il",
+          "role": "Director / Head of R&D",
+          "bio": "Ph.D. in Agricultural Chemistry. Owns cultivation protocols and biomaterial R&D. Former R&D head at KKT Bioresource, NextA, and Gbio."
+        }
+      ],
+      "photoPlaceholder": "PLACEHOLDER · HEADSHOT"
+    },
+    "history": {
+      "sectionTag": "HISTORY",
+      "sectionTitle": "Milestones",
+      "items": [
+        { "year": "2025", "items": ["Recognized as a Green Bio enterprise"] },
+        { "year": "2024", "items": ["Recognized as a Venture company", "Corporate R&D Institute recognized"] },
+        { "year": "2023", "items": ["Designed and installed plant factory in Yeoncheon"] },
+        { "year": "2022", "items": ["Crohn's-disease botanical API delivered for clinical use", "Yeoncheon R&D Center completed"] },
+        { "year": "2021", "items": ["Kale and soybean leaf hydroponic + MAT validation"] },
+        { "year": "2020", "items": ["Hydroponic ginseng + MAT validation"] },
+        { "year": "2019", "items": ["Goyang plant pilot center established"] },
+        { "year": "2018", "items": ["Woori Smart Bio Co., Ltd. founded"] }
+      ]
+    },
+    "vision": {
+      "sectionTag": "VISION",
+      "title": "Botanical Data Platform.",
+      "body": "Our ultimate asset is data, not factories. AI-driven new-material discovery, personalized healthcare, and global standard ownership. We evolve into a botanical data platform that owns the cultivation and bioactive data layer."
+    },
+    "location": {
+      "sectionTag": "HEADQUARTERS",
+      "addressLabel": "ADDRESS",
+      "address": "149 Chaok-ro, Yeoncheon-eup, Yeoncheon-gun, Gyeonggi-do, Republic of Korea",
+      "telLabel": "TEL",
+      "tel": "+82-31-834-4515",
+      "emailLabel": "EMAIL",
+      "email": "contact@woorismartbio.com",
+      "mapPlaceholder": "PLACEHOLDER · GOOGLE MAPS · YEONCHEON HQ"
+    }
+  },
+  "technology": {
+    "hero": {
+      "tag": "TECHNOLOGY",
+      "meta": "02 / CORE STACK",
+      "title": "Technology is our moat.",
+      "lede": "MAT bio technology and the AI-driven precision smart farm together meet the FDA's five botanical drug guidelines one to one and deliver standardized botanical drug ingredients."
+    },
+    "stack": {
+      "sectionTag": "TECHNOLOGY STACK",
+      "items": [
+        {
+          "code": "01",
+          "name": "MAT",
+          "subtitle": "Metabolite Agriculture Technology",
+          "body": "Intentional triggering of secondary metabolite biosynthesis to surface and concentrate active compounds. Precision stressors (UV-B, thermal shock, water deficit, mineral cues) are applied in sequence.",
+          "metric": "+8×",
+          "metricCaption": "Ginsenoside vs. control"
+        },
+        {
+          "code": "02",
+          "name": "Precision Smart Farm",
+          "subtitle": "Closed-type Controlled Environment",
+          "body": "Light, temperature, humidity, and nutrient solution are controlled to μmol, °C, and EC precision inside a fully isolated facility. Every step is logged as digital SOP.",
+          "metric": "<10%",
+          "metricCaption": "Batch variation across compounds"
+        },
+        {
+          "code": "03",
+          "name": "AI Platform",
+          "subtitle": "Botanical Discovery Engine",
+          "body": "Learns from cultivation and bioactive data to predict and design new high-value materials. Moves beyond pure production into an R&D platform.",
+          "metric": "AI",
+          "metricCaption": "Discovery engine"
+        }
+      ]
+    },
+    "competition": {
+      "sectionTag": "COMPETITIVE LANDSCAPE",
+      "sectionTitle": "We change the axis of competition.",
+      "lede": "Field cultivation and conventional smart farms cannot reach standardization and high potency at the same time. Synthetic drugs are unsuitable for long-term care. WSB occupies the empty seat: standardized, high-potency botanical material.",
+      "rows": [
+        {
+          "label": "STANDARDIZATION",
+          "field": "Impossible",
+          "smartfarm": "Partial",
+          "synthetic": "Complete",
+          "wsb": "Complete"
+        },
+        {
+          "label": "API POTENCY",
+          "field": "Low · uneven",
+          "smartfarm": "Low · uneven",
+          "synthetic": "High (single)",
+          "wsb": "Maximized (MAT 6~8×)"
+        },
+        {
+          "label": "SAFETY",
+          "field": "Vulnerable",
+          "smartfarm": "High",
+          "synthetic": "Long-term risk",
+          "wsb": "Complete (clean cultivation)"
+        },
+        {
+          "label": "MARKET POSITION",
+          "field": "Low-value produce",
+          "smartfarm": "Mid-value fresh",
+          "synthetic": "High-value drug",
+          "wsb": "High-value botanical drug API"
+        }
+      ],
+      "headers": {
+        "field": "Field cultivation",
+        "smartfarm": "Smart farm",
+        "synthetic": "Synthetic drug",
+        "wsb": "WSB"
+      }
+    },
+    "moat": {
+      "sectionTag": "TECHNICAL MOAT",
+      "sectionTitle": "A multi-layered moat that cannot be copied.",
+      "layers": [
+        {
+          "code": "L1",
+          "name": "MAT IP",
+          "type": "SOFTWARE PATENT",
+          "body": "Original patents covering the methods for applying specific stressors to enhance active compound content."
+        },
+        {
+          "code": "L2",
+          "name": "Hardware IP",
+          "type": "HARDWARE PATENT",
+          "body": "Proprietary hardware patents for implementing MAT with precision and standardization."
+        },
+        {
+          "code": "L3",
+          "name": "Digital SOP",
+          "type": "DATA · TRADE SECRET",
+          "body": "Thousands of environmental-variable combinations that produce a target compound from a target plant at maximum efficiency, captured as a digital cultivation recipe."
+        }
+      ]
+    }
+  },
+  "business": {
+    "hero": {
+      "tag": "BUSINESS",
+      "meta": "03 / 3 PILLARS",
+      "title": "One R&D engine.\nThree revenue streams.",
+      "lede": "The same MAT and precision smart farm power three businesses: solution sales, material supply, and a direct-to-consumer brand. A stable cash engine plus explosive growth momentum, at the same time."
+    },
+    "solution": {
+      "tag": "PILLAR 01 / B2B SOLUTION",
+      "title": "We sell the technology itself.",
+      "body": "MAT digital cultivation recipes, precision control software, and the controlled-environment hardware stack are sold as one integrated solution.",
+      "components": [
+        { "code": "IP", "name": "MAT SOP", "body": "Plant- and effect-specific digital cultivation recipes" },
+        { "code": "SW", "name": "AI Operating System", "body": "Software that executes the SOP without drift" },
+        { "code": "HW", "name": "Precision Smart Farm", "body": "Hardware that acts as a bio-reactor" }
+      ],
+      "cases": [
+        {
+          "name": "McDonald's Korea / Smart Ark",
+          "body": "Entered McDonald's Korea Tier-1 supply chain with WSB hardware. Tier-2 large project contract in negotiation.",
+          "metric": "Tier-1 entry"
+        },
+        {
+          "name": "4D BIOS (China)",
+          "body": "A leading Chinese smart-farm company requested WSB technology to enter ginseng cultivation. 4-year contract worth approximately $7M in progress.",
+          "metric": "$7M+ · 4 years"
+        }
+      ]
+    },
+    "material": {
+      "tag": "PILLAR 02 / B2B MATERIAL",
+      "title": "We supply standardized high-potency materials.",
+      "body": "We directly produce and supply cGMP-grade botanical drug APIs, high-potency nutraceutical ingredients, and efficacy-verified cosmetic botanicals.",
+      "segments": [
+        { "name": "Pharma · API", "body": "FDA / cGMP-grade botanical drug ingredients" },
+        { "name": "Nutraceutical", "body": "MAT-enhanced individually-recognized ingredients" },
+        { "name": "Cosmetic", "body": "Botanical material verified for safety and efficacy" }
+      ],
+      "cases": [
+        {
+          "name": "Mtera Pharma / Crohn's clinical",
+          "body": "Indirubin-rich Isatis material delivered to Mtera Pharma. 100kg supplied. Phase 2 trial planned for 2027.",
+          "metric": "100kg delivered"
+        }
+      ]
+    },
+    "phytopresso": {
+      "tag": "PILLAR 03 / BRAND",
+      "title": "Phytopresso.\nValidating value as a brand.",
+      "body": "Phytochemical Espresso. A high-concentration line of natural functional compounds, built on our hydroponic Cheongsam ginseng. The brand validates our material in the consumer market.",
+      "lineup": [
+        {
+          "name": "Hydroponic Ginseng SHOT",
+          "category": "Immunity · Vitality",
+          "spec": "30ml × 30 sticks"
+        },
+        {
+          "name": "Angelica DECURSIN",
+          "category": "Vascular · Anti-inflammation",
+          "spec": "60 capsules"
+        },
+        {
+          "name": "Dendropanax CGA",
+          "category": "Liver · Neuro · Sleep",
+          "spec": "30ml × 30 sticks"
+        }
+      ],
+      "distribution": "B2C distribution is handled by Connect101, an influencer-marketing specialist. WSB focuses on R&D and production.",
+      "externalCta": "Visit Phytopresso Store",
+      "externalHref": "#",
+      "photoPlaceholder": "PLACEHOLDER · PRODUCT SHOT"
+    }
+  },
+  "rnd": {
+    "hero": {
+      "tag": "R&D",
+      "meta": "04 / RESEARCH",
+      "title": "20+ patents.\n6 botanical pipelines.\nProving a standard with data.",
+      "lede": "R&D leadership spanning pharmacy, engineering, and agriculture, plus an impossible-to-copy digital SOP. Every additional plant adds a new API on top of the same platform."
+    },
+    "pipeline": {
+      "sectionTag": "PIPELINE",
+      "sectionTitle": "6 botanicals on a single platform.",
+      "lede": "Ginseng is fully commercial. Isatis is shipping clinical material. Four more pipelines complete R&D and target commercialization in 2026-2027."
+    },
+    "patents": {
+      "sectionTag": "PATENTS",
+      "sectionTitle": "Representative registered patents",
+      "items": [
+        { "no": "10-2229953", "title": "Ginseng cultivation method", "year": "2021" },
+        { "no": "10-2595012", "title": "Hydroponic ginseng cultivation increasing ginsenoside content", "year": "2023" },
+        { "no": "10-2268088", "title": "Personalized functional food recipe method", "year": "2021" },
+        { "no": "10-2776816", "title": "Composition for menopause symptom prevention and improvement", "year": "2025" },
+        { "no": "10-2864739", "title": "Angelica extract cosmetic composition", "year": "2025" },
+        { "no": "10-2868970", "title": "Isatis hydroponic cultivation increasing indirubin content", "year": "2025" }
+      ],
+      "totalLabel": "TOTAL REGISTERED",
+      "totalValue": "20+"
+    },
+    "research": {
+      "sectionTag": "RESEARCH",
+      "sectionTitle": "Doctoral theses in pharmacy and engineering",
+      "items": [
+        {
+          "author": "Ju Jong-Moon / Ph.D. Pharmacy (2023)",
+          "title": "Botanical drug API characterization with metabolite agriculture technology in plant factories",
+          "institution": "Kyungsung University, College of Pharmacy"
+        },
+        {
+          "author": "Ju Jong-Moon / Ph.D. Engineering (2003)",
+          "title": "Integrated e-commerce system for agricultural distribution efficiency",
+          "institution": "Kyungnam University, Industrial Engineering"
+        }
+      ]
+    },
+    "cert": {
+      "sectionTag": "CERTIFICATIONS",
+      "items": [
+        { "name": "Green Bio enterprise", "year": "2025", "issuer": "Ministry of Agriculture, Food and Rural Affairs" },
+        { "name": "Venture company", "year": "2024", "issuer": "Korea Venture Business Certification Center" },
+        { "name": "Corporate R&D Institute", "year": "2024", "issuer": "KOITA" }
+      ],
+      "imagePlaceholder": "PLACEHOLDER · CERTIFICATE IMAGE"
+    },
+    "national": {
+      "sectionTag": "NATIONAL R&D",
+      "sectionTitle": "National R&D projects",
+      "items": [
+        {
+          "name": "Phenomics system for plant factories using growth imaging",
+          "agency": "Ministry of Science and ICT (IITP)",
+          "period": "Apr 2021 ~ Dec 2022",
+          "status": "Completed"
+        },
+        {
+          "name": "Smart Farm Multi-Ministry Package · Intelligent aeroponic hydroponic system",
+          "agency": "Ministry of Agriculture, Food and Rural Affairs",
+          "period": "Apr 2024 ~ Dec 2027",
+          "status": "Ongoing"
+        }
+      ]
+    }
+  },
+  "news": {
+    "hero": {
+      "tag": "NEWS",
+      "meta": "05 / UPDATES",
+      "title": "Latest updates.",
+      "lede": "Contracts, clinical milestones, certifications, and media coverage. Managed directly through the admin."
+    },
+    "empty": "No press releases yet.",
+    "readMore": "Read more"
+  },
+  "contact": {
+    "hero": {
+      "tag": "CONTACT",
+      "meta": "06 / PARTNERSHIP INQUIRY",
+      "title": "Let's start a\nglobal partnership.",
+      "lede": "API supply, technology licensing, clinical collaboration, and media. We respond within two business days."
+    }
+  }
+}

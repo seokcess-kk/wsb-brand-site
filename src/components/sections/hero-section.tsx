@@ -1,0 +1,105 @@
+import { getTranslations } from "next-intl/server";
+import { ArrowRight, ArrowUpRight } from "lucide-react";
+import { Link } from "@/i18n/navigation";
+import { DataOverlayPlant } from "@/components/visual/data-overlay-plant";
+import { RevealWords } from "@/components/motion/reveal-words";
+
+export async function HeroSection() {
+  const t = await getTranslations("home.hero");
+  const tSite = await getTranslations("site");
+  const tCta = await getTranslations("cta");
+
+  return (
+    <section
+      id="main"
+      aria-labelledby="hero-heading"
+      className="relative isolate overflow-hidden bg-canvas"
+    >
+      {/* Ambient drifting grid background */}
+      <div
+        aria-hidden
+        className="absolute inset-0 -z-10 opacity-50 animate-grid-drift"
+        style={{
+          backgroundImage:
+            "linear-gradient(to right, rgba(26,31,27,0.035) 1px, transparent 1px), linear-gradient(to bottom, rgba(26,31,27,0.035) 1px, transparent 1px)",
+          backgroundSize: "32px 32px",
+        }}
+      />
+
+      <div className="mx-auto max-w-7xl px-6 pt-20 pb-32 md:pt-28 md:pb-40 lg:pt-32 lg:pb-48">
+        <div className="grid items-center gap-16 lg:grid-cols-[1.25fr_1fr] lg:gap-16">
+          {/* LEFT */}
+          <div className="space-y-10">
+            <div className="flex items-center gap-3">
+              <span aria-hidden className="inline-block h-px w-8 bg-primary" />
+              <p className="mono-label text-primary">{t("tag")}</p>
+            </div>
+
+            <h1
+              id="hero-heading"
+              className="font-sans font-extrabold leading-[1.02] tracking-tight text-structural"
+              style={{
+                fontSize: "clamp(2.25rem, 5vw, 3.75rem)",
+                letterSpacing: "-0.025em",
+              }}
+            >
+              <span className="block text-primary whitespace-nowrap">
+                <RevealWords text="Engineered by Data," />
+              </span>
+              <span className="block whitespace-nowrap">
+                <RevealWords text="Grown by Design." delay={0.45} />
+              </span>
+            </h1>
+
+            <p className="max-w-xl text-base md:text-lg text-structural/75 leading-relaxed">
+              {t("subhead")}
+            </p>
+
+            <div className="flex flex-wrap items-center gap-4 pt-2">
+              <Link
+                href="/contact"
+                className="group inline-flex items-center gap-3 bg-primary px-6 py-3.5 text-sm font-medium text-canvas transition-opacity hover:opacity-90"
+              >
+                {tCta("partnership")}
+                <ArrowRight
+                  size={16}
+                  className="transition-transform group-hover:translate-x-0.5"
+                />
+              </Link>
+              <Link
+                href="/technology"
+                className="group inline-flex items-center gap-2 border border-structural/20 px-6 py-3.5 text-sm font-medium text-structural transition-colors hover:border-primary hover:text-primary"
+              >
+                {tCta("exploreTech")}
+                <ArrowUpRight
+                  size={16}
+                  className="transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5"
+                />
+              </Link>
+            </div>
+
+            <div className="flex flex-wrap items-center gap-x-5 gap-y-2 border-t border-structural/10 pt-6">
+              <p className="mono-label">{t("batchMeta")}</p>
+              <span aria-hidden className="mono-label text-structural/30">·</span>
+              <p className="mono-label text-structural/60">{tSite("name")}</p>
+              <span aria-hidden className="mono-label text-structural/30">·</span>
+              <p className="mono-label text-structural/60">YEONCHEON · KR</p>
+            </div>
+          </div>
+
+          {/* RIGHT (Data Overlay) */}
+          <div className="relative">
+            <DataOverlayPlant
+              labels={{
+                overlay1: t("overlayLabel1"),
+                overlay2: t("overlayLabel2"),
+                overlay3: t("overlayLabel3"),
+                batchPrefix: "BATCH · WSB-2026-",
+              }}
+            />
+          </div>
+        </div>
+      </div>
+    </section>
+  );
+}

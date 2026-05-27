@@ -1,0 +1,348 @@
+{
+  "company": {
+    "hero": {
+      "tag": "COMPANY",
+      "meta": "01 / WSB OVERVIEW",
+      "title": "자연의 코드를 프로그래밍하고\n생물학적 결과물을 설계합니다.",
+      "lede": "2018년 설립된 그린바이오 기업. 데이터 기반 정밀제어 스마트팜과 MAT 바이오 기술을 결합해 모든 배치에서 동일한 품질의 식물의약품 원료를 생산합니다."
+    },
+    "overview": {
+      "sectionTag": "AT A GLANCE",
+      "items": [
+        { "label": "FOUNDED", "value": "2018.06.01" },
+        { "label": "HEADCOUNT", "value": "7명" },
+        { "label": "HQ", "value": "경기 연천" },
+        { "label": "SLOGAN", "value": "Engineered by Data, Grown by Design." }
+      ]
+    },
+    "ceo": {
+      "sectionTag": "CEO MESSAGE",
+      "name": "주종문",
+      "role": "대표이사",
+      "title": "기술이 데이터로 입증될 때\n비로소 산업이 됩니다.",
+      "body": "약학과 공학을 함께 공부하며 한 가지 질문에 매달렸습니다. 식물이 가진 잠재력을 어떻게 의약품의 기준으로 끌어올릴 것인가. 우리는 그 답을 정밀제어 스마트팜과 MAT 기술에서 찾았습니다. 모든 배치에서 동일한 품질의 원료를 만드는 것. 우리스마트바이오의 단일한 약속입니다.",
+      "credentials": [
+        "경성대 약학박사 · 식물공장 대사체 농업기술 적용 식물기반 천연물의약품 API 특성 연구",
+        "경남대 공학박사 · 산업공학",
+        "부산대 경영학석사 · MBA",
+        "전 그린랩스 기술고문 · 전 엔씽 사외이사",
+        "현 우리기술 스마트팜사업부 이사 겸직"
+      ],
+      "photoPlaceholder": "PLACEHOLDER · CEO HEADSHOT"
+    },
+    "leadership": {
+      "sectionTag": "LEADERSHIP",
+      "sectionTitle": "핵심 경영진",
+      "members": [
+        {
+          "name": "주종문",
+          "role": "대표이사 / CEO",
+          "bio": "약학박사 · 공학박사. 25년 이상 스마트팜과 식물 바이오 경력. 대사체 농업기술(MAT) 원천 특허 다수 보유."
+        },
+        {
+          "name": "정태성",
+          "role": "이사",
+          "bio": "약학박사. 천연물 신약 개발과 제품화 전문가. 셀메디신·웰리스업리서치·지바이오 연구소장 역임."
+        },
+        {
+          "name": "변재일",
+          "role": "이사 / 연구소장",
+          "bio": "농화학 박사. 식물 재배 프로토콜과 생물소재 R&D 책임. KKT생명자원개발·넥스트에이·지바이오 연구소장 역임."
+        }
+      ],
+      "photoPlaceholder": "PLACEHOLDER · HEADSHOT"
+    },
+    "history": {
+      "sectionTag": "HISTORY",
+      "sectionTitle": "주요 연혁",
+      "items": [
+        { "year": "2025", "items": ["그린바이오 기업 인정 취득"] },
+        { "year": "2024", "items": ["벤처기업 인정", "기업부설연구소 인정"] },
+        { "year": "2023", "items": ["연천 소재 식물공장 설계 및 설치 참여"] },
+        { "year": "2022", "items": ["크론병 타겟 대청 식물의약품 임상 원료 납품", "연천 R&D 생산 센터 완공"] },
+        { "year": "2021", "items": ["케일·콩새싹 수경재배 기술 MAT 실증"] },
+        { "year": "2020", "items": ["인삼 수경재배 기술 MAT 실증"] },
+        { "year": "2019", "items": ["고양 식물 실증 센터 설립"] },
+        { "year": "2018", "items": ["주식회사 우리스마트바이오 설립"] }
+      ]
+    },
+    "vision": {
+      "sectionTag": "VISION",
+      "title": "Botanical Data Platform.",
+      "body": "우리의 궁극적 자산은 공장이 아닌 데이터입니다. AI 기반 신약·소재 발굴, 맞춤형 헬스케어, 글로벌 표준 선점. 식물 재배와 유효성분 데이터를 독점하는 보태니컬 데이터 플랫폼 기업으로 진화합니다."
+    },
+    "location": {
+      "sectionTag": "HEADQUARTERS",
+      "addressLabel": "ADDRESS",
+      "address": "경기도 연천군 연천읍 차옥로 149",
+      "telLabel": "TEL",
+      "tel": "031-834-4515",
+      "emailLabel": "EMAIL",
+      "email": "contact@woorismartbio.com",
+      "mapPlaceholder": "PLACEHOLDER · GOOGLE MAPS · 연천 본사"
+    }
+  },
+  "technology": {
+    "hero": {
+      "tag": "TECHNOLOGY",
+      "meta": "02 / CORE STACK",
+      "title": "기술이 곧 우리의 해자입니다.",
+      "lede": "MAT 바이오 기술과 AI 정밀제어 스마트팜이 결합해 FDA 5대 가이드라인을 1:1로 충족하는 표준화된 식물의약품 원료를 만듭니다."
+    },
+    "stack": {
+      "sectionTag": "TECHNOLOGY STACK",
+      "items": [
+        {
+          "code": "01",
+          "name": "MAT",
+          "subtitle": "Metabolite Agriculture Technology",
+          "body": "식물의 2차 대사산물 생성을 의도적으로 유도해 유효성분 함량을 극대화합니다. UV-B·열충격·수분 결핍·미네랄 조합 등 정밀 스트레스를 단계별로 적용합니다.",
+          "metric": "+8×",
+          "metricCaption": "대조군 대비 진세노사이드"
+        },
+        {
+          "code": "02",
+          "name": "Precision Smart Farm",
+          "subtitle": "Closed-type Controlled Environment",
+          "body": "외부 변수와 완전히 차단된 폐쇄형 설비에서 광·온습도·양액을 μmol·℃·EC 단위로 정밀 제어합니다. 모든 생산 과정은 디지털 SOP로 기록됩니다.",
+          "metric": "<10%",
+          "metricCaption": "배치 간 전 성분 오차"
+        },
+        {
+          "code": "03",
+          "name": "AI Platform",
+          "subtitle": "Botanical Discovery Engine",
+          "body": "재배 데이터와 유효성분 데이터를 학습해 신규 고부가가치 소재를 예측·설계합니다. 단순 생산을 넘어 R&D 플랫폼으로 진화합니다.",
+          "metric": "AI",
+          "metricCaption": "신소재 발굴 엔진"
+        }
+      ]
+    },
+    "competition": {
+      "sectionTag": "COMPETITIVE LANDSCAPE",
+      "sectionTitle": "경쟁의 축을 바꾸는 단 하나의 포지션.",
+      "lede": "전통 노지 재배와 일반 스마트팜은 표준화와 고효능을 동시에 달성하지 못합니다. 합성 의약품은 만성 질환 장기 복용에 부적합합니다. WSB는 표준화된 고기능성 식물 소재라는 비어있던 자리를 차지합니다.",
+      "rows": [
+        {
+          "label": "STANDARDIZATION",
+          "field": "불가능",
+          "smartfarm": "부분 달성",
+          "synthetic": "완벽",
+          "wsb": "완벽"
+        },
+        {
+          "label": "API POTENCY",
+          "field": "낮음 · 불균일",
+          "smartfarm": "낮음 · 불균일",
+          "synthetic": "높음 (단일)",
+          "wsb": "극대화 (MAT 6~8×)"
+        },
+        {
+          "label": "SAFETY",
+          "field": "매우 취약",
+          "smartfarm": "높음",
+          "synthetic": "장기 복용 위험",
+          "wsb": "완벽 (청정 재배)"
+        },
+        {
+          "label": "MARKET POSITION",
+          "field": "저부가 농산물",
+          "smartfarm": "중부가 신선식품",
+          "synthetic": "고부가 의약품",
+          "wsb": "고부가 식물의약품 원료"
+        }
+      ],
+      "headers": {
+        "field": "전통 노지",
+        "smartfarm": "일반 스마트팜",
+        "synthetic": "합성 의약품",
+        "wsb": "WSB"
+      }
+    },
+    "moat": {
+      "sectionTag": "TECHNICAL MOAT",
+      "sectionTitle": "모방 불가능한 멀티 레이어 해자.",
+      "layers": [
+        {
+          "code": "L1",
+          "name": "MAT IP",
+          "type": "SOFTWARE PATENT",
+          "body": "유효성분 증대를 위한 특정 스트레스 인가 방법에 대한 원천 특허 다수 보유."
+        },
+        {
+          "code": "L2",
+          "name": "Hardware IP",
+          "type": "HARDWARE PATENT",
+          "body": "MAT 기술을 정밀하게 구현하고 표준화하는 독점적 하드웨어 특허."
+        },
+        {
+          "code": "L3",
+          "name": "Digital SOP",
+          "type": "DATA · TRADE SECRET",
+          "body": "특정 식물에서 특정 성분을 최대 효율로 생산하는 수천 개의 환경 변수 조합. 디지털 재배 레시피로 축적됩니다."
+        }
+      ]
+    }
+  },
+  "business": {
+    "hero": {
+      "tag": "BUSINESS",
+      "meta": "03 / 3 PILLARS",
+      "title": "한 줄기의 R&D가\n세 갈래의 매출을 만듭니다.",
+      "lede": "같은 MAT와 정밀제어 스마트팜 기술이 솔루션 판매 소재 공급 자체 브랜드 세 사업으로 확장됩니다. 안정적 캐시카우와 폭발적 성장 모멘텀을 동시에 확보합니다."
+    },
+    "solution": {
+      "tag": "PILLAR 01 / B2B SOLUTION",
+      "title": "기술 자체를 판매합니다.",
+      "body": "MAT 디지털 재배 레시피 정밀제어 운영 소프트웨어 정밀제어 스마트팜 설비를 통합 솔루션으로 공급합니다.",
+      "components": [
+        { "code": "IP", "name": "MAT SOP", "body": "식물별·효능별 최적의 디지털 재배 레시피" },
+        { "code": "SW", "name": "AI 운영 시스템", "body": "SOP를 오차 없이 구현하는 정밀제어 소프트웨어" },
+        { "code": "HW", "name": "정밀제어 스마트팜", "body": "바이오 리액터 역할의 하드웨어 설비" }
+      ],
+      "cases": [
+        {
+          "name": "한국맥도날드 / Smart Ark",
+          "body": "WSB의 스마트팜 하드웨어 시스템으로 한국맥도날드 1차 공급망 진입. 2차 대규모 프로젝트 계약 추진 중.",
+          "metric": "1차 공급망 진입"
+        },
+        {
+          "name": "중국 4D BIOS",
+          "body": "딸기 스마트팜 선두 기업이 인삼 재배 기술 도입을 위해 WSB에 기술 수출 요청. 4년 약 100억 원 규모 계약 진행.",
+          "metric": "₩100억+ · 4년"
+        }
+      ]
+    },
+    "material": {
+      "tag": "PILLAR 02 / B2B MATERIAL",
+      "title": "표준화된 고기능성 원료를 공급합니다.",
+      "body": "cGMP 기준의 식물의약품 API 고기능성 건강기능식품 원료 효능 검증 화장품 천연물 소재를 직접 생산해 공급합니다.",
+      "segments": [
+        { "name": "Pharma · API", "body": "FDA·cGMP 기준 식물의약품 원료" },
+        { "name": "Nutraceutical", "body": "MAT로 유효성분이 극대화된 개별 인정형 원료" },
+        { "name": "Cosmetic", "body": "안전성과 효능이 모두 검증된 천연물 소재" }
+      ],
+      "cases": [
+        {
+          "name": "엠테라파마 / 크론병 임상",
+          "body": "대청엽 기반 인디루빈 임상 원료 100kg 납품 완료. 2027년 임상 2상 진입 예정.",
+          "metric": "100kg 납품 완료"
+        }
+      ]
+    },
+    "phytopresso": {
+      "tag": "PILLAR 03 / BRAND",
+      "title": "Phytopresso.\n기술 가치의 최종 검증.",
+      "body": "Phytochemical Espresso. 천연 기능성 물질의 고농축 라인. 청삼 수경인삼을 베이스로 한 프리미엄 헬스케어 제품군으로 기술 가치를 시장에서 직접 검증합니다.",
+      "lineup": [
+        {
+          "name": "수경인삼 SHOT",
+          "category": "면역 · 활력",
+          "spec": "30ml × 30 sticks"
+        },
+        {
+          "name": "참당귀 DECURSIN",
+          "category": "혈관 · 항염",
+          "spec": "60 capsules"
+        },
+        {
+          "name": "황칠 CGA",
+          "category": "간 · 신경 · 수면",
+          "spec": "30ml × 30 sticks"
+        }
+      ],
+      "distribution": "B2C 판매는 인플루언서 마케팅 전문기업 커넥트101에 위탁. WSB는 R&D와 생산에 집중합니다.",
+      "externalCta": "Visit Phytopresso Store",
+      "externalHref": "#",
+      "photoPlaceholder": "PLACEHOLDER · PRODUCT SHOT"
+    }
+  },
+  "rnd": {
+    "hero": {
+      "tag": "R&D",
+      "meta": "04 / RESEARCH",
+      "title": "20+ 특허.\n6 botanical 파이프라인.\n식물의약품 표준을 데이터로 입증합니다.",
+      "lede": "약학·공학·농학을 가로지르는 R&D 리더십과 모방 불가능한 디지털 SOP. 한 식물이 추가될 때마다 동일 플랫폼 위에서 신규 API가 추가됩니다."
+    },
+    "pipeline": {
+      "sectionTag": "PIPELINE",
+      "sectionTitle": "6 botanical · 동일 플랫폼.",
+      "lede": "인삼은 상용화 완료. 대청은 임상 원료 납품 단계. 4종은 R&D 완료 상태로 2026~2027년 상용화를 추진합니다."
+    },
+    "patents": {
+      "sectionTag": "PATENTS",
+      "sectionTitle": "대표 등록 특허",
+      "items": [
+        { "no": "10-2229953", "title": "인삼재배방법", "year": "2021" },
+        { "no": "10-2595012", "title": "진세노사이드 함량 증대 수경인삼 재배방법", "year": "2023" },
+        { "no": "10-2268088", "title": "맞춤형 건강기능식품 레시피 제공방법", "year": "2021" },
+        { "no": "10-2776816", "title": "여성갱년기 증상 예방 및 개선용 조성물", "year": "2025" },
+        { "no": "10-2864739", "title": "참당귀 추출물 화장품 조성물", "year": "2025" },
+        { "no": "10-2868970", "title": "인디루빈 함량 증대 대청엽 수경재배 방법", "year": "2025" }
+      ],
+      "totalLabel": "TOTAL REGISTERED",
+      "totalValue": "20+"
+    },
+    "research": {
+      "sectionTag": "RESEARCH",
+      "sectionTitle": "약학·공학 박사 학위 논문",
+      "items": [
+        {
+          "author": "주종문 / 약학박사 (2023)",
+          "title": "식물공장에서 대사체 농업기술을 적용한 식물기반 천연물의약품 API 특성 연구",
+          "institution": "경성대 약학대학"
+        },
+        {
+          "author": "주종문 / 공학박사 (2003)",
+          "title": "농산물 유통 효율화를 위한 전자상거래 통합시스템 구축방안에 관한 연구",
+          "institution": "경남대 산업공학과"
+        }
+      ]
+    },
+    "cert": {
+      "sectionTag": "CERTIFICATIONS",
+      "items": [
+        { "name": "그린바이오 기업 인정", "year": "2025", "issuer": "농림축산식품부" },
+        { "name": "벤처기업 인정", "year": "2024", "issuer": "벤처기업확인기관" },
+        { "name": "기업부설연구소 인정", "year": "2024", "issuer": "한국산업기술진흥협회" }
+      ],
+      "imagePlaceholder": "PLACEHOLDER · CERTIFICATE IMAGE"
+    },
+    "national": {
+      "sectionTag": "NATIONAL R&D",
+      "sectionTitle": "국가연구개발사업 주요 수행 실적",
+      "items": [
+        {
+          "name": "식물성장 영상정보를 이용한 식물공장 피노믹스 시스템 개발",
+          "agency": "과학기술정보통신부 (정보통신기획평가원)",
+          "period": "2021.04 ~ 2022.12",
+          "status": "완료"
+        },
+        {
+          "name": "스마트팜 다부처패키지 혁신기술개발사업 · 지능형 분무경 수경재배시스템",
+          "agency": "농림축산식품부",
+          "period": "2024.04 ~ 2027.12",
+          "status": "수행 중"
+        }
+      ]
+    }
+  },
+  "news": {
+    "hero": {
+      "tag": "NEWS",
+      "meta": "05 / UPDATES",
+      "title": "최신 소식.",
+      "lede": "신규 계약 임상 진행 인증 그리고 미디어 노출. 어드민에서 직접 등록 운영합니다."
+    },
+    "empty": "아직 등록된 보도자료가 없습니다.",
+    "readMore": "Read more"
+  },
+  "contact": {
+    "hero": {
+      "tag": "CONTACT",
+      "meta": "06 / PARTNERSHIP INQUIRY",
+      "title": "글로벌 파트너십을\n시작하세요.",
+      "lede": "API 공급 기술 솔루션 도입 임상 협업 그리고 미디어 문의. 영업일 기준 2일 이내에 회신드립니다."
+    }
+  }
+}
