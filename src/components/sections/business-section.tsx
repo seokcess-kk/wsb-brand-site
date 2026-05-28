@@ -1,6 +1,11 @@
 import { getTranslations } from "next-intl/server";
 import { ArrowUpRight } from "lucide-react";
 import { RevealOnView } from "@/components/motion/reveal-on-view";
+import {
+  FadeInItem,
+  FadeInSection,
+} from "@/components/motion/fade-in-section";
+import { MotionCard } from "@/components/motion/motion-card";
 
 type Pillar = {
   label: string;
@@ -55,17 +60,17 @@ export async function BusinessSection() {
         </div>
 
         {/* 3 pillar cards */}
-        <div className="mt-16 grid items-stretch gap-px bg-structural/10 lg:grid-cols-3">
-          {pillars.map((p, i) => (
-            <RevealOnView
-              key={p.label}
-              delay={0.12 + i * 0.08}
-              className="h-full"
-            >
+        <FadeInSection
+          className="mt-16 grid items-stretch gap-4 lg:grid-cols-3"
+          delayChildren={0.12}
+          staggerChildren={0.08}
+        >
+          {pillars.map((p) => (
+            <FadeInItem key={p.label} className="h-full">
               <PillarCard pillar={p} />
-            </RevealOnView>
+            </FadeInItem>
           ))}
-        </div>
+        </FadeInSection>
       </div>
     </section>
   );
@@ -73,11 +78,17 @@ export async function BusinessSection() {
 
 function PillarCard({ pillar }: { pillar: Pillar }) {
   return (
-    <article className="relative flex h-full flex-col gap-7 bg-canvas p-8 md:p-10">
+    <MotionCard
+      as="article"
+      className="flex h-full flex-col gap-7 p-8 md:p-10"
+    >
       {/* Header */}
       <div className="flex items-center justify-between">
         <p className="mono-label text-structural/55">{pillar.label}</p>
-        <span aria-hidden className="h-1.5 w-1.5 rounded-full bg-primary" />
+        <span
+          aria-hidden
+          className="h-1.5 w-1.5 rounded-full bg-primary transition-transform duration-300 group-hover:scale-150"
+        />
       </div>
 
       {/* Title block */}
@@ -125,15 +136,15 @@ function PillarCard({ pillar }: { pillar: Pillar }) {
           href={pillar.externalHref}
           target="_blank"
           rel="noopener noreferrer"
-          className="group inline-flex items-center gap-2 text-sm font-medium text-primary hover:opacity-80"
+          className="inline-flex items-center gap-2 text-sm font-medium text-primary transition-opacity hover:opacity-70"
         >
           {pillar.externalLabel}
           <ArrowUpRight
             size={14}
-            className="transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5"
+            className="transition-transform duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5"
           />
         </a>
       )}
-    </article>
+    </MotionCard>
   );
 }

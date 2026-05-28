@@ -1,6 +1,11 @@
 import { getTranslations, setRequestLocale } from "next-intl/server";
 import { PageHero } from "@/components/layout/page-hero";
 import { RevealOnView } from "@/components/motion/reveal-on-view";
+import {
+  FadeInItem,
+  FadeInSection,
+} from "@/components/motion/fade-in-section";
+import { MotionCard } from "@/components/motion/motion-card";
 import { MatSection } from "@/components/sections/mat-section";
 import { FdaSection } from "@/components/sections/fda-section";
 
@@ -57,13 +62,22 @@ export default async function TechnologyPage({
             <span aria-hidden className="h-px w-6 bg-primary" />
             <p className="mono-label text-primary">{t("stack.sectionTag")}</p>
           </div>
-          <div className="grid items-stretch gap-px bg-structural/10 lg:grid-cols-3">
-            {stack.map((it, i) => (
-              <RevealOnView key={it.code} delay={0.08 * i} className="h-full">
-                <article className="flex h-full flex-col gap-6 bg-canvas p-8 md:p-10">
+          <FadeInSection
+            className="grid items-stretch gap-4 lg:grid-cols-3"
+            staggerChildren={0.08}
+          >
+            {stack.map((it) => (
+              <FadeInItem key={it.code} className="h-full">
+                <MotionCard
+                  as="article"
+                  className="flex h-full flex-col gap-6 p-8 md:p-10"
+                >
                   <div className="flex items-center justify-between">
                     <p className="mono-label text-structural/55">{it.code}</p>
-                    <span aria-hidden className="h-1.5 w-1.5 rounded-full bg-primary" />
+                    <span
+                      aria-hidden
+                      className="h-1.5 w-1.5 rounded-full bg-primary transition-transform duration-300 group-hover:scale-150"
+                    />
                   </div>
                   <div className="space-y-2">
                     <h3 className="font-sans text-2xl font-bold tracking-tight text-structural">
@@ -85,10 +99,10 @@ export default async function TechnologyPage({
                       {it.metricCaption}
                     </p>
                   </div>
-                </article>
-              </RevealOnView>
+                </MotionCard>
+              </FadeInItem>
             ))}
-          </div>
+          </FadeInSection>
         </div>
       </section>
 
@@ -178,10 +192,16 @@ export default async function TechnologyPage({
               {t("moat.sectionTitle")}
             </h2>
           </RevealOnView>
-          <div className="mt-12 grid gap-px bg-canvas/10 md:grid-cols-3">
-            {layers.map((l, i) => (
-              <RevealOnView key={l.code} delay={0.08 * i} className="h-full">
-                <article className="flex h-full flex-col gap-5 bg-structural p-8 md:p-10">
+          <FadeInSection
+            className="mt-12 grid gap-4 md:grid-cols-3"
+            staggerChildren={0.08}
+          >
+            {layers.map((l) => (
+              <FadeInItem key={l.code} className="h-full">
+                <MotionCard
+                  as="article"
+                  className="flex h-full flex-col gap-5 bg-structural border-canvas/10 p-8 md:p-10 hover:border-canvas/30 hover:shadow-none"
+                >
                   <div className="flex items-center justify-between">
                     <p className="mono-label text-primary">{l.code}</p>
                     <p className="mono-label text-canvas/45">{l.type}</p>
@@ -192,10 +212,10 @@ export default async function TechnologyPage({
                   <p className="text-sm leading-relaxed text-canvas/70">
                     {l.body}
                   </p>
-                </article>
-              </RevealOnView>
+                </MotionCard>
+              </FadeInItem>
             ))}
-          </div>
+          </FadeInSection>
         </div>
       </section>
     </>

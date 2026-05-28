@@ -335,7 +335,8 @@
       "lede": "신규 계약 임상 진행 인증 그리고 미디어 노출. 어드민에서 직접 등록 운영합니다."
     },
     "empty": "아직 등록된 보도자료가 없습니다.",
-    "readMore": "Read more"
+    "readMore": "Read more",
+    "filterAll": "전체"
   },
   "contact": {
     "hero": {

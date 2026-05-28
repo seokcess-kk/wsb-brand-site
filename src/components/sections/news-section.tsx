@@ -2,6 +2,11 @@ import { getTranslations } from "next-intl/server";
 import { ArrowUpRight } from "lucide-react";
 import { Link } from "@/i18n/navigation";
 import { RevealOnView } from "@/components/motion/reveal-on-view";
+import {
+  FadeInItem,
+  FadeInSection,
+} from "@/components/motion/fade-in-section";
+import { MotionCard } from "@/components/motion/motion-card";
 
 type Item = {
   date: string;
@@ -62,17 +67,17 @@ export async function NewsSection() {
         </div>
 
         {/* News cards */}
-        <div className="mt-16 grid items-stretch gap-px bg-structural/10 lg:grid-cols-3">
-          {items.map((item, i) => (
-            <RevealOnView
-              key={item.title}
-              delay={0.12 + i * 0.08}
-              className="h-full"
-            >
+        <FadeInSection
+          className="mt-16 grid items-stretch gap-4 lg:grid-cols-3"
+          delayChildren={0.12}
+          staggerChildren={0.08}
+        >
+          {items.map((item) => (
+            <FadeInItem key={item.title} className="h-full">
               <NewsCard item={item} />
-            </RevealOnView>
+            </FadeInItem>
           ))}
-        </div>
+        </FadeInSection>
       </div>
     </section>
   );
@@ -80,19 +85,22 @@ export async function NewsSection() {
 
 function NewsCard({ item }: { item: Item }) {
   return (
-    <article className="group relative flex h-full flex-col gap-5 bg-canvas p-8 md:p-10 transition-colors hover:bg-primary/[0.02]">
+    <MotionCard
+      as="article"
+      className="flex h-full flex-col gap-5 p-8 md:p-10"
+    >
       {/* Photo placeholder block */}
-      <div className="relative aspect-[16/9] overflow-hidden bg-structural/[0.04]">
+      <div className="relative aspect-[16/9] overflow-hidden bg-structural/[0.04] transition-colors duration-500 group-hover:bg-structural/[0.07]">
         <div className="absolute inset-0 flex items-center justify-center">
           <p className="mono-label text-[10px] text-structural/35">
             PLACEHOLDER · THUMBNAIL
           </p>
         </div>
         {/* Corner ticks for the brand frame feel */}
-        <span aria-hidden className="absolute top-2 left-2 h-2 w-2 border-l border-t border-structural/20" />
-        <span aria-hidden className="absolute top-2 right-2 h-2 w-2 border-r border-t border-structural/20" />
-        <span aria-hidden className="absolute bottom-2 left-2 h-2 w-2 border-l border-b border-structural/20" />
-        <span aria-hidden className="absolute bottom-2 right-2 h-2 w-2 border-r border-b border-structural/20" />
+        <span aria-hidden className="absolute top-2 left-2 h-2 w-2 border-l border-t border-structural/20 transition-colors duration-500 group-hover:border-primary/50" />
+        <span aria-hidden className="absolute top-2 right-2 h-2 w-2 border-r border-t border-structural/20 transition-colors duration-500 group-hover:border-primary/50" />
+        <span aria-hidden className="absolute bottom-2 left-2 h-2 w-2 border-l border-b border-structural/20 transition-colors duration-500 group-hover:border-primary/50" />
+        <span aria-hidden className="absolute bottom-2 right-2 h-2 w-2 border-r border-b border-structural/20 transition-colors duration-500 group-hover:border-primary/50" />
       </div>
 
       {/* Meta row */}
@@ -120,9 +128,9 @@ function NewsCard({ item }: { item: Item }) {
         Read more
         <ArrowUpRight
           size={13}
-          className="transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5"
+          className="transition-transform duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5"
         />
       </Link>
-    </article>
+    </MotionCard>
   );
 }

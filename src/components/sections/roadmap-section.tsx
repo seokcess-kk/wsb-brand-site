@@ -1,5 +1,10 @@
 import { getTranslations } from "next-intl/server";
 import { RevealOnView } from "@/components/motion/reveal-on-view";
+import {
+  FadeInItem,
+  FadeInSection,
+} from "@/components/motion/fade-in-section";
+import { MotionCard } from "@/components/motion/motion-card";
 
 type Phase = {
   label: string;
@@ -68,17 +73,17 @@ export async function RoadmapSection() {
             aria-hidden
             className="absolute left-0 right-0 top-[34px] hidden h-px bg-canvas/15 lg:block"
           />
-          <div className="grid items-stretch gap-px bg-canvas/10 lg:grid-cols-3">
+          <FadeInSection
+            className="grid items-stretch gap-4 lg:grid-cols-3"
+            delayChildren={0.12}
+            staggerChildren={0.1}
+          >
             {phases.map((p, i) => (
-              <RevealOnView
-                key={p.label}
-                delay={0.12 + i * 0.1}
-                className="h-full"
-              >
+              <FadeInItem key={p.label} className="h-full">
                 <PhaseCard phase={p} index={i} total={phases.length} />
-              </RevealOnView>
+              </FadeInItem>
             ))}
-          </div>
+          </FadeInSection>
         </div>
       </div>
     </section>
@@ -95,7 +100,10 @@ function PhaseCard({
   total: number;
 }) {
   return (
-    <article className="relative flex h-full flex-col gap-6 bg-structural p-8 md:p-10">
+    <MotionCard
+      as="article"
+      className="flex h-full flex-col gap-6 bg-structural border-canvas/10 p-8 md:p-10 hover:border-canvas/30 hover:shadow-none"
+    >
       {/* Phase number node (top-left, dotted timeline anchor) */}
       <div className="relative flex items-center gap-4">
         <span
@@ -132,6 +140,6 @@ function PhaseCard({
           </li>
         ))}
       </ul>
-    </article>
+    </MotionCard>
   );
 }

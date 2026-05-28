@@ -1,6 +1,11 @@
 import { getTranslations, setRequestLocale } from "next-intl/server";
 import { PageHero } from "@/components/layout/page-hero";
 import { RevealOnView } from "@/components/motion/reveal-on-view";
+import {
+  FadeInItem,
+  FadeInSection,
+} from "@/components/motion/fade-in-section";
+import { MotionCard } from "@/components/motion/motion-card";
 
 export default async function CompanyPage({
   params,
@@ -132,20 +137,27 @@ export default async function CompanyPage({
               </h2>
             </div>
           </div>
-          <div className="grid gap-px bg-structural/10 md:grid-cols-3">
-            {members.map((m, i) => (
-              <RevealOnView key={m.name} delay={0.1 + i * 0.08} className="h-full">
-                <article className="flex h-full flex-col gap-5 bg-canvas p-6 md:p-8">
-                  <div className="relative aspect-square w-full overflow-hidden bg-structural/[0.04]">
+          <FadeInSection
+            className="grid gap-4 md:grid-cols-3"
+            delayChildren={0.1}
+            staggerChildren={0.08}
+          >
+            {members.map((m) => (
+              <FadeInItem key={m.name} className="h-full">
+                <MotionCard
+                  as="article"
+                  className="flex h-full flex-col gap-5 p-6 md:p-8"
+                >
+                  <div className="relative aspect-square w-full overflow-hidden bg-structural/[0.04] transition-colors duration-500 group-hover:bg-structural/[0.07]">
                     <div className="absolute inset-0 flex items-center justify-center">
                       <p className="mono-label text-[10px] text-structural/35">
                         {t("leadership.photoPlaceholder")}
                       </p>
                     </div>
-                    <span aria-hidden className="absolute top-2 left-2 h-2 w-2 border-l border-t border-structural/20" />
-                    <span aria-hidden className="absolute top-2 right-2 h-2 w-2 border-r border-t border-structural/20" />
-                    <span aria-hidden className="absolute bottom-2 left-2 h-2 w-2 border-l border-b border-structural/20" />
-                    <span aria-hidden className="absolute bottom-2 right-2 h-2 w-2 border-r border-b border-structural/20" />
+                    <span aria-hidden className="absolute top-2 left-2 h-2 w-2 border-l border-t border-structural/20 transition-colors duration-500 group-hover:border-primary/50" />
+                    <span aria-hidden className="absolute top-2 right-2 h-2 w-2 border-r border-t border-structural/20 transition-colors duration-500 group-hover:border-primary/50" />
+                    <span aria-hidden className="absolute bottom-2 left-2 h-2 w-2 border-l border-b border-structural/20 transition-colors duration-500 group-hover:border-primary/50" />
+                    <span aria-hidden className="absolute bottom-2 right-2 h-2 w-2 border-r border-b border-structural/20 transition-colors duration-500 group-hover:border-primary/50" />
                   </div>
                   <div className="space-y-2">
                     <p className="mono-label text-primary">{m.role}</p>
@@ -156,10 +168,10 @@ export default async function CompanyPage({
                   <p className="text-sm leading-relaxed text-structural/70">
                     {m.bio}
                   </p>
-                </article>
-              </RevealOnView>
+                </MotionCard>
+              </FadeInItem>
             ))}
-          </div>
+          </FadeInSection>
         </div>
       </section>
 

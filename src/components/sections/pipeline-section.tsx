@@ -1,5 +1,9 @@
 import { getTranslations } from "next-intl/server";
 import { RevealOnView } from "@/components/motion/reveal-on-view";
+import {
+  FadeInItem,
+  FadeInSection,
+} from "@/components/motion/fade-in-section";
 
 type Item = {
   name: string;
@@ -70,13 +74,16 @@ export async function PipelineSection() {
           </div>
 
           {/* Rows */}
-          <div className="grid gap-px bg-structural/10">
-            {items.map((item, i) => (
-              <RevealOnView key={item.name} delay={0.06 * i}>
+          <FadeInSection
+            className="grid gap-px bg-structural/10"
+            staggerChildren={0.06}
+          >
+            {items.map((item) => (
+              <FadeInItem key={item.name}>
                 <PipelineRow item={item} stages={stages} />
-              </RevealOnView>
+              </FadeInItem>
             ))}
-          </div>
+          </FadeInSection>
         </div>
       </div>
     </section>
@@ -118,7 +125,11 @@ function PipelineRow({ item, stages }: { item: Item; stages: string[] }) {
 }
 
 function Cell({ children }: { children: React.ReactNode }) {
-  return <div className="bg-canvas px-5 py-6">{children}</div>;
+  return (
+    <div className="bg-canvas px-5 py-6 transition-colors duration-300 group-hover:bg-primary/[0.03]">
+      {children}
+    </div>
+  );
 }
 
 function StageBar({

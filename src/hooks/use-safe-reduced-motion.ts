@@ -1,22 +1,30 @@
 "use client";
 
-import { useReducedMotion } from "motion/react";
-import { useEffect, useState } from "react";
+import { useSyncExternalStore } from "react";
+
+const QUERY = "(prefers-reduced-motion: reduce)";
+
+function subscribe(onChange: () => void) {
+  if (typeof window === "undefined") return () => {};
+  const mq = window.matchMedia(QUERY);
+  mq.addEventListener("change", onChange);
+  return () => mq.removeEventListener("change", onChange);
+}
+
+function getClientSnapshot(): boolean {
+  return window.matchMedia(QUERY).matches;
+}
+
+function getServerSnapshot(): boolean {
+  return false;
+}
 
 /**
- * Hydration-safe wrapper around motion's useReducedMotion.
- *
- * Why: useReducedMotion reads window.matchMedia, which only exists on the
- * client. During SSR it returns null (treated as false), but on the first
- * client render the real value may be true. That divergence causes React
- * hydration mismatches. We force false until after mount, then switch to the
- * real value, so server output and the first client render always agree.
+ * Hydration-safe wrapper around prefers-reduced-motion. SSR snapshot is
+ * always false so server output matches the first client render; React then
+ * switches to the live media-query value on commit, without a setState-in-
+ * effect cascade.
  */
 export function useSafeReducedMotion(): boolean {
-  const [hydrated, setHydrated] = useState(false);
-  useEffect(() => {
-    setHydrated(true);
-  }, []);
-  const reduced = useReducedMotion();
-  return hydrated ? Boolean(reduced) : false;
+  return useSyncExternalStore(subscribe, getClientSnapshot, getServerSnapshot);
 }

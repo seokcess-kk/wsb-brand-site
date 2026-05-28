@@ -335,7 +335,8 @@
       "lede": "Contracts, clinical milestones, certifications, and media coverage. Managed directly through the admin."
     },
     "empty": "No press releases yet.",
-    "readMore": "Read more"
+    "readMore": "Read more",
+    "filterAll": "All"
   },
   "contact": {
     "hero": {

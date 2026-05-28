@@ -2,6 +2,12 @@ import { getTranslations, setRequestLocale } from "next-intl/server";
 import { ArrowUpRight } from "lucide-react";
 import { PageHero } from "@/components/layout/page-hero";
 import { RevealOnView } from "@/components/motion/reveal-on-view";
+import {
+  FadeInItem,
+  FadeInSection,
+} from "@/components/motion/fade-in-section";
+import { MotionCard } from "@/components/motion/motion-card";
+import { cn } from "@/lib/utils";
 
 type Case = { name: string; body: string; metric: string };
 type Component = { code: string; name: string; body: string };
@@ -39,10 +45,16 @@ export default async function BusinessPage({
         body={t("solution.body")}
         accent="light"
       >
-        <div className="mt-12 grid gap-px bg-structural/10 md:grid-cols-3">
-          {solComponents.map((c, i) => (
-            <RevealOnView key={c.code} delay={0.06 * i} className="h-full">
-              <article className="flex h-full flex-col gap-3 bg-canvas p-6 md:p-7">
+        <FadeInSection
+          className="mt-12 grid gap-4 md:grid-cols-3"
+          staggerChildren={0.06}
+        >
+          {solComponents.map((c) => (
+            <FadeInItem key={c.code} className="h-full">
+              <MotionCard
+                as="article"
+                className="flex h-full flex-col gap-3 p-6 md:p-7"
+              >
                 <p className="mono-label text-primary">{c.code}</p>
                 <h4 className="font-sans text-base font-semibold text-structural">
                   {c.name}
@@ -50,10 +62,10 @@ export default async function BusinessPage({
                 <p className="text-sm leading-relaxed text-structural/70">
                   {c.body}
                 </p>
-              </article>
-            </RevealOnView>
+              </MotionCard>
+            </FadeInItem>
           ))}
-        </div>
+        </FadeInSection>
 
         <CaseRow cases={solCases} />
       </PillarSection>
@@ -65,20 +77,26 @@ export default async function BusinessPage({
         body={t("material.body")}
         accent="dark"
       >
-        <div className="mt-12 grid gap-px bg-canvas/10 md:grid-cols-3">
-          {matSegments.map((s, i) => (
-            <RevealOnView key={s.name} delay={0.06 * i} className="h-full">
-              <article className="flex h-full flex-col gap-3 bg-structural p-6 md:p-7">
+        <FadeInSection
+          className="mt-12 grid gap-4 md:grid-cols-3"
+          staggerChildren={0.06}
+        >
+          {matSegments.map((s) => (
+            <FadeInItem key={s.name} className="h-full">
+              <MotionCard
+                as="article"
+                className="flex h-full flex-col gap-3 bg-structural border-canvas/10 p-6 md:p-7 hover:border-canvas/30 hover:shadow-none"
+              >
                 <h4 className="font-sans text-base font-semibold text-canvas">
                   {s.name}
                 </h4>
                 <p className="text-sm leading-relaxed text-canvas/70">
                   {s.body}
                 </p>
-              </article>
-            </RevealOnView>
+              </MotionCard>
+            </FadeInItem>
           ))}
-        </div>
+        </FadeInSection>
 
         <CaseRow cases={matCases} accent="dark" />
       </PillarSection>
@@ -90,21 +108,27 @@ export default async function BusinessPage({
         body={t("phytopresso.body")}
         accent="light"
       >
-        <div className="mt-12 grid gap-px bg-structural/10 md:grid-cols-3">
-          {lineup.map((p, i) => (
-            <RevealOnView key={p.name} delay={0.06 * i} className="h-full">
-              <article className="flex h-full flex-col gap-5 bg-canvas p-6 md:p-8">
+        <FadeInSection
+          className="mt-12 grid gap-4 md:grid-cols-3"
+          staggerChildren={0.06}
+        >
+          {lineup.map((p) => (
+            <FadeInItem key={p.name} className="h-full">
+              <MotionCard
+                as="article"
+                className="flex h-full flex-col gap-5 p-6 md:p-8"
+              >
                 {/* Product placeholder */}
-                <div className="relative aspect-[4/5] overflow-hidden bg-structural/[0.04]">
+                <div className="relative aspect-[4/5] overflow-hidden bg-structural/[0.04] transition-colors duration-500 group-hover:bg-structural/[0.07]">
                   <div className="absolute inset-0 flex items-center justify-center">
                     <p className="mono-label text-[10px] text-structural/35 text-center max-w-[18ch]">
                       {t("phytopresso.photoPlaceholder")}
                     </p>
                   </div>
-                  <span aria-hidden className="absolute top-2 left-2 h-2 w-2 border-l border-t border-structural/20" />
-                  <span aria-hidden className="absolute top-2 right-2 h-2 w-2 border-r border-t border-structural/20" />
-                  <span aria-hidden className="absolute bottom-2 left-2 h-2 w-2 border-l border-b border-structural/20" />
-                  <span aria-hidden className="absolute bottom-2 right-2 h-2 w-2 border-r border-b border-structural/20" />
+                  <span aria-hidden className="absolute top-2 left-2 h-2 w-2 border-l border-t border-structural/20 transition-colors duration-500 group-hover:border-primary/50" />
+                  <span aria-hidden className="absolute top-2 right-2 h-2 w-2 border-r border-t border-structural/20 transition-colors duration-500 group-hover:border-primary/50" />
+                  <span aria-hidden className="absolute bottom-2 left-2 h-2 w-2 border-l border-b border-structural/20 transition-colors duration-500 group-hover:border-primary/50" />
+                  <span aria-hidden className="absolute bottom-2 right-2 h-2 w-2 border-r border-b border-structural/20 transition-colors duration-500 group-hover:border-primary/50" />
                 </div>
                 <div className="space-y-2">
                   <p className="mono-label text-primary">{p.category}</p>
@@ -115,10 +139,10 @@ export default async function BusinessPage({
                     {p.spec}
                   </p>
                 </div>
-              </article>
-            </RevealOnView>
+              </MotionCard>
+            </FadeInItem>
           ))}
-        </div>
+        </FadeInSection>
 
         <div className="mt-10 flex flex-col gap-4 md:flex-row md:items-end md:justify-between">
           <p className="max-w-2xl text-sm text-structural/65">
@@ -215,40 +239,48 @@ function CaseRow({
       >
         CASE STUDIES
       </p>
-      <div
-        className={`grid gap-px ${
-          isDark ? "bg-canvas/10" : "bg-structural/10"
-        } md:grid-cols-${cases.length === 1 ? "1" : "2"}`}
+      <FadeInSection
+        className={cn(
+          "grid gap-4",
+          cases.length === 1 ? "md:grid-cols-1" : "md:grid-cols-2",
+        )}
+        staggerChildren={0.06}
       >
         {cases.map((c) => (
-          <article
-            key={c.name}
-            className={`flex flex-col gap-3 p-6 md:p-8 ${
-              isDark ? "bg-structural" : "bg-canvas"
-            }`}
-          >
-            <div className="flex items-center justify-between">
-              <h4
-                className={`font-sans text-base font-semibold ${
-                  isDark ? "text-canvas" : "text-structural"
-                }`}
-              >
-                {c.name}
-              </h4>
-              <p className="font-mono text-sm font-semibold text-primary">
-                {c.metric}
-              </p>
-            </div>
-            <p
-              className={`text-sm leading-relaxed ${
-                isDark ? "text-canvas/70" : "text-structural/70"
-              }`}
+          <FadeInItem key={c.name}>
+            <MotionCard
+              as="article"
+              className={cn(
+                "flex flex-col gap-3 p-6 md:p-8",
+                isDark &&
+                  "bg-structural border-canvas/10 hover:border-canvas/30 hover:shadow-none",
+              )}
             >
-              {c.body}
-            </p>
-          </article>
+              <div className="flex items-center justify-between">
+                <h4
+                  className={cn(
+                    "font-sans text-base font-semibold",
+                    isDark ? "text-canvas" : "text-structural",
+                  )}
+                >
+                  {c.name}
+                </h4>
+                <p className="font-mono text-sm font-semibold text-primary">
+                  {c.metric}
+                </p>
+              </div>
+              <p
+                className={cn(
+                  "text-sm leading-relaxed",
+                  isDark ? "text-canvas/70" : "text-structural/70",
+                )}
+              >
+                {c.body}
+              </p>
+            </MotionCard>
+          </FadeInItem>
         ))}
-      </div>
+      </FadeInSection>
     </div>
   );
 }
