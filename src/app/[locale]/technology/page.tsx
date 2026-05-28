@@ -1,6 +1,9 @@
 import { getTranslations, setRequestLocale } from "next-intl/server";
 import { PageHero } from "@/components/layout/page-hero";
+import { SectionEyebrow } from "@/components/layout/section-eyebrow";
+import { Lede } from "@/components/layout/lede";
 import { RevealOnView } from "@/components/motion/reveal-on-view";
+import { RevealWords } from "@/components/motion/reveal-words";
 import {
   FadeInItem,
   FadeInSection,
@@ -58,9 +61,10 @@ export default async function TechnologyPage({
       {/* STACK 3 cards */}
       <section className="bg-canvas">
         <div className="mx-auto max-w-7xl px-6 py-24 md:py-32">
-          <div className="mb-12 flex items-center gap-3">
-            <span aria-hidden className="h-px w-6 bg-primary" />
-            <p className="mono-label text-primary">{t("stack.sectionTag")}</p>
+          <div className="mb-12">
+            <RevealOnView>
+              <SectionEyebrow tag={t("stack.sectionTag")} />
+            </RevealOnView>
           </div>
           <FadeInSection
             className="grid items-stretch gap-4 lg:grid-cols-3"
@@ -115,25 +119,20 @@ export default async function TechnologyPage({
       {/* COMPETITIVE LANDSCAPE */}
       <section className="bg-canvas">
         <div className="mx-auto max-w-7xl px-6 py-24 md:py-32">
-          <div className="mb-12 flex items-center gap-3">
-            <span aria-hidden className="h-px w-6 bg-primary" />
-            <p className="mono-label text-primary">
-              {t("competition.sectionTag")}
-            </p>
+          <div className="mb-12">
+            <RevealOnView>
+              <SectionEyebrow tag={t("competition.sectionTag")} />
+            </RevealOnView>
           </div>
           <div className="grid gap-10 lg:grid-cols-[1.4fr_1fr] lg:gap-16">
-            <RevealOnView delay={0.05}>
-              <h2
-                className="font-sans font-bold leading-[1.18] tracking-tight text-structural"
-                style={{ fontSize: "clamp(1.5rem, 3vw, 2.25rem)" }}
-              >
-                {t("competition.sectionTitle")}
-              </h2>
-            </RevealOnView>
+            <h2
+              className="font-sans font-bold leading-[1.18] tracking-tight text-structural"
+              style={{ fontSize: "clamp(1.5rem, 3vw, 2.25rem)" }}
+            >
+              <RevealWords text={t("competition.sectionTitle")} triggerOnView />
+            </h2>
             <RevealOnView delay={0.15}>
-              <p className="max-w-xl text-base leading-relaxed text-structural/75">
-                {t("competition.lede")}
-              </p>
+              <Lede text={t("competition.lede")} className="max-w-xl" />
             </RevealOnView>
           </div>
 
@@ -178,20 +177,23 @@ export default async function TechnologyPage({
       </section>
 
       {/* TECHNICAL MOAT */}
-      <section className="bg-structural text-canvas">
+      <section className="relative isolate bg-structural text-canvas">
+        <div
+          aria-hidden
+          className="pointer-events-none absolute -top-px left-0 right-0 h-px bg-gradient-to-r from-transparent via-primary/30 to-transparent"
+        />
         <div className="mx-auto max-w-7xl px-6 py-24 md:py-32">
-          <div className="mb-12 flex items-center gap-3">
-            <span aria-hidden className="h-px w-6 bg-primary" />
-            <p className="mono-label text-canvas/65">{t("moat.sectionTag")}</p>
+          <div className="mb-12">
+            <RevealOnView>
+              <SectionEyebrow tag={t("moat.sectionTag")} inverse />
+            </RevealOnView>
           </div>
-          <RevealOnView>
-            <h2
-              className="max-w-3xl font-sans font-bold leading-[1.18] tracking-tight text-canvas"
-              style={{ fontSize: "clamp(1.875rem, 4vw, 3rem)" }}
-            >
-              {t("moat.sectionTitle")}
-            </h2>
-          </RevealOnView>
+          <h2
+            className="max-w-3xl font-sans font-bold leading-[1.18] tracking-tight text-canvas"
+            style={{ fontSize: "clamp(1.875rem, 4vw, 3rem)" }}
+          >
+            <RevealWords text={t("moat.sectionTitle")} triggerOnView />
+          </h2>
           <FadeInSection
             className="mt-12 grid gap-4 md:grid-cols-3"
             staggerChildren={0.08}

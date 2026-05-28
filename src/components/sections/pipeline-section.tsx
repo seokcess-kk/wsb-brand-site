@@ -1,9 +1,14 @@
 import { getTranslations } from "next-intl/server";
+import { ArrowUpRight } from "lucide-react";
+import { Link } from "@/i18n/navigation";
 import { RevealOnView } from "@/components/motion/reveal-on-view";
+import { RevealWords } from "@/components/motion/reveal-words";
 import {
   FadeInItem,
   FadeInSection,
 } from "@/components/motion/fade-in-section";
+import { SectionEyebrow } from "@/components/layout/section-eyebrow";
+import { Lede } from "@/components/layout/lede";
 
 type Item = {
   name: string;
@@ -16,7 +21,11 @@ type Item = {
 export async function PipelineSection() {
   const t = await getTranslations("home.pipeline");
   const stages = t.raw("stages") as string[];
-  const items = t.raw("items") as Item[];
+  const allItems = t.raw("items") as Item[];
+  // Home shows only the 3 most advanced pipelines; full list lives on /r-and-d.
+  const items = [...allItems]
+    .sort((a, b) => b.stage - a.stage)
+    .slice(0, 3);
 
   return (
     <section
@@ -36,10 +45,7 @@ export async function PipelineSection() {
       <div className="mx-auto max-w-7xl px-6 py-24 md:py-32 lg:py-40">
         <div className="mb-14 flex flex-col gap-3 md:flex-row md:items-end md:justify-between">
           <RevealOnView>
-            <div className="flex items-center gap-3">
-              <span aria-hidden className="h-px w-6 bg-primary" />
-              <p className="mono-label text-primary">{t("sectionTag")}</p>
-            </div>
+            <SectionEyebrow number={6} total={9} tag={t("sectionTag")} />
           </RevealOnView>
           <RevealOnView delay={0.05}>
             <p className="mono-label text-structural/50">{t("sectionMeta")}</p>
@@ -47,19 +53,15 @@ export async function PipelineSection() {
         </div>
 
         <div className="grid items-end gap-10 lg:grid-cols-[1.4fr_1fr] lg:gap-16">
-          <RevealOnView delay={0.1}>
-            <h2
-              id="pipeline-heading"
-              className="whitespace-pre-line font-sans font-bold leading-[1.15] tracking-tight text-structural"
-              style={{ fontSize: "clamp(1.875rem, 4vw, 3rem)" }}
-            >
-              {t("heading")}
-            </h2>
-          </RevealOnView>
+          <h2
+            id="pipeline-heading"
+            className="font-sans font-bold leading-[1.15] tracking-tight text-structural"
+            style={{ fontSize: "clamp(1.875rem, 4vw, 3rem)" }}
+          >
+            <RevealWords text={t("heading")} triggerOnView />
+          </h2>
           <RevealOnView delay={0.2}>
-            <p className="max-w-2xl text-base leading-relaxed text-structural/75">
-              {t("lede")}
-            </p>
+            <Lede text={t("lede")} />
           </RevealOnView>
         </div>
 
@@ -84,6 +86,19 @@ export async function PipelineSection() {
               </FadeInItem>
             ))}
           </FadeInSection>
+        </div>
+
+        <div className="mt-8 flex justify-end">
+          <Link
+            href="/r-and-d"
+            className="group inline-flex items-center gap-2 text-sm font-medium text-primary hover:opacity-80"
+          >
+            {t("viewAll")}
+            <ArrowUpRight
+              size={14}
+              className="transition-transform duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5"
+            />
+          </Link>
         </div>
       </div>
     </section>
@@ -192,7 +207,7 @@ function StageBar({
         {stages.map((s, i) => (
           <span
             key={s}
-            className={`mono-label text-[9px] truncate px-1 ${
+            className={`mono-label text-[11px] truncate px-1 ${
               i <= current ? "text-primary" : "text-structural/40"
             }`}
           >

@@ -1,8 +1,8 @@
 "use client";
 
-import { motion, useInView } from "motion/react";
+import { AnimatePresence, motion, useInView } from "motion/react";
 import { useRef, useState } from "react";
-import { Check } from "lucide-react";
+import { Check, ChevronDown } from "lucide-react";
 import { useSafeReducedMotion } from "@/hooks/use-safe-reduced-motion";
 
 type Row = { label: string; fda: string; wsb: string };
@@ -19,17 +19,26 @@ export function FdaTable({
   headerWsb: string;
 }) {
   return (
-    <div className="mt-14 grid gap-px bg-canvas/10">
-      {/* Header row */}
-      <div className="grid grid-cols-[3rem_1fr_1fr] bg-structural">
-        <div className="px-4 py-3 mono-label text-canvas/45">{headerNo}</div>
-        <div className="px-4 py-3 mono-label text-canvas/45">{headerFda}</div>
-        <div className="px-4 py-3 mono-label text-primary">{headerWsb}</div>
+    <>
+      {/* Desktop / tablet table */}
+      <div className="mt-14 hidden gap-px bg-canvas/10 md:grid">
+        <div className="grid grid-cols-[3rem_1fr_1fr] bg-structural">
+          <div className="px-4 py-3 mono-label text-canvas/45">{headerNo}</div>
+          <div className="px-4 py-3 mono-label text-canvas/45">{headerFda}</div>
+          <div className="px-4 py-3 mono-label text-primary">{headerWsb}</div>
+        </div>
+        {rows.map((r, i) => (
+          <FdaRow key={r.label} index={i} {...r} />
+        ))}
       </div>
-      {rows.map((r, i) => (
-        <FdaRow key={r.label} index={i} {...r} />
-      ))}
-    </div>
+
+      {/* Mobile accordion */}
+      <div className="mt-10 grid gap-2 md:hidden">
+        {rows.map((r, i) => (
+          <FdaCard key={r.label} index={i} {...r} headerWsb={headerWsb} />
+        ))}
+      </div>
+    </>
   );
 }
 
@@ -92,5 +101,69 @@ function FdaRow({
         <span>{wsb}</span>
       </div>
     </motion.div>
+  );
+}
+
+/**
+ * Mobile-only card showing one FDA row. Collapsed by default — tap to reveal
+ * the WSB response. The first row opens initially so the pattern is obvious.
+ */
+function FdaCard({
+  index,
+  label,
+  fda,
+  wsb,
+  headerWsb,
+}: Row & { index: number; headerWsb: string }) {
+  const reduced = useSafeReducedMotion();
+  const [open, setOpen] = useState(index === 0);
+
+  return (
+    <div className="border border-canvas/10 bg-structural">
+      <button
+        type="button"
+        aria-expanded={open}
+        onClick={() => setOpen((v) => !v)}
+        className="flex w-full items-center justify-between gap-3 px-5 py-4 text-left"
+      >
+        <div className="flex items-start gap-3">
+          <span className="mono-label text-primary/80">{label}</span>
+          <span className="text-sm text-canvas/85">{fda}</span>
+        </div>
+        <motion.span
+          aria-hidden
+          animate={{ rotate: open ? 180 : 0 }}
+          transition={{ duration: reduced ? 0 : 0.2 }}
+          className="text-canvas/55"
+        >
+          <ChevronDown size={16} />
+        </motion.span>
+      </button>
+      <AnimatePresence initial={false}>
+        {open && (
+          <motion.div
+            key="content"
+            initial={reduced ? false : { height: 0, opacity: 0 }}
+            animate={{ height: "auto", opacity: 1 }}
+            exit={reduced ? { opacity: 0 } : { height: 0, opacity: 0 }}
+            transition={{ duration: reduced ? 0 : 0.25, ease: [0.22, 1, 0.36, 1] }}
+            className="overflow-hidden"
+          >
+            <div className="border-t border-canvas/10 px-5 py-4">
+              <p className="mono-label text-[10px] text-primary">{headerWsb}</p>
+              <div className="mt-3 flex items-start gap-3 text-sm text-canvas">
+                <span
+                  aria-hidden
+                  className="mt-[0.15em] grid h-5 w-5 flex-none place-items-center rounded-full bg-primary text-canvas"
+                >
+                  <Check size={12} strokeWidth={3} />
+                </span>
+                <span>{wsb}</span>
+              </div>
+            </div>
+          </motion.div>
+        )}
+      </AnimatePresence>
+    </div>
   );
 }

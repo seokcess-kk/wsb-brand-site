@@ -1,6 +1,7 @@
 import { getTranslations } from "next-intl/server";
 import { Link } from "@/i18n/navigation";
 import { LanguageToggle } from "./language-toggle";
+import { MobileNav, type MobileNavItem } from "./mobile-nav";
 
 const NAV_ITEMS = [
   { key: "company", href: "/company" },
@@ -14,6 +15,12 @@ const NAV_ITEMS = [
 export async function SiteHeader() {
   const t = await getTranslations("nav");
   const tSite = await getTranslations("site");
+
+  const items: MobileNavItem[] = NAV_ITEMS.map((i) => ({
+    key: i.key,
+    href: i.href,
+    label: t(i.key),
+  }));
 
   return (
     <header className="sticky top-0 z-40 border-b border-structural/10 bg-canvas/85 backdrop-blur supports-[backdrop-filter]:bg-canvas/70">
@@ -55,8 +62,13 @@ export async function SiteHeader() {
           </ul>
         </nav>
 
-        <div className="flex items-center gap-6">
+        <div className="flex items-center gap-3 md:gap-6">
           <LanguageToggle />
+          <MobileNav
+            items={items}
+            openLabel={t("openMenu")}
+            closeLabel={t("closeMenu")}
+          />
         </div>
       </div>
     </header>

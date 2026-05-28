@@ -1,11 +1,14 @@
 import { getTranslations } from "next-intl/server";
 import { ArrowUpRight } from "lucide-react";
 import { RevealOnView } from "@/components/motion/reveal-on-view";
+import { RevealWords } from "@/components/motion/reveal-words";
 import {
   FadeInItem,
   FadeInSection,
 } from "@/components/motion/fade-in-section";
 import { MotionCard } from "@/components/motion/motion-card";
+import { SectionEyebrow } from "@/components/layout/section-eyebrow";
+import { Lede } from "@/components/layout/lede";
 
 type Pillar = {
   label: string;
@@ -29,13 +32,14 @@ export async function BusinessSection() {
       aria-labelledby="business-heading"
       className="relative isolate bg-canvas"
     >
+      <div
+        aria-hidden
+        className="pointer-events-none absolute -top-px left-0 right-0 h-px bg-gradient-to-r from-transparent via-primary/30 to-transparent"
+      />
       <div className="mx-auto max-w-7xl px-6 py-24 md:py-32 lg:py-40">
         <div className="mb-14 flex flex-col gap-3 md:flex-row md:items-end md:justify-between">
           <RevealOnView>
-            <div className="flex items-center gap-3">
-              <span aria-hidden className="h-px w-6 bg-primary" />
-              <p className="mono-label text-primary">{t("sectionTag")}</p>
-            </div>
+            <SectionEyebrow number={5} total={9} tag={t("sectionTag")} />
           </RevealOnView>
           <RevealOnView delay={0.05}>
             <p className="mono-label text-structural/50">{t("sectionMeta")}</p>
@@ -43,19 +47,15 @@ export async function BusinessSection() {
         </div>
 
         <div className="grid items-end gap-10 lg:grid-cols-[1.4fr_1fr] lg:gap-16">
-          <RevealOnView delay={0.1}>
-            <h2
-              id="business-heading"
-              className="whitespace-pre-line font-sans font-bold leading-[1.15] tracking-tight text-structural"
-              style={{ fontSize: "clamp(1.875rem, 4vw, 3rem)" }}
-            >
-              {t("heading")}
-            </h2>
-          </RevealOnView>
+          <h2
+            id="business-heading"
+            className="font-sans font-bold leading-[1.15] tracking-tight text-structural"
+            style={{ fontSize: "clamp(1.875rem, 4vw, 3rem)" }}
+          >
+            <RevealWords text={t("heading")} triggerOnView />
+          </h2>
           <RevealOnView delay={0.2}>
-            <p className="max-w-2xl text-base leading-relaxed text-structural/75">
-              {t("lede")}
-            </p>
+            <Lede text={t("lede")} />
           </RevealOnView>
         </div>
 
@@ -131,20 +131,22 @@ function PillarCard({ pillar }: { pillar: Pillar }) {
       </ul>
 
       {/* External link (only on Phytopresso) */}
-      {pillar.externalLabel && pillar.externalHref && (
-        <a
-          href={pillar.externalHref}
-          target="_blank"
-          rel="noopener noreferrer"
-          className="inline-flex items-center gap-2 text-sm font-medium text-primary transition-opacity hover:opacity-70"
-        >
-          {pillar.externalLabel}
-          <ArrowUpRight
-            size={14}
-            className="transition-transform duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5"
-          />
-        </a>
-      )}
+      {pillar.externalLabel &&
+        pillar.externalHref &&
+        pillar.externalHref !== "#" && (
+          <a
+            href={pillar.externalHref}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-flex items-center gap-2 text-sm font-medium text-primary transition-opacity hover:opacity-70"
+          >
+            {pillar.externalLabel}
+            <ArrowUpRight
+              size={14}
+              className="transition-transform duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5"
+            />
+          </a>
+        )}
     </MotionCard>
   );
 }

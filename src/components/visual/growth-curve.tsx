@@ -129,7 +129,7 @@ export function GrowthCurve({
         transition={{ duration: 0.4, delay: 0.5 }}
         className="absolute left-2 top-2 text-left"
       >
-        <p className="mono-label text-[9px] text-structural/55">{startYear}</p>
+        <p className="mono-label text-[11px] text-structural/55">{startYear}</p>
         <p className="font-mono text-[11px] font-semibold text-structural/70">
           {startValue}
         </p>
@@ -142,14 +142,14 @@ export function GrowthCurve({
         transition={{ duration: 0.4, delay: 1.5 }}
         className="absolute right-2 top-2 text-right"
       >
-        <p className="mono-label text-[9px] text-primary">{endYear}</p>
+        <p className="mono-label text-[11px] text-primary">{endYear}</p>
         <p className="font-mono text-[13px] font-bold text-primary">
           {endValue}
         </p>
       </motion.div>
 
       {/* CAGR label (bottom center) */}
-      <div className="absolute bottom-2 left-1/2 -translate-x-1/2 mono-label text-[9px] text-structural/50 whitespace-nowrap">
+      <div className="absolute bottom-2 left-1/2 -translate-x-1/2 mono-label text-[11px] text-structural/50 whitespace-nowrap">
         {cagrLabel}
       </div>
     </div>

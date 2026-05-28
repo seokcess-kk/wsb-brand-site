@@ -1,7 +1,10 @@
 import { getTranslations, setRequestLocale } from "next-intl/server";
-import { ArrowUpRight } from "lucide-react";
+import { ArrowUpRight, Plus } from "lucide-react";
 import { PageHero } from "@/components/layout/page-hero";
+import { SectionEyebrow } from "@/components/layout/section-eyebrow";
+import { Lede } from "@/components/layout/lede";
 import { RevealOnView } from "@/components/motion/reveal-on-view";
+import { RevealWords } from "@/components/motion/reveal-words";
 import {
   FadeInItem,
   FadeInSection,
@@ -109,22 +112,34 @@ export default async function BusinessPage({
         accent="light"
       >
         <FadeInSection
-          className="mt-12 grid gap-4 md:grid-cols-3"
+          className="mt-12 grid items-start gap-4 md:grid-cols-3"
           staggerChildren={0.06}
         >
-          {lineup.map((p) => (
-            <FadeInItem key={p.name} className="h-full">
+          {lineup.map((p, i) => (
+            <FadeInItem key={p.name}>
               <MotionCard
                 as="article"
                 className="flex h-full flex-col gap-5 p-6 md:p-8"
               >
-                {/* Product placeholder */}
-                <div className="relative aspect-[4/5] overflow-hidden bg-structural/[0.04] transition-colors duration-500 group-hover:bg-structural/[0.07]">
+                {/* Product placeholder — alternating aspect for bento rhythm */}
+                <div
+                  className={cn(
+                    "relative overflow-hidden bg-structural/[0.04] transition-colors duration-500 group-hover:bg-structural/[0.07]",
+                    i % 2 === 1 ? "aspect-square" : "aspect-[4/5]",
+                  )}
+                >
                   <div className="absolute inset-0 flex items-center justify-center">
                     <p className="mono-label text-[10px] text-structural/35 text-center max-w-[18ch]">
                       {t("phytopresso.photoPlaceholder")}
                     </p>
                   </div>
+                  {/* Card-play indicator: spins on hover */}
+                  <span
+                    aria-hidden
+                    className="absolute bottom-3 right-3 grid h-7 w-7 place-items-center rounded-full border border-structural/15 bg-canvas/70 text-structural/40 backdrop-blur transition-all duration-500 group-hover:rotate-90 group-hover:border-primary/40 group-hover:text-primary"
+                  >
+                    <Plus size={12} strokeWidth={2.25} />
+                  </span>
                   <span aria-hidden className="absolute top-2 left-2 h-2 w-2 border-l border-t border-structural/20 transition-colors duration-500 group-hover:border-primary/50" />
                   <span aria-hidden className="absolute top-2 right-2 h-2 w-2 border-r border-t border-structural/20 transition-colors duration-500 group-hover:border-primary/50" />
                   <span aria-hidden className="absolute bottom-2 left-2 h-2 w-2 border-l border-b border-structural/20 transition-colors duration-500 group-hover:border-primary/50" />
@@ -148,18 +163,20 @@ export default async function BusinessPage({
           <p className="max-w-2xl text-sm text-structural/65">
             {t("phytopresso.distribution")}
           </p>
-          <a
-            href={t("phytopresso.externalHref")}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="group inline-flex items-center gap-2 border border-structural/20 px-5 py-3 text-sm font-medium text-structural transition-colors hover:border-primary hover:text-primary"
-          >
-            {t("phytopresso.externalCta")}
-            <ArrowUpRight
-              size={14}
-              className="transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5"
-            />
-          </a>
+          {t("phytopresso.externalHref") !== "#" && (
+            <a
+              href={t("phytopresso.externalHref")}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="group inline-flex items-center gap-2 border border-structural/20 px-5 py-3 text-sm font-medium text-structural transition-colors hover:border-primary hover:text-primary"
+            >
+              {t("phytopresso.externalCta")}
+              <ArrowUpRight
+                size={14}
+                className="transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5"
+              />
+            </a>
+          )}
         </div>
       </PillarSection>
     </>
@@ -189,31 +206,23 @@ function PillarSection({
       }
     >
       <div className="mx-auto max-w-7xl px-6 py-24 md:py-32">
-        <div className="mb-10 flex items-center gap-3">
-          <span aria-hidden className="h-px w-6 bg-primary" />
-          <p className={`mono-label ${isDark ? "text-canvas/65" : "text-primary"}`}>
-            {tag}
-          </p>
+        <div className="mb-10">
+          <RevealOnView>
+            <SectionEyebrow tag={tag} inverse={isDark} />
+          </RevealOnView>
         </div>
         <div className="grid items-end gap-10 lg:grid-cols-[1.4fr_1fr] lg:gap-16">
-          <RevealOnView delay={0.05}>
-            <h2
-              className={`whitespace-pre-line font-sans font-bold leading-[1.18] tracking-tight ${
-                isDark ? "text-canvas" : "text-structural"
-              }`}
-              style={{ fontSize: "clamp(1.75rem, 3.4vw, 2.5rem)" }}
-            >
-              {title}
-            </h2>
-          </RevealOnView>
+          <h2
+            className={cn(
+              "font-sans font-bold leading-[1.18] tracking-tight",
+              isDark ? "text-canvas" : "text-structural",
+            )}
+            style={{ fontSize: "clamp(1.75rem, 3.4vw, 2.5rem)" }}
+          >
+            <RevealWords text={title} triggerOnView />
+          </h2>
           <RevealOnView delay={0.15}>
-            <p
-              className={`max-w-xl text-base leading-relaxed ${
-                isDark ? "text-canvas/70" : "text-structural/75"
-              }`}
-            >
-              {body}
-            </p>
+            <Lede text={body} inverse={isDark} className="max-w-xl" />
           </RevealOnView>
         </div>
         {children}

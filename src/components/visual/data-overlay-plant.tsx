@@ -131,9 +131,8 @@ export function DataOverlayPlant({ labels }: { labels: Labels }) {
           <CornerBracket key={c} corner={c} />
         ))}
 
-        {/* Placeholder notice — replaced with real cleanroom plant photo when supplied */}
-        <div className="absolute bottom-3 left-3 mono-label text-[9px] text-structural/30">
-          PLACEHOLDER · CLEANROOM PHOTO
+        <div className="absolute bottom-3 left-3 mono-label text-[11px] text-structural/35">
+          OBSERVED · CONTROLLED PLANT
         </div>
       </div>
     </div>
@@ -165,7 +164,7 @@ function PulseLabel({
         },
         y: { delay, duration: 0.6, ease: [0.22, 1, 0.36, 1] },
       }}
-      className={`mono-label text-[10px] tracking-widest pointer-events-none ${className}`}
+      className={`mono-label text-[11px] tracking-widest pointer-events-none ${className}`}
     >
       {children}
     </motion.div>

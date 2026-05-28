@@ -13,7 +13,9 @@
     "news": "News",
     "contact": "Contact",
     "languageLabel": "Language",
-    "skipToContent": "Skip to content"
+    "skipToContent": "Skip to content",
+    "openMenu": "Open menu",
+    "closeMenu": "Close menu"
   },
   "cta": {
     "partnership": "Discuss a Partnership",
@@ -35,11 +37,23 @@
   "home": {
     "hero": {
       "tag": "WSB · BOTANICAL DRUG INGREDIENT",
-      "subhead": "Standardized botanical drug ingredients grown on a data-driven precision smart farm. Same quality every batch.",
+      "subhead": "We produce standardized botanical drug ingredients by controlling active-compound yield and batch quality through precision smart farming and MAT.",
       "batchMeta": "BATCH · WSB-2026-001",
       "overlayLabel1": "SAPONIN · +8×",
       "overlayLabel2": "pH 5.8 · EC 1.4",
       "overlayLabel3": "μmol UV-B · 285nm"
+    },
+    "credibility": {
+      "ariaLabel": "Woori Smart Bio credibility signals",
+      "note": "Based on WSB company, brand, patent, and certification materials. Public pages should include the final reference date for detailed certification and capacity claims.",
+      "items": [
+        { "label": "ESTABLISHED", "value": "2018", "caption": "Plant-based green bio materials company" },
+        { "label": "CERTIFICATION", "value": "Green Bio", "caption": "Recognized Green Bio enterprise" },
+        { "label": "STATUS", "value": "Venture", "caption": "Venture company and corporate R&D center" },
+        { "label": "IP PORTFOLIO", "value": "Patents", "caption": "MAT, hydroponic cultivation, and material IP" },
+        { "label": "FACILITY", "value": "Yeoncheon", "caption": "R&D production center and production base" },
+        { "label": "CAPA", "value": "2.52M plants/y", "caption": "Yeoncheon production capacity basis" }
+      ]
     },
     "kpi": {
       "sectionTag": "PROVEN IN NUMBERS",
@@ -98,7 +112,7 @@
         "outputLabel": "API YIELD",
         "outputValue": "+8×"
       },
-      "body": "MAT (Metabolite Agriculture Technology) targets active compound yield rather than biomass growth. Specific UV-B wavelengths brief thermal shocks regulated water deficit and mineral cues are applied as precision stressors. The plant's intrinsic potential is realized at over 100%.",
+      "body": "MAT (Metabolite Agriculture Technology) targets active compound yield rather than biomass growth. Specific UV-B wavelengths brief thermal shocks regulated water deficit and mineral cues are applied as precision stressors to induce secondary metabolite production.",
       "stressors": [
         {
           "label": "STRESSOR 01",
@@ -129,8 +143,8 @@
     "fda": {
       "sectionTag": "REGULATORY FIT",
       "sectionMeta": "03 / FDA STANDARDIZATION",
-      "heading": "The FDA's five guidelines.\nWSB already meets every one.",
-      "lede": "The five core requirements the FDA applies to botanical drug approval. Conventional cultivation cannot satisfy them at the same time. WSB's precision-controlled smart farm and MAT meet each guideline one to one.",
+      "heading": "The FDA's five guidelines.\nWSB is built around the core production requirements.",
+      "lede": "The five core requirements the FDA applies to botanical drug approval. Conventional cultivation struggles to address them at the same time. WSB's precision-controlled smart farm and MAT are structured around raw-material identity, records, contaminant control, quality consistency, and long-term supply stability.",
       "rows": [
         {
           "label": "01",
@@ -159,7 +173,8 @@
         }
       ],
       "matchTag": "MATCH RATIO",
-      "matchValue": "5/5"
+      "matchValue": "5/5",
+      "disclaimer": "This matrix shows FDA guideline alignment. Certification and approval follow a separate process."
     },
     "traction": {
       "sectionTag": "PROVEN TRACTION",
@@ -170,25 +185,33 @@
         "saponin": {
           "label": "SAPONIN ↑",
           "value": "+8×",
-          "caption": "Ginsenoside content vs. control group"
+          "caption": "Ginsenoside content vs. control group",
+          "source": "WSB internal analysis",
+          "asOf": "2025.Q4"
         },
         "batch": {
           "label": "BATCH VARIATION",
           "value": "<10%",
-          "caption": "Across all key compounds batch to batch"
+          "caption": "Across all key compounds batch to batch",
+          "source": "WSB batch records",
+          "asOf": "2025.Q4"
         },
         "traction": {
           "label": "B2B SOLUTION",
           "value": "$7M+",
-          "caption": "4-year solution contract with 4D BIOS in China"
+          "caption": "4-year solution contract with 4D BIOS in China",
+          "source": "4D BIOS contract",
+          "asOf": "2025"
         },
         "clinical": {
           "label": "CLINICAL API",
           "value": "100kg",
-          "caption": "Crohn's-disease botanical API delivered"
+          "caption": "Crohn's-disease botanical API delivered",
+          "source": "Clinical material shipment",
+          "asOf": "2025"
         }
       },
-      "partnersTag": "PARTNERS · LOGOS PENDING",
+      "partnersTag": "PARTNER NETWORK",
       "partners": [
         { "name": "McDonald's Korea", "tag": "B2B SOLUTION · KR" },
         { "name": "4D BIOS", "tag": "B2B SOLUTION · CN" },
@@ -245,6 +268,7 @@
     "pipeline": {
       "sectionTag": "R&D PIPELINE",
       "sectionMeta": "06 / 6 BOTANICALS",
+      "viewAll": "See all 6 pipelines",
       "heading": "Six botanical pipelines on the same platform.",
       "lede": "Each new plant species adds a new API on top of the same precision-controlled smart farm and MAT stack. Ginseng is already commercial. Isatis is shipping clinical material. Four more are at R&D completion.",
       "stages": ["Discovery", "R&D", "Pre-launch", "Commercial"],
@@ -297,7 +321,7 @@
       "sectionTag": "LATEST UPDATES",
       "sectionMeta": "08 / NEWS",
       "heading": "Latest updates.",
-      "lede": "Contracts clinical milestones certifications and media coverage. Managed directly through the admin.",
+      "lede": "Contracts, clinical material supply, certifications, and media coverage from WSB's operating pipeline.",
       "viewAll": "See all news",
       "items": [
         {
@@ -357,7 +381,7 @@
         "hoursLabel": "RESPONSE TIME",
         "hoursValue": "Within two business days"
       },
-      "mapPlaceholder": "PLACEHOLDER · GOOGLE MAPS EMBED · YEONCHEON HQ"
+      "mapPlaceholder": "YEONCHEON HQ · MAP DATA"
     },
     "roadmap": {
       "sectionTag": "GROWTH ROADMAP",

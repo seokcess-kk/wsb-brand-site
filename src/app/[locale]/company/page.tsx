@@ -1,6 +1,9 @@
 import { getTranslations, setRequestLocale } from "next-intl/server";
 import { PageHero } from "@/components/layout/page-hero";
+import { SectionEyebrow } from "@/components/layout/section-eyebrow";
+import { Lede } from "@/components/layout/lede";
 import { RevealOnView } from "@/components/motion/reveal-on-view";
+import { RevealWords } from "@/components/motion/reveal-words";
 import {
   FadeInItem,
   FadeInSection,
@@ -40,9 +43,10 @@ export default async function CompanyPage({
       {/* AT A GLANCE strip */}
       <section className="bg-canvas">
         <div className="mx-auto max-w-7xl px-6 py-16">
-          <div className="mb-8 flex items-center gap-3">
-            <span aria-hidden className="h-px w-6 bg-primary" />
-            <p className="mono-label text-primary">{t("overview.sectionTag")}</p>
+          <div className="mb-8">
+            <RevealOnView>
+              <SectionEyebrow tag={t("overview.sectionTag")} />
+            </RevealOnView>
           </div>
           <dl className="grid gap-px bg-structural/10 sm:grid-cols-2 lg:grid-cols-4">
             {overviewItems.map((it) => (
@@ -60,9 +64,10 @@ export default async function CompanyPage({
       {/* CEO MESSAGE */}
       <section className="bg-canvas">
         <div className="mx-auto max-w-7xl px-6 py-24 md:py-32">
-          <div className="mb-12 flex items-center gap-3">
-            <span aria-hidden className="h-px w-6 bg-primary" />
-            <p className="mono-label text-primary">{t("ceo.sectionTag")}</p>
+          <div className="mb-12">
+            <RevealOnView>
+              <SectionEyebrow tag={t("ceo.sectionTag")} />
+            </RevealOnView>
           </div>
 
           <div className="grid items-start gap-16 lg:grid-cols-[1fr_1.2fr] lg:gap-20">
@@ -82,18 +87,14 @@ export default async function CompanyPage({
             </RevealOnView>
 
             <div className="space-y-8">
-              <RevealOnView delay={0.1}>
-                <h2
-                  className="whitespace-pre-line font-sans font-bold leading-[1.2] tracking-tight text-structural"
-                  style={{ fontSize: "clamp(1.5rem, 3vw, 2.25rem)" }}
-                >
-                  {t("ceo.title")}
-                </h2>
-              </RevealOnView>
+              <h2
+                className="font-sans font-bold leading-[1.2] tracking-tight text-structural"
+                style={{ fontSize: "clamp(1.5rem, 3vw, 2.25rem)" }}
+              >
+                <RevealWords text={t("ceo.title")} triggerOnView />
+              </h2>
               <RevealOnView delay={0.18}>
-                <p className="text-base leading-relaxed text-structural/75 max-w-prose">
-                  {t("ceo.body")}
-                </p>
+                <Lede text={t("ceo.body")} className="max-w-prose" />
               </RevealOnView>
               <RevealOnView delay={0.26}>
                 <div className="border-t border-structural/10 pt-6 space-y-3">
@@ -123,17 +124,14 @@ export default async function CompanyPage({
         <div className="mx-auto max-w-7xl px-6 py-24 md:py-32">
           <div className="mb-12 flex items-end justify-between">
             <div className="space-y-3">
-              <div className="flex items-center gap-3">
-                <span aria-hidden className="h-px w-6 bg-primary" />
-                <p className="mono-label text-primary">
-                  {t("leadership.sectionTag")}
-                </p>
-              </div>
+              <RevealOnView>
+                <SectionEyebrow tag={t("leadership.sectionTag")} />
+              </RevealOnView>
               <h2
                 className="font-sans font-bold tracking-tight text-structural"
                 style={{ fontSize: "clamp(1.5rem, 3vw, 2.25rem)" }}
               >
-                {t("leadership.sectionTitle")}
+                <RevealWords text={t("leadership.sectionTitle")} triggerOnView />
               </h2>
             </div>
           </div>
@@ -178,67 +176,64 @@ export default async function CompanyPage({
       {/* HISTORY */}
       <section className="bg-canvas border-t border-structural/10">
         <div className="mx-auto max-w-7xl px-6 py-24 md:py-32">
-          <div className="mb-12 flex items-center gap-3">
-            <span aria-hidden className="h-px w-6 bg-primary" />
-            <p className="mono-label text-primary">{t("history.sectionTag")}</p>
+          <div className="mb-12">
+            <RevealOnView>
+              <SectionEyebrow tag={t("history.sectionTag")} />
+            </RevealOnView>
           </div>
           <h2
             className="mb-12 font-sans font-bold tracking-tight text-structural"
             style={{ fontSize: "clamp(1.5rem, 3vw, 2.25rem)" }}
           >
-            {t("history.sectionTitle")}
+            <RevealWords text={t("history.sectionTitle")} triggerOnView />
           </h2>
 
           <ol className="space-y-px bg-structural/10">
-            {historyItems.map((row, i) => (
-              <RevealOnView key={row.year} delay={0.05 * i}>
-                <li className="grid grid-cols-[100px_1fr] gap-6 bg-canvas px-2 py-6 md:px-6">
-                  <p className="font-mono text-lg font-bold tracking-tight text-primary">
-                    {row.year}
-                  </p>
-                  <ul className="space-y-2 text-sm text-structural/80">
-                    {row.items.map((it) => (
-                      <li key={it} className="flex items-start gap-2">
-                        <span
-                          aria-hidden
-                          className="mt-[0.55em] h-1 w-1 flex-none rounded-full bg-primary/70"
-                        />
-                        <span>{it}</span>
-                      </li>
-                    ))}
-                  </ul>
-                </li>
-              </RevealOnView>
+            {historyItems.map((row) => (
+              <li
+                key={row.year}
+                className="grid grid-cols-[100px_1fr] gap-6 bg-canvas px-2 py-6 md:px-6"
+              >
+                <p className="font-mono text-lg font-bold tracking-tight text-primary">
+                  {row.year}
+                </p>
+                <ul className="space-y-2 text-sm text-structural/80">
+                  {row.items.map((it) => (
+                    <li key={it} className="flex items-start gap-2">
+                      <span
+                        aria-hidden
+                        className="mt-[0.55em] h-1 w-1 flex-none rounded-full bg-primary/70"
+                      />
+                      <span>{it}</span>
+                    </li>
+                  ))}
+                </ul>
+              </li>
             ))}
           </ol>
         </div>
       </section>
 
       {/* VISION */}
-      <section className="bg-structural text-canvas">
+      <section className="relative isolate bg-structural text-canvas">
+        <div
+          aria-hidden
+          className="pointer-events-none absolute -top-px left-0 right-0 h-px bg-gradient-to-r from-transparent via-primary/30 to-transparent"
+        />
         <div className="mx-auto max-w-7xl px-6 py-24 md:py-32">
           <div className="grid gap-10 lg:grid-cols-[1fr_1.4fr] lg:gap-16">
             <RevealOnView>
-              <div className="flex items-center gap-3">
-                <span aria-hidden className="h-px w-6 bg-primary" />
-                <p className="mono-label text-canvas/65">
-                  {t("vision.sectionTag")}
-                </p>
-              </div>
+              <SectionEyebrow tag={t("vision.sectionTag")} inverse />
             </RevealOnView>
             <div className="space-y-6">
-              <RevealOnView delay={0.1}>
-                <h2
-                  className="font-sans font-bold tracking-tight text-canvas"
-                  style={{ fontSize: "clamp(2rem, 4vw, 3rem)" }}
-                >
-                  {t("vision.title")}
-                </h2>
-              </RevealOnView>
+              <h2
+                className="font-sans font-bold tracking-tight text-canvas"
+                style={{ fontSize: "clamp(2rem, 4vw, 3rem)" }}
+              >
+                <RevealWords text={t("vision.title")} triggerOnView />
+              </h2>
               <RevealOnView delay={0.2}>
-                <p className="max-w-3xl text-base leading-relaxed text-canvas/75">
-                  {t("vision.body")}
-                </p>
+                <Lede text={t("vision.body")} inverse className="max-w-3xl" />
               </RevealOnView>
             </div>
           </div>
@@ -246,13 +241,16 @@ export default async function CompanyPage({
       </section>
 
       {/* LOCATION */}
-      <section className="bg-canvas border-t border-structural/10">
+      <section className="relative isolate bg-canvas border-t border-structural/10">
+        <div
+          aria-hidden
+          className="pointer-events-none absolute -top-px left-0 right-0 h-px bg-gradient-to-r from-transparent via-primary/30 to-transparent"
+        />
         <div className="mx-auto max-w-7xl px-6 py-24 md:py-32">
-          <div className="mb-10 flex items-center gap-3">
-            <span aria-hidden className="h-px w-6 bg-primary" />
-            <p className="mono-label text-primary">
-              {t("location.sectionTag")}
-            </p>
+          <div className="mb-10">
+            <RevealOnView>
+              <SectionEyebrow tag={t("location.sectionTag")} />
+            </RevealOnView>
           </div>
           <div className="grid gap-px bg-structural/10 md:grid-cols-[1fr_1.4fr]">
             <div className="bg-canvas p-8 md:p-10 space-y-6">

@@ -64,6 +64,20 @@ body {
   line-height: 1.6;
 }
 
+/* Korean editorial line-breaking.
+   Keep CJK words intact in display text so headings do not split inside
+   words such as "식물의약품" on narrower columns. */
+:where(h1, h2, h3, h4, .text-keep) {
+  word-break: keep-all;
+  overflow-wrap: break-word;
+  text-wrap: balance;
+}
+
+:where(p, li, dd, dt, .text-pretty-kr) {
+  word-break: keep-all;
+  overflow-wrap: break-word;
+}
+
 /* Subtle modular grid overlay utility (Data Overlay primitive) */
 .bg-grid {
   background-image:
@@ -86,13 +100,25 @@ body {
   text-transform: uppercase;
 }
 
-/* Ambient grid drift (subtle background motion) */
+/* Ambient grid drift (subtle background motion).
+   Default: time-based loop so older browsers still feel alive.
+   Enhanced (Chrome/Edge/Firefox/Safari 26+): scroll-driven, so the grid
+   only drifts while the user is actively moving through the section. */
 @keyframes grid-drift {
   0%   { background-position: 0 0; }
   100% { background-position: 32px -32px; }
 }
 .animate-grid-drift {
   animation: grid-drift 28s linear infinite;
+}
+
+@supports (animation-timeline: view()) {
+  .animate-grid-drift {
+    animation-timeline: view();
+    animation-range: cover 0% cover 100%;
+    animation-duration: auto;
+    animation-iteration-count: 1;
+  }
 }
 
 /* Respect reduced motion */

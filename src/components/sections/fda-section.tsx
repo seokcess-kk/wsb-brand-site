@@ -1,6 +1,9 @@
 import { getTranslations } from "next-intl/server";
 import { FdaTable } from "./fda-table";
 import { MatchRadial } from "@/components/visual/match-radial";
+import { RevealWords } from "@/components/motion/reveal-words";
+import { SectionEyebrow } from "@/components/layout/section-eyebrow";
+import { Lede } from "@/components/layout/lede";
 
 type Row = { label: string; fda: string; wsb: string };
 
@@ -32,16 +35,13 @@ export async function FdaSection() {
         {/* Header */}
         <div className="mb-12 flex flex-col gap-6 md:flex-row md:items-end md:justify-between">
           <div className="space-y-5">
-            <div className="flex items-center gap-3">
-              <span aria-hidden className="h-px w-6 bg-primary" />
-              <p className="mono-label text-canvas/65">{t("sectionTag")}</p>
-            </div>
+            <SectionEyebrow number={3} total={9} tag={t("sectionTag")} inverse />
             <h2
               id="fda-heading"
-              className="max-w-3xl whitespace-pre-line font-sans font-bold leading-[1.18] tracking-tight text-canvas"
+              className="max-w-3xl font-sans font-bold leading-[1.18] tracking-tight text-canvas"
               style={{ fontSize: "clamp(1.875rem, 4vw, 3rem)" }}
             >
-              {t("heading")}
+              <RevealWords text={t("heading")} triggerOnView />
             </h2>
           </div>
 
@@ -52,8 +52,11 @@ export async function FdaSection() {
           </div>
         </div>
 
-        <p className="max-w-3xl text-canvas leading-relaxed text-canvas/70">
-          {t("lede")}
+        <Lede text={t("lede")} inverse className="max-w-3xl" />
+
+        <p className="mt-4 max-w-3xl text-xs leading-relaxed text-canvas/45">
+          <span aria-hidden className="mr-2 inline-block h-1 w-1 -translate-y-[3px] rounded-full bg-canvas/45 align-middle" />
+          {t("disclaimer")}
         </p>
 
         {/* Table is interactive — client component */}

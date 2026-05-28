@@ -28,7 +28,7 @@ export function MatchRadial({ filled, total, label }: Props) {
 
   return (
     <div ref={ref} className="relative inline-flex flex-col items-center gap-4">
-      <p className="mono-label text-[10px] text-canvas/55">{label}</p>
+      <p className="mono-label text-[11px] text-canvas/55">{label}</p>
       <div className="relative" style={{ width: size, height: size }}>
         <svg width={size} height={size} className="absolute inset-0 -rotate-90">
           {/* Track */}
@@ -85,8 +85,8 @@ export function MatchRadial({ filled, total, label }: Props) {
             {filled}
             <span className="text-canvas/35">/{total}</span>
           </span>
-          <span className="mono-label mt-2 text-[9px] text-canvas/50">
-            GUIDELINES MET
+          <span className="mono-label mt-2 text-[11px] text-canvas/50">
+            REQUIREMENTS
           </span>
         </div>
       </div>

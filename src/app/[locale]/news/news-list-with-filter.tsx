@@ -96,11 +96,15 @@ function NewsCard({
             className="absolute inset-0 h-full w-full object-cover transition-transform duration-700 group-hover:scale-105"
           />
         ) : (
-          <div className="absolute inset-0 flex items-center justify-center">
-            <p className="mono-label text-[10px] text-structural/35">
-              PLACEHOLDER · THUMBNAIL
-            </p>
-          </div>
+          <>
+            <div className="absolute inset-0 bg-grid opacity-70" />
+            <div className="absolute inset-0 flex flex-col items-center justify-center gap-2">
+              <p className="mono-label text-[11px] text-primary">WSB UPDATE</p>
+              <p className="mono-label text-[11px] text-structural/35">
+                {post.category}
+              </p>
+            </div>
+          </>
         )}
         <span aria-hidden className="absolute top-2 left-2 h-2 w-2 border-l border-t border-structural/20 transition-colors duration-500 group-hover:border-primary/50" />
         <span aria-hidden className="absolute top-2 right-2 h-2 w-2 border-r border-t border-structural/20 transition-colors duration-500 group-hover:border-primary/50" />

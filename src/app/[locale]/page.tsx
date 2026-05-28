@@ -1,5 +1,6 @@
 import { setRequestLocale } from "next-intl/server";
 import { HeroSection } from "@/components/sections/hero-section";
+import { CredibilityStripSection } from "@/components/sections/credibility-strip-section";
 import { ProblemSection } from "@/components/sections/problem-section";
 import { MatSection } from "@/components/sections/mat-section";
 import { FdaSection } from "@/components/sections/fda-section";
@@ -21,6 +22,7 @@ export default async function HomePage({
   return (
     <>
       <HeroSection />
+      <CredibilityStripSection />
       <ProblemSection />
       <MatSection />
       <FdaSection />

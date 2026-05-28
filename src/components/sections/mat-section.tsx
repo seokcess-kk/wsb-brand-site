@@ -1,5 +1,8 @@
 import { getTranslations } from "next-intl/server";
 import { RevealOnView } from "@/components/motion/reveal-on-view";
+import { RevealWords } from "@/components/motion/reveal-words";
+import { SectionEyebrow } from "@/components/layout/section-eyebrow";
+import { Lede } from "@/components/layout/lede";
 import { MatProcessDiagram } from "@/components/visual/mat-process-diagram";
 
 const STRESSOR_KEYS = [0, 1, 2, 3] as const;
@@ -33,10 +36,7 @@ export async function MatSection() {
         {/* Header */}
         <div className="mb-14 flex flex-col gap-3 md:flex-row md:items-end md:justify-between">
           <RevealOnView>
-            <div className="flex items-center gap-3">
-              <span aria-hidden className="h-px w-6 bg-primary" />
-              <p className="mono-label text-primary">{t("sectionTag")}</p>
-            </div>
+            <SectionEyebrow number={2} total={9} tag={t("sectionTag")} />
           </RevealOnView>
           <RevealOnView delay={0.05}>
             <p className="mono-label text-structural/50">{t("sectionMeta")}</p>
@@ -48,19 +48,15 @@ export async function MatSection() {
           {/* LEFT */}
           <div className="flex flex-col justify-between gap-10">
             <div className="space-y-7">
-              <RevealOnView delay={0.1}>
-                <h2
-                  id="mat-heading"
-                  className="whitespace-pre-line font-sans font-bold leading-[1.2] tracking-tight text-structural"
-                  style={{ fontSize: "clamp(1.875rem, 3.4vw, 2.75rem)" }}
-                >
-                  {t("heading")}
-                </h2>
-              </RevealOnView>
+              <h2
+                id="mat-heading"
+                className="font-sans font-bold leading-[1.2] tracking-tight text-structural"
+                style={{ fontSize: "clamp(1.875rem, 3.4vw, 2.75rem)" }}
+              >
+                <RevealWords text={t("heading")} triggerOnView />
+              </h2>
               <RevealOnView delay={0.22}>
-                <p className="text-base leading-relaxed text-structural/75 max-w-prose">
-                  {t("body")}
-                </p>
+                <Lede text={t("body")} className="max-w-prose" />
               </RevealOnView>
             </div>
             <RevealOnView delay={0.34}>

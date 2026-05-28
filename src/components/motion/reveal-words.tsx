@@ -1,7 +1,7 @@
 "use client";
 
-import { motion } from "motion/react";
-import { Fragment } from "react";
+import { motion, useInView } from "motion/react";
+import { Fragment, useRef } from "react";
 import { useSafeReducedMotion } from "@/hooks/use-safe-reduced-motion";
 
 type Props = {
@@ -9,31 +9,50 @@ type Props = {
   className?: string;
   delay?: number;
   stagger?: number;
+  /**
+   * If true, animation triggers when the element scrolls into view rather
+   * than on mount. Use for section headings; leave false (default) for the
+   * hero, where the entrance should fire as soon as the page paints.
+   */
+  triggerOnView?: boolean;
 };
 
 /**
  * Splits text by whitespace and animates each word with a small fade + rise.
- * Use for Hero headlines. Preserves manual line breaks when text contains <br/>.
+ * Preserves manual line breaks contained in the text.
  */
 export function RevealWords({
   text,
   className,
   delay = 0,
   stagger = 0.06,
+  triggerOnView = false,
 }: Props) {
   const reduced = useSafeReducedMotion();
+  const ref = useRef<HTMLSpanElement>(null);
+  const inView = useInView(ref, {
+    once: true,
+    amount: 0.4,
+    margin: "0px 0px -15% 0px",
+  });
   const lines = text.split("\n");
+  const active = triggerOnView ? inView : true;
 
   if (reduced) {
     return (
-      <span className={className} aria-label={text}>
-        {text}
+      <span ref={ref} className={className} aria-label={text}>
+        {lines.map((line, lineIdx) => (
+          <Fragment key={lineIdx}>
+            {lineIdx > 0 && <br aria-hidden />}
+            {line}
+          </Fragment>
+        ))}
       </span>
     );
   }
 
   return (
-    <span className={className} aria-label={text}>
+    <span ref={ref} className={className} aria-label={text}>
       {lines.map((line, lineIdx) => {
         const words = line.split(" ");
         return (
@@ -44,7 +63,11 @@ export function RevealWords({
                 <Fragment key={`${lineIdx}-${i}`}>
                   <motion.span
                     initial={{ opacity: 0, y: 14, filter: "blur(6px)" }}
-                    animate={{ opacity: 1, y: 0, filter: "blur(0px)" }}
+                    animate={
+                      active
+                        ? { opacity: 1, y: 0, filter: "blur(0px)" }
+                        : { opacity: 0, y: 14, filter: "blur(6px)" }
+                    }
                     transition={{
                       duration: 0.55,
                       delay: delay + (lineIdx * words.length + i) * stagger,

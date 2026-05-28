@@ -1,6 +1,8 @@
 import { getTranslations, setRequestLocale } from "next-intl/server";
 import { PageHero } from "@/components/layout/page-hero";
+import { SectionEyebrow } from "@/components/layout/section-eyebrow";
 import { RevealOnView } from "@/components/motion/reveal-on-view";
+import { RevealWords } from "@/components/motion/reveal-words";
 import {
   FadeInItem,
   FadeInSection,
@@ -56,17 +58,14 @@ export default async function RnDPage({
         <div className="mx-auto max-w-7xl px-6 py-24 md:py-32">
           <div className="mb-12 flex flex-col gap-3 md:flex-row md:items-end md:justify-between">
             <div className="space-y-3">
-              <div className="flex items-center gap-3">
-                <span aria-hidden className="h-px w-6 bg-primary" />
-                <p className="mono-label text-primary">
-                  {t("patents.sectionTag")}
-                </p>
-              </div>
+              <RevealOnView>
+                <SectionEyebrow tag={t("patents.sectionTag")} />
+              </RevealOnView>
               <h2
                 className="font-sans font-bold tracking-tight text-structural"
                 style={{ fontSize: "clamp(1.5rem, 3vw, 2.25rem)" }}
               >
-                {t("patents.sectionTitle")}
+                <RevealWords text={t("patents.sectionTitle")} triggerOnView />
               </h2>
             </div>
             <div className="flex flex-col items-start gap-1 md:items-end">
@@ -92,18 +91,19 @@ export default async function RnDPage({
                 </tr>
               </thead>
               <tbody>
-                {patents.map((p, i) => (
-                  <RevealOnView key={p.no} delay={0.04 * i}>
-                    <tr className="border-t border-structural/10 align-top">
-                      <td className="px-4 py-4 font-mono text-xs text-primary">
-                        {p.no}
-                      </td>
-                      <td className="px-4 py-4 text-structural">{p.title}</td>
-                      <td className="px-4 py-4 font-mono text-xs text-structural/65 text-right">
-                        {p.year}
-                      </td>
-                    </tr>
-                  </RevealOnView>
+                {patents.map((p) => (
+                  <tr
+                    key={p.no}
+                    className="border-t border-structural/10 align-top"
+                  >
+                    <td className="px-4 py-4 font-mono text-xs text-primary">
+                      {p.no}
+                    </td>
+                    <td className="px-4 py-4 text-structural">{p.title}</td>
+                    <td className="px-4 py-4 font-mono text-xs text-structural/65 text-right">
+                      {p.year}
+                    </td>
+                  </tr>
                 ))}
               </tbody>
             </table>
@@ -114,17 +114,16 @@ export default async function RnDPage({
       {/* RESEARCH */}
       <section className="bg-canvas border-t border-structural/10">
         <div className="mx-auto max-w-7xl px-6 py-24 md:py-32">
-          <div className="mb-12 flex items-center gap-3">
-            <span aria-hidden className="h-px w-6 bg-primary" />
-            <p className="mono-label text-primary">
-              {t("research.sectionTag")}
-            </p>
+          <div className="mb-12">
+            <RevealOnView>
+              <SectionEyebrow tag={t("research.sectionTag")} />
+            </RevealOnView>
           </div>
           <h2
             className="mb-10 max-w-3xl font-sans font-bold tracking-tight text-structural"
             style={{ fontSize: "clamp(1.5rem, 3vw, 2.25rem)" }}
           >
-            {t("research.sectionTitle")}
+            <RevealWords text={t("research.sectionTitle")} triggerOnView />
           </h2>
           <FadeInSection
             className="grid gap-4 md:grid-cols-2"
@@ -153,9 +152,10 @@ export default async function RnDPage({
       {/* CERTIFICATIONS */}
       <section className="bg-canvas border-t border-structural/10">
         <div className="mx-auto max-w-7xl px-6 py-24 md:py-32">
-          <div className="mb-12 flex items-center gap-3">
-            <span aria-hidden className="h-px w-6 bg-primary" />
-            <p className="mono-label text-primary">{t("cert.sectionTag")}</p>
+          <div className="mb-12">
+            <RevealOnView>
+              <SectionEyebrow tag={t("cert.sectionTag")} />
+            </RevealOnView>
           </div>
           <FadeInSection
             className="grid gap-4 md:grid-cols-3"
@@ -193,19 +193,22 @@ export default async function RnDPage({
       </section>
 
       {/* NATIONAL R&D */}
-      <section className="bg-structural text-canvas border-t border-canvas/10">
+      <section className="relative isolate bg-structural text-canvas border-t border-canvas/10">
+        <div
+          aria-hidden
+          className="pointer-events-none absolute -top-px left-0 right-0 h-px bg-gradient-to-r from-transparent via-primary/30 to-transparent"
+        />
         <div className="mx-auto max-w-7xl px-6 py-24 md:py-32">
-          <div className="mb-12 flex items-center gap-3">
-            <span aria-hidden className="h-px w-6 bg-primary" />
-            <p className="mono-label text-canvas/65">
-              {t("national.sectionTag")}
-            </p>
+          <div className="mb-12">
+            <RevealOnView>
+              <SectionEyebrow tag={t("national.sectionTag")} inverse />
+            </RevealOnView>
           </div>
           <h2
             className="mb-10 max-w-3xl font-sans font-bold tracking-tight text-canvas"
             style={{ fontSize: "clamp(1.5rem, 3vw, 2.25rem)" }}
           >
-            {t("national.sectionTitle")}
+            <RevealWords text={t("national.sectionTitle")} triggerOnView />
           </h2>
           <FadeInSection className="grid gap-3" staggerChildren={0.08}>
             {national.map((p) => (

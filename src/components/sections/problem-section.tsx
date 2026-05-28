@@ -1,6 +1,8 @@
 import { getTranslations } from "next-intl/server";
 import { RevealOnView } from "@/components/motion/reveal-on-view";
+import { RevealWords } from "@/components/motion/reveal-words";
 import { CountUp } from "@/components/motion/count-up";
+import { SectionEyebrow } from "@/components/layout/section-eyebrow";
 import { ChaosScatter } from "@/components/visual/chaos-scatter";
 import { GrowthCurve } from "@/components/visual/growth-curve";
 
@@ -19,25 +21,20 @@ export async function ProblemSection() {
       <div className="mx-auto max-w-7xl px-6 py-24 md:py-32 lg:py-40">
         <div className="mb-14 flex flex-col gap-3 md:flex-row md:items-end md:justify-between">
           <RevealOnView>
-            <div className="flex items-center gap-3">
-              <span aria-hidden className="h-px w-6 bg-primary" />
-              <p className="mono-label text-primary">{t("sectionTag")}</p>
-            </div>
+            <SectionEyebrow number={1} total={9} tag={t("sectionTag")} />
           </RevealOnView>
           <RevealOnView delay={0.05}>
             <p className="mono-label text-structural/50">{t("sectionMeta")}</p>
           </RevealOnView>
         </div>
 
-        <RevealOnView delay={0.1}>
-          <h2
-            id="problem-heading"
-            className="max-w-4xl whitespace-pre-line font-sans font-bold leading-[1.18] tracking-tight text-structural"
-            style={{ fontSize: "clamp(1.875rem, 4vw, 3rem)" }}
-          >
-            {t("heading")}
-          </h2>
-        </RevealOnView>
+        <h2
+          id="problem-heading"
+          className="max-w-4xl font-sans font-bold leading-[1.18] tracking-tight text-structural"
+          style={{ fontSize: "clamp(1.875rem, 4vw, 3rem)" }}
+        >
+          <RevealWords text={t("heading")} triggerOnView />
+        </h2>
 
         {/* 2-column compare. items-stretch keeps both cards equal height. */}
         <div className="mt-16 grid items-stretch gap-px bg-structural/15 md:grid-cols-2">

@@ -13,7 +13,9 @@
     "news": "News",
     "contact": "Contact",
     "languageLabel": "언어",
-    "skipToContent": "본문으로 건너뛰기"
+    "skipToContent": "본문으로 건너뛰기",
+    "openMenu": "메뉴 열기",
+    "closeMenu": "메뉴 닫기"
   },
   "cta": {
     "partnership": "Discuss a Partnership",
@@ -35,11 +37,23 @@
   "home": {
     "hero": {
       "tag": "WSB · BOTANICAL DRUG INGREDIENT",
-      "subhead": "데이터 기반 정밀제어 스마트팜에서 모든 배치 동일 품질의 식물의약품 원료를 생산합니다.",
+      "subhead": "정밀제어 스마트팜과 MAT 기술로 유효성분 함량과 배치 품질을 표준화한 식물의약품 원료를 생산합니다.",
       "batchMeta": "BATCH · WSB-2026-001",
       "overlayLabel1": "SAPONIN · +8×",
       "overlayLabel2": "pH 5.8 · EC 1.4",
       "overlayLabel3": "μmol UV-B · 285nm"
+    },
+    "credibility": {
+      "ariaLabel": "우리스마트바이오 신뢰 지표",
+      "note": "자료 기준: WSB 회사소개서·브랜드 가이드·특허 및 인증 현황. 세부 수치와 인증 상태는 공개 전 최종 기준일 표기를 권장합니다.",
+      "items": [
+        { "label": "ESTABLISHED", "value": "2018", "caption": "식물 기반 그린바이오 소재화 기업" },
+        { "label": "CERTIFICATION", "value": "Green Bio", "caption": "그린바이오 기업 인정" },
+        { "label": "STATUS", "value": "Venture", "caption": "벤처기업 및 기업부설연구소" },
+        { "label": "IP PORTFOLIO", "value": "Patents", "caption": "MAT·수경재배·소재화 특허 포트폴리오" },
+        { "label": "FACILITY", "value": "Yeoncheon", "caption": "R&D 생산센터 및 생산 기지" },
+        { "label": "CAPA", "value": "2.52M plants/y", "caption": "연천 생산 역량 기준" }
+      ]
     },
     "kpi": {
       "sectionTag": "PROVEN IN NUMBERS",
@@ -98,7 +112,7 @@
         "outputLabel": "API YIELD",
         "outputValue": "+8×"
       },
-      "body": "MAT(Metabolite Agriculture Technology)는 생육이 아닌 유효성분의 극대화를 목표로 합니다. 특정 파장의 UV-B 단기 열충격 수분 결핍 미네랄 조합 등 정밀한 스트레스 인자를 단계별로 적용합니다. 식물 본연의 잠재력을 100% 이상 끌어냅니다.",
+      "body": "MAT(Metabolite Agriculture Technology)는 생육량이 아닌 유효성분 수율을 목표로 합니다. 특정 파장의 UV-B 단기 열충격 수분 결핍 미네랄 조합 등 정밀한 스트레스 인자를 단계별로 적용해 2차 대사산물 생성을 유도합니다.",
       "stressors": [
         {
           "label": "STRESSOR 01",
@@ -129,8 +143,8 @@
     "fda": {
       "sectionTag": "REGULATORY FIT",
       "sectionMeta": "03 / FDA STANDARDIZATION",
-      "heading": "FDA 5대 가이드라인.\nWSB는 이미 모두 충족합니다.",
-      "lede": "미국 FDA가 식물의약품 허가를 위해 제시하는 5가지 핵심 기준입니다. 기존 농업 방식으로는 충족이 사실상 불가능한 시장 진입 장벽입니다. WSB의 정밀제어 스마트팜과 MAT는 5가지 기준을 1:1로 충족합니다.",
+      "heading": "FDA 5대 가이드라인.\nWSB는 핵심 요건에 맞춘 생산 체계를 구축합니다.",
+      "lede": "미국 FDA가 식물의약품 허가를 위해 제시하는 5가지 핵심 기준입니다. 기존 농업 방식으로는 동시에 대응하기 어려운 시장 진입 장벽입니다. WSB의 정밀제어 스마트팜과 MAT는 원료 동일성, 기록, 오염 관리, 품질 일관성, 장기 공급 안정성에 대응하는 구조를 갖춥니다.",
       "rows": [
         {
           "label": "01",
@@ -159,7 +173,8 @@
         }
       ],
       "matchTag": "MATCH RATIO",
-      "matchValue": "5/5"
+      "matchValue": "5/5",
+      "disclaimer": "본 매트릭스는 FDA 가이드라인 대응 체계입니다. 인증·허가는 별도 절차로 진행됩니다."
     },
     "traction": {
       "sectionTag": "PROVEN TRACTION",
@@ -170,25 +185,33 @@
         "saponin": {
           "label": "SAPONIN ↑",
           "value": "+8×",
-          "caption": "대조군 대비 진세노사이드 함량 증대"
+          "caption": "대조군 대비 진세노사이드 함량 증대",
+          "source": "WSB 내부 분석",
+          "asOf": "2025.Q4"
         },
         "batch": {
           "label": "BATCH VARIATION",
           "value": "<10%",
-          "caption": "배치 간 전 성분 오차 범위"
+          "caption": "배치 간 전 성분 오차 범위",
+          "source": "WSB 배치 데이터",
+          "asOf": "2025.Q4"
         },
         "traction": {
           "label": "B2B SOLUTION",
           "value": "₩100억+",
-          "caption": "중국 4D BIOS 4년 솔루션 계약 진행"
+          "caption": "중국 4D BIOS 4년 솔루션 계약 진행",
+          "source": "4D BIOS 계약 기준",
+          "asOf": "2025"
         },
         "clinical": {
           "label": "CLINICAL API",
           "value": "100kg",
-          "caption": "크론병 타겟 대청 임상 원료 납품 완료"
+          "caption": "크론병 타겟 대청 임상 원료 납품 완료",
+          "source": "임상 원료 납품 기록",
+          "asOf": "2025"
         }
       },
-      "partnersTag": "PARTNERS · LOGOS PENDING",
+      "partnersTag": "PARTNER NETWORK",
       "partners": [
         { "name": "한국맥도날드", "tag": "B2B SOLUTION · KR" },
         { "name": "4D BIOS", "tag": "B2B SOLUTION · CN" },
@@ -245,6 +268,7 @@
     "pipeline": {
       "sectionTag": "R&D PIPELINE",
       "sectionMeta": "06 / 6 BOTANICALS",
+      "viewAll": "전체 6개 파이프라인 보기",
       "heading": "인삼을 시작으로 6개 파이프라인.\n동일 플랫폼이 계속 확장됩니다.",
       "lede": "같은 정밀제어 스마트팜과 MAT 위에서 식물 종이 추가될 때마다 신규 API가 추가됩니다. 인삼은 이미 상용화 단계 대청은 임상 원료 납품 단계 그리고 4종은 R&D 완료 상태입니다.",
       "stages": ["탐색", "R&D", "상용화 준비", "상용화"],
@@ -297,7 +321,7 @@
       "sectionTag": "LATEST UPDATES",
       "sectionMeta": "08 / NEWS",
       "heading": "최신 소식.",
-      "lede": "신규 계약 임상 진행 인증 그리고 미디어 노출. 어드민에서 직접 등록 운영합니다.",
+      "lede": "계약, 임상 원료 공급, 인증, 미디어 노출 등 사업 진행 상황을 업데이트합니다.",
       "viewAll": "모든 보도자료 보기",
       "items": [
         {
@@ -357,7 +381,7 @@
         "hoursLabel": "RESPONSE TIME",
         "hoursValue": "영업일 기준 2일 이내 회신"
       },
-      "mapPlaceholder": "PLACEHOLDER · GOOGLE MAPS EMBED · 연천 본사"
+      "mapPlaceholder": "YEONCHEON HQ · MAP DATA"
     },
     "roadmap": {
       "sectionTag": "GROWTH ROADMAP",

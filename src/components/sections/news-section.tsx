@@ -2,11 +2,14 @@ import { getTranslations } from "next-intl/server";
 import { ArrowUpRight } from "lucide-react";
 import { Link } from "@/i18n/navigation";
 import { RevealOnView } from "@/components/motion/reveal-on-view";
+import { RevealWords } from "@/components/motion/reveal-words";
 import {
   FadeInItem,
   FadeInSection,
 } from "@/components/motion/fade-in-section";
 import { MotionCard } from "@/components/motion/motion-card";
+import { SectionEyebrow } from "@/components/layout/section-eyebrow";
+import { Lede } from "@/components/layout/lede";
 
 type Item = {
   date: string;
@@ -24,13 +27,14 @@ export async function NewsSection() {
       aria-labelledby="news-heading"
       className="relative isolate bg-canvas"
     >
+      <div
+        aria-hidden
+        className="pointer-events-none absolute -top-px left-0 right-0 h-px bg-gradient-to-r from-transparent via-primary/30 to-transparent"
+      />
       <div className="mx-auto max-w-7xl px-6 py-24 md:py-32 lg:py-40">
         <div className="mb-14 flex flex-col gap-3 md:flex-row md:items-end md:justify-between">
           <RevealOnView>
-            <div className="flex items-center gap-3">
-              <span aria-hidden className="h-px w-6 bg-primary" />
-              <p className="mono-label text-primary">{t("sectionTag")}</p>
-            </div>
+            <SectionEyebrow number={8} total={9} tag={t("sectionTag")} />
           </RevealOnView>
           <RevealOnView delay={0.05}>
             <p className="mono-label text-structural/50">{t("sectionMeta")}</p>
@@ -38,20 +42,16 @@ export async function NewsSection() {
         </div>
 
         <div className="grid items-end gap-10 lg:grid-cols-[1.4fr_1fr] lg:gap-16">
-          <RevealOnView delay={0.1}>
-            <h2
-              id="news-heading"
-              className="whitespace-pre-line font-sans font-bold leading-[1.15] tracking-tight text-structural"
-              style={{ fontSize: "clamp(1.875rem, 4vw, 3rem)" }}
-            >
-              {t("heading")}
-            </h2>
-          </RevealOnView>
+          <h2
+            id="news-heading"
+            className="font-sans font-bold leading-[1.15] tracking-tight text-structural"
+            style={{ fontSize: "clamp(1.875rem, 4vw, 3rem)" }}
+          >
+            <RevealWords text={t("heading")} triggerOnView />
+          </h2>
           <RevealOnView delay={0.2}>
             <div className="space-y-5">
-              <p className="max-w-2xl text-base leading-relaxed text-structural/75">
-                {t("lede")}
-              </p>
+              <Lede text={t("lede")} />
               <Link
                 href="/news"
                 className="group inline-flex items-center gap-2 text-sm font-medium text-primary hover:opacity-80"
@@ -89,11 +89,15 @@ function NewsCard({ item }: { item: Item }) {
       as="article"
       className="flex h-full flex-col gap-5 p-8 md:p-10"
     >
-      {/* Photo placeholder block */}
+      {/* Structured media well until final press imagery is available. */}
       <div className="relative aspect-[16/9] overflow-hidden bg-structural/[0.04] transition-colors duration-500 group-hover:bg-structural/[0.07]">
-        <div className="absolute inset-0 flex items-center justify-center">
-          <p className="mono-label text-[10px] text-structural/35">
-            PLACEHOLDER · THUMBNAIL
+        <div className="absolute inset-0 bg-grid opacity-70" />
+        <div className="absolute inset-0 flex flex-col items-center justify-center gap-2">
+          <p className="mono-label text-[11px] text-primary">
+            WSB UPDATE
+          </p>
+          <p className="mono-label text-[11px] text-structural/35">
+            {item.category} · {item.date}
           </p>
         </div>
         {/* Corner ticks for the brand frame feel */}
@@ -105,9 +109,9 @@ function NewsCard({ item }: { item: Item }) {
 
       {/* Meta row */}
       <div className="flex items-center gap-4">
-        <p className="mono-label text-[10px] text-structural/55">{item.date}</p>
+        <p className="mono-label text-[11px] text-structural/55">{item.date}</p>
         <span aria-hidden className="h-px w-3 bg-structural/30" />
-        <p className="mono-label text-[10px] text-primary">{item.category}</p>
+        <p className="mono-label text-[11px] text-primary">{item.category}</p>
       </div>
 
       {/* Title */}

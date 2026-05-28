@@ -28,7 +28,7 @@
         "Former Tech Advisor at Greenlabs · Former BOD at N.thing",
         "Concurrent Director, Smart Farm Division at Woori Technology"
       ],
-      "photoPlaceholder": "PLACEHOLDER · CEO HEADSHOT"
+      "photoPlaceholder": "CEO · Photo coming soon"
     },
     "leadership": {
       "sectionTag": "LEADERSHIP",
@@ -50,7 +50,7 @@
           "bio": "Ph.D. in Agricultural Chemistry. Owns cultivation protocols and biomaterial R&D. Former R&D head at KKT Bioresource, NextA, and Gbio."
         }
       ],
-      "photoPlaceholder": "PLACEHOLDER · HEADSHOT"
+      "photoPlaceholder": "Photo coming soon"
     },
     "history": {
       "sectionTag": "HISTORY",
@@ -79,7 +79,7 @@
       "tel": "+82-31-834-4515",
       "emailLabel": "EMAIL",
       "email": "contact@woorismartbio.com",
-      "mapPlaceholder": "PLACEHOLDER · GOOGLE MAPS · YEONCHEON HQ"
+      "mapPlaceholder": "Yeoncheon HQ · Map coming soon"
     }
   },
   "technology": {
@@ -254,7 +254,7 @@
       "distribution": "B2C distribution is handled by Connect101, an influencer-marketing specialist. WSB focuses on R&D and production.",
       "externalCta": "Visit Phytopresso Store",
       "externalHref": "#",
-      "photoPlaceholder": "PLACEHOLDER · PRODUCT SHOT"
+      "photoPlaceholder": "Product image coming soon"
     }
   },
   "rnd": {
@@ -306,7 +306,7 @@
         { "name": "Venture company", "year": "2024", "issuer": "Korea Venture Business Certification Center" },
         { "name": "Corporate R&D Institute", "year": "2024", "issuer": "KOITA" }
       ],
-      "imagePlaceholder": "PLACEHOLDER · CERTIFICATE IMAGE"
+      "imagePlaceholder": "Certificate image coming soon"
     },
     "national": {
       "sectionTag": "NATIONAL R&D",

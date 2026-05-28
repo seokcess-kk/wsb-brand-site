@@ -28,7 +28,7 @@
         "전 그린랩스 기술고문 · 전 엔씽 사외이사",
         "현 우리기술 스마트팜사업부 이사 겸직"
       ],
-      "photoPlaceholder": "PLACEHOLDER · CEO HEADSHOT"
+      "photoPlaceholder": "CEO · 사진 준비 중"
     },
     "leadership": {
       "sectionTag": "LEADERSHIP",
@@ -50,7 +50,7 @@
           "bio": "농화학 박사. 식물 재배 프로토콜과 생물소재 R&D 책임. KKT생명자원개발·넥스트에이·지바이오 연구소장 역임."
         }
       ],
-      "photoPlaceholder": "PLACEHOLDER · HEADSHOT"
+      "photoPlaceholder": "사진 준비 중"
     },
     "history": {
       "sectionTag": "HISTORY",
@@ -79,7 +79,7 @@
       "tel": "031-834-4515",
       "emailLabel": "EMAIL",
       "email": "contact@woorismartbio.com",
-      "mapPlaceholder": "PLACEHOLDER · GOOGLE MAPS · 연천 본사"
+      "mapPlaceholder": "연천 본사 · 지도 준비 중"
     }
   },
   "technology": {
@@ -254,7 +254,7 @@
       "distribution": "B2C 판매는 인플루언서 마케팅 전문기업 커넥트101에 위탁. WSB는 R&D와 생산에 집중합니다.",
       "externalCta": "Visit Phytopresso Store",
       "externalHref": "#",
-      "photoPlaceholder": "PLACEHOLDER · PRODUCT SHOT"
+      "photoPlaceholder": "제품 이미지 준비 중"
     }
   },
   "rnd": {
@@ -306,7 +306,7 @@
         { "name": "벤처기업 인정", "year": "2024", "issuer": "벤처기업확인기관" },
         { "name": "기업부설연구소 인정", "year": "2024", "issuer": "한국산업기술진흥협회" }
       ],
-      "imagePlaceholder": "PLACEHOLDER · CERTIFICATE IMAGE"
+      "imagePlaceholder": "인증서 이미지 준비 중"
     },
     "national": {
       "sectionTag": "NATIONAL R&D",
