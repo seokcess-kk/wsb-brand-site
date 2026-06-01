@@ -95,6 +95,7 @@ export async function submitInquiry(
 /** Admin-only: change an inquiry's status. Silently no-ops without a DB. */
 export async function updateInquiryStatus(id: number, status: SettableStatus) {
   await requireAdmin();
+  if (!Number.isInteger(id) || id <= 0) throw new Error("Invalid inquiry id");
   if (!isDbConfigured()) return;
 
   const parsed = settableStatusSchema.safeParse(status);
@@ -107,7 +108,7 @@ export async function updateInquiryStatus(id: number, status: SettableStatus) {
       .where(eq(schema.inquiries.id, id));
   } catch (err) {
     console.error("[inquiry] status update failed", err);
-    return;
+    throw new Error("상태 업데이트에 실패했습니다.");
   }
 
   revalidatePath("/admin/inquiries");
