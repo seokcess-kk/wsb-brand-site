@@ -1,3 +1,4 @@
+import Image from "next/image";
 import { getTranslations } from "next-intl/server";
 import { Link } from "@/i18n/navigation";
 import { LanguageToggle } from "./language-toggle";
@@ -33,18 +34,17 @@ export async function SiteHeader() {
       <div className="mx-auto flex max-w-7xl items-center justify-between px-6 py-4">
         <Link
           href="/"
-          className="flex items-center gap-3 text-primary"
+          className="flex items-center"
           aria-label={tSite("name")}
         >
-          <span
-            aria-hidden
-            className="grid h-7 w-7 place-items-center rounded-full bg-primary text-canvas mono-label text-[10px]"
-          >
-            W
-          </span>
-          <span className="font-sans text-base font-semibold tracking-tight text-structural">
-            {tSite("shortName")}
-          </span>
+          <Image
+            src="/wsb-logo.png"
+            alt=""
+            width={1376}
+            height={332}
+            priority
+            className="h-7 w-auto md:h-9"
+          />
         </Link>
 
         <nav aria-label="Primary" className="hidden md:block">

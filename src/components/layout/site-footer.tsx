@@ -1,3 +1,4 @@
+import Image from "next/image";
 import { getTranslations } from "next-intl/server";
 import { Link } from "@/i18n/navigation";
 
@@ -34,6 +35,13 @@ export async function SiteFooter() {
       <div className="mx-auto max-w-7xl px-6 py-16">
         <div className="grid gap-12 md:grid-cols-3">
           <div className="space-y-4">
+            <Image
+              src="/wsb-logo.png"
+              alt={tSite("name")}
+              width={1376}
+              height={332}
+              className="h-9 w-auto"
+            />
             <LabelMark text={t("brandPromiseLabel")} />
             <p className="text-sm leading-relaxed text-structural/80">
               {t("brandPromise")}
