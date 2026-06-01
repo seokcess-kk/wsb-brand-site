@@ -17,7 +17,7 @@ export default async function InquiryDetailPage({
 }) {
   const { id } = await params;
   const numericId = Number(id);
-  if (!Number.isFinite(numericId)) notFound();
+  if (!Number.isInteger(numericId) || numericId <= 0) notFound();
 
   if (!isDbConfigured()) {
     return (
