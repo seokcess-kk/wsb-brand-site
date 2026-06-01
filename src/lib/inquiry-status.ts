@@ -19,6 +19,6 @@ export const STATUS_META: Record<
 > = {
   new: { label: "New", className: "bg-primary/10 text-primary" },
   read: { label: "Read", className: "bg-structural/10 text-structural/65" },
-  replied: { label: "Replied", className: "bg-emerald-100 text-emerald-700" },
+  replied: { label: "Replied", className: "bg-primary text-canvas" },
   archived: { label: "Archived", className: "bg-structural/5 text-structural/40" },
 };
