@@ -1,21 +1,26 @@
 import Link from "next/link";
-import { desc } from "drizzle-orm";
-import { Plus } from "lucide-react";
-import { db, isDbConfigured, schema } from "@/db/client";
+import { Plus, ExternalLink } from "lucide-react";
 import { AdminHeader } from "@/components/admin/admin-header";
+import { NewsFilters } from "@/components/admin/news-filters";
+import { NewsPublishToggle } from "@/components/admin/news-publish-toggle";
+import { listNews, listNewsCategories } from "@/lib/news-query";
+import { isDbConfigured } from "@/db/client";
 
 export const dynamic = "force-dynamic";
 
-async function listNews() {
-  if (!isDbConfigured()) return [];
-  return db()
-    .select()
-    .from(schema.newsPosts)
-    .orderBy(desc(schema.newsPosts.createdAt));
-}
+export default async function NewsListPage({
+  searchParams,
+}: {
+  searchParams: Promise<{ q?: string; category?: string }>;
+}) {
+  const sp = await searchParams;
+  const q = sp.q ?? "";
+  const category = sp.category ?? "";
 
-export default async function NewsListPage() {
-  const rows = await listNews();
+  const [rows, categories] = await Promise.all([
+    listNews({ q, category }),
+    listNewsCategories(),
+  ]);
 
   return (
     <div className="px-10 py-10 space-y-8">
@@ -40,9 +45,11 @@ export default async function NewsListPage() {
         </div>
       )}
 
+      <NewsFilters categories={categories} category={category} q={q} />
+
       {rows.length === 0 ? (
         <p className="py-12 text-center text-sm text-structural/55">
-          아직 등록된 News가 없습니다.
+          조건에 맞는 News가 없습니다.
         </p>
       ) : (
         <div className="overflow-hidden border border-structural/10">
@@ -54,6 +61,7 @@ export default async function NewsListPage() {
                 <th className="px-4 py-3">Title (KO)</th>
                 <th className="px-4 py-3">Category</th>
                 <th className="px-4 py-3">Status</th>
+                <th className="px-4 py-3">Preview</th>
               </tr>
             </thead>
             <tbody>
@@ -78,19 +86,24 @@ export default async function NewsListPage() {
                       {r.titleKo}
                     </Link>
                   </td>
-                  <td className="px-4 py-4 text-structural/65">
-                    {r.category}
+                  <td className="px-4 py-4 text-structural/65">{r.category}</td>
+                  <td className="px-4 py-4">
+                    <NewsPublishToggle id={r.id} isPublished={r.isPublished} />
                   </td>
                   <td className="px-4 py-4">
-                    <span
-                      className={`inline-flex items-center px-2 py-0.5 font-mono text-[10px] font-medium uppercase tracking-[0.08em] ${
-                        r.isPublished
-                          ? "bg-primary/10 text-primary"
-                          : "bg-structural/10 text-structural/55"
-                      }`}
-                    >
-                      {r.isPublished ? "Published" : "Draft"}
-                    </span>
+                    {r.isPublished ? (
+                      <a
+                        href="/news"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="inline-flex items-center gap-1 text-xs text-primary hover:opacity-80"
+                      >
+                        <ExternalLink size={12} />
+                        보기
+                      </a>
+                    ) : (
+                      <span className="text-xs text-structural/35">발행 후</span>
+                    )}
                   </td>
                 </tr>
               ))}
