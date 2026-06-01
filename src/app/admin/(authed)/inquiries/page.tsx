@@ -3,6 +3,7 @@ import { desc } from "drizzle-orm";
 import { Download } from "lucide-react";
 import { db, isDbConfigured, schema } from "@/db/client";
 import { AdminHeader } from "@/components/admin/admin-header";
+import { StatusBadge } from "@/components/admin/status-badge";
 
 export const dynamic = "force-dynamic";
 
@@ -92,22 +93,5 @@ export default async function InquiriesPage() {
         </div>
       )}
     </div>
-  );
-}
-
-function StatusBadge({ status }: { status: string }) {
-  const colors: Record<string, string> = {
-    new: "bg-primary/10 text-primary",
-    read: "bg-structural/10 text-structural/65",
-    archived: "bg-structural/5 text-structural/40",
-  };
-  return (
-    <span
-      className={`inline-flex items-center gap-1 px-2 py-0.5 font-mono text-[10px] font-medium uppercase tracking-[0.08em] ${
-        colors[status] ?? "bg-structural/10 text-structural/65"
-      }`}
-    >
-      {status}
-    </span>
   );
 }
