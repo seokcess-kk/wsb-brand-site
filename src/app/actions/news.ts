@@ -107,6 +107,7 @@ export async function deleteNews(id: number) {
 /** Admin-only: flip a post's published flag from the list view. */
 export async function toggleNewsPublished(id: number, next: boolean) {
   await requireAdmin();
+  if (!Number.isInteger(id) || id <= 0) throw new Error("Invalid news id");
   if (!isDbConfigured()) return;
   try {
     await db()
@@ -115,7 +116,7 @@ export async function toggleNewsPublished(id: number, next: boolean) {
       .where(eq(schema.newsPosts.id, id));
   } catch (err) {
     console.error("[news] toggle publish failed", err);
-    return;
+    throw new Error("발행 상태 변경에 실패했습니다.");
   }
   revalidatePath("/admin/news");
   revalidatePath("/", "layout");

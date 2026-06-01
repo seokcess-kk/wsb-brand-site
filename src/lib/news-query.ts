@@ -12,7 +12,11 @@ export async function listNews(opts: {
   if (opts.q && opts.q.trim()) {
     const like = `%${opts.q.trim()}%`;
     conditions.push(
-      or(ilike(schema.newsPosts.titleKo, like), ilike(schema.newsPosts.slug, like)),
+      or(
+        ilike(schema.newsPosts.titleKo, like),
+        ilike(schema.newsPosts.titleEn, like),
+        ilike(schema.newsPosts.slug, like),
+      ),
     );
   }
   if (opts.category && opts.category.trim()) {
