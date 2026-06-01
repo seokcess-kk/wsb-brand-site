@@ -3,7 +3,7 @@
 import { revalidatePath } from "next/cache";
 import { sql } from "drizzle-orm";
 import { z } from "zod";
-import { auth } from "@/auth";
+import { requireAdmin } from "@/lib/admin-auth";
 import { db, isDbConfigured, schema } from "@/db/client";
 
 const NOTIFY_EMAILS_KEY = "notify_emails";
@@ -12,10 +12,6 @@ const SettingsSchema = z.object({
   notifyEmails: z.string().trim().min(1),
 });
 
-async function requireAdmin() {
-  const session = await auth();
-  if (!session?.user) throw new Error("Unauthorized");
-}
 
 export async function getNotifyEmails(): Promise<string> {
   if (!isDbConfigured()) {

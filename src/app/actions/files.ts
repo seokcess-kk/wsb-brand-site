@@ -3,13 +3,9 @@
 import { revalidatePath } from "next/cache";
 import { put, del } from "@vercel/blob";
 import { desc, eq } from "drizzle-orm";
-import { auth } from "@/auth";
+import { requireAdmin } from "@/lib/admin-auth";
 import { db, isDbConfigured, schema } from "@/db/client";
 
-async function requireAdmin() {
-  const session = await auth();
-  if (!session?.user) throw new Error("Unauthorized");
-}
 
 export async function uploadFile(formData: FormData) {
   await requireAdmin();

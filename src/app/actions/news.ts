@@ -4,7 +4,7 @@ import { revalidatePath } from "next/cache";
 import { redirect } from "next/navigation";
 import { eq, sql } from "drizzle-orm";
 import { z } from "zod";
-import { auth } from "@/auth";
+import { requireAdmin } from "@/lib/admin-auth";
 import { db, isDbConfigured, schema } from "@/db/client";
 
 const NewsSchema = z.object({
@@ -36,10 +36,6 @@ export type NewsFormState = {
   fieldErrors?: Record<string, string[] | undefined>;
 };
 
-async function requireAdmin() {
-  const session = await auth();
-  if (!session?.user) throw new Error("Unauthorized");
-}
 
 export async function createOrUpdateNews(
   id: number | null,
