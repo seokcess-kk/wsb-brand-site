@@ -1,6 +1,7 @@
 import { and, count, desc, eq, ilike, or } from "drizzle-orm";
 import { db, isDbConfigured, schema } from "@/db/client";
-import { isInquiryStatus, type Inquiry } from "@/lib/inquiry-status-row";
+import type { Inquiry } from "@/db/schema";
+import { isInquiryStatus } from "@/lib/inquiry-status";
 
 export const INQUIRIES_PAGE_SIZE = 50;
 
@@ -20,7 +21,7 @@ export async function listInquiries(opts: {
     return { rows: [], total: 0, page: 1, totalPages: 1 };
   }
 
-  const page = Math.max(1, opts.page ?? 1);
+  const page = Math.max(1, Math.floor(opts.page ?? 1));
   const conditions = [];
 
   if (opts.status && isInquiryStatus(opts.status)) {
@@ -39,10 +40,11 @@ export async function listInquiries(opts: {
 
   const where = conditions.length ? and(...conditions) : undefined;
 
-  const [{ value: total }] = await db()
+  const [{ value }] = await db()
     .select({ value: count() })
     .from(schema.inquiries)
     .where(where);
+  const total = Number(value);
 
   const rows = await db()
     .select()
