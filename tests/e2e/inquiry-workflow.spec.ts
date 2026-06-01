@@ -23,21 +23,20 @@ test.describe("inquiry workflow", () => {
     await page.click('button:has-text("Sign in")');
     await page.waitForURL("**/admin");
 
+    // Opening the detail auto-marks a "new" inquiry as read; the badge
+    // refreshes via the server action's revalidatePath (no manual reload).
     await page.goto(`/admin/inquiries/${id}`);
-    await page.waitForTimeout(800);
-    await page.reload();
     await expect(page.getByText("Read", { exact: true })).toBeVisible();
 
+    // Reply link opens the mail client and optimistically marks replied.
     await page.getByRole("link", { name: "답장" }).click();
-    await page.waitForTimeout(800);
-    await page.reload();
     await expect(page.getByText("Replied", { exact: true })).toBeVisible();
 
-    await page.getByRole("button", { name: "보관" }).click();
-    await page.waitForTimeout(800);
-    await page.reload();
+    // Archive (exact name so it does not match "보관 해제").
+    await page.getByRole("button", { name: "보관", exact: true }).click();
     await expect(page.getByText("Archived", { exact: true })).toBeVisible();
 
+    // Archived filter lists the seeded company.
     await page.goto("/admin/inquiries?status=archived");
     await expect(page.getByText("E2E Test Co")).toBeVisible();
   });
