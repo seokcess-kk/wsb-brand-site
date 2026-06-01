@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { Copy, Check } from "lucide-react";
 
 export function CopyButton({
@@ -13,6 +13,14 @@ export function CopyButton({
   className?: string;
 }) {
   const [copied, setCopied] = useState(false);
+  const timerRef = useRef<ReturnType<typeof setTimeout> | null>(null);
+
+  useEffect(
+    () => () => {
+      if (timerRef.current) clearTimeout(timerRef.current);
+    },
+    [],
+  );
 
   async function handleCopy() {
     try {
@@ -25,11 +33,13 @@ export function CopyButton({
         ta.style.opacity = "0";
         document.body.appendChild(ta);
         ta.select();
-        document.execCommand("copy");
+        const ok = document.execCommand("copy");
         document.body.removeChild(ta);
+        if (!ok) throw new Error("execCommand copy failed");
       }
       setCopied(true);
-      setTimeout(() => setCopied(false), 1500);
+      if (timerRef.current) clearTimeout(timerRef.current);
+      timerRef.current = setTimeout(() => setCopied(false), 1500);
     } catch {
       // Clipboard blocked; the value is still visible for manual copy.
     }
@@ -38,6 +48,7 @@ export function CopyButton({
   return (
     <button
       type="button"
+      aria-label={copied ? "Copied" : `Copy ${label}`}
       onClick={handleCopy}
       className={
         className ??
