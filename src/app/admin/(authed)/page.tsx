@@ -1,8 +1,10 @@
 import Link from "next/link";
-import { sql } from "drizzle-orm";
+import { sql, desc } from "drizzle-orm";
 import { ArrowUpRight } from "lucide-react";
 import { db, isDbConfigured, schema } from "@/db/client";
 import { AdminHeader } from "@/components/admin/admin-header";
+import { StatusBadge } from "@/components/admin/status-badge";
+import { QuickArchiveButton } from "@/components/admin/quick-archive-button";
 
 export const dynamic = "force-dynamic";
 
@@ -28,8 +30,18 @@ async function getCounts() {
   };
 }
 
+async function getRecentInquiries() {
+  if (!isDbConfigured()) return [];
+  return db()
+    .select()
+    .from(schema.inquiries)
+    .orderBy(desc(schema.inquiries.createdAt))
+    .limit(5);
+}
+
 export default async function AdminDashboard() {
   const counts = await getCounts();
+  const recent = await getRecentInquiries();
 
   return (
     <div className="px-10 py-10 space-y-10">
@@ -80,6 +92,47 @@ export default async function AdminDashboard() {
             body="Partnership Inquiry 알림 받을 이메일을 변경합니다."
           />
         </div>
+      </section>
+
+      <section className="space-y-4">
+        <h2 className="font-mono text-[11px] font-medium uppercase tracking-[0.08em] text-structural/55">
+          RECENT INQUIRIES
+        </h2>
+        {recent.length === 0 ? (
+          <p className="text-sm text-structural/55">최근 문의가 없습니다.</p>
+        ) : (
+          <div className="overflow-hidden border border-structural/10">
+            <table className="w-full text-sm">
+              <tbody>
+                {recent.map((r) => (
+                  <tr
+                    key={r.id}
+                    className="border-t border-structural/10 first:border-t-0"
+                  >
+                    <td className="px-4 py-3 font-mono text-xs text-structural/55">
+                      {new Date(r.createdAt).toISOString().slice(0, 10)}
+                    </td>
+                    <td className="px-4 py-3">
+                      <Link
+                        href={`/admin/inquiries/${r.id}`}
+                        className="font-medium text-structural hover:text-primary"
+                      >
+                        {r.company}
+                      </Link>
+                    </td>
+                    <td className="px-4 py-3 text-structural/65">{r.category}</td>
+                    <td className="px-4 py-3">
+                      <StatusBadge status={r.status} />
+                    </td>
+                    <td className="px-4 py-3 text-right">
+                      {r.status !== "archived" && <QuickArchiveButton id={r.id} />}
+                    </td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
+        )}
       </section>
     </div>
   );
