@@ -3,13 +3,7 @@
 import { useRef, useState } from "react";
 import { Upload } from "lucide-react";
 import { uploadFile } from "@/app/actions/files";
-
-const KINDS = [
-  { value: "pdf_company_intro", label: "회사 소개서 PDF" },
-  { value: "cert", label: "인증서" },
-  { value: "news_thumbnail", label: "News 썸네일" },
-  { value: "other", label: "기타" },
-] as const;
+import { FILE_KIND_LABELS } from "@/lib/file-kinds";
 
 export function FileUploader({ disabled }: { disabled?: boolean }) {
   const formRef = useRef<HTMLFormElement>(null);
@@ -51,9 +45,9 @@ export function FileUploader({ disabled }: { disabled?: boolean }) {
           defaultValue="pdf_company_intro"
           className="border border-structural/20 bg-canvas px-3 py-2 text-sm"
         >
-          {KINDS.map((k) => (
-            <option key={k.value} value={k.value}>
-              {k.label}
+          {Object.entries(FILE_KIND_LABELS).map(([value, label]) => (
+            <option key={value} value={value}>
+              {label}
             </option>
           ))}
         </select>
