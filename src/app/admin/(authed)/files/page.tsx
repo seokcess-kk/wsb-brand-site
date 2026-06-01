@@ -1,7 +1,8 @@
-import { ExternalLink } from "lucide-react";
 import { AdminHeader } from "@/components/admin/admin-header";
 import { listFiles } from "@/app/actions/files";
 import { FileUploader } from "@/components/admin/file-uploader";
+import { fileKindLabel } from "@/lib/file-kinds";
+import { FileRowActions } from "@/components/admin/file-row-actions";
 
 export const dynamic = "force-dynamic";
 
@@ -38,7 +39,7 @@ export default async function FilesPage() {
                 <th className="px-4 py-3">Uploaded</th>
                 <th className="px-4 py-3">Kind</th>
                 <th className="px-4 py-3">Filename</th>
-                <th className="px-4 py-3">URL</th>
+                <th className="px-4 py-3">Actions</th>
               </tr>
             </thead>
             <tbody>
@@ -47,20 +48,12 @@ export default async function FilesPage() {
                   <td className="px-4 py-3 font-mono text-xs text-structural/65">
                     {new Date(r.createdAt).toISOString().slice(0, 10)}
                   </td>
-                  <td className="px-4 py-3 font-mono text-xs uppercase text-structural/65">
-                    {r.kind}
+                  <td className="px-4 py-3 text-xs text-structural/65">
+                    {fileKindLabel(r.kind)}
                   </td>
                   <td className="px-4 py-3 text-structural">{r.filename}</td>
                   <td className="px-4 py-3">
-                    <a
-                      href={r.url}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="inline-flex items-center gap-1 text-xs text-primary hover:opacity-80"
-                    >
-                      <ExternalLink size={12} />
-                      Open
-                    </a>
+                    <FileRowActions id={r.id} url={r.url} />
                   </td>
                 </tr>
               ))}
