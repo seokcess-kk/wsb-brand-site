@@ -1,9 +1,13 @@
 "use server";
 
+import { revalidatePath } from "next/cache";
 import { z } from "zod";
+import { eq } from "drizzle-orm";
 import { db, isDbConfigured, schema } from "@/db/client";
 import { sendInquiryEmails } from "@/lib/email";
 import { getNotifyEmails } from "@/app/actions/settings";
+import { requireAdmin } from "@/lib/admin-auth";
+import { settableStatusSchema, type SettableStatus } from "@/lib/inquiry-status";
 
 const InquirySchema = z.object({
   company: z.string().trim().min(1).max(200),
@@ -86,4 +90,27 @@ export async function submitInquiry(
   });
 
   return { status: "ok" };
+}
+
+/** Admin-only: change an inquiry's status. Silently no-ops without a DB. */
+export async function updateInquiryStatus(id: number, status: SettableStatus) {
+  await requireAdmin();
+  if (!isDbConfigured()) return;
+
+  const parsed = settableStatusSchema.safeParse(status);
+  if (!parsed.success) throw new Error("Invalid status");
+
+  try {
+    await db()
+      .update(schema.inquiries)
+      .set({ status: parsed.data })
+      .where(eq(schema.inquiries.id, id));
+  } catch (err) {
+    console.error("[inquiry] status update failed", err);
+    return;
+  }
+
+  revalidatePath("/admin/inquiries");
+  revalidatePath(`/admin/inquiries/${id}`);
+  revalidatePath("/admin");
 }
