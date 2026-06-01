@@ -103,3 +103,20 @@ export async function deleteNews(id: number) {
   revalidatePath("/admin/news");
   revalidatePath("/", "layout");
 }
+
+/** Admin-only: flip a post's published flag from the list view. */
+export async function toggleNewsPublished(id: number, next: boolean) {
+  await requireAdmin();
+  if (!isDbConfigured()) return;
+  try {
+    await db()
+      .update(schema.newsPosts)
+      .set({ isPublished: next, updatedAt: sql`now()` })
+      .where(eq(schema.newsPosts.id, id));
+  } catch (err) {
+    console.error("[news] toggle publish failed", err);
+    return;
+  }
+  revalidatePath("/admin/news");
+  revalidatePath("/", "layout");
+}
