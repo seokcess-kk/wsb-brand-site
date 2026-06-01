@@ -56,7 +56,7 @@ export default async function NewsListPage({
           <table className="w-full text-sm">
             <thead>
               <tr className="bg-structural/[0.04] text-left font-mono text-[10px] font-medium uppercase tracking-[0.08em] text-structural/55">
-                <th className="px-4 py-3">Published</th>
+                <th className="px-4 py-3">Date</th>
                 <th className="px-4 py-3">Slug</th>
                 <th className="px-4 py-3">Title (KO)</th>
                 <th className="px-4 py-3">Category</th>

@@ -29,6 +29,7 @@ export function NewsPublishToggle({
       <button
         type="button"
         disabled={pending}
+        aria-busy={pending}
         onClick={handleClick}
         aria-label={isPublished ? "비발행으로 전환" : "발행으로 전환"}
         className={`inline-flex items-center px-2 py-0.5 font-mono text-[10px] font-medium uppercase tracking-[0.08em] transition-opacity hover:opacity-80 disabled:opacity-50 ${
