@@ -1,8 +1,8 @@
 import Link from "next/link";
 import { Search } from "lucide-react";
-import { INQUIRY_STATUSES } from "@/lib/inquiry-status";
+import { INQUIRY_STATUSES, STATUS_META } from "@/lib/inquiry-status";
 
-const TABS = [{ key: "", label: "All" }, ...INQUIRY_STATUSES.map((s) => ({ key: s, label: s }))];
+const TABS = [{ key: "", label: "All" }, ...INQUIRY_STATUSES.map((s) => ({ key: s, label: STATUS_META[s].label }))];
 
 export function InquiryFilters({
   current,

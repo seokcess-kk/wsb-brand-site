@@ -91,7 +91,7 @@ export default async function InquiriesPage({
                     </td>
                     <td className="px-4 py-4 text-structural/85">{r.name}</td>
                     <td className="px-4 py-4 text-structural/85">{r.category}</td>
-                    <td className="px-4 py-4 max-w-xs truncate text-structural/55">
+                    <td className="px-4 py-4 max-w-xs truncate text-structural/55" title={r.message}>
                       {r.message}
                     </td>
                     <td className="px-4 py-4">
@@ -105,23 +105,33 @@ export default async function InquiriesPage({
 
           {totalPages > 1 && (
             <div className="flex items-center justify-between text-sm">
-              <Link
-                href={pageHref(Math.max(1, page - 1))}
-                aria-disabled={page <= 1}
-                className={`px-3 py-1.5 ${page <= 1 ? "pointer-events-none text-structural/30" : "text-structural/70 hover:text-primary"}`}
-              >
-                ← 이전
-              </Link>
+              {page <= 1 ? (
+                <span className="px-3 py-1.5 text-structural/30 select-none">
+                  ← 이전
+                </span>
+              ) : (
+                <Link
+                  href={pageHref(page - 1)}
+                  className="px-3 py-1.5 text-structural/70 hover:text-primary"
+                >
+                  ← 이전
+                </Link>
+              )}
               <span className="font-mono text-xs text-structural/55">
                 {page} / {totalPages}
               </span>
-              <Link
-                href={pageHref(Math.min(totalPages, page + 1))}
-                aria-disabled={page >= totalPages}
-                className={`px-3 py-1.5 ${page >= totalPages ? "pointer-events-none text-structural/30" : "text-structural/70 hover:text-primary"}`}
-              >
-                다음 →
-              </Link>
+              {page >= totalPages ? (
+                <span className="px-3 py-1.5 text-structural/30 select-none">
+                  다음 →
+                </span>
+              ) : (
+                <Link
+                  href={pageHref(page + 1)}
+                  className="px-3 py-1.5 text-structural/70 hover:text-primary"
+                >
+                  다음 →
+                </Link>
+              )}
             </div>
           )}
         </>
