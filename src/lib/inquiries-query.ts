@@ -61,3 +61,12 @@ export async function listInquiries(opts: {
     totalPages: Math.max(1, Math.ceil(total / INQUIRIES_PAGE_SIZE)),
   };
 }
+
+export async function listRecentInquiries(limit = 5): Promise<Inquiry[]> {
+  if (!isDbConfigured()) return [];
+  return db()
+    .select()
+    .from(schema.inquiries)
+    .orderBy(desc(schema.inquiries.createdAt))
+    .limit(limit);
+}

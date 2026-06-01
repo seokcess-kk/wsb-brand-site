@@ -33,7 +33,7 @@ export function QuickArchiveButton({ id }: { id: number }) {
       </button>
       {failed && (
         <span role="alert" className="text-xs text-rose-600">
-          실패
+          보관 실패
         </span>
       )}
     </span>

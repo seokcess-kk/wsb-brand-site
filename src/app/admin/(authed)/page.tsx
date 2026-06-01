@@ -1,7 +1,8 @@
 import Link from "next/link";
-import { sql, desc } from "drizzle-orm";
+import { sql } from "drizzle-orm";
 import { ArrowUpRight } from "lucide-react";
 import { db, isDbConfigured, schema } from "@/db/client";
+import { listRecentInquiries } from "@/lib/inquiries-query";
 import { AdminHeader } from "@/components/admin/admin-header";
 import { StatusBadge } from "@/components/admin/status-badge";
 import { QuickArchiveButton } from "@/components/admin/quick-archive-button";
@@ -30,18 +31,11 @@ async function getCounts() {
   };
 }
 
-async function getRecentInquiries() {
-  if (!isDbConfigured()) return [];
-  return db()
-    .select()
-    .from(schema.inquiries)
-    .orderBy(desc(schema.inquiries.createdAt))
-    .limit(5);
-}
-
 export default async function AdminDashboard() {
-  const counts = await getCounts();
-  const recent = await getRecentInquiries();
+  const [counts, recent] = await Promise.all([
+    getCounts(),
+    listRecentInquiries(),
+  ]);
 
   return (
     <div className="px-10 py-10 space-y-10">
@@ -102,7 +96,7 @@ export default async function AdminDashboard() {
           <p className="text-sm text-structural/55">최근 문의가 없습니다.</p>
         ) : (
           <div className="overflow-hidden border border-structural/10">
-            <table className="w-full text-sm">
+            <table className="w-full text-sm" aria-label="최근 문의">
               <tbody>
                 {recent.map((r) => (
                   <tr
