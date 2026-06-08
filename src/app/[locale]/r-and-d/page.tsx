@@ -92,8 +92,14 @@ export default async function RnDPage({
                     key={p.no}
                     className="border-t border-structural/10 align-top"
                   >
-                    <td className="px-4 py-4 font-mono text-xs text-primary">
-                      {p.no}
+                    <td className="px-4 py-4 font-mono text-xs">
+                      {p.no ? (
+                        <span className="text-primary">{p.no}</span>
+                      ) : (
+                        <span className="text-structural/35">
+                          {t("patents.pendingNo")}
+                        </span>
+                      )}
                     </td>
                     <td className="px-4 py-4 text-structural">{p.title}</td>
                     <td className="px-4 py-4 font-mono text-xs text-structural/65 text-right">

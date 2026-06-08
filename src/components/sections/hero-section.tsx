@@ -1,3 +1,4 @@
+import Image from "next/image";
 import { getTranslations } from "next-intl/server";
 import { ArrowRight, ArrowUpRight } from "lucide-react";
 import { Link } from "@/i18n/navigation";
@@ -15,27 +16,22 @@ export async function HeroSection() {
       aria-labelledby="hero-heading"
       className="relative isolate flex min-h-[90vh] items-center overflow-hidden bg-structural text-canvas"
     >
-      {/* HERO BACKGROUND PHOTO — replace this block with the facility / smart-farm
-          image (full-bleed, object-cover). The dark base + drifting grid stand in
-          until the asset arrives. See memory/project_wsb_asset_requests.md. */}
+      {/* HERO BACKGROUND — authentic Yeoncheon vertical-farm photograph */}
       <div aria-hidden className="absolute inset-0 -z-20 bg-structural">
-        <div
-          className="absolute inset-0 opacity-[0.10] animate-grid-drift"
-          style={{
-            backgroundImage:
-              "linear-gradient(to right, rgba(250,251,249,1) 1px, transparent 1px), linear-gradient(to bottom, rgba(250,251,249,1) 1px, transparent 1px)",
-            backgroundSize: "32px 32px",
-          }}
+        <Image
+          src="/facility-hero.jpg"
+          alt=""
+          fill
+          priority
+          sizes="100vw"
+          className="object-cover object-center"
         />
-        <p className="absolute bottom-4 left-1/2 -translate-x-1/2 mono-label text-[10px] text-canvas/30">
-          {t("bgPlaceholder")}
-        </p>
       </div>
 
-      {/* Legibility overlay (also sits over the future photo so the text stays readable) */}
+      {/* Legibility overlay (keeps the left-aligned text readable over the photo) */}
       <div
         aria-hidden
-        className="absolute inset-0 -z-10 bg-gradient-to-br from-structural via-structural/85 to-structural/40"
+        className="absolute inset-0 -z-10 bg-gradient-to-r from-structural/90 via-structural/60 to-structural/20"
       />
 
       <div className="mx-auto w-full max-w-7xl px-6 py-24 md:py-28">

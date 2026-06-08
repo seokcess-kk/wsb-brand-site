@@ -230,7 +230,7 @@
           "spec": "30ml × 30 sticks"
         }
       ],
-      "distribution": "B2C distribution is handled by Connect101, an influencer-marketing specialist. WSB focuses on R&D and production.",
+      "distribution": "B2C distribution is handled by an influencer-marketing specialist. WSB focuses on R&D and production.",
       "externalCta": "Visit Phytopresso Store",
       "externalHref": "#",
       "photoPlaceholder": "Product image coming soon"
@@ -257,10 +257,16 @@
         { "no": "10-2268088", "title": "Personalized functional food recipe method", "year": "2021" },
         { "no": "10-2776816", "title": "Composition for menopause symptom prevention and improvement", "year": "2025" },
         { "no": "10-2864739", "title": "Angelica extract cosmetic composition", "year": "2025" },
-        { "no": "10-2868970", "title": "Isatis hydroponic cultivation increasing indirubin content", "year": "2025" }
+        { "no": "10-2868970", "title": "Isatis hydroponic cultivation increasing indirubin content", "year": "2025" },
+        { "no": "", "title": "Microgreen cultivation apparatus", "year": "2025" },
+        { "no": "", "title": "Seedling-ginseng cultivation tray and method", "year": "2023" },
+        { "no": "", "title": "Kale cultivation using water-deficit stress", "year": "2022" },
+        { "no": "", "title": "Soybean hydroponic cultivation increasing isoflavone content", "year": "2022" },
+        { "no": "", "title": "Sprout cultivation increasing sulforaphane content", "year": "2022" }
       ],
       "totalLabel": "TOTAL REGISTERED",
-      "totalValue": "20+"
+      "totalValue": "20+",
+      "pendingNo": "Pending"
     },
     "research": {
       "sectionTag": "RESEARCH",

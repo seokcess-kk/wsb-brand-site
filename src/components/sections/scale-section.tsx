@@ -1,3 +1,4 @@
+import Image from "next/image";
 import { getTranslations } from "next-intl/server";
 import { RevealOnView } from "@/components/motion/reveal-on-view";
 import { RevealWords } from "@/components/motion/reveal-words";
@@ -9,7 +10,7 @@ import { SectionEyebrow } from "@/components/layout/section-eyebrow";
 import { Lede } from "@/components/layout/lede";
 
 type Metric = { label: string; value: string; caption: string; pending?: boolean };
-type Photo = { caption: string };
+type Photo = { caption: string; src?: string };
 
 /**
  * Production & R&D scale band. Conveys facility weight (item 3 of the 2026-06
@@ -88,14 +89,26 @@ export async function ScaleSection() {
         >
           {lead && (
             <FadeInItem>
-              <PhotoWell caption={lead.caption} pending={pending} ratio="21 / 9" />
+              <PhotoWell
+                caption={lead.caption}
+                src={lead.src}
+                pending={pending}
+                ratio="21 / 9"
+                sizes="(min-width: 1280px) 1216px, 100vw"
+              />
             </FadeInItem>
           )}
           {supporting.length > 0 && (
             <div className="grid gap-4 md:grid-cols-2">
               {supporting.map((p) => (
                 <FadeInItem key={p.caption}>
-                  <PhotoWell caption={p.caption} pending={pending} ratio="4 / 3" />
+                  <PhotoWell
+                    caption={p.caption}
+                    src={p.src}
+                    pending={pending}
+                    ratio="4 / 3"
+                    sizes="(min-width: 768px) 600px, 100vw"
+                  />
                 </FadeInItem>
               ))}
             </div>
@@ -108,29 +121,55 @@ export async function ScaleSection() {
 
 function PhotoWell({
   caption,
+  src,
   pending,
   ratio,
+  sizes,
 }: {
   caption: string;
+  src?: string;
   pending: string;
   ratio: string;
+  sizes: string;
 }) {
+  const tick = src ? "border-canvas/40" : "border-structural/20";
   return (
     <div
       className="group relative w-full overflow-hidden bg-structural/[0.04] transition-colors duration-500 hover:bg-structural/[0.06]"
       style={{ aspectRatio: ratio }}
     >
-      <div className="absolute inset-0 bg-grid opacity-70" />
-      <div className="absolute inset-0 flex flex-col items-center justify-center gap-2 px-6 text-center">
-        <p className="mono-label text-[11px] text-primary">{pending}</p>
-        <p className="mono-label text-[11px] text-structural/40 max-w-[28ch]">
-          {caption}
-        </p>
-      </div>
-      <span aria-hidden className="absolute top-2 left-2 h-3 w-3 border-l border-t border-structural/20 transition-colors duration-500 group-hover:border-primary/50" />
-      <span aria-hidden className="absolute top-2 right-2 h-3 w-3 border-r border-t border-structural/20 transition-colors duration-500 group-hover:border-primary/50" />
-      <span aria-hidden className="absolute bottom-2 left-2 h-3 w-3 border-l border-b border-structural/20 transition-colors duration-500 group-hover:border-primary/50" />
-      <span aria-hidden className="absolute bottom-2 right-2 h-3 w-3 border-r border-b border-structural/20 transition-colors duration-500 group-hover:border-primary/50" />
+      {src ? (
+        <>
+          <Image
+            src={src}
+            alt={caption}
+            fill
+            sizes={sizes}
+            className="object-cover transition-transform duration-700 group-hover:scale-[1.03]"
+          />
+          <div
+            aria-hidden
+            className="absolute inset-0 bg-gradient-to-t from-structural/55 via-transparent to-transparent"
+          />
+          <p className="absolute bottom-3 left-3 right-3 mono-label text-[11px] text-canvas">
+            {caption}
+          </p>
+        </>
+      ) : (
+        <>
+          <div className="absolute inset-0 bg-grid opacity-70" />
+          <div className="absolute inset-0 flex flex-col items-center justify-center gap-2 px-6 text-center">
+            <p className="mono-label text-[11px] text-primary">{pending}</p>
+            <p className="mono-label text-[11px] text-structural/40 max-w-[28ch]">
+              {caption}
+            </p>
+          </div>
+        </>
+      )}
+      <span aria-hidden className={`absolute top-2 left-2 h-3 w-3 border-l border-t ${tick} transition-colors duration-500 group-hover:border-primary/60`} />
+      <span aria-hidden className={`absolute top-2 right-2 h-3 w-3 border-r border-t ${tick} transition-colors duration-500 group-hover:border-primary/60`} />
+      <span aria-hidden className={`absolute bottom-2 left-2 h-3 w-3 border-l border-b ${tick} transition-colors duration-500 group-hover:border-primary/60`} />
+      <span aria-hidden className={`absolute bottom-2 right-2 h-3 w-3 border-r border-b ${tick} transition-colors duration-500 group-hover:border-primary/60`} />
     </div>
   );
 }

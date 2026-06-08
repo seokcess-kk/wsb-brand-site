@@ -230,7 +230,7 @@
           "spec": "30ml × 30 sticks"
         }
       ],
-      "distribution": "B2C 판매는 인플루언서 마케팅 전문기업 커넥트101에 위탁. WSB는 R&D와 생산에 집중합니다.",
+      "distribution": "B2C 판매는 인플루언서 마케팅 전문기업에 위탁. WSB는 R&D와 생산에 집중합니다.",
       "externalCta": "Visit Phytopresso Store",
       "externalHref": "#",
       "photoPlaceholder": "제품 이미지 준비 중"
@@ -257,10 +257,16 @@
         { "no": "10-2268088", "title": "맞춤형 건강기능식품 레시피 제공방법", "year": "2021" },
         { "no": "10-2776816", "title": "여성갱년기 증상 예방 및 개선용 조성물", "year": "2025" },
         { "no": "10-2864739", "title": "참당귀 추출물 화장품 조성물", "year": "2025" },
-        { "no": "10-2868970", "title": "인디루빈 함량 증대 대청엽 수경재배 방법", "year": "2025" }
+        { "no": "10-2868970", "title": "인디루빈 함량 증대 대청엽 수경재배 방법", "year": "2025" },
+        { "no": "", "title": "마이크로 그린 재배 장치", "year": "2025" },
+        { "no": "", "title": "묘삼 재배용 정식판 및 묘삼 재배방법", "year": "2023" },
+        { "no": "", "title": "수분 스트레스를 이용한 케일 재배방법", "year": "2022" },
+        { "no": "", "title": "이소플라본 함량 증대 콩과식물 수경재배방법", "year": "2022" },
+        { "no": "", "title": "설포라판 함량 증대 새싹채소 재배방법", "year": "2022" }
       ],
       "totalLabel": "TOTAL REGISTERED",
-      "totalValue": "20+"
+      "totalValue": "20+",
+      "pendingNo": "확인 중"
     },
     "research": {
       "sectionTag": "RESEARCH",
