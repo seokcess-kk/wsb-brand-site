@@ -70,29 +70,15 @@ export default async function CompanyPage({
             </RevealOnView>
           </div>
 
-          <div className="grid items-start gap-16 lg:grid-cols-[1fr_1.2fr] lg:gap-20">
-            {/* Photo placeholder */}
-            <RevealOnView>
-              <div className="relative aspect-[3/4] w-full overflow-hidden bg-structural/[0.04]">
-                <div className="absolute inset-0 flex items-center justify-center">
-                  <p className="mono-label text-[10px] text-structural/35">
-                    {t("ceo.photoPlaceholder")}
-                  </p>
-                </div>
-                <span aria-hidden className="absolute top-2 left-2 h-3 w-3 border-l border-t border-structural/20" />
-                <span aria-hidden className="absolute top-2 right-2 h-3 w-3 border-r border-t border-structural/20" />
-                <span aria-hidden className="absolute bottom-2 left-2 h-3 w-3 border-l border-b border-structural/20" />
-                <span aria-hidden className="absolute bottom-2 right-2 h-3 w-3 border-r border-b border-structural/20" />
-              </div>
-            </RevealOnView>
+          <div className="grid items-start gap-12 lg:grid-cols-[1fr_1.4fr] lg:gap-16">
+            <h2
+              className="font-sans font-bold leading-[1.2] tracking-tight text-structural"
+              style={{ fontSize: "clamp(1.5rem, 3vw, 2.25rem)" }}
+            >
+              <RevealWords text={t("ceo.title")} triggerOnView />
+            </h2>
 
             <div className="space-y-8">
-              <h2
-                className="font-sans font-bold leading-[1.2] tracking-tight text-structural"
-                style={{ fontSize: "clamp(1.5rem, 3vw, 2.25rem)" }}
-              >
-                <RevealWords text={t("ceo.title")} triggerOnView />
-              </h2>
               <RevealOnView delay={0.18}>
                 <Lede text={t("ceo.body")} className="max-w-prose" />
               </RevealOnView>
@@ -140,29 +126,21 @@ export default async function CompanyPage({
             delayChildren={0.1}
             staggerChildren={0.08}
           >
-            {members.map((m) => (
+            {members.map((m, i) => (
               <FadeInItem key={m.name} className="h-full">
                 <MotionCard
                   as="article"
                   className="flex h-full flex-col gap-5 p-6 md:p-8"
                 >
-                  <div className="relative aspect-square w-full overflow-hidden bg-structural/[0.04] transition-colors duration-500 group-hover:bg-structural/[0.07]">
-                    <div className="absolute inset-0 flex items-center justify-center">
-                      <p className="mono-label text-[10px] text-structural/35">
-                        {t("leadership.photoPlaceholder")}
-                      </p>
-                    </div>
-                    <span aria-hidden className="absolute top-2 left-2 h-2 w-2 border-l border-t border-structural/20 transition-colors duration-500 group-hover:border-primary/50" />
-                    <span aria-hidden className="absolute top-2 right-2 h-2 w-2 border-r border-t border-structural/20 transition-colors duration-500 group-hover:border-primary/50" />
-                    <span aria-hidden className="absolute bottom-2 left-2 h-2 w-2 border-l border-b border-structural/20 transition-colors duration-500 group-hover:border-primary/50" />
-                    <span aria-hidden className="absolute bottom-2 right-2 h-2 w-2 border-r border-b border-structural/20 transition-colors duration-500 group-hover:border-primary/50" />
-                  </div>
-                  <div className="space-y-2">
+                  <div className="flex items-center justify-between border-b border-structural/10 pb-5">
                     <p className="mono-label text-primary">{m.role}</p>
-                    <h3 className="font-sans text-xl font-bold tracking-tight text-structural">
-                      {m.name}
-                    </h3>
+                    <span aria-hidden className="font-mono text-[11px] text-structural/35">
+                      {String(i + 1).padStart(2, "0")}
+                    </span>
                   </div>
+                  <h3 className="font-sans text-xl font-bold tracking-tight text-structural">
+                    {m.name}
+                  </h3>
                   <p className="text-sm leading-relaxed text-structural/70">
                     {m.bio}
                   </p>

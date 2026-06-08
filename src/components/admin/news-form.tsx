@@ -41,7 +41,7 @@ export function NewsForm({ post }: { post?: NewsPost }) {
             name="category"
             required
             defaultValue={post?.category ?? ""}
-            placeholder="Certification / Business / Clinical"
+            placeholder="Partnership / Certification / Business / Clinical / R&D"
             error={state.fieldErrors?.category}
           />
           <Field

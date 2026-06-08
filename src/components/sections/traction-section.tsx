@@ -1,4 +1,6 @@
 import { getTranslations } from "next-intl/server";
+import { ArrowUpRight } from "lucide-react";
+import { Link } from "@/i18n/navigation";
 import { RevealOnView } from "@/components/motion/reveal-on-view";
 import { RevealWords } from "@/components/motion/reveal-words";
 import { CountUp } from "@/components/motion/count-up";
@@ -7,11 +9,8 @@ import { Lede } from "@/components/layout/lede";
 
 const KPI_KEYS = ["saponin", "batch", "traction", "clinical"] as const;
 
-type Partner = { name: string; tag: string };
-
 export async function TractionSection() {
   const t = await getTranslations("home.traction");
-  const partners = t.raw("partners") as Partner[];
 
   return (
     <section
@@ -69,13 +68,16 @@ export async function TractionSection() {
                   source={t(`kpis.${key}.source`)}
                   asOf={t(`kpis.${key}.asOf`)}
                   emphasis={emphasis}
+                  // Capacity is a precise multi-digit figure; CountUp rounds to
+                  // one decimal, so render it verbatim to keep 2.52M intact.
+                  plain={key === "traction"}
                 />
               </RevealOnView>
             );
           })}
         </dl>
 
-        {/* Partner logos placeholder */}
+        {/* Partner network — confirmed milestones are announced via News */}
         <div className="mt-20">
           <RevealOnView>
             <div className="mb-6 flex items-center gap-3">
@@ -83,31 +85,25 @@ export async function TractionSection() {
               <p className="mono-label text-canvas/50">{t("partnersTag")}</p>
             </div>
           </RevealOnView>
-
-          {/* sm+: full list as individual slots */}
-          <div className="hidden gap-px bg-canvas/10 sm:grid sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5">
-            {partners.map((p, i) => (
-              <RevealOnView
-                key={p.name}
-                delay={0.04 * i}
-                className="h-full"
-              >
-                <PartnerSlot name={p.name} tag={p.tag} />
-              </RevealOnView>
-            ))}
-          </div>
-
-          {/* mobile only: grouped category summary */}
-          <div className="grid gap-2 sm:hidden">
-            {groupPartnersByCategory(partners).map((g, i) => (
-              <RevealOnView key={g.category} delay={0.05 * i}>
-                <PartnerCategorySummary
-                  category={g.category}
-                  list={g.list}
-                />
-              </RevealOnView>
-            ))}
-          </div>
+          <RevealOnView delay={0.06}>
+            <div className="grid gap-8 border-t border-canvas/10 pt-8 lg:grid-cols-[1.4fr_1fr] lg:gap-16">
+              <p className="max-w-2xl text-base leading-relaxed text-canvas/70">
+                {t("networkNote")}
+              </p>
+              <div className="flex items-start lg:justify-end">
+                <Link
+                  href="/news"
+                  className="group inline-flex items-center gap-2 border border-canvas/20 px-5 py-3 text-sm font-medium text-canvas transition-colors hover:border-primary hover:text-primary"
+                >
+                  {t("networkCta")}
+                  <ArrowUpRight
+                    size={14}
+                    className="transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5"
+                  />
+                </Link>
+              </div>
+            </div>
+          </RevealOnView>
         </div>
       </div>
     </section>
@@ -121,6 +117,7 @@ function KpiCell({
   source,
   asOf,
   emphasis = false,
+  plain = false,
 }: {
   label: string;
   value: string;
@@ -128,6 +125,7 @@ function KpiCell({
   source?: string;
   asOf?: string;
   emphasis?: boolean;
+  plain?: boolean;
 }) {
   return (
     <div className="group relative h-full bg-structural p-7 transition-colors hover:bg-structural/95">
@@ -145,7 +143,7 @@ function KpiCell({
             : "clamp(2.25rem, 4.5vw, 3.25rem)",
         }}
       >
-        <CountUp value={value} />
+        {plain ? value : <CountUp value={value} />}
       </dd>
       <p className="mt-5 text-sm leading-relaxed text-canvas/65 max-w-[28ch]">
         {caption}
@@ -161,61 +159,6 @@ function KpiCell({
         aria-hidden
         className="absolute top-3 right-3 h-2 w-2 border-r border-t border-canvas/30"
       />
-    </div>
-  );
-}
-
-function PartnerSlot({ name, tag }: { name: string; tag: string }) {
-  return (
-    <div className="group flex h-full min-h-[120px] flex-col justify-between bg-structural p-5 transition-colors hover:bg-structural/95">
-      <p className="mono-label text-[11px] text-canvas/45">{tag}</p>
-      <div className="space-y-2">
-        <p className="font-sans text-base font-semibold text-canvas">{name}</p>
-        <p className="mono-label text-[11px] text-canvas/30">REFERENCE</p>
-      </div>
-    </div>
-  );
-}
-
-type PartnerGroup = { category: string; list: Partner[] };
-
-/**
- * Groups partners by the first segment of their tag ("B2B SOLUTION · KR" →
- * "B2B SOLUTION"). Categories appear in first-seen order, matching the data
- * ordering authors curate in the i18n file.
- */
-function groupPartnersByCategory(partners: Partner[]): PartnerGroup[] {
-  const order: string[] = [];
-  const map = new Map<string, Partner[]>();
-  for (const p of partners) {
-    const [category] = p.tag.split("·").map((s) => s.trim());
-    if (!map.has(category)) {
-      order.push(category);
-      map.set(category, []);
-    }
-    map.get(category)!.push(p);
-  }
-  return order.map((category) => ({ category, list: map.get(category)! }));
-}
-
-function PartnerCategorySummary({
-  category,
-  list,
-}: {
-  category: string;
-  list: Partner[];
-}) {
-  return (
-    <div className="border border-canvas/10 bg-structural p-4">
-      <div className="flex items-baseline justify-between gap-3">
-        <p className="mono-label text-canvas/55">{category}</p>
-        <p className="font-sans text-xl font-bold tabular-nums text-canvas">
-          {String(list.length).padStart(2, "0")}
-        </p>
-      </div>
-      <p className="mt-2 text-xs leading-relaxed text-canvas/55">
-        {list.map((p) => p.name).join(" · ")}
-      </p>
     </div>
   );
 }

@@ -27,8 +27,7 @@
         "MBA · Pusan National Univ.",
         "Former Tech Advisor at Greenlabs · Former BOD at N.thing",
         "Concurrent Director, Smart Farm Division at Woori Technology"
-      ],
-      "photoPlaceholder": "CEO · Photo coming soon"
+      ]
     },
     "leadership": {
       "sectionTag": "LEADERSHIP",
@@ -49,8 +48,7 @@
           "role": "Director / Head of R&D",
           "bio": "Ph.D. in Agricultural Chemistry. Owns cultivation protocols and biomaterial R&D. Former R&D head at KKT Bioresource, NextA, and Gbio."
         }
-      ],
-      "photoPlaceholder": "Photo coming soon"
+      ]
     },
     "history": {
       "sectionTag": "HISTORY",
@@ -199,18 +197,6 @@
         { "code": "IP", "name": "MAT SOP", "body": "Plant- and effect-specific digital cultivation recipes" },
         { "code": "SW", "name": "AI Operating System", "body": "Software that executes the SOP without drift" },
         { "code": "HW", "name": "Precision Smart Farm", "body": "Hardware that acts as a bio-reactor" }
-      ],
-      "cases": [
-        {
-          "name": "McDonald's Korea / Smart Ark",
-          "body": "Entered McDonald's Korea Tier-1 supply chain with WSB hardware. Tier-2 large project contract in negotiation.",
-          "metric": "Tier-1 entry"
-        },
-        {
-          "name": "4D BIOS (China)",
-          "body": "A leading Chinese smart-farm company requested WSB technology to enter ginseng cultivation. 4-year contract worth approximately $7M in progress.",
-          "metric": "$7M+ · 4 years"
-        }
       ]
     },
     "material": {
@@ -221,13 +207,6 @@
         { "name": "Pharma · API", "body": "FDA / cGMP-grade botanical drug ingredients" },
         { "name": "Nutraceutical", "body": "MAT-enhanced individually-recognized ingredients" },
         { "name": "Cosmetic", "body": "Botanical material verified for safety and efficacy" }
-      ],
-      "cases": [
-        {
-          "name": "Mtera Pharma / Crohn's clinical",
-          "body": "Indirubin-rich Isatis material delivered to Mtera Pharma. 100kg supplied. Phase 2 trial planned for 2027.",
-          "metric": "100kg delivered"
-        }
       ]
     },
     "phytopresso": {
@@ -305,8 +284,7 @@
         { "name": "Green Bio enterprise", "year": "2025", "issuer": "Ministry of Agriculture, Food and Rural Affairs" },
         { "name": "Venture company", "year": "2024", "issuer": "Korea Venture Business Certification Center" },
         { "name": "Corporate R&D Institute", "year": "2024", "issuer": "KOITA" }
-      ],
-      "imagePlaceholder": "Certificate image coming soon"
+      ]
     },
     "national": {
       "sectionTag": "NATIONAL R&D",

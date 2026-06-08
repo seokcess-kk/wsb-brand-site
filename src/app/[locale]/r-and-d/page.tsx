@@ -8,7 +8,6 @@ import {
   FadeInSection,
 } from "@/components/motion/fade-in-section";
 import { MotionCard } from "@/components/motion/motion-card";
-import { PipelineSection } from "@/components/sections/pipeline-section";
 
 export default async function RnDPage({
   params,
@@ -49,9 +48,6 @@ export default async function RnDPage({
         title={t("hero.title")}
         lede={t("hero.lede")}
       />
-
-      {/* PIPELINE — reused from Home */}
-      <PipelineSection />
 
       {/* PATENTS */}
       <section className="bg-canvas border-t border-structural/10">
@@ -157,34 +153,20 @@ export default async function RnDPage({
               <SectionEyebrow tag={t("cert.sectionTag")} />
             </RevealOnView>
           </div>
-          <FadeInSection
-            className="grid gap-4 md:grid-cols-3"
-            staggerChildren={0.06}
-          >
+          <FadeInSection className="grid gap-3" staggerChildren={0.06}>
             {certs.map((c) => (
-              <FadeInItem key={c.name} className="h-full">
+              <FadeInItem key={c.name}>
                 <MotionCard
                   as="article"
-                  className="flex h-full flex-col gap-5 p-6 md:p-8"
+                  className="grid items-center gap-4 p-6 md:grid-cols-[1.6fr_1fr_100px] md:p-7"
                 >
-                  <div className="relative aspect-[4/3] overflow-hidden bg-structural/[0.04] transition-colors duration-500 group-hover:bg-structural/[0.07]">
-                    <div className="absolute inset-0 flex items-center justify-center">
-                      <p className="mono-label text-[10px] text-structural/35 text-center max-w-[16ch]">
-                        {t("cert.imagePlaceholder")}
-                      </p>
-                    </div>
-                    <span aria-hidden className="absolute top-2 left-2 h-2 w-2 border-l border-t border-structural/20 transition-colors duration-500 group-hover:border-primary/50" />
-                    <span aria-hidden className="absolute top-2 right-2 h-2 w-2 border-r border-t border-structural/20 transition-colors duration-500 group-hover:border-primary/50" />
-                    <span aria-hidden className="absolute bottom-2 left-2 h-2 w-2 border-l border-b border-structural/20 transition-colors duration-500 group-hover:border-primary/50" />
-                    <span aria-hidden className="absolute bottom-2 right-2 h-2 w-2 border-r border-b border-structural/20 transition-colors duration-500 group-hover:border-primary/50" />
-                  </div>
-                  <div className="space-y-2">
-                    <p className="mono-label text-primary">{c.year}</p>
-                    <h3 className="font-sans text-base font-semibold text-structural">
-                      {c.name}
-                    </h3>
-                    <p className="text-xs text-structural/55">{c.issuer}</p>
-                  </div>
+                  <h3 className="font-sans text-base font-semibold text-structural">
+                    {c.name}
+                  </h3>
+                  <p className="text-sm text-structural/65">{c.issuer}</p>
+                  <p className="font-mono text-xs text-primary md:text-right">
+                    {c.year}
+                  </p>
                 </MotionCard>
               </FadeInItem>
             ))}

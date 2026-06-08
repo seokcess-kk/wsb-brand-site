@@ -41,7 +41,8 @@
       "batchMeta": "BATCH · WSB-2026-001",
       "overlayLabel1": "SAPONIN · +8×",
       "overlayLabel2": "pH 5.8 · EC 1.4",
-      "overlayLabel3": "μmol UV-B · 285nm"
+      "overlayLabel3": "μmol UV-B · 285nm",
+      "bgPlaceholder": "HERO BG · 정밀제어 스마트팜 전경 (자산 대기)"
     },
     "credibility": {
       "ariaLabel": "우리스마트바이오 신뢰 지표",
@@ -54,6 +55,24 @@
         { "label": "FACILITY", "value": "Yeoncheon", "caption": "R&D 생산센터 및 생산 기지" },
         { "label": "CAPA", "value": "2.52M plants/y", "caption": "연천 생산 역량 기준" }
       ]
+    },
+    "scale": {
+      "sectionTag": "PRODUCTION & R&D SCALE",
+      "sectionMeta": "SCALE · YEONCHEON",
+      "heading": "데이터는 규모 위에서 증명됩니다.",
+      "lede": "연천 R&D 생산센터의 정밀제어 스마트팜과 연구 인프라가 365일 동일 조건으로 식물의약품 원료를 생산합니다.",
+      "metrics": [
+        { "label": "ANNUAL CAPACITY", "value": "2.52M", "caption": "연간 생산 역량 (개체 기준)" },
+        { "label": "SITE", "value": "Yeoncheon", "caption": "연천 R&D 생산센터" },
+        { "label": "FACILITY AREA", "value": "", "pending": true, "caption": "연면적 · 수치 확인 중" },
+        { "label": "R&D HEADCOUNT", "value": "", "pending": true, "caption": "연구 인력 · 수치 확인 중" }
+      ],
+      "photos": [
+        { "caption": "정밀제어 스마트팜 시설 전경" },
+        { "caption": "생산라인 · 다단 수경재배" },
+        { "caption": "R&D 실험실 · 분석 장비" }
+      ],
+      "assetPending": "자산 대기"
     },
     "kpi": {
       "sectionTag": "PROVEN IN NUMBERS",
@@ -177,10 +196,10 @@
       "disclaimer": "본 매트릭스는 FDA 가이드라인 대응 체계입니다. 인증·허가는 별도 절차로 진행됩니다."
     },
     "traction": {
-      "sectionTag": "PROVEN TRACTION",
-      "sectionMeta": "04 / GLOBAL PARTNERS",
-      "heading": "데이터로 입증된 기술.\n글로벌 파트너로 입증된 사업.",
-      "lede": "MAT와 정밀제어 스마트팜은 한국과 글로벌 시장의 실제 계약으로 검증되고 있습니다. 매출과 임상 그리고 솔루션 수출이 동시에 일어나는 구조입니다.",
+      "sectionTag": "PROVEN CAPABILITY",
+      "sectionMeta": "04 / CAPACITY & EVIDENCE",
+      "heading": "데이터로 입증된 기술.\n규모로 뒷받침되는 생산 역량.",
+      "lede": "MAT와 정밀제어 스마트팜은 유효성분 증대와 배치 일관성을 데이터로 입증합니다. 연천 생산센터의 생산 역량과 임상 원료 공급 실적이 이를 뒷받침합니다.",
       "kpis": {
         "saponin": {
           "label": "SAPONIN ↑",
@@ -197,33 +216,23 @@
           "asOf": "2025.Q4"
         },
         "traction": {
-          "label": "B2B SOLUTION",
-          "value": "₩100억+",
-          "caption": "중국 4D BIOS 4년 솔루션 계약 진행",
-          "source": "4D BIOS 계약 기준",
+          "label": "ANNUAL CAPACITY",
+          "value": "2.52M",
+          "caption": "연천 생산센터 연간 생산 역량 (개체 기준)",
+          "source": "WSB 생산 기준",
           "asOf": "2025"
         },
         "clinical": {
           "label": "CLINICAL API",
           "value": "100kg",
-          "caption": "크론병 타겟 대청 임상 원료 납품 완료",
-          "source": "임상 원료 납품 기록",
+          "caption": "크론병 타겟 대청 임상 원료 공급 실적",
+          "source": "임상 원료 공급 기록",
           "asOf": "2025"
         }
       },
       "partnersTag": "PARTNER NETWORK",
-      "partners": [
-        { "name": "한국맥도날드", "tag": "B2B SOLUTION · KR" },
-        { "name": "4D BIOS", "tag": "B2B SOLUTION · CN" },
-        { "name": "엠테라파마", "tag": "CLINICAL API · KR" },
-        { "name": "HICOM", "tag": "B2C BRAND · JP" },
-        { "name": "코토부기물산", "tag": "B2C BRAND · JP" },
-        { "name": "Farm66", "tag": "B2B MATERIAL · HK" },
-        { "name": "Farmary", "tag": "B2B MATERIAL · HK" },
-        { "name": "DI JIE", "tag": "B2B MATERIAL · TW" },
-        { "name": "PICHTR", "tag": "B2B SOLUTION · US" },
-        { "name": "AFAFA", "tag": "B2B SOLUTION · CN" }
-      ]
+      "networkNote": "솔루션·소재·브랜드 전 영역에서 국내외 파트너와 협업을 진행하고 있습니다. 공개 가능한 계약과 협력 성과는 News에서 순차적으로 업데이트합니다.",
+      "networkCta": "News에서 협력 소식 보기"
     },
     "business": {
       "sectionTag": "BUSINESS MODEL",
@@ -236,20 +245,20 @@
           "title": "B2B Solution",
           "subtitle": "기술 자체 판매",
           "body": "MAT 디지털 재배 레시피 정밀제어 운영 소프트웨어 그리고 정밀제어 스마트팜 설비를 통합 솔루션으로 공급합니다. 고객사의 기술 격차를 한 번에 메웁니다.",
-          "metricLabel": "ACTIVE DEAL",
-          "metricValue": "₩100억+",
-          "metricCaption": "중국 4D BIOS 4년 계약",
-          "cases": ["한국맥도날드 · Smart Ark 1차 진입", "중국 4D BIOS · 인삼 기술 수출"]
+          "metricLabel": "DELIVERY MODEL",
+          "metricValue": "3-IN-1",
+          "metricCaption": "재배 레시피·운영 SW·설비 통합 공급",
+          "cases": ["디지털 재배 레시피(SOP) 이전", "정밀제어 운영 소프트웨어 공급", "스마트팜 설비 구축"]
         },
         {
           "label": "PILLAR 02",
           "title": "B2B Material",
           "subtitle": "표준화된 원료 공급",
           "body": "cGMP 기준 식물의약품 API 고기능성 건강기능식품 원료 효능 검증 화장품 천연물 소재를 직접 생산해 공급합니다. 안정적인 캐시카우입니다.",
-          "metricLabel": "CLINICAL API DELIVERED",
+          "metricLabel": "CLINICAL API SUPPLIED",
           "metricValue": "100kg",
           "metricCaption": "크론병 타겟 대청 임상 원료",
-          "cases": ["엠테라파마 · 크론병 임상 원료 납품", "건기식·화장품 다수 ODM 협업"]
+          "cases": ["식물의약품 API 임상 원료 공급", "건기식·화장품 천연물 소재 ODM"]
         },
         {
           "label": "PILLAR 03",
@@ -259,7 +268,7 @@
           "metricLabel": "PRODUCT LINE",
           "metricValue": "3 SKU",
           "metricCaption": "수경인삼 SHOT · 참당귀 DECURSIN · 황칠 CGA",
-          "cases": ["커넥트101 · B2C 판매 위탁", "별도 판매 사이트로 운영"],
+          "cases": ["B2C 판매는 마케팅 전문기업에 위탁", "별도 판매 사이트로 운영"],
           "externalLabel": "Visit Phytopresso Store",
           "externalHref": "#"
         }
@@ -331,16 +340,16 @@
           "summary": "농림축산식품부 그린바이오 산업 인정 기업으로 선정. 식물 기반 기능성 소재 사업 가속화의 기반 마련."
         },
         {
-          "date": "2025.02",
-          "category": "Business",
-          "title": "중국 4D BIOS와 약 100억 규모 계약 진행",
-          "summary": "4년간 인삼 수경 재배 기술 공급과 대량 묘삼 생산 솔루션 수출. 중국 시장 핵심 레퍼런스 구축."
+          "date": "2024.04",
+          "category": "R&D",
+          "title": "스마트팜 다부처패키지 국가 R&D 과제 수행",
+          "summary": "농림축산식품부 지능형 분무경 수경재배시스템 개발 국가연구개발사업 수행. 2027년까지 진행."
         },
         {
           "date": "2024.11",
           "category": "Clinical",
-          "title": "크론병 임상 원료 100kg 납품 완료",
-          "summary": "엠테라파마 협업. 대청엽 기반 인디루빈 임상 원료 100kg 납품. 2027년 임상 2상 진입 예정."
+          "title": "크론병 타겟 임상 원료 공급",
+          "summary": "대청엽 기반 인디루빈 임상 원료 100kg 공급. 식물의약품 표준화 생산 역량을 입증."
         }
       ]
     },

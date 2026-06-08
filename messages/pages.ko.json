@@ -27,8 +27,7 @@
         "부산대 경영학석사 · MBA",
         "전 그린랩스 기술고문 · 전 엔씽 사외이사",
         "현 우리기술 스마트팜사업부 이사 겸직"
-      ],
-      "photoPlaceholder": "CEO · 사진 준비 중"
+      ]
     },
     "leadership": {
       "sectionTag": "LEADERSHIP",
@@ -49,8 +48,7 @@
           "role": "이사 / 연구소장",
           "bio": "농화학 박사. 식물 재배 프로토콜과 생물소재 R&D 책임. KKT생명자원개발·넥스트에이·지바이오 연구소장 역임."
         }
-      ],
-      "photoPlaceholder": "사진 준비 중"
+      ]
     },
     "history": {
       "sectionTag": "HISTORY",
@@ -199,18 +197,6 @@
         { "code": "IP", "name": "MAT SOP", "body": "식물별·효능별 최적의 디지털 재배 레시피" },
         { "code": "SW", "name": "AI 운영 시스템", "body": "SOP를 오차 없이 구현하는 정밀제어 소프트웨어" },
         { "code": "HW", "name": "정밀제어 스마트팜", "body": "바이오 리액터 역할의 하드웨어 설비" }
-      ],
-      "cases": [
-        {
-          "name": "한국맥도날드 / Smart Ark",
-          "body": "WSB의 스마트팜 하드웨어 시스템으로 한국맥도날드 1차 공급망 진입. 2차 대규모 프로젝트 계약 추진 중.",
-          "metric": "1차 공급망 진입"
-        },
-        {
-          "name": "중국 4D BIOS",
-          "body": "딸기 스마트팜 선두 기업이 인삼 재배 기술 도입을 위해 WSB에 기술 수출 요청. 4년 약 100억 원 규모 계약 진행.",
-          "metric": "₩100억+ · 4년"
-        }
       ]
     },
     "material": {
@@ -221,13 +207,6 @@
         { "name": "Pharma · API", "body": "FDA·cGMP 기준 식물의약품 원료" },
         { "name": "Nutraceutical", "body": "MAT로 유효성분이 극대화된 개별 인정형 원료" },
         { "name": "Cosmetic", "body": "안전성과 효능이 모두 검증된 천연물 소재" }
-      ],
-      "cases": [
-        {
-          "name": "엠테라파마 / 크론병 임상",
-          "body": "대청엽 기반 인디루빈 임상 원료 100kg 납품 완료. 2027년 임상 2상 진입 예정.",
-          "metric": "100kg 납품 완료"
-        }
       ]
     },
     "phytopresso": {
@@ -305,8 +284,7 @@
         { "name": "그린바이오 기업 인정", "year": "2025", "issuer": "농림축산식품부" },
         { "name": "벤처기업 인정", "year": "2024", "issuer": "벤처기업확인기관" },
         { "name": "기업부설연구소 인정", "year": "2024", "issuer": "한국산업기술진흥협회" }
-      ],
-      "imagePlaceholder": "인증서 이미지 준비 중"
+      ]
     },
     "national": {
       "sectionTag": "NATIONAL R&D",

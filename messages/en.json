@@ -41,7 +41,8 @@
       "batchMeta": "BATCH · WSB-2026-001",
       "overlayLabel1": "SAPONIN · +8×",
       "overlayLabel2": "pH 5.8 · EC 1.4",
-      "overlayLabel3": "μmol UV-B · 285nm"
+      "overlayLabel3": "μmol UV-B · 285nm",
+      "bgPlaceholder": "HERO BG · Precision smart farm facility (asset pending)"
     },
     "credibility": {
       "ariaLabel": "Woori Smart Bio credibility signals",
@@ -54,6 +55,24 @@
         { "label": "FACILITY", "value": "Yeoncheon", "caption": "R&D production center and production base" },
         { "label": "CAPA", "value": "2.52M plants/y", "caption": "Yeoncheon production capacity basis" }
       ]
+    },
+    "scale": {
+      "sectionTag": "PRODUCTION & R&D SCALE",
+      "sectionMeta": "SCALE · YEONCHEON",
+      "heading": "Data is proven at scale.",
+      "lede": "The precision smart farm and research infrastructure at our Yeoncheon R&D production center run botanical drug ingredients under identical conditions, 365 days a year.",
+      "metrics": [
+        { "label": "ANNUAL CAPACITY", "value": "2.52M", "caption": "Annual production capacity (per plant)" },
+        { "label": "SITE", "value": "Yeoncheon", "caption": "R&D production center" },
+        { "label": "FACILITY AREA", "value": "", "pending": true, "caption": "Floor area · TBD" },
+        { "label": "R&D HEADCOUNT", "value": "", "pending": true, "caption": "Research staff · TBD" }
+      ],
+      "photos": [
+        { "caption": "Precision smart farm facility" },
+        { "caption": "Production line · multi-tier hydroponics" },
+        { "caption": "R&D lab · analytical equipment" }
+      ],
+      "assetPending": "ASSET PENDING"
     },
     "kpi": {
       "sectionTag": "PROVEN IN NUMBERS",
@@ -177,10 +196,10 @@
       "disclaimer": "This matrix shows FDA guideline alignment. Certification and approval follow a separate process."
     },
     "traction": {
-      "sectionTag": "PROVEN TRACTION",
-      "sectionMeta": "04 / GLOBAL PARTNERS",
-      "heading": "Proven by data.\nProven by global partners.",
-      "lede": "MAT and the precision-controlled smart farm are being validated through live contracts in Korea and across global markets. Revenue clinical supply and solution exports happen at the same time.",
+      "sectionTag": "PROVEN CAPABILITY",
+      "sectionMeta": "04 / CAPACITY & EVIDENCE",
+      "heading": "Proven by data.\nBacked by production scale.",
+      "lede": "MAT and the precision-controlled smart farm prove active-compound gains and batch consistency with data. The Yeoncheon production center's capacity and our clinical material supply record back it up.",
       "kpis": {
         "saponin": {
           "label": "SAPONIN ↑",
@@ -197,33 +216,23 @@
           "asOf": "2025.Q4"
         },
         "traction": {
-          "label": "B2B SOLUTION",
-          "value": "$7M+",
-          "caption": "4-year solution contract with 4D BIOS in China",
-          "source": "4D BIOS contract",
+          "label": "ANNUAL CAPACITY",
+          "value": "2.52M",
+          "caption": "Annual production capacity, Yeoncheon center (per plant)",
+          "source": "WSB production basis",
           "asOf": "2025"
         },
         "clinical": {
           "label": "CLINICAL API",
           "value": "100kg",
-          "caption": "Crohn's-disease botanical API delivered",
-          "source": "Clinical material shipment",
+          "caption": "Crohn's-disease botanical API supplied",
+          "source": "Clinical material supply record",
           "asOf": "2025"
         }
       },
       "partnersTag": "PARTNER NETWORK",
-      "partners": [
-        { "name": "McDonald's Korea", "tag": "B2B SOLUTION · KR" },
-        { "name": "4D BIOS", "tag": "B2B SOLUTION · CN" },
-        { "name": "Mtera Pharma", "tag": "CLINICAL API · KR" },
-        { "name": "HICOM", "tag": "B2C BRAND · JP" },
-        { "name": "Kotobuki Bussan", "tag": "B2C BRAND · JP" },
-        { "name": "Farm66", "tag": "B2B MATERIAL · HK" },
-        { "name": "Farmary", "tag": "B2B MATERIAL · HK" },
-        { "name": "DI JIE", "tag": "B2B MATERIAL · TW" },
-        { "name": "PICHTR", "tag": "B2B SOLUTION · US" },
-        { "name": "AFAFA", "tag": "B2B SOLUTION · CN" }
-      ]
+      "networkNote": "We collaborate with partners across solution, material, and brand lines in Korea and abroad. Confirmed contracts and milestones are announced through News as they become public.",
+      "networkCta": "See partnership updates in News"
     },
     "business": {
       "sectionTag": "BUSINESS MODEL",
@@ -236,20 +245,20 @@
           "title": "B2B Solution",
           "subtitle": "Technology as a product",
           "body": "MAT digital cultivation recipes precision control software and the controlled-environment hardware stack are sold as one integrated solution. We close the technology gap for our customers in a single deal.",
-          "metricLabel": "ACTIVE DEAL",
-          "metricValue": "$7M+",
-          "metricCaption": "4-year contract with 4D BIOS in China",
-          "cases": ["McDonald's Korea · Smart Ark entry", "4D BIOS · ginseng technology export"]
+          "metricLabel": "DELIVERY MODEL",
+          "metricValue": "3-IN-1",
+          "metricCaption": "Recipe, control software, and facility as one",
+          "cases": ["Digital cultivation recipe (SOP) transfer", "Precision control software supply", "Smart farm facility build-out"]
         },
         {
           "label": "PILLAR 02",
           "title": "B2B Material",
           "subtitle": "Standardized API supply",
           "body": "We produce and supply cGMP-grade botanical drug APIs high-potency nutraceutical ingredients and efficacy-verified cosmetic botanicals. A stable cash-generating business.",
-          "metricLabel": "CLINICAL API DELIVERED",
+          "metricLabel": "CLINICAL API SUPPLIED",
           "metricValue": "100kg",
           "metricCaption": "Crohn's-disease botanical API",
-          "cases": ["Mtera Pharma · clinical API supply", "Multiple nutraceutical and cosmetic ODMs"]
+          "cases": ["Botanical drug API clinical material supply", "Nutraceutical and cosmetic botanical ODM"]
         },
         {
           "label": "PILLAR 03",
@@ -259,7 +268,7 @@
           "metricLabel": "PRODUCT LINE",
           "metricValue": "3 SKU",
           "metricCaption": "Hydroponic Ginseng SHOT · Angelica DECURSIN · Dendropanax CGA",
-          "cases": ["Connect101 · B2C distribution partner", "Run as a separate storefront"],
+          "cases": ["B2C distribution outsourced to a marketing specialist", "Run as a separate storefront"],
           "externalLabel": "Visit Phytopresso Store",
           "externalHref": "#"
         }
@@ -331,16 +340,16 @@
           "summary": "Ministry-recognized as a Green Bio company. Accelerates plant-based functional material business."
         },
         {
-          "date": "2025.02",
-          "category": "Business",
-          "title": "4-year solution contract with 4D BIOS in China",
-          "summary": "Hydroponic ginseng technology and seedling production solution exported over four years. A flagship reference for the Chinese market."
+          "date": "2024.04",
+          "category": "R&D",
+          "title": "National R&D project · Smart Farm Multi-Ministry Package",
+          "summary": "Carrying out the MAFRA intelligent aeroponic hydroponic system development project. Running through 2027."
         },
         {
           "date": "2024.11",
           "category": "Clinical",
-          "title": "Crohn's-disease botanical API · 100kg delivered",
-          "summary": "Indirubin-rich Isatis material supplied to Mtera Pharma. Phase 2 trial planned for 2027."
+          "title": "Crohn's-disease botanical API supplied",
+          "summary": "Indirubin-rich Isatis clinical material, 100kg supplied. Proves standardized botanical drug production capability."
         }
       ]
     },

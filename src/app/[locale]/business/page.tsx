@@ -12,7 +12,6 @@ import {
 import { MotionCard } from "@/components/motion/motion-card";
 import { cn } from "@/lib/utils";
 
-type Case = { name: string; body: string; metric: string };
 type Component = { code: string; name: string; body: string };
 type Segment = { name: string; body: string };
 type LineupItem = { name: string; category: string; spec: string };
@@ -26,10 +25,8 @@ export default async function BusinessPage({
   setRequestLocale(locale);
 
   const t = await getTranslations("pages.business");
-  const solCases = t.raw("solution.cases") as Case[];
   const solComponents = t.raw("solution.components") as Component[];
   const matSegments = t.raw("material.segments") as Segment[];
-  const matCases = t.raw("material.cases") as Case[];
   const lineup = t.raw("phytopresso.lineup") as LineupItem[];
 
   return (
@@ -69,8 +66,6 @@ export default async function BusinessPage({
             </FadeInItem>
           ))}
         </FadeInSection>
-
-        <CaseRow cases={solCases} />
       </PillarSection>
 
       {/* PILLAR 02 — B2B Material */}
@@ -100,8 +95,6 @@ export default async function BusinessPage({
             </FadeInItem>
           ))}
         </FadeInSection>
-
-        <CaseRow cases={matCases} accent="dark" />
       </PillarSection>
 
       {/* PILLAR 03 — Phytopresso */}
@@ -228,68 +221,5 @@ function PillarSection({
         {children}
       </div>
     </section>
-  );
-}
-
-function CaseRow({
-  cases,
-  accent = "light",
-}: {
-  cases: Case[];
-  accent?: "light" | "dark";
-}) {
-  const isDark = accent === "dark";
-  return (
-    <div className="mt-10">
-      <p
-        className={`mb-4 mono-label ${
-          isDark ? "text-canvas/55" : "text-structural/55"
-        }`}
-      >
-        CASE STUDIES
-      </p>
-      <FadeInSection
-        className={cn(
-          "grid gap-4",
-          cases.length === 1 ? "md:grid-cols-1" : "md:grid-cols-2",
-        )}
-        staggerChildren={0.06}
-      >
-        {cases.map((c) => (
-          <FadeInItem key={c.name}>
-            <MotionCard
-              as="article"
-              className={cn(
-                "flex flex-col gap-3 p-6 md:p-8",
-                isDark &&
-                  "bg-structural border-canvas/10 hover:border-canvas/30 hover:shadow-none",
-              )}
-            >
-              <div className="flex items-center justify-between">
-                <h4
-                  className={cn(
-                    "font-sans text-base font-semibold",
-                    isDark ? "text-canvas" : "text-structural",
-                  )}
-                >
-                  {c.name}
-                </h4>
-                <p className="font-mono text-sm font-semibold text-primary">
-                  {c.metric}
-                </p>
-              </div>
-              <p
-                className={cn(
-                  "text-sm leading-relaxed",
-                  isDark ? "text-canvas/70" : "text-structural/70",
-                )}
-              >
-                {c.body}
-              </p>
-            </MotionCard>
-          </FadeInItem>
-        ))}
-      </FadeInSection>
-    </div>
   );
 }

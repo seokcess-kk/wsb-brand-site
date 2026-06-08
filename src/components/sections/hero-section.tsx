@@ -13,20 +13,32 @@ export async function HeroSection() {
     <section
       id="main"
       aria-labelledby="hero-heading"
-      className="relative isolate overflow-hidden bg-canvas"
+      className="relative isolate flex min-h-[90vh] items-center overflow-hidden bg-structural text-canvas"
     >
-      {/* Ambient drifting grid background */}
+      {/* HERO BACKGROUND PHOTO — replace this block with the facility / smart-farm
+          image (full-bleed, object-cover). The dark base + drifting grid stand in
+          until the asset arrives. See memory/project_wsb_asset_requests.md. */}
+      <div aria-hidden className="absolute inset-0 -z-20 bg-structural">
+        <div
+          className="absolute inset-0 opacity-[0.10] animate-grid-drift"
+          style={{
+            backgroundImage:
+              "linear-gradient(to right, rgba(250,251,249,1) 1px, transparent 1px), linear-gradient(to bottom, rgba(250,251,249,1) 1px, transparent 1px)",
+            backgroundSize: "32px 32px",
+          }}
+        />
+        <p className="absolute bottom-4 left-1/2 -translate-x-1/2 mono-label text-[10px] text-canvas/30">
+          {t("bgPlaceholder")}
+        </p>
+      </div>
+
+      {/* Legibility overlay (also sits over the future photo so the text stays readable) */}
       <div
         aria-hidden
-        className="absolute inset-0 -z-10 opacity-50 animate-grid-drift"
-        style={{
-          backgroundImage:
-            "linear-gradient(to right, rgba(26,31,27,0.035) 1px, transparent 1px), linear-gradient(to bottom, rgba(26,31,27,0.035) 1px, transparent 1px)",
-          backgroundSize: "32px 32px",
-        }}
+        className="absolute inset-0 -z-10 bg-gradient-to-br from-structural via-structural/85 to-structural/40"
       />
 
-      <div className="mx-auto max-w-7xl px-6 pt-20 pb-32 md:pt-28 md:pb-40 lg:pt-32 lg:pb-48">
+      <div className="mx-auto w-full max-w-7xl px-6 py-24 md:py-28">
         <div className="grid items-center gap-16 lg:grid-cols-[1.25fr_1fr] lg:gap-16">
           {/* LEFT */}
           <div className="space-y-10">
@@ -37,21 +49,21 @@ export async function HeroSection() {
 
             <h1
               id="hero-heading"
-              className="font-sans font-extrabold leading-[1.02] tracking-tight text-structural"
+              className="font-sans font-extrabold leading-[1.02] tracking-tight text-canvas"
               style={{
-                fontSize: "clamp(2.25rem, 5vw, 3.75rem)",
+                fontSize: "clamp(2.25rem, 6vw, 4.5rem)",
                 letterSpacing: "-0.025em",
               }}
             >
-              <span className="block text-primary whitespace-nowrap">
+              <span className="block whitespace-nowrap">
                 <RevealWords text="Engineered by Data," />
               </span>
-              <span className="block whitespace-nowrap">
+              <span className="block whitespace-nowrap text-canvas/90">
                 <RevealWords text="Grown by Design." delay={0.45} />
               </span>
             </h1>
 
-            <p className="max-w-xl text-base md:text-lg text-structural/75 leading-relaxed">
+            <p className="max-w-xl text-base md:text-lg text-canvas/75 leading-relaxed">
               {t("subhead")}
             </p>
 
@@ -68,7 +80,7 @@ export async function HeroSection() {
               </Link>
               <Link
                 href="/technology"
-                className="group inline-flex items-center gap-2 border border-structural/20 px-6 py-3.5 text-sm font-medium text-structural transition-colors hover:border-primary hover:text-primary"
+                className="group inline-flex items-center gap-2 border border-canvas/25 px-6 py-3.5 text-sm font-medium text-canvas transition-colors hover:border-primary hover:text-primary"
               >
                 {tCta("exploreTech")}
                 <ArrowUpRight
@@ -78,16 +90,16 @@ export async function HeroSection() {
               </Link>
             </div>
 
-            <div className="flex flex-wrap items-center gap-x-5 gap-y-2 border-t border-structural/10 pt-6">
-              <p className="mono-label">{t("batchMeta")}</p>
-              <span aria-hidden className="mono-label text-structural/30">·</span>
-              <p className="mono-label text-structural/60">{tSite("name")}</p>
-              <span aria-hidden className="mono-label text-structural/30">·</span>
-              <p className="mono-label text-structural/60">YEONCHEON · KR</p>
+            <div className="flex flex-wrap items-center gap-x-5 gap-y-2 border-t border-canvas/15 pt-6">
+              <p className="mono-label text-canvas/70">{t("batchMeta")}</p>
+              <span aria-hidden className="mono-label text-canvas/30">·</span>
+              <p className="mono-label text-canvas/55">{tSite("name")}</p>
+              <span aria-hidden className="mono-label text-canvas/30">·</span>
+              <p className="mono-label text-canvas/55">YEONCHEON · KR</p>
             </div>
           </div>
 
-          {/* RIGHT (Data Overlay) */}
+          {/* RIGHT (Data Overlay panel — reads as an instrument readout over the photo) */}
           <div className="relative">
             <DataOverlayPlant
               labels={{
