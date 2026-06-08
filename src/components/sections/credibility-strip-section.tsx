@@ -31,9 +31,6 @@ export async function CredibilityStripSection() {
             </dl>
           ))}
         </div>
-        <p className="mt-4 text-xs leading-relaxed text-structural/50 md:max-w-3xl">
-          {t("note")}
-        </p>
       </div>
     </section>
   );

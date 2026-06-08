@@ -45,7 +45,6 @@
     },
     "credibility": {
       "ariaLabel": "우리스마트바이오 신뢰 지표",
-      "note": "자료 기준: WSB 회사소개서·브랜드 가이드·특허 및 인증 현황. 세부 수치와 인증 상태는 공개 전 최종 기준일 표기를 권장합니다.",
       "items": [
         { "label": "ESTABLISHED", "value": "2018", "caption": "식물 기반 그린바이오 소재화 기업" },
         { "label": "CERTIFICATION", "value": "Green Bio", "caption": "그린바이오 기업 인정" },
@@ -237,7 +236,7 @@
       "sectionTag": "BUSINESS MODEL",
       "sectionMeta": "05 / 3 PILLARS",
       "heading": "기술. 소재. 브랜드.\n3축 수직계열화.",
-      "lede": "동일한 MAT와 정밀제어 스마트팜 기술이 솔루션 판매 소재 공급 그리고 자체 브랜드까지 3개 사업으로 확장됩니다. 한 줄기의 R&D가 세 갈래의 매출을 만듭니다.",
+      "lede": "동일한 MAT와 정밀제어 스마트팜 기술이 솔루션 판매·소재 공급·자체 브랜드 3개 사업으로 확장됩니다.",
       "pillars": [
         {
           "label": "PILLAR 01",

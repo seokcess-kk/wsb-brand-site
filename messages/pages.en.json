@@ -3,7 +3,7 @@
     "hero": {
       "tag": "COMPANY",
       "meta": "01 / WSB OVERVIEW",
-      "title": "We program nature's code\nand engineer biological output.",
+      "title": "Engineered by data.\nGrown by design.",
       "lede": "A green bio company founded in 2018. By pairing a data-driven precision smart farm with proprietary MAT bio technology, we produce standardized botanical drug ingredients with the same quality in every batch."
     },
     "overview": {
@@ -22,7 +22,7 @@
       "title": "Technology only becomes an industry\nonce data proves it.",
       "body": "Pursuing both pharmacy and engineering led me to a single question: how do we lift the latent value of plants up to the standards of medicine? We found the answer in a precision-controlled smart farm and MAT technology. Producing the same-quality material in every batch is the single promise of Woori Smart Bio.",
       "credentials": [
-        "Ph.D. in Pharmacy · Kyungsung Univ. (2023) — Botanical drug API characterization with MAT in plant factories",
+        "Ph.D. in Pharmacy · Kyungsung Univ. (2023): Botanical drug API characterization with MAT in plant factories",
         "Ph.D. in Industrial Engineering · Kyungnam Univ. (2003)",
         "MBA · Pusan National Univ.",
         "Former Tech Advisor at Greenlabs · Former BOD at N.thing",
@@ -85,7 +85,7 @@
       "tag": "TECHNOLOGY",
       "meta": "02 / CORE STACK",
       "title": "Technology is our moat.",
-      "lede": "MAT bio technology and the AI-driven precision smart farm together meet the FDA's five botanical drug guidelines one to one and deliver standardized botanical drug ingredients."
+      "lede": "MAT bio technology and the AI-driven precision smart farm are built around the core requirements of the FDA's five botanical drug guidelines and deliver standardized botanical drug ingredients."
     },
     "stack": {
       "sectionTag": "TECHNOLOGY STACK",
@@ -316,7 +316,7 @@
       "tag": "NEWS",
       "meta": "05 / UPDATES",
       "title": "Latest updates.",
-      "lede": "Contracts, clinical milestones, certifications, and media coverage. Managed directly through the admin."
+      "lede": "Contracts, clinical milestones, certifications, and media coverage."
     },
     "empty": "No press releases yet.",
     "readMore": "Read more",

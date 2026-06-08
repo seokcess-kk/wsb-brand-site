@@ -45,7 +45,6 @@
     },
     "credibility": {
       "ariaLabel": "Woori Smart Bio credibility signals",
-      "note": "Based on WSB company, brand, patent, and certification materials. Public pages should include the final reference date for detailed certification and capacity claims.",
       "items": [
         { "label": "ESTABLISHED", "value": "2018", "caption": "Plant-based green bio materials company" },
         { "label": "CERTIFICATION", "value": "Green Bio", "caption": "Recognized Green Bio enterprise" },
@@ -237,7 +236,7 @@
       "sectionTag": "BUSINESS MODEL",
       "sectionMeta": "05 / 3 PILLARS",
       "heading": "Technology. Material. Brand.\nA three-pillar vertical stack.",
-      "lede": "The same MAT and precision-controlled smart farm power three businesses. Solution sales material supply and a direct-to-consumer brand. One R&D pipeline generates three revenue streams.",
+      "lede": "The same MAT and precision-controlled smart farm power three businesses: solution sales, material supply, and a direct-to-consumer brand.",
       "pillars": [
         {
           "label": "PILLAR 01",
