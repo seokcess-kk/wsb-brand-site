@@ -89,7 +89,7 @@ export default async function RnDPage({
               <tbody>
                 {patents.map((p) => (
                   <tr
-                    key={p.no}
+                    key={p.no || p.title}
                     className="border-t border-structural/10 align-top"
                   >
                     <td className="px-4 py-4 font-mono text-xs">
