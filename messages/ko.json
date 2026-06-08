@@ -37,7 +37,7 @@
   "home": {
     "hero": {
       "tag": "WSB · BOTANICAL DRUG INGREDIENT",
-      "subhead": "정밀제어 스마트팜과 MAT 기술로 유효성분 함량과 배치 품질을 표준화한 식물의약품 원료를 생산합니다.",
+      "subhead": "노지에서는 불가능했던 배치 동일 품질. 정밀제어 스마트팜과 MAT 기술로 식물의약품 원료를 표준화합니다.",
       "batchMeta": "BATCH · WSB-2026-001",
       "overlayLabel1": "SAPONIN · +8×",
       "overlayLabel2": "pH 5.8 · EC 1.4",
@@ -50,7 +50,7 @@
         { "label": "CERTIFICATION", "value": "Green Bio", "caption": "그린바이오 기업 인정" },
         { "label": "STATUS", "value": "Venture", "caption": "벤처기업 및 기업부설연구소" },
         { "label": "IP PORTFOLIO", "value": "Patents", "caption": "MAT·수경재배·소재화 특허 포트폴리오" },
-        { "label": "FACILITY", "value": "Yeoncheon", "caption": "R&D 생산센터 및 생산 기지" },
+        { "label": "FACILITY", "value": "Yeoncheon", "caption": "연천 R&D 생산센터" },
         { "label": "CAPA", "value": "2.52M plants/y", "caption": "연천 생산 역량 기준" }
       ]
     },
@@ -61,7 +61,7 @@
       "lede": "연천 R&D 생산센터의 정밀제어 스마트팜과 연구 인프라가 365일 동일 조건으로 식물의약품 원료를 생산합니다.",
       "metrics": [
         { "label": "ANNUAL CAPACITY", "value": "2.52M", "caption": "연간 생산 역량 (주/년)" },
-        { "label": "SITE AREA", "value": "11,158㎡", "caption": "연천 식물공장 대지면적" },
+        { "label": "SITE AREA", "value": "11,158㎡", "caption": "연천 R&D 생산센터 대지면적" },
         { "label": "FLOOR AREA", "value": "5,774㎡", "caption": "생산·R&D 연면적" },
         { "label": "SITE", "value": "Yeoncheon", "caption": "연천 R&D 생산센터" }
       ],
@@ -95,7 +95,7 @@
         "traction": {
           "label": "ANNUAL CAPACITY",
           "value": "2.52M",
-          "caption": "연천 생산센터 연간 생산 역량"
+          "caption": "연천 R&D 생산센터 연간 생산 역량"
         }
       }
     },
@@ -106,7 +106,7 @@
       "problem": {
         "label": "PROBLEM",
         "title": "표준화 불가능한 천연물",
-        "body": "노지와 온실 재배는 기후 토양 채집 시기 농약 오염 등 통제 불가능한 변수에 노출됩니다. 동일 식물이라도 유효성분 함량과 화학적 구성이 매번 달라져 의약품 표준화가 사실상 불가능합니다."
+        "body": "노지와 온실 재배는 기후·토양·채집 시기·농약 오염 등 통제 불가능한 변수에 노출됩니다. 동일 식물이라도 유효성분 함량과 화학적 구성이 매번 달라져 의약품 표준화가 사실상 불가능합니다."
       },
       "opportunity": {
         "label": "OPPORTUNITY",
@@ -197,7 +197,7 @@
       "sectionTag": "PROVEN CAPABILITY",
       "sectionMeta": "04 / CAPACITY & EVIDENCE",
       "heading": "데이터로 입증된 기술.\n규모로 뒷받침되는 생산 역량.",
-      "lede": "MAT와 정밀제어 스마트팜은 유효성분 증대와 배치 일관성을 데이터로 입증합니다. 연천 생산센터의 생산 역량과 임상 원료 공급 실적이 이를 뒷받침합니다.",
+      "lede": "MAT와 정밀제어 스마트팜은 유효성분 증대와 배치 일관성을 데이터로 입증합니다. 연천 R&D 생산센터의 생산 역량과 임상 원료 공급 실적이 이를 뒷받침합니다.",
       "kpis": {
         "saponin": {
           "label": "SAPONIN ↑",
@@ -216,7 +216,7 @@
         "traction": {
           "label": "ANNUAL CAPACITY",
           "value": "2.52M",
-          "caption": "연천 생산센터 연간 생산 역량 (개체 기준)",
+          "caption": "연천 R&D 생산센터 연간 생산 역량 (개체 기준)",
           "source": "WSB 생산 기준",
           "asOf": "2025"
         },
@@ -262,11 +262,11 @@
           "label": "PILLAR 03",
           "title": "Phytopresso",
           "subtitle": "자체 브랜드로 기술 검증",
-          "body": "Phytochemical Espresso. 천연 기능성 물질의 고농축 라인. 청삼 수경인삼을 베이스로 한 프리미엄 헬스케어 제품군으로 기술 가치를 시장에서 직접 검증합니다.",
+          "body": "천연 기능성 물질의 고농축 브랜드. 수경인삼 기반 프리미엄 헬스케어 제품군으로 기술 가치를 시장에서 검증합니다.",
           "metricLabel": "PRODUCT LINE",
           "metricValue": "3 SKU",
           "metricCaption": "수경인삼 SHOT · 참당귀 DECURSIN · 황칠 CGA",
-          "cases": ["B2C 판매는 마케팅 전문기업에 위탁", "별도 판매 사이트로 운영"],
+          "cases": ["B2C 판매는 인플루언서 마케팅 전문기업에 위탁", "별도 판매 사이트로 운영"],
           "externalLabel": "Visit Phytopresso Store",
           "externalHref": "#"
         }

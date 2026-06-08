@@ -37,7 +37,7 @@
   "home": {
     "hero": {
       "tag": "WSB · BOTANICAL DRUG INGREDIENT",
-      "subhead": "We produce standardized botanical drug ingredients by controlling active-compound yield and batch quality through precision smart farming and MAT.",
+      "subhead": "Batch-to-batch consistency that field cultivation could never deliver. Precision smart farming and MAT standardize our botanical drug ingredients.",
       "batchMeta": "BATCH · WSB-2026-001",
       "overlayLabel1": "SAPONIN · +8×",
       "overlayLabel2": "pH 5.8 · EC 1.4",
@@ -50,7 +50,7 @@
         { "label": "CERTIFICATION", "value": "Green Bio", "caption": "Recognized Green Bio enterprise" },
         { "label": "STATUS", "value": "Venture", "caption": "Venture company and corporate R&D center" },
         { "label": "IP PORTFOLIO", "value": "Patents", "caption": "MAT, hydroponic cultivation, and material IP" },
-        { "label": "FACILITY", "value": "Yeoncheon", "caption": "R&D production center and production base" },
+        { "label": "FACILITY", "value": "Yeoncheon", "caption": "Yeoncheon R&D production center" },
         { "label": "CAPA", "value": "2.52M plants/y", "caption": "Yeoncheon production capacity basis" }
       ]
     },
@@ -61,7 +61,7 @@
       "lede": "The precision smart farm and research infrastructure at our Yeoncheon R&D production center run botanical drug ingredients under identical conditions, 365 days a year.",
       "metrics": [
         { "label": "ANNUAL CAPACITY", "value": "2.52M", "caption": "Plants per year" },
-        { "label": "SITE AREA", "value": "11,158㎡", "caption": "Yeoncheon plant factory site" },
+        { "label": "SITE AREA", "value": "11,158㎡", "caption": "Yeoncheon R&D production center site" },
         { "label": "FLOOR AREA", "value": "5,774㎡", "caption": "Production and R&D floor area" },
         { "label": "SITE", "value": "Yeoncheon", "caption": "R&D production center" }
       ],
@@ -95,7 +95,7 @@
         "traction": {
           "label": "ANNUAL CAPACITY",
           "value": "2.52M",
-          "caption": "Annual capacity, Yeoncheon center"
+          "caption": "Annual capacity, Yeoncheon R&D production center"
         }
       }
     },
@@ -197,7 +197,7 @@
       "sectionTag": "PROVEN CAPABILITY",
       "sectionMeta": "04 / CAPACITY & EVIDENCE",
       "heading": "Proven by data.\nBacked by production scale.",
-      "lede": "MAT and the precision-controlled smart farm prove active-compound gains and batch consistency with data. The Yeoncheon production center's capacity and our clinical material supply record back it up.",
+      "lede": "MAT and the precision-controlled smart farm prove active-compound gains and batch consistency with data. The Yeoncheon R&D production center's capacity and our clinical material supply record back it up.",
       "kpis": {
         "saponin": {
           "label": "SAPONIN ↑",
@@ -216,7 +216,7 @@
         "traction": {
           "label": "ANNUAL CAPACITY",
           "value": "2.52M",
-          "caption": "Annual production capacity, Yeoncheon center (per plant)",
+          "caption": "Annual production capacity, Yeoncheon R&D production center (per plant)",
           "source": "WSB production basis",
           "asOf": "2025"
         },
@@ -262,11 +262,11 @@
           "label": "PILLAR 03",
           "title": "Phytopresso",
           "subtitle": "Validating value as a brand",
-          "body": "Phytochemical Espresso. A high-concentration line of natural functional compounds. A premium healthcare lineup built on our hydroponic Cheongsam ginseng. The brand validates our material in the consumer market.",
+          "body": "A high-concentration brand of natural functional compounds. A premium healthcare lineup on hydroponic ginseng that validates our material in the consumer market.",
           "metricLabel": "PRODUCT LINE",
           "metricValue": "3 SKU",
           "metricCaption": "Hydroponic Ginseng SHOT · Angelica DECURSIN · Dendropanax CGA",
-          "cases": ["B2C distribution outsourced to a marketing specialist", "Run as a separate storefront"],
+          "cases": ["B2C distribution outsourced to an influencer-marketing specialist", "Run as a separate storefront"],
           "externalLabel": "Visit Phytopresso Store",
           "externalHref": "#"
         }

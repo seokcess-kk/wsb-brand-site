@@ -56,8 +56,8 @@
       "items": [
         { "year": "2025", "items": ["Recognized as a Green Bio enterprise"] },
         { "year": "2024", "items": ["Recognized as a Venture company", "Corporate R&D Institute recognized"] },
-        { "year": "2023", "items": ["Designed and installed plant factory in Yeoncheon"] },
-        { "year": "2022", "items": ["Crohn's-disease botanical API delivered for clinical use", "Yeoncheon R&D Center completed"] },
+        { "year": "2023", "items": ["Designed and installed the Yeoncheon R&D production center"] },
+        { "year": "2022", "items": ["Crohn's-disease botanical API delivered for clinical use", "Yeoncheon R&D production center completed"] },
         { "year": "2021", "items": ["Kale and soybean leaf hydroponic + MAT validation"] },
         { "year": "2020", "items": ["Hydroponic ginseng + MAT validation"] },
         { "year": "2019", "items": ["Goyang plant pilot center established"] },
@@ -133,14 +133,14 @@
           "field": "Low · uneven",
           "smartfarm": "Low · uneven",
           "synthetic": "High (single)",
-          "wsb": "Maximized (MAT 6~8×)"
+          "wsb": "Maximized (MAT +8×)"
         },
         {
           "label": "SAFETY",
           "field": "Vulnerable",
           "smartfarm": "High",
           "synthetic": "Long-term risk",
-          "wsb": "Complete (clean cultivation)"
+          "wsb": "Highest (clean cultivation)"
         },
         {
           "label": "MARKET POSITION",
@@ -187,7 +187,7 @@
       "tag": "BUSINESS",
       "meta": "03 / 3 PILLARS",
       "title": "One R&D engine.\nThree revenue streams.",
-      "lede": "The same MAT and precision smart farm power three businesses: solution sales, material supply, and a direct-to-consumer brand. A stable cash engine plus explosive growth momentum, at the same time."
+      "lede": "The same MAT and precision smart farm power three businesses: solution sales, material supply, and a direct-to-consumer brand. A stable revenue base and real growth momentum at the same time."
     },
     "solution": {
       "tag": "PILLAR 01 / B2B SOLUTION",
