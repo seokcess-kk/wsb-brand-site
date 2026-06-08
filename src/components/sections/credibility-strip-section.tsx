@@ -22,7 +22,7 @@ export async function CredibilityStripSection() {
               <dt className="mono-label text-[11px] text-structural/50">
                 {item.label}
               </dt>
-              <dd className="mt-2 font-sans text-lg font-bold tracking-tight text-structural">
+              <dd className="mt-2 font-sans text-lg font-bold tracking-tight text-structural tabular-nums">
                 {item.value}
               </dd>
               <dd className="mt-1 text-sm leading-snug text-structural/62">

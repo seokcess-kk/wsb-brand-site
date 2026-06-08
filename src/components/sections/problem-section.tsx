@@ -172,7 +172,7 @@ function FooterMetric({
     <div className="flex flex-col gap-1.5">
       <dt className="mono-label text-[10px] text-structural/55">{label}</dt>
       <dd
-        className={`font-sans text-xl font-bold ${
+        className={`font-sans text-xl font-bold tabular-nums ${
           accent ? "text-primary" : "text-structural"
         }`}
       >

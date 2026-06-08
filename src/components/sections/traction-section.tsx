@@ -136,7 +136,7 @@ function KpiCell({
         <dt className="mono-label text-canvas/60">{label}</dt>
       </div>
       <dd
-        className="mt-4 font-sans font-extrabold tracking-tight text-canvas leading-none"
+        className="mt-4 font-sans font-extrabold tracking-tight text-canvas leading-none tabular-nums"
         style={{
           fontSize: emphasis
             ? "clamp(3rem, 6vw, 4.75rem)"

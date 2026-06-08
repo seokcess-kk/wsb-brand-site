@@ -130,7 +130,7 @@ function StressorCard({
         {title}
       </h3>
       <p
-        className="mt-2 font-mono font-semibold tracking-tight text-primary"
+        className="mt-2 font-mono font-semibold tracking-tight text-primary tabular-nums"
         style={{
           fontSize: "clamp(1.875rem, 3.2vw, 2.25rem)",
           lineHeight: 1.1,

@@ -52,7 +52,7 @@ export default async function CompanyPage({
             {overviewItems.map((it) => (
               <div key={it.label} className="bg-canvas p-6">
                 <dt className="mono-label text-structural/55">{it.label}</dt>
-                <dd className="mt-3 font-sans text-xl font-bold tracking-tight text-structural">
+                <dd className="mt-3 font-sans text-xl font-bold tracking-tight text-structural tabular-nums">
                   {it.value}
                 </dd>
               </div>
@@ -134,7 +134,7 @@ export default async function CompanyPage({
                 >
                   <div className="flex items-center justify-between border-b border-structural/10 pb-5">
                     <p className="mono-label text-primary">{m.role}</p>
-                    <span aria-hidden className="font-mono text-[11px] text-structural/35">
+                    <span aria-hidden className="font-mono text-[11px] tabular-nums text-primary/50">
                       {String(i + 1).padStart(2, "0")}
                     </span>
                   </div>
@@ -172,7 +172,7 @@ export default async function CompanyPage({
                 key={row.year}
                 className="grid grid-cols-[100px_1fr] gap-6 bg-canvas px-2 py-6 md:px-6"
               >
-                <p className="font-mono text-lg font-bold tracking-tight text-primary">
+                <p className="font-mono text-lg font-bold tracking-tight text-primary tabular-nums">
                   {row.year}
                 </p>
                 <ul className="space-y-2 text-sm text-structural/80">

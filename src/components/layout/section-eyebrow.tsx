@@ -53,8 +53,15 @@ export function SectionEyebrow({
           </span>
         </span>
       )}
-      <span aria-hidden className="h-px w-6 bg-primary" />
-      <p className={cn("mono-label", inverse ? "text-canvas/65" : "text-primary")}>
+      <span
+        aria-hidden
+        className="relative inline-flex h-2.5 w-2.5 flex-none items-center justify-center"
+      >
+        <span className="absolute h-px w-2.5 bg-primary" />
+        <span className="absolute h-2.5 w-px bg-primary" />
+      </span>
+      <span aria-hidden className={cn("h-px w-6", inverse ? "bg-canvas/40" : "bg-structural/30")} />
+      <p className={cn("mono-label", inverse ? "text-canvas/70" : "text-primary")}>
         {tag}
       </p>
     </div>

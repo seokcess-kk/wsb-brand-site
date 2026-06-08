@@ -69,7 +69,7 @@ export default async function RnDPage({
                 {t("patents.totalLabel")}
               </p>
               <p
-                className="font-sans font-extrabold tracking-tight text-primary leading-none"
+                className="font-sans font-extrabold tracking-tight text-primary leading-none tabular-nums"
                 style={{ fontSize: "3rem" }}
               >
                 {t("patents.totalValue")}
@@ -94,7 +94,7 @@ export default async function RnDPage({
                   >
                     <td className="px-4 py-4 font-mono text-xs">
                       {p.no ? (
-                        <span className="text-primary">{p.no}</span>
+                        <span className="text-primary tabular-nums">{p.no}</span>
                       ) : (
                         <span className="text-structural/35">
                           {t("patents.pendingNo")}
@@ -102,7 +102,7 @@ export default async function RnDPage({
                       )}
                     </td>
                     <td className="px-4 py-4 text-structural">{p.title}</td>
-                    <td className="px-4 py-4 font-mono text-xs text-structural/65 text-right">
+                    <td className="px-4 py-4 font-mono text-xs text-structural/65 text-right tabular-nums">
                       {p.year}
                     </td>
                   </tr>
@@ -170,7 +170,7 @@ export default async function RnDPage({
                     {c.name}
                   </h3>
                   <p className="text-sm text-structural/65">{c.issuer}</p>
-                  <p className="font-mono text-xs text-primary md:text-right">
+                  <p className="font-mono text-xs text-primary md:text-right tabular-nums">
                     {c.year}
                   </p>
                 </MotionCard>
@@ -209,7 +209,7 @@ export default async function RnDPage({
                     {p.name}
                   </h3>
                   <p className="text-sm text-canvas/65">{p.agency}</p>
-                  <p className="font-mono text-xs text-canvas/55">{p.period}</p>
+                  <p className="font-mono text-xs text-canvas/55 tabular-nums">{p.period}</p>
                   <p
                     className={`font-mono text-[10px] font-medium uppercase tracking-[0.08em] ${
                       p.status === "수행 중" || p.status === "Ongoing"

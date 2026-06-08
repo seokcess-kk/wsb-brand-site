@@ -104,7 +104,7 @@ function PhaseCard({
       <div className="relative flex items-center gap-3">
         <span
           aria-hidden
-          className={`grid h-7 w-7 flex-none place-items-center rounded-full font-mono text-[11px] font-bold ${
+          className={`grid h-7 w-7 flex-none place-items-center rounded-full font-mono text-[11px] font-bold tabular-nums ${
             index === total - 1
               ? "bg-canvas/10 text-canvas/55 ring-1 ring-canvas/25"
               : "bg-primary text-canvas"
@@ -114,7 +114,7 @@ function PhaseCard({
         </span>
         <div className="flex flex-col leading-tight">
           <p className="mono-label text-canvas/55">{phase.label}</p>
-          <p className="mono-label text-primary">{phase.period}</p>
+          <p className="mono-label text-primary tabular-nums">{phase.period}</p>
         </div>
       </div>
 

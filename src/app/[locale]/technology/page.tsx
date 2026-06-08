@@ -94,7 +94,7 @@ export default async function TechnologyPage({
                   </p>
                   <div className="mt-auto border-t border-structural/10 pt-5">
                     <p
-                      className="font-sans font-extrabold tracking-tight text-primary leading-none"
+                      className="font-sans font-extrabold tracking-tight text-primary leading-none tabular-nums"
                       style={{ fontSize: "2.5rem" }}
                     >
                       {it.metric}

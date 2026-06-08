@@ -77,7 +77,7 @@ function FdaRow({
       />
 
       <div className="flex items-center px-4 py-6">
-        <span className="mono-label text-primary/80">{label}</span>
+        <span className="mono-label tabular-nums text-primary/80">{label}</span>
       </div>
 
       <div className="flex items-center px-4 py-6 text-sm md:text-base text-canvas/85">
@@ -127,7 +127,7 @@ function FdaCard({
         className="flex w-full items-center justify-between gap-3 px-5 py-4 text-left"
       >
         <div className="flex items-start gap-3">
-          <span className="mono-label text-primary/80">{label}</span>
+          <span className="mono-label tabular-nums text-primary/80">{label}</span>
           <span className="text-sm text-canvas/85">{fda}</span>
         </div>
         <motion.span

@@ -56,29 +56,39 @@ export async function ScaleSection() {
 
         {/* Scale metrics */}
         <dl className="mt-16 grid gap-px bg-structural/10 sm:grid-cols-2 lg:grid-cols-4">
-          {metrics.map((m) =>
-            m.pending ? (
+          {metrics.map((m, i) => {
+            const idx = String(i + 1).padStart(2, "0");
+            return (
               <div key={m.label} className="bg-canvas p-6 md:p-7">
-                <dt className="mono-label text-structural/55">{m.label}</dt>
-                <dd className="mt-4 font-sans text-base font-medium leading-snug text-structural/35">
-                  {m.caption}
-                </dd>
+                <div className="flex items-center justify-between border-b border-structural/10 pb-3">
+                  <dt className="mono-label text-structural/55">{m.label}</dt>
+                  <span
+                    aria-hidden
+                    className="font-mono text-[10px] tabular-nums text-primary/60"
+                  >
+                    {idx}
+                  </span>
+                </div>
+                {m.pending ? (
+                  <dd className="mt-4 font-sans text-base font-medium leading-snug text-structural/35">
+                    {m.caption}
+                  </dd>
+                ) : (
+                  <>
+                    <dd
+                      className="mt-4 font-sans font-extrabold leading-none tracking-tight text-primary tabular-nums"
+                      style={{ fontSize: "clamp(1.875rem, 3vw, 2.5rem)" }}
+                    >
+                      {m.value}
+                    </dd>
+                    <dd className="mt-3 text-sm leading-snug text-structural/60">
+                      {m.caption}
+                    </dd>
+                  </>
+                )}
               </div>
-            ) : (
-              <div key={m.label} className="bg-canvas p-6 md:p-7">
-                <dt className="mono-label text-structural/55">{m.label}</dt>
-                <dd
-                  className="mt-4 font-sans font-extrabold leading-none tracking-tight text-primary"
-                  style={{ fontSize: "clamp(1.875rem, 3vw, 2.5rem)" }}
-                >
-                  {m.value}
-                </dd>
-                <dd className="mt-3 text-sm leading-snug text-structural/60">
-                  {m.caption}
-                </dd>
-              </div>
-            ),
-          )}
+            );
+          })}
         </dl>
 
         {/* Facility imagery — placeholders until photography arrives */}

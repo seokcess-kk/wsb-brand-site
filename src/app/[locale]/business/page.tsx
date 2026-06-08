@@ -143,7 +143,7 @@ export default async function BusinessPage({
                   <h4 className="font-sans text-base font-semibold text-structural">
                     {p.name}
                   </h4>
-                  <p className="font-mono text-xs text-structural/55">
+                  <p className="font-mono text-xs text-structural/55 tabular-nums">
                     {p.spec}
                   </p>
                 </div>

@@ -109,7 +109,7 @@ function PillarCard({ pillar }: { pillar: Pillar }) {
         <p className="mono-label text-[10px] text-structural/55">
           {pillar.metricLabel}
         </p>
-        <p className="mt-2 font-sans text-3xl font-extrabold tracking-tight text-primary leading-none">
+        <p className="mt-2 font-sans text-3xl font-extrabold tracking-tight text-primary leading-none tabular-nums">
           {pillar.metricValue}
         </p>
         <p className="mt-2 text-xs text-structural/55">
