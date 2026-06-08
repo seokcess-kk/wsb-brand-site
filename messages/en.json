@@ -72,33 +72,6 @@
       ],
       "assetPending": "ASSET PENDING"
     },
-    "kpi": {
-      "sectionTag": "PROVEN IN NUMBERS",
-      "sectionTitle": "Our technical moat proven by data.",
-      "sectionMeta": "00 / EVIDENCE · 2026",
-      "items": {
-        "saponin": {
-          "label": "SAPONIN ↑",
-          "value": "+8×",
-          "caption": "Ginsenoside content vs. control group"
-        },
-        "batch": {
-          "label": "BATCH VARIATION",
-          "value": "<10%",
-          "caption": "Across all key compounds batch to batch"
-        },
-        "fda": {
-          "label": "FDA GUIDELINE",
-          "value": "5/5",
-          "caption": "All five botanical drug guidelines met"
-        },
-        "traction": {
-          "label": "ANNUAL CAPACITY",
-          "value": "2.52M",
-          "caption": "Annual capacity, Yeoncheon R&D production center"
-        }
-      }
-    },
     "problem": {
       "sectionTag": "MARKET CONTEXT",
       "sectionMeta": "01 / PROBLEM · OPPORTUNITY",

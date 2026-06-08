@@ -72,33 +72,6 @@
       ],
       "assetPending": "자산 대기"
     },
-    "kpi": {
-      "sectionTag": "PROVEN IN NUMBERS",
-      "sectionTitle": "데이터로 입증된 기술 해자",
-      "sectionMeta": "00 / EVIDENCE · 2026",
-      "items": {
-        "saponin": {
-          "label": "SAPONIN ↑",
-          "value": "+8×",
-          "caption": "대조군 대비 진세노사이드 함량 증대"
-        },
-        "batch": {
-          "label": "BATCH VARIATION",
-          "value": "<10%",
-          "caption": "배치 간 전 성분 오차 범위"
-        },
-        "fda": {
-          "label": "FDA GUIDELINE",
-          "value": "5/5",
-          "caption": "5대 가이드라인 완전 충족"
-        },
-        "traction": {
-          "label": "ANNUAL CAPACITY",
-          "value": "2.52M",
-          "caption": "연천 R&D 생산센터 연간 생산 역량"
-        }
-      }
-    },
     "problem": {
       "sectionTag": "MARKET CONTEXT",
       "sectionMeta": "01 / PROBLEM · OPPORTUNITY",
