@@ -79,7 +79,7 @@
       "problem": {
         "label": "PROBLEM",
         "title": "Botanicals resist standardization",
-        "body": "Field and greenhouse cultivation expose plants to uncontrollable variables. Climate soil harvest season and pesticide exposure all shift active compound content from one harvest to the next. Pharmaceutical-grade standardization is effectively impossible."
+        "body": "Field and greenhouse cultivation expose plants to uncontrollable variables. Climate, soil, harvest season, and pesticide exposure all shift active compound content from one harvest to the next. Pharmaceutical-grade standardization is effectively impossible."
       },
       "opportunity": {
         "label": "OPPORTUNITY",
@@ -102,7 +102,7 @@
         "outputLabel": "API YIELD",
         "outputValue": "+8×"
       },
-      "body": "MAT (Metabolite Agriculture Technology) targets active compound yield rather than biomass growth. Specific UV-B wavelengths brief thermal shocks regulated water deficit and mineral cues are applied as precision stressors to induce secondary metabolite production.",
+      "body": "MAT (Metabolite Agriculture Technology) targets active compound yield rather than biomass growth. Specific UV-B wavelengths, brief thermal shocks, regulated water deficit, and mineral cues are applied as precision stressors to induce secondary metabolite production.",
       "stressors": [
         {
           "label": "STRESSOR 01",
@@ -149,7 +149,7 @@
         {
           "label": "03",
           "fda": "Contaminant control",
-          "wsb": "Closed-type fully isolated facility. Heavy metals pesticides microbes blocked at source"
+          "wsb": "Closed-type fully isolated facility. Heavy metals, pesticides, and microbes blocked at source"
         },
         {
           "label": "04",
@@ -215,7 +215,7 @@
           "label": "PILLAR 01",
           "title": "B2B Solution",
           "subtitle": "Technology as a product",
-          "body": "MAT digital cultivation recipes precision control software and the controlled-environment hardware stack are sold as one integrated solution. We close the technology gap for our customers in a single deal.",
+          "body": "MAT digital cultivation recipes, precision control software, and the controlled-environment hardware stack are sold as one integrated solution. We close the technology gap for our customers in a single deal.",
           "metricLabel": "DELIVERY MODEL",
           "metricValue": "3-IN-1",
           "metricCaption": "Recipe, control software, and facility as one",
@@ -225,7 +225,7 @@
           "label": "PILLAR 02",
           "title": "B2B Material",
           "subtitle": "Standardized API supply",
-          "body": "We produce and supply cGMP-grade botanical drug APIs high-potency nutraceutical ingredients and efficacy-verified cosmetic botanicals. A stable cash-generating business.",
+          "body": "We produce and supply cGMP-grade botanical drug APIs, high-potency nutraceutical ingredients, and efficacy-verified cosmetic botanicals. A stable cash-generating business.",
           "metricLabel": "CLINICAL API SUPPLIED",
           "metricValue": "100kg",
           "metricCaption": "Crohn's-disease botanical API",
@@ -328,7 +328,7 @@
       "sectionTag": "PARTNERSHIP INQUIRY",
       "sectionMeta": "09 / CONTACT",
       "heading": "Let's start a\nglobal partnership.",
-      "lede": "API supply technology licensing clinical collaboration and more. We respond within two business days.",
+      "lede": "API supply, technology licensing, clinical collaboration, and more. We respond within two business days.",
       "form": {
         "company": "Company",
         "name": "Contact name",
