@@ -16,11 +16,17 @@ const itemVariants: Variants = {
   },
 };
 
-// Reduced motion: fade only (no rise/blur), so the staggered reveal still
-// reads as alive without spatial motion.
+// Reduced motion: fade only (no rise/blur). filter/y are set to neutral values
+// (not omitted) so a hydration mount in the full hidden state is animated back
+// to sharp instead of leaving the blur stuck.
 const itemVariantsReduced: Variants = {
-  hidden: { opacity: 0 },
-  visible: { opacity: 1, transition: { duration: 0.7, ease: EASE_OUT } },
+  hidden: { opacity: 0, y: 0, filter: "blur(0px)" },
+  visible: {
+    opacity: 1,
+    y: 0,
+    filter: "blur(0px)",
+    transition: { duration: 0.7, ease: EASE_OUT },
+  },
 };
 
 type SectionProps = {

@@ -30,12 +30,14 @@ export function RevealOnView({
   const inView = useInView(ref, { once: true, amount });
   const reduced = useSafeReducedMotion();
 
+  // Reduced motion fades opacity only. filter/y are still set to their neutral
+  // values (not omitted) so that if the element first mounted with the full
+  // hidden state during hydration, Framer animates the blur/offset back out
+  // rather than leaving them stuck.
   const hidden = reduced
-    ? { opacity: 0 }
+    ? { opacity: 0, y: 0, filter: "blur(0px)" }
     : { opacity: 0, y, filter: "blur(4px)" };
-  const shown = reduced
-    ? { opacity: 1 }
-    : { opacity: 1, y: 0, filter: "blur(0px)" };
+  const shown = { opacity: 1, y: 0, filter: "blur(0px)" };
 
   return (
     <motion.div
