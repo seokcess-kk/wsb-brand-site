@@ -111,6 +111,31 @@ body {
   will-change: transform;
 }
 
+/* Hero scan line sweep. Like the zoom, a CSS animation (not motion/react) and
+   intentionally not gated by reduced motion, so the "actively observed" cue
+   reaches the many visitors running with animation effects off. */
+@keyframes hero-scan {
+  0% {
+    transform: translateX(-2vw);
+    opacity: 0;
+  }
+  6% {
+    opacity: 1;
+  }
+  56% {
+    opacity: 1;
+  }
+  62%,
+  100% {
+    transform: translateX(100vw);
+    opacity: 0;
+  }
+}
+.hero-scan {
+  animation: hero-scan 12s ease-in-out infinite;
+  will-change: transform, opacity;
+}
+
 /* Subtle modular grid overlay utility (Data Overlay primitive) */
 .bg-grid {
   background-image:
