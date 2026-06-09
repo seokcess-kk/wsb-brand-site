@@ -66,9 +66,9 @@
         { "label": "SITE", "value": "Yeoncheon", "caption": "R&D production center" }
       ],
       "photos": [
-        { "caption": "Precision smart farm facility", "src": "/facility-rows.jpg" },
-        { "caption": "Multi-tier hydroponic production line", "src": "/facility-line.jpg" },
-        { "caption": "Botanical material R&D", "src": "/facility-rnd.jpg" }
+        { "caption": "Precision vertical farm production hall", "src": "/scale-hall.jpg" },
+        { "caption": "Yeoncheon R&D production center", "src": "/facility-exterior.jpg" },
+        { "caption": "Precise observation · botanical material R&D", "src": "/facility-lab.jpg" }
       ],
       "assetPending": "ASSET PENDING"
     },

@@ -66,9 +66,9 @@
         { "label": "SITE", "value": "Yeoncheon", "caption": "연천 R&D 생산센터" }
       ],
       "photos": [
-        { "caption": "정밀제어 스마트팜 시설 전경", "src": "/facility-rows.jpg" },
-        { "caption": "다단 수경재배 생산 라인", "src": "/facility-line.jpg" },
-        { "caption": "정밀 관측 · 식물 소재 R&D", "src": "/facility-rnd.jpg" }
+        { "caption": "정밀제어 수직농장 생산동", "src": "/scale-hall.jpg" },
+        { "caption": "연천 R&D 생산센터 전경", "src": "/facility-exterior.jpg" },
+        { "caption": "정밀 관측 · 식물 소재 R&D", "src": "/facility-lab.jpg" }
       ],
       "assetPending": "자산 대기"
     },

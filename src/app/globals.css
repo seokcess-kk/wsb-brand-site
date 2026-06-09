@@ -78,6 +78,39 @@ body {
   overflow-wrap: break-word;
 }
 
+/* Light green grade for facility/R&D photography (item 2 of 2026-06 client
+   feedback: a consistent "precisely observed" technical tone over mixed-source
+   photos, while keeping plants verdant). A gentle desaturate + saturation lift
+   unifies white balance without flattening to monochrome; the Scale photos add
+   a faint green wash on top to pull casts together. `-strong` darkens for the
+   text-bearing hero. */
+.photo-grade-green {
+  filter: grayscale(0.18) saturate(1.22) brightness(1.02) contrast(1.04);
+}
+.photo-grade-green-strong {
+  filter: grayscale(0.22) saturate(1.16) brightness(0.72) contrast(1.07);
+}
+
+/* Hero ambient zoom (Ken Burns). Deliberately a CSS animation, not a motion/
+   react one, and intentionally NOT listed in the reduced-motion block below:
+   a large share of visitors (notably Windows with animation effects off) report
+   prefers-reduced-motion, and the client wants this gentle depth to reach them
+   too. It is a very slow, non-interactive scale drift — the input-driven motion
+   (mouse parallax, scan-line sweep) still respects reduced motion. */
+@keyframes hero-kenburns {
+  0%,
+  100% {
+    transform: scale(1.04);
+  }
+  50% {
+    transform: scale(1.12);
+  }
+}
+.hero-kenburns {
+  animation: hero-kenburns 34s ease-in-out infinite;
+  will-change: transform;
+}
+
 /* Subtle modular grid overlay utility (Data Overlay primitive) */
 .bg-grid {
   background-image:

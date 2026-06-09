@@ -40,6 +40,9 @@ yarn-error.log*
 # private reference materials (company PDFs, planning docs)
 reference/
 
+# raw source photography (only the curated, optimized subset lives in public/)
+images/
+
 # vercel
 .vercel
 

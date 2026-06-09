@@ -145,7 +145,7 @@ function PhotoWell({
   const tick = src ? "border-canvas/40" : "border-structural/20";
   return (
     <div
-      className="group relative w-full overflow-hidden bg-structural/[0.04] transition-colors duration-500 hover:bg-structural/[0.06]"
+      className="group relative isolate w-full overflow-hidden bg-structural/[0.04] transition-colors duration-500 hover:bg-structural/[0.06]"
       style={{ aspectRatio: ratio }}
     >
       {src ? (
@@ -155,7 +155,13 @@ function PhotoWell({
             alt={caption}
             fill
             sizes={sizes}
-            className="object-cover transition-transform duration-700 group-hover:scale-[1.03]"
+            className="object-cover photo-grade-green transition-transform duration-700 group-hover:scale-[1.03]"
+          />
+          {/* Light green wash to unify mixed-source photos (verdant greens stay,
+              other casts pull gently toward Deep Cultivation Green). */}
+          <div
+            aria-hidden
+            className="absolute inset-0 bg-primary/15 mix-blend-multiply"
           />
           <div
             aria-hidden

@@ -1,9 +1,9 @@
-import Image from "next/image";
 import { getTranslations } from "next-intl/server";
 import { ArrowRight, ArrowUpRight } from "lucide-react";
 import { Link } from "@/i18n/navigation";
 import { DataOverlayPlant } from "@/components/visual/data-overlay-plant";
 import { RevealWords } from "@/components/motion/reveal-words";
+import { HeroBackdrop } from "@/components/sections/hero-backdrop";
 
 export async function HeroSection() {
   const t = await getTranslations("home.hero");
@@ -16,31 +16,19 @@ export async function HeroSection() {
       aria-labelledby="hero-heading"
       className="relative isolate flex min-h-[90vh] items-center overflow-hidden bg-structural text-canvas"
     >
-      {/* HERO BACKGROUND — authentic Yeoncheon vertical-farm photograph */}
-      <div aria-hidden className="absolute inset-0 -z-20 bg-structural">
-        <Image
-          src="/facility-hero.jpg"
-          alt=""
-          fill
-          priority
-          sizes="100vw"
-          className="object-cover object-center"
-        />
-      </div>
-
-      {/* Legibility overlay (keeps the left-aligned text readable over the photo) */}
-      <div
-        aria-hidden
-        className="absolute inset-0 -z-10 bg-gradient-to-r from-structural/90 via-structural/60 to-structural/20"
-      />
+      {/* HERO BACKGROUND — authentic Yeoncheon vertical-farm corridor, graded
+          and animated (cinematic drift + live telemetry) so the first screen
+          reads as an overwhelming, actively observed facility (item 1+2 of the
+          2026-06 client feedback). */}
+      <HeroBackdrop src="/hero-farm-corridor.jpg" />
 
       <div className="mx-auto w-full max-w-7xl px-6 py-24 md:py-28">
         <div className="grid items-center gap-16 lg:grid-cols-[1.25fr_1fr] lg:gap-16">
           {/* LEFT */}
           <div className="space-y-10">
             <div className="flex items-center gap-3">
-              <span aria-hidden className="inline-block h-px w-8 bg-primary" />
-              <p className="mono-label text-primary">{t("tag")}</p>
+              <span aria-hidden className="inline-block h-px w-8 bg-canvas/70" />
+              <p className="mono-label text-canvas/90">{t("tag")}</p>
             </div>
 
             <h1
