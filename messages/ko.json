@@ -57,7 +57,7 @@
     "scale": {
       "sectionTag": "PRODUCTION & R&D SCALE",
       "sectionMeta": "SCALE · YEONCHEON",
-      "heading": "데이터는 규모 위에서 증명됩니다.",
+      "heading": "데이터는 규모 위에서 증명됩니다",
       "lede": "연천 R&D 생산센터의 정밀제어 스마트팜과 연구 인프라가 365일 동일 조건으로 식물의약품 원료를 생산합니다.",
       "metrics": [
         { "label": "ANNUAL CAPACITY", "value": "2.52M", "caption": "연간 생산 역량 (주/년)" },
@@ -75,7 +75,7 @@
     "problem": {
       "sectionTag": "MARKET CONTEXT",
       "sectionMeta": "01 / PROBLEM · OPPORTUNITY",
-      "heading": "표준화의 벽에 막힌 천연물 시장.\n60조 식물의약품 시장이 답을 기다립니다.",
+      "heading": "표준화의 벽에 막힌 천연물 시장\n60조 식물의약품 시장이 답을 기다립니다",
       "problem": {
         "label": "PROBLEM",
         "title": "표준화 불가능한 천연물",
@@ -95,7 +95,7 @@
     "mat": {
       "sectionTag": "CORE TECHNOLOGY",
       "sectionMeta": "02 / MAT",
-      "heading": "MAT.\n식물 본연의 방어 기전을 깨워\n유효성분을 의도적으로 끌어냅니다.",
+      "heading": "MAT\n식물 본연의 방어 기전을 깨워\n유효성분을 의도적으로 끌어냅니다",
       "diagram": {
         "stressLabel": "STRESS · 4 INPUTS",
         "plantLabel": "PANAX · MAT",
@@ -133,7 +133,7 @@
     "fda": {
       "sectionTag": "REGULATORY FIT",
       "sectionMeta": "03 / FDA STANDARDIZATION",
-      "heading": "FDA 5대 가이드라인.\nWSB는 핵심 요건에 맞춘 생산 체계를 구축합니다.",
+      "heading": "FDA 5대 가이드라인\nWSB는 핵심 요건에 맞춘 생산 체계를 구축합니다",
       "lede": "미국 FDA가 식물의약품 허가를 위해 제시하는 5가지 핵심 기준입니다. 기존 농업 방식으로는 동시에 대응하기 어려운 시장 진입 장벽입니다. WSB의 정밀제어 스마트팜과 MAT는 원료 동일성·기록·오염 관리·품질 일관성·장기 공급 안정성에 대응하는 구조를 갖춥니다.",
       "rows": [
         {
@@ -169,7 +169,7 @@
     "traction": {
       "sectionTag": "PROVEN CAPABILITY",
       "sectionMeta": "04 / CAPACITY & EVIDENCE",
-      "heading": "데이터로 입증된 기술.\n규모로 뒷받침되는 생산 역량.",
+      "heading": "데이터로 입증된 기술\n규모로 뒷받침되는 생산 역량",
       "lede": "MAT와 정밀제어 스마트팜은 유효성분 증대와 배치 일관성을 데이터로 입증합니다. 연천 R&D 생산센터의 생산 역량과 임상 원료 공급 실적이 이를 뒷받침합니다.",
       "kpis": {
         "saponin": {
@@ -208,7 +208,7 @@
     "business": {
       "sectionTag": "BUSINESS MODEL",
       "sectionMeta": "05 / 3 PILLARS",
-      "heading": "기술. 소재. 브랜드.\n3축 수직계열화.",
+      "heading": "기술 · 소재 · 브랜드\n3축 수직계열화",
       "lede": "동일한 MAT와 정밀제어 스마트팜 기술이 솔루션 판매·소재 공급·자체 브랜드 3개 사업으로 확장됩니다.",
       "pillars": [
         {
@@ -249,7 +249,7 @@
       "sectionTag": "R&D PIPELINE",
       "sectionMeta": "06 / 6 BOTANICALS",
       "viewAll": "전체 6개 파이프라인 보기",
-      "heading": "인삼을 시작으로 6개 파이프라인.\n동일 플랫폼이 계속 확장됩니다.",
+      "heading": "인삼을 시작으로 6개 파이프라인\n동일 플랫폼이 계속 확장됩니다",
       "lede": "같은 정밀제어 스마트팜과 MAT 위에서 식물 종이 더해질 때마다 신규 API가 추가됩니다. 인삼은 이미 상용화 단계, 대청은 임상 원료 납품 단계, 나머지 4종은 R&D 완료 상태입니다.",
       "stages": ["탐색", "R&D", "상용화 준비", "상용화"],
       "items": [
@@ -300,7 +300,7 @@
     "news": {
       "sectionTag": "LATEST UPDATES",
       "sectionMeta": "08 / NEWS",
-      "heading": "최신 소식.",
+      "heading": "최신 소식",
       "lede": "계약·임상 원료 공급·인증·미디어 노출 등 사업 진행 상황을 업데이트합니다.",
       "viewAll": "모든 보도자료 보기",
       "items": [
@@ -327,7 +327,7 @@
     "contact": {
       "sectionTag": "PARTNERSHIP INQUIRY",
       "sectionMeta": "09 / CONTACT",
-      "heading": "글로벌 파트너십을\n시작하세요.",
+      "heading": "글로벌 파트너십을\n시작하세요",
       "lede": "API 공급·기술 솔루션 도입·임상 협업 등 모든 사업 문의에 영업일 기준 2일 이내 회신드립니다.",
       "form": {
         "company": "회사명",
@@ -366,7 +366,7 @@
     "roadmap": {
       "sectionTag": "GROWTH ROADMAP",
       "sectionMeta": "07 / 3 PHASES",
-      "heading": "Phase 1 기반.\nPhase 2 확장.\nPhase 3 표준 선점.",
+      "heading": "Phase 1 기반\nPhase 2 확장\nPhase 3 표준 선점",
       "lede": "FDA 가이드라인 충족과 국내 트랙션 확보를 1단계로, 글로벌 진출과 cGMP 확장을 2단계로, 보태니컬 데이터 플랫폼으로의 진화를 3단계 목표로 둡니다.",
       "phases": [
         {

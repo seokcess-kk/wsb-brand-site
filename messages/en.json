@@ -57,7 +57,7 @@
     "scale": {
       "sectionTag": "PRODUCTION & R&D SCALE",
       "sectionMeta": "SCALE · YEONCHEON",
-      "heading": "Data is proven at scale.",
+      "heading": "Data is proven at scale",
       "lede": "The precision smart farm and research infrastructure at our Yeoncheon R&D production center run botanical drug ingredients under identical conditions, 365 days a year.",
       "metrics": [
         { "label": "ANNUAL CAPACITY", "value": "2.52M", "caption": "Plants per year" },
@@ -75,7 +75,7 @@
     "problem": {
       "sectionTag": "MARKET CONTEXT",
       "sectionMeta": "01 / PROBLEM · OPPORTUNITY",
-      "heading": "Botanicals shut out by the wall of standardization.\nA $45B botanical drug market awaits the answer.",
+      "heading": "Botanicals shut out by the wall of standardization\nA $45B botanical drug market awaits the answer",
       "problem": {
         "label": "PROBLEM",
         "title": "Botanicals resist standardization",
@@ -95,7 +95,7 @@
     "mat": {
       "sectionTag": "CORE TECHNOLOGY",
       "sectionMeta": "02 / MAT",
-      "heading": "MAT.\nWe trigger the plant's own defense\nto surface active compounds on purpose.",
+      "heading": "MAT\nWe trigger the plant's own defense\nto surface active compounds on purpose",
       "diagram": {
         "stressLabel": "STRESS · 4 INPUTS",
         "plantLabel": "PANAX · MAT",
@@ -133,7 +133,7 @@
     "fda": {
       "sectionTag": "REGULATORY FIT",
       "sectionMeta": "03 / FDA STANDARDIZATION",
-      "heading": "The FDA's five guidelines.\nWSB is built around the core production requirements.",
+      "heading": "The FDA's five guidelines\nWSB is built around the core production requirements",
       "lede": "The five core requirements the FDA applies to botanical drug approval. Conventional cultivation struggles to address them at the same time. WSB's precision-controlled smart farm and MAT are structured around raw-material identity, records, contaminant control, quality consistency, and long-term supply stability.",
       "rows": [
         {
@@ -169,7 +169,7 @@
     "traction": {
       "sectionTag": "PROVEN CAPABILITY",
       "sectionMeta": "04 / CAPACITY & EVIDENCE",
-      "heading": "Proven by data.\nBacked by production scale.",
+      "heading": "Proven by data\nBacked by production scale",
       "lede": "MAT and the precision-controlled smart farm prove active-compound gains and batch consistency with data. The Yeoncheon R&D production center's capacity and our clinical material supply record back it up.",
       "kpis": {
         "saponin": {
@@ -208,7 +208,7 @@
     "business": {
       "sectionTag": "BUSINESS MODEL",
       "sectionMeta": "05 / 3 PILLARS",
-      "heading": "Technology. Material. Brand.\nA three-pillar vertical stack.",
+      "heading": "Technology · Material · Brand\nA three-pillar vertical stack",
       "lede": "The same MAT and precision-controlled smart farm power three businesses: solution sales, material supply, and a direct-to-consumer brand.",
       "pillars": [
         {
@@ -249,7 +249,7 @@
       "sectionTag": "R&D PIPELINE",
       "sectionMeta": "06 / 6 BOTANICALS",
       "viewAll": "See all 6 pipelines",
-      "heading": "Six botanical pipelines on the same platform.",
+      "heading": "Six botanical pipelines on the same platform",
       "lede": "Each new plant species adds a new API on top of the same precision-controlled smart farm and MAT stack. Ginseng is already commercial. Isatis is shipping clinical material. Four more are at R&D completion.",
       "stages": ["Discovery", "R&D", "Pre-launch", "Commercial"],
       "items": [
@@ -300,7 +300,7 @@
     "news": {
       "sectionTag": "LATEST UPDATES",
       "sectionMeta": "08 / NEWS",
-      "heading": "Latest updates.",
+      "heading": "Latest updates",
       "lede": "Contracts, clinical material supply, certifications, and media coverage from WSB's operating pipeline.",
       "viewAll": "See all news",
       "items": [
@@ -327,7 +327,7 @@
     "contact": {
       "sectionTag": "PARTNERSHIP INQUIRY",
       "sectionMeta": "09 / CONTACT",
-      "heading": "Let's start a\nglobal partnership.",
+      "heading": "Let's start a\nglobal partnership",
       "lede": "API supply, technology licensing, clinical collaboration, and more. We respond within two business days.",
       "form": {
         "company": "Company",
@@ -366,7 +366,7 @@
     "roadmap": {
       "sectionTag": "GROWTH ROADMAP",
       "sectionMeta": "07 / 3 PHASES",
-      "heading": "Phase 1 foundation.\nPhase 2 expansion.\nPhase 3 standard.",
+      "heading": "Phase 1 foundation\nPhase 2 expansion\nPhase 3 standard",
       "lede": "FDA compliance and Korean traction in Phase 1. Global expansion and cGMP scale-up in Phase 2. Evolution into a botanical data platform in Phase 3.",
       "phases": [
         {
