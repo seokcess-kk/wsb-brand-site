@@ -39,15 +39,24 @@ export function RevealWords({
   const active = triggerOnView ? inView : true;
 
   if (reduced) {
+    // Fade the whole block in (opacity only — no per-word rise/blur). Honors
+    // triggerOnView so headings fade on scroll and the hero fades on mount.
     return (
-      <span ref={ref} className={className} aria-label={text}>
+      <motion.span
+        ref={ref}
+        className={className}
+        aria-label={text}
+        initial={{ opacity: 0 }}
+        animate={{ opacity: active ? 1 : 0 }}
+        transition={{ duration: 0.7, delay, ease: [0.22, 1, 0.36, 1] }}
+      >
         {lines.map((line, lineIdx) => (
           <Fragment key={lineIdx}>
             {lineIdx > 0 && <br aria-hidden />}
             {line}
           </Fragment>
         ))}
-      </span>
+      </motion.span>
     );
   }
 

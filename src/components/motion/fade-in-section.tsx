@@ -16,6 +16,13 @@ const itemVariants: Variants = {
   },
 };
 
+// Reduced motion: fade only (no rise/blur), so the staggered reveal still
+// reads as alive without spatial motion.
+const itemVariantsReduced: Variants = {
+  hidden: { opacity: 0 },
+  visible: { opacity: 1, transition: { duration: 0.7, ease: EASE_OUT } },
+};
+
 type SectionProps = {
   children: ReactNode;
   className?: string;
@@ -56,16 +63,10 @@ export function FadeInSection({
     amount,
     margin: "0px 0px -15% 0px",
   });
-  const reduced = useSafeReducedMotion();
 
-  if (reduced) {
-    return (
-      <div ref={ref} id={id} className={className} {...aria}>
-        {children}
-      </div>
-    );
-  }
-
+  // The container only orchestrates stagger timing (no visual props), so it is
+  // identical for reduced motion; the FadeInItem children decide whether to add
+  // spatial motion on top of the fade.
   return (
     <motion.div
       ref={ref}
@@ -95,11 +96,11 @@ type ItemProps = {
  */
 export function FadeInItem({ children, className }: ItemProps) {
   const reduced = useSafeReducedMotion();
-  if (reduced) {
-    return <div className={className}>{children}</div>;
-  }
   return (
-    <motion.div variants={itemVariants} className={className}>
+    <motion.div
+      variants={reduced ? itemVariantsReduced : itemVariants}
+      className={className}
+    >
       {children}
     </motion.div>
   );

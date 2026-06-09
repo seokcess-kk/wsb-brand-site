@@ -14,9 +14,9 @@ type Props = {
 };
 
 /**
- * Fades in and rises once scrolled into view. When the user prefers reduced
- * motion the content renders in its final state without animation. This also
- * keeps automated screenshots usable.
+ * Fades in once scrolled into view. Reduced-motion visitors still get the
+ * fade (opacity is not a vestibular trigger and motion/react keeps it under
+ * reduced motion); the rise + blur are added only when motion is allowed.
  */
 export function RevealOnView({
   children,
@@ -30,19 +30,18 @@ export function RevealOnView({
   const inView = useInView(ref, { once: true, amount });
   const reduced = useSafeReducedMotion();
 
-  if (reduced) {
-    return <div className={className}>{children}</div>;
-  }
+  const hidden = reduced
+    ? { opacity: 0 }
+    : { opacity: 0, y, filter: "blur(4px)" };
+  const shown = reduced
+    ? { opacity: 1 }
+    : { opacity: 1, y: 0, filter: "blur(0px)" };
 
   return (
     <motion.div
       ref={ref}
-      initial={{ opacity: 0, y, filter: "blur(4px)" }}
-      animate={
-        inView
-          ? { opacity: 1, y: 0, filter: "blur(0px)" }
-          : { opacity: 0, y, filter: "blur(4px)" }
-      }
+      initial={hidden}
+      animate={inView ? shown : hidden}
       transition={{ duration, delay, ease: [0.22, 1, 0.36, 1] }}
       className={className}
     >
