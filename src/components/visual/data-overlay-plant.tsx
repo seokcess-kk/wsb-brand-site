@@ -2,6 +2,7 @@
 
 import { motion, useMotionValue, useSpring, useTransform } from "motion/react";
 import { useEffect, useRef, useState } from "react";
+import { useHasMounted } from "@/hooks/use-has-mounted";
 
 type Labels = {
   overlay1: string;
@@ -148,22 +149,29 @@ function PulseLabel({
   className?: string;
   delay: number;
 }) {
+  // Render the label visible until mounted, then start the ambient pulse. This
+  // keeps the readout legible without client JS instead of leaving it stuck at
+  // opacity 0. initial={false} keeps opacity:0 out of the SSR markup.
+  const mounted = useHasMounted();
   return (
     <motion.div
-      initial={{ opacity: 0, y: 6 }}
-      animate={{ opacity: [0, 1, 0.7, 1] }}
-      transition={{
-        opacity: {
-          delay,
-          duration: 3.2,
-          times: [0, 0.18, 0.6, 1],
-          repeat: Infinity,
-          repeatType: "reverse",
-          repeatDelay: 1.2,
-          ease: "easeInOut",
-        },
-        y: { delay, duration: 0.6, ease: [0.22, 1, 0.36, 1] },
-      }}
+      initial={false}
+      animate={mounted ? { opacity: [0, 1, 0.7, 1] } : { opacity: 1 }}
+      transition={
+        mounted
+          ? {
+              opacity: {
+                delay,
+                duration: 3.2,
+                times: [0, 0.18, 0.6, 1],
+                repeat: Infinity,
+                repeatType: "reverse",
+                repeatDelay: 1.2,
+                ease: "easeInOut",
+              },
+            }
+          : { duration: 0 }
+      }
       className={`mono-label text-[11px] tracking-widest pointer-events-none ${className}`}
     >
       {children}

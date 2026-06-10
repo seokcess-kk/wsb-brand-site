@@ -111,6 +111,23 @@ body {
   will-change: transform;
 }
 
+/* Hero copy entrance. A pure CSS fade-up (not motion/react) so it runs and
+   completes to the visible state even when client JS never executes, instead
+   of leaving the headline gated behind an opacity:0 reveal. Reduced-motion
+   visitors skip the animation and just see the text. */
+@keyframes reveal-fade-up {
+  from {
+    opacity: 0;
+    transform: translateY(14px);
+    filter: blur(6px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+    filter: none;
+  }
+}
+
 /* Hero scan line sweep. Like the zoom, a CSS animation (not motion/react) and
    intentionally not gated by reduced motion, so the "actively observed" cue
    reaches the many visitors running with animation effects off. */

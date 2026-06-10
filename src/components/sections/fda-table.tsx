@@ -4,6 +4,7 @@ import { AnimatePresence, motion, useInView } from "motion/react";
 import { useRef, useState } from "react";
 import { Check, ChevronDown } from "lucide-react";
 import { useSafeReducedMotion } from "@/hooks/use-safe-reduced-motion";
+import { canObserveViewport, useHasMounted } from "@/hooks/use-has-mounted";
 
 type Row = { label: string; fda: string; wsb: string };
 
@@ -51,13 +52,18 @@ function FdaRow({
   const ref = useRef<HTMLDivElement>(null);
   const inView = useInView(ref, { once: true, amount: 0.4 });
   const reduced = useSafeReducedMotion();
+  const mounted = useHasMounted();
   const [hovered, setHovered] = useState(false);
-  const shown = reduced || inView;
+  // Stay visible until mounted and able to observe the viewport, so the row
+  // (and its copy) renders without client JS instead of being gated behind the
+  // opacity:0 reveal. Only then does inView drive the scroll reveal.
+  const canReveal = mounted && canObserveViewport();
+  const shown = reduced || !canReveal || inView;
 
   return (
     <motion.div
       ref={ref}
-      initial={reduced ? false : { opacity: 0, y: 16 }}
+      initial={false}
       animate={shown ? { opacity: 1, y: 0 } : { opacity: 0, y: 16 }}
       transition={{
         duration: 0.55,
@@ -87,7 +93,7 @@ function FdaRow({
       <div className="flex items-start gap-3 px-4 py-6 text-sm md:text-base text-canvas">
         <motion.span
           aria-hidden
-          initial={reduced ? false : { scale: 0 }}
+          initial={false}
           animate={shown ? { scale: 1 } : { scale: 0 }}
           transition={{
             duration: 0.35,

@@ -3,6 +3,7 @@
 import { motion, useInView } from "motion/react";
 import { useRef } from "react";
 import { useSafeReducedMotion } from "@/hooks/use-safe-reduced-motion";
+import { canObserveViewport, useHasMounted } from "@/hooks/use-has-mounted";
 
 type Props = {
   startYear: string;
@@ -27,7 +28,11 @@ export function GrowthCurve({
   const ref = useRef<HTMLDivElement>(null);
   const inView = useInView(ref, { once: true, amount: 0.4 });
   const reduced = useSafeReducedMotion();
-  const show = reduced || inView;
+  const mounted = useHasMounted();
+  // Render the chart fully drawn until mounted and able to observe the viewport
+  // (so it shows without client JS); only then gate on inView to animate the
+  // draw on scroll. initial={false} keeps opacity:0 out of the SSR markup.
+  const show = reduced || !(mounted && canObserveViewport()) || inView;
 
   // 10 points (CAGR ~6.7%)
   const values = Array.from({ length: 10 }, (_, i) =>
@@ -81,7 +86,7 @@ export function GrowthCurve({
         <motion.path
           d={areaPath}
           fill="url(#growthArea)"
-          initial={reduced ? false : { opacity: 0 }}
+          initial={false}
           animate={show ? { opacity: 1 } : { opacity: 0 }}
           transition={{ duration: 0.8, delay: 0.6 }}
         />
@@ -93,7 +98,7 @@ export function GrowthCurve({
           strokeWidth="1.5"
           strokeLinecap="round"
           vectorEffect="non-scaling-stroke"
-          initial={reduced ? false : { pathLength: 0 }}
+          initial={false}
           animate={show ? { pathLength: 1 } : { pathLength: 0 }}
           transition={{ duration: 1.4, ease: [0.22, 1, 0.36, 1] }}
         />
@@ -105,7 +110,7 @@ export function GrowthCurve({
           r="1.3"
           fill="#0F5132"
           fillOpacity="0.55"
-          initial={reduced ? false : { scale: 0 }}
+          initial={false}
           animate={show ? { scale: 1 } : { scale: 0 }}
           transition={{ duration: 0.4, delay: 0.4 }}
           vectorEffect="non-scaling-stroke"
@@ -115,7 +120,7 @@ export function GrowthCurve({
           cy={endPt.y}
           r="1.8"
           fill="#0F5132"
-          initial={reduced ? false : { scale: 0 }}
+          initial={false}
           animate={show ? { scale: 1 } : { scale: 0 }}
           transition={{ duration: 0.4, delay: 1.4, ease: [0.22, 1.4, 0.36, 1] }}
           vectorEffect="non-scaling-stroke"
@@ -124,7 +129,7 @@ export function GrowthCurve({
 
       {/* Pinned start label (top-left, near start point) */}
       <motion.div
-        initial={reduced ? false : { opacity: 0 }}
+        initial={false}
         animate={show ? { opacity: 1 } : { opacity: 0 }}
         transition={{ duration: 0.4, delay: 0.5 }}
         className="absolute left-2 top-2 text-left"
@@ -137,7 +142,7 @@ export function GrowthCurve({
 
       {/* Pinned end label (top-right, near end point) */}
       <motion.div
-        initial={reduced ? false : { opacity: 0 }}
+        initial={false}
         animate={show ? { opacity: 1 } : { opacity: 0 }}
         transition={{ duration: 0.4, delay: 1.5 }}
         className="absolute right-2 top-2 text-right"

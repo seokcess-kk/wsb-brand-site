@@ -3,6 +3,7 @@
 import { motion, useInView } from "motion/react";
 import { useRef } from "react";
 import { useSafeReducedMotion } from "@/hooks/use-safe-reduced-motion";
+import { canObserveViewport, useHasMounted } from "@/hooks/use-has-mounted";
 
 type Props = {
   stressLabel: string;
@@ -31,7 +32,11 @@ export function MatProcessDiagram({
   const ref = useRef<HTMLDivElement>(null);
   const inView = useInView(ref, { once: true, amount: 0.35 });
   const reduced = useSafeReducedMotion();
-  const show = reduced || inView;
+  const mounted = useHasMounted();
+  // Render the diagram in its final state until mounted and able to observe the
+  // viewport (so it shows without client JS); only then gate on inView to
+  // animate on scroll. initial={false} keeps opacity:0 out of the SSR markup.
+  const show = reduced || !(mounted && canObserveViewport()) || inView;
 
   return (
     <div
@@ -59,7 +64,7 @@ export function MatProcessDiagram({
             {STRESSORS.map((l, i) => (
               <motion.li
                 key={l}
-                initial={reduced ? false : { opacity: 0, x: -10 }}
+                initial={false}
                 animate={show ? { opacity: 1, x: 0 } : { opacity: 0, x: -10 }}
                 transition={{
                   duration: 0.45,
@@ -81,12 +86,12 @@ export function MatProcessDiagram({
         </div>
 
         {/* Arrow 1 */}
-        <FlowArrow show={show} reduced={reduced} delay={0.5} />
+        <FlowArrow show={show} delay={0.5} />
 
         {/* PLANT center */}
         <div className="flex flex-col items-center gap-3 justify-self-center">
           <motion.div
-            initial={reduced ? false : { scale: 0.8, opacity: 0 }}
+            initial={false}
             animate={
               show ? { scale: 1, opacity: 1 } : { scale: 0.8, opacity: 0 }
             }
@@ -160,11 +165,11 @@ export function MatProcessDiagram({
         </div>
 
         {/* Arrow 2 */}
-        <FlowArrow show={show} reduced={reduced} delay={1.05} />
+        <FlowArrow show={show} delay={1.05} />
 
         {/* OUTPUT */}
         <motion.div
-          initial={reduced ? false : { opacity: 0, x: 10 }}
+          initial={false}
           animate={show ? { opacity: 1, x: 0 } : { opacity: 0, x: 10 }}
           transition={{
             duration: 0.55,
@@ -199,17 +204,15 @@ export function MatProcessDiagram({
 
 function FlowArrow({
   show,
-  reduced,
   delay,
 }: {
   show: boolean;
-  reduced: boolean | null;
   delay: number;
 }) {
   return (
     <motion.div
       aria-hidden
-      initial={reduced ? false : { opacity: 0, scaleX: 0 }}
+      initial={false}
       animate={show ? { opacity: 1, scaleX: 1 } : { opacity: 0, scaleX: 0 }}
       transition={{ duration: 0.5, delay, ease: [0.22, 1, 0.36, 1] }}
       className="hidden h-px w-10 origin-left bg-primary/45 sm:block relative"
