@@ -26,7 +26,7 @@ export function NewsFilters({
           className={`px-3 py-1.5 font-mono text-[11px] font-medium uppercase tracking-[0.08em] transition-colors ${
             !category
               ? "bg-primary text-canvas"
-              : "text-structural/60 hover:bg-primary/[0.06] hover:text-primary"
+              : "text-structural/65 hover:bg-primary/[0.06] hover:text-primary"
           }`}
         >
           All
@@ -38,7 +38,7 @@ export function NewsFilters({
             className={`px-3 py-1.5 font-mono text-[11px] font-medium uppercase tracking-[0.08em] transition-colors ${
               category === c
                 ? "bg-primary text-canvas"
-                : "text-structural/60 hover:bg-primary/[0.06] hover:text-primary"
+                : "text-structural/65 hover:bg-primary/[0.06] hover:text-primary"
             }`}
           >
             {c}
@@ -49,7 +49,7 @@ export function NewsFilters({
       <form action="/admin/news" method="get" className="flex items-center gap-2">
         {category && <input type="hidden" name="category" value={category} />}
         <div className="flex items-center border border-structural/20 px-3 py-1.5">
-          <Search size={14} className="text-structural/55" />
+          <Search size={14} className="text-structural/65" />
           <input
             name="q"
             defaultValue={q}

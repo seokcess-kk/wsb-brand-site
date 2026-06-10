@@ -48,7 +48,7 @@ export async function PipelineSection() {
             <SectionEyebrow number={6} total={9} tag={t("sectionTag")} />
           </RevealOnView>
           <RevealOnView delay={0.05}>
-            <p className="mono-label text-structural/55">{t("sectionMeta")}</p>
+            <p className="mono-label text-structural/65">{t("sectionMeta")}</p>
           </RevealOnView>
         </div>
 
@@ -107,7 +107,7 @@ export async function PipelineSection() {
 
 function HeaderCell({ text }: { text: string }) {
   return (
-    <div className="bg-canvas px-5 py-3 mono-label text-structural/55">
+    <div className="bg-canvas px-5 py-3 mono-label text-structural/65">
       {text}
     </div>
   );
@@ -120,7 +120,7 @@ function PipelineRow({ item, stages }: { item: Item; stages: string[] }) {
         <p className="font-sans text-base font-semibold text-structural">
           {item.name}
         </p>
-        <p className="mono-label text-[10px] text-structural/55 italic">
+        <p className="mono-label text-[10px] text-structural/65 italic">
           {item.latin}
         </p>
       </Cell>
@@ -208,7 +208,7 @@ function StageBar({
           <span
             key={s}
             className={`mono-label text-[11px] truncate px-1 ${
-              i <= current ? "text-primary" : "text-structural/55"
+              i <= current ? "text-primary" : "text-structural/65"
             }`}
           >
             {s}

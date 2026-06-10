@@ -26,7 +26,7 @@ export function QuickArchiveButton({ id }: { id: number }) {
         disabled={pending}
         aria-busy={pending}
         onClick={handleClick}
-        className="inline-flex items-center gap-1 text-xs text-structural/55 hover:text-primary disabled:opacity-50"
+        className="inline-flex items-center gap-1 text-xs text-structural/65 hover:text-primary disabled:opacity-50"
       >
         <Archive size={12} />
         보관

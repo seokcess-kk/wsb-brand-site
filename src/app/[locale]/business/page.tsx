@@ -127,7 +127,7 @@ export default async function BusinessPage({
                   {/* Card-play indicator: spins on hover */}
                   <span
                     aria-hidden
-                    className="absolute bottom-3 right-3 grid h-7 w-7 place-items-center rounded-full border border-structural/15 bg-canvas/70 text-structural/55 backdrop-blur transition-all duration-500 group-hover:rotate-90 group-hover:border-primary/40 group-hover:text-primary"
+                    className="absolute bottom-3 right-3 grid h-7 w-7 place-items-center rounded-full border border-structural/15 bg-canvas/70 text-structural/65 backdrop-blur transition-all duration-500 group-hover:rotate-90 group-hover:border-primary/40 group-hover:text-primary"
                   >
                     <Plus size={12} strokeWidth={2.25} />
                   </span>
@@ -141,7 +141,7 @@ export default async function BusinessPage({
                   <h4 className="font-sans text-base font-semibold text-structural">
                     {p.name}
                   </h4>
-                  <p className="font-mono text-xs text-structural/55 tabular-nums">
+                  <p className="font-mono text-xs text-structural/65 tabular-nums">
                     {p.spec}
                   </p>
                 </div>

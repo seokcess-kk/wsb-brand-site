@@ -113,7 +113,7 @@ function NewsCard({
       </div>
 
       <div className="flex items-center gap-4">
-        <p className="mono-label text-[10px] text-structural/55">
+        <p className="mono-label text-[10px] text-structural/65">
           {post.publishedAt
             ? new Date(post.publishedAt).toISOString().slice(0, 10)
             : "—"}

@@ -108,13 +108,13 @@ export function ChaosScatter({
       </svg>
 
       {/* Axis labels (overlay) */}
-      <div className="absolute left-2 top-2 mono-label text-[11px] text-structural/55">
+      <div className="absolute left-2 top-2 mono-label text-[11px] text-structural/65">
         {yLabel}
       </div>
       <div className="absolute right-2 top-[42%] mono-label text-[11px] text-primary/80">
         {toleranceLabel}
       </div>
-      <div className="absolute bottom-2 left-1/2 -translate-x-1/2 mono-label text-[11px] text-structural/55 whitespace-nowrap">
+      <div className="absolute bottom-2 left-1/2 -translate-x-1/2 mono-label text-[11px] text-structural/65 whitespace-nowrap">
         {xLabel}
       </div>
     </div>

@@ -62,7 +62,7 @@ export async function NewsSection() {
             <SectionEyebrow number={8} total={9} tag={t("sectionTag")} />
           </RevealOnView>
           <RevealOnView delay={0.05}>
-            <p className="mono-label text-structural/55">{t("sectionMeta")}</p>
+            <p className="mono-label text-structural/65">{t("sectionMeta")}</p>
           </RevealOnView>
         </div>
 
@@ -134,7 +134,7 @@ function NewsCard({ item }: { item: Item }) {
 
       {/* Meta row */}
       <div className="flex items-center gap-4">
-        <p className="mono-label text-[11px] text-structural/55">{item.date}</p>
+        <p className="mono-label text-[11px] text-structural/65">{item.date}</p>
         <span aria-hidden className="h-px w-3 bg-structural/30" />
         <p className="mono-label text-[11px] text-primary">{item.category}</p>
       </div>

@@ -24,7 +24,7 @@ export async function ProblemSection() {
             <SectionEyebrow number={1} total={9} tag={t("sectionTag")} />
           </RevealOnView>
           <RevealOnView delay={0.05}>
-            <p className="mono-label text-structural/55">{t("sectionMeta")}</p>
+            <p className="mono-label text-structural/65">{t("sectionMeta")}</p>
           </RevealOnView>
         </div>
 
@@ -126,7 +126,7 @@ function CompareCard({
         />
         <p
           className={`mono-label ${
-            accent === "primary" ? "text-primary" : "text-structural/60"
+            accent === "primary" ? "text-primary" : "text-structural/65"
           }`}
         >
           {label}
@@ -170,7 +170,7 @@ function FooterMetric({
 }) {
   return (
     <div className="flex flex-col gap-1.5">
-      <dt className="mono-label text-[10px] text-structural/55">{label}</dt>
+      <dt className="mono-label text-[10px] text-structural/65">{label}</dt>
       <dd
         className={`font-sans text-xl font-bold tabular-nums ${
           accent ? "text-primary" : "text-structural"

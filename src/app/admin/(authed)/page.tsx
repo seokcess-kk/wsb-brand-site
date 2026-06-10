@@ -71,7 +71,7 @@ export default async function AdminDashboard() {
       </dl>
 
       <section className="space-y-4">
-        <h2 className="font-mono text-[11px] font-medium uppercase tracking-[0.08em] text-structural/55">
+        <h2 className="font-mono text-[11px] font-medium uppercase tracking-[0.08em] text-structural/65">
           QUICK ACTIONS
         </h2>
         <div className="grid gap-px bg-structural/10 sm:grid-cols-2">
@@ -89,11 +89,11 @@ export default async function AdminDashboard() {
       </section>
 
       <section className="space-y-4">
-        <h2 className="font-mono text-[11px] font-medium uppercase tracking-[0.08em] text-structural/55">
+        <h2 className="font-mono text-[11px] font-medium uppercase tracking-[0.08em] text-structural/65">
           RECENT INQUIRIES
         </h2>
         {recent.length === 0 ? (
-          <p className="text-sm text-structural/55">최근 문의가 없습니다.</p>
+          <p className="text-sm text-structural/65">최근 문의가 없습니다.</p>
         ) : (
           <div className="overflow-hidden border border-structural/10">
             <table className="w-full text-sm" aria-label="최근 문의">
@@ -103,7 +103,7 @@ export default async function AdminDashboard() {
                     key={r.id}
                     className="border-t border-structural/10 first:border-t-0"
                   >
-                    <td className="px-4 py-3 font-mono text-xs text-structural/55">
+                    <td className="px-4 py-3 font-mono text-xs text-structural/65">
                       {new Date(r.createdAt).toISOString().slice(0, 10)}
                     </td>
                     <td className="px-4 py-3">
@@ -149,7 +149,7 @@ function StatCard({
       className="group bg-canvas p-8 transition-colors hover:bg-primary/[0.03]"
     >
       <div className="flex items-center justify-between">
-        <p className="font-mono text-[11px] font-medium uppercase tracking-[0.08em] text-structural/55">
+        <p className="font-mono text-[11px] font-medium uppercase tracking-[0.08em] text-structural/65">
           {label}
         </p>
         <ArrowUpRight

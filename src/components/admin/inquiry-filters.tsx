@@ -29,7 +29,7 @@ export function InquiryFilters({
               className={`px-3 py-1.5 font-mono text-[11px] font-medium uppercase tracking-[0.08em] transition-colors ${
                 active
                   ? "bg-primary text-canvas"
-                  : "text-structural/60 hover:bg-primary/[0.06] hover:text-primary"
+                  : "text-structural/65 hover:bg-primary/[0.06] hover:text-primary"
               }`}
             >
               {t.label}
@@ -41,7 +41,7 @@ export function InquiryFilters({
       <form action="/admin/inquiries" method="get" className="flex items-center gap-2">
         {current && <input type="hidden" name="status" value={current} />}
         <div className="flex items-center border border-structural/20 px-3 py-1.5">
-          <Search size={14} className="text-structural/55" />
+          <Search size={14} className="text-structural/65" />
           <input
             name="q"
             defaultValue={q}

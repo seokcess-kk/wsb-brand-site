@@ -44,7 +44,7 @@ export function PageHero({ tag, title, lede, meta, rightRail }: Props) {
           </RevealOnView>
           {meta && (
             <RevealOnView delay={0.05}>
-              <p className="mono-label text-structural/55">{meta}</p>
+              <p className="mono-label text-structural/65">{meta}</p>
             </RevealOnView>
           )}
         </div>

@@ -65,7 +65,7 @@ export default async function RnDPage({
               </h2>
             </div>
             <div className="flex flex-col items-start gap-1 md:items-end">
-              <p className="mono-label text-structural/55">
+              <p className="mono-label text-structural/65">
                 {t("patents.totalLabel")}
               </p>
               <p
@@ -80,7 +80,7 @@ export default async function RnDPage({
           <div className="overflow-hidden border border-structural/10">
             <table className="w-full text-sm">
               <thead>
-                <tr className="bg-structural/[0.04] text-left font-mono text-[10px] font-medium uppercase tracking-[0.08em] text-structural/55">
+                <tr className="bg-structural/[0.04] text-left font-mono text-[10px] font-medium uppercase tracking-[0.08em] text-structural/65">
                   <th className="px-4 py-3 w-32">Reg. No.</th>
                   <th className="px-4 py-3">Title</th>
                   <th className="px-4 py-3 w-20 text-right">Year</th>
@@ -141,7 +141,7 @@ export default async function RnDPage({
                   <h3 className="font-sans text-base font-semibold text-structural leading-snug">
                     {r.title}
                   </h3>
-                  <p className="mt-auto text-xs text-structural/55">
+                  <p className="mt-auto text-xs text-structural/65">
                     {r.institution}
                   </p>
                 </MotionCard>

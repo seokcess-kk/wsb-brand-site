@@ -42,7 +42,7 @@ export async function BusinessSection() {
             <SectionEyebrow number={5} total={9} tag={t("sectionTag")} />
           </RevealOnView>
           <RevealOnView delay={0.05}>
-            <p className="mono-label text-structural/55">{t("sectionMeta")}</p>
+            <p className="mono-label text-structural/65">{t("sectionMeta")}</p>
           </RevealOnView>
         </div>
 
@@ -84,7 +84,7 @@ function PillarCard({ pillar }: { pillar: Pillar }) {
     >
       {/* Header */}
       <div className="flex items-center justify-between">
-        <p className="mono-label text-structural/55">{pillar.label}</p>
+        <p className="mono-label text-structural/65">{pillar.label}</p>
         <span
           aria-hidden
           className="h-1.5 w-1.5 rounded-full bg-primary transition-transform duration-300 group-hover:scale-150"
@@ -106,13 +106,13 @@ function PillarCard({ pillar }: { pillar: Pillar }) {
 
       {/* Metric strip */}
       <div className="border-t border-structural/10 pt-5">
-        <p className="mono-label text-[10px] text-structural/55">
+        <p className="mono-label text-[10px] text-structural/65">
           {pillar.metricLabel}
         </p>
         <p className="mt-2 font-sans text-3xl font-extrabold tracking-tight text-primary leading-none tabular-nums">
           {pillar.metricValue}
         </p>
-        <p className="mt-2 text-xs text-structural/55">
+        <p className="mt-2 text-xs text-structural/65">
           {pillar.metricCaption}
         </p>
       </div>

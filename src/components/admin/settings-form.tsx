@@ -40,7 +40,7 @@ export function SettingsForm({
             placeholder="contact@woorismartbio.com, sales@..."
             className="w-full border border-structural/15 bg-canvas px-4 py-3 font-mono text-sm text-structural focus:border-primary focus:outline-none focus:ring-0"
           />
-          <p className="text-xs text-structural/55">
+          <p className="text-xs text-structural/65">
             Partnership Inquiry 폼이 제출되면 이 이메일들로 알림이 갑니다. 쉼표로 구분합니다.
           </p>
         </div>

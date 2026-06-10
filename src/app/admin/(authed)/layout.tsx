@@ -40,7 +40,7 @@ export default async function AuthedAdminLayout({
               <p className="font-sans text-sm font-semibold text-structural">
                 WSB
               </p>
-              <p className="font-mono text-[10px] tracking-[0.08em] uppercase text-structural/55">
+              <p className="font-mono text-[10px] tracking-[0.08em] uppercase text-structural/65">
                 ADMIN · v1.0
               </p>
             </div>
@@ -54,7 +54,7 @@ export default async function AuthedAdminLayout({
                     href={item.href}
                     className="group flex items-center gap-3 rounded-sm px-3 py-2 transition-colors hover:bg-primary/[0.06]"
                   >
-                    <span className="font-mono text-[10px] tracking-[0.08em] uppercase text-structural/55 group-hover:text-primary">
+                    <span className="font-mono text-[10px] tracking-[0.08em] uppercase text-structural/65 group-hover:text-primary">
                       {item.code}
                     </span>
                     <span className="text-sm text-structural/80 group-hover:text-structural">
@@ -67,7 +67,7 @@ export default async function AuthedAdminLayout({
           </nav>
 
           <div className="border-t border-structural/10 px-6 py-5">
-            <p className="font-mono text-[10px] tracking-[0.08em] uppercase text-structural/55">
+            <p className="font-mono text-[10px] tracking-[0.08em] uppercase text-structural/65">
               SIGNED IN
             </p>
             <p className="mt-1 truncate text-sm text-structural/75">
@@ -76,7 +76,7 @@ export default async function AuthedAdminLayout({
             <form action={doSignOut} className="mt-3">
               <button
                 type="submit"
-                className="inline-flex items-center gap-2 text-xs text-structural/60 hover:text-primary"
+                className="inline-flex items-center gap-2 text-xs text-structural/65 hover:text-primary"
               >
                 <LogOut size={12} />
                 Sign out

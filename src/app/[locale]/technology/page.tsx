@@ -77,7 +77,7 @@ export default async function TechnologyPage({
                   className="flex h-full flex-col gap-6 p-8 md:p-10"
                 >
                   <div className="flex items-center justify-between">
-                    <p className="mono-label text-structural/55">{it.code}</p>
+                    <p className="mono-label text-structural/65">{it.code}</p>
                     <span
                       aria-hidden
                       className="h-1.5 w-1.5 rounded-full bg-primary transition-transform duration-300 group-hover:scale-150"
@@ -99,7 +99,7 @@ export default async function TechnologyPage({
                     >
                       {it.metric}
                     </p>
-                    <p className="mt-2 text-xs text-structural/55">
+                    <p className="mt-2 text-xs text-structural/65">
                       {it.metricCaption}
                     </p>
                   </div>
@@ -139,7 +139,7 @@ export default async function TechnologyPage({
           <div className="mt-12 overflow-x-auto">
             <table className="w-full min-w-[720px] border border-structural/10 text-sm">
               <thead>
-                <tr className="bg-structural/[0.04] text-left font-mono text-[10px] font-medium uppercase tracking-[0.08em] text-structural/55">
+                <tr className="bg-structural/[0.04] text-left font-mono text-[10px] font-medium uppercase tracking-[0.08em] text-structural/65">
                   <th className="px-4 py-3"></th>
                   <th className="px-4 py-3">{compHeaders.field}</th>
                   <th className="px-4 py-3">{compHeaders.smartfarm}</th>
@@ -155,7 +155,7 @@ export default async function TechnologyPage({
                     key={r.label}
                     className="border-t border-structural/10 align-top"
                   >
-                    <td className="px-4 py-5 mono-label text-structural/55 whitespace-nowrap">
+                    <td className="px-4 py-5 mono-label text-structural/65 whitespace-nowrap">
                       {r.label}
                     </td>
                     <td className="px-4 py-5 text-structural/65">{r.field}</td>

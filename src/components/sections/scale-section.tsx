@@ -37,7 +37,7 @@ export async function ScaleSection() {
             <SectionEyebrow tag={t("sectionTag")} />
           </RevealOnView>
           <RevealOnView delay={0.05}>
-            <p className="mono-label text-structural/55">{t("sectionMeta")}</p>
+            <p className="mono-label text-structural/65">{t("sectionMeta")}</p>
           </RevealOnView>
         </div>
 
@@ -61,7 +61,7 @@ export async function ScaleSection() {
             return (
               <div key={m.label} className="bg-canvas p-6 md:p-7">
                 <div className="flex items-center justify-between border-b border-structural/10 pb-3">
-                  <dt className="mono-label text-structural/55">{m.label}</dt>
+                  <dt className="mono-label text-structural/65">{m.label}</dt>
                   <span
                     aria-hidden
                     className="font-mono text-[10px] tabular-nums text-primary/60"
@@ -81,7 +81,7 @@ export async function ScaleSection() {
                     >
                       {m.value}
                     </dd>
-                    <dd className="mt-3 text-sm leading-snug text-structural/60">
+                    <dd className="mt-3 text-sm leading-snug text-structural/65">
                       {m.caption}
                     </dd>
                   </>
@@ -176,7 +176,7 @@ function PhotoWell({
           <div className="absolute inset-0 bg-grid opacity-70" />
           <div className="absolute inset-0 flex flex-col items-center justify-center gap-2 px-6 text-center">
             <p className="mono-label text-[11px] text-primary">{pending}</p>
-            <p className="mono-label text-[11px] text-structural/55 max-w-[28ch]">
+            <p className="mono-label text-[11px] text-structural/65 max-w-[28ch]">
               {caption}
             </p>
           </div>

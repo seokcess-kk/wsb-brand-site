@@ -19,7 +19,7 @@ export async function CredibilityStripSection() {
         <div className="grid gap-px bg-structural/10 sm:grid-cols-2 lg:grid-cols-6">
           {items.map((item) => (
             <dl key={item.label} className="bg-canvas p-4 md:p-5">
-              <dt className="mono-label text-[11px] text-structural/55">
+              <dt className="mono-label text-[11px] text-structural/65">
                 {item.label}
               </dt>
               <dd className="mt-2 font-sans text-lg font-bold tracking-tight text-structural tabular-nums">

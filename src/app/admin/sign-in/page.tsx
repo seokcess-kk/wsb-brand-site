@@ -30,7 +30,7 @@ export default async function SignInPage({
           >
             W
           </span>
-          <p className="font-mono text-[11px] tracking-[0.08em] uppercase text-structural/55">
+          <p className="font-mono text-[11px] tracking-[0.08em] uppercase text-structural/65">
             WSB · ADMIN
           </p>
         </div>
@@ -38,7 +38,7 @@ export default async function SignInPage({
         <h1 className="font-sans text-2xl font-bold tracking-tight text-structural">
           관리자 로그인
         </h1>
-        <p className="mt-2 text-sm text-structural/60">
+        <p className="mt-2 text-sm text-structural/65">
           등록된 관리자 계정으로 로그인하세요.
         </p>
 

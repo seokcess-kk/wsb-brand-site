@@ -39,7 +39,7 @@ export function SectionEyebrow({
         <span
           className={cn(
             "mono-label tabular-nums",
-            inverse ? "text-canvas/55" : "text-structural/55",
+            inverse ? "text-canvas/55" : "text-structural/65",
           )}
         >
           {numberText}

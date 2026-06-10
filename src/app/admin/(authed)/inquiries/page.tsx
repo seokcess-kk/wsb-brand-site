@@ -55,7 +55,7 @@ export default async function InquiriesPage({
       <InquiryFilters current={status} q={q} />
 
       {rows.length === 0 ? (
-        <p className="py-12 text-center text-sm text-structural/55">
+        <p className="py-12 text-center text-sm text-structural/65">
           조건에 맞는 문의가 없습니다.
         </p>
       ) : (
@@ -63,7 +63,7 @@ export default async function InquiriesPage({
           <div className="overflow-hidden border border-structural/10">
             <table className="w-full text-sm">
               <thead>
-                <tr className="bg-structural/[0.04] text-left font-mono text-[10px] font-medium uppercase tracking-[0.08em] text-structural/55">
+                <tr className="bg-structural/[0.04] text-left font-mono text-[10px] font-medium uppercase tracking-[0.08em] text-structural/65">
                   <th className="px-4 py-3">Date</th>
                   <th className="px-4 py-3">Company</th>
                   <th className="px-4 py-3">Name</th>
@@ -91,7 +91,7 @@ export default async function InquiriesPage({
                     </td>
                     <td className="px-4 py-4 text-structural/85">{r.name}</td>
                     <td className="px-4 py-4 text-structural/85">{r.category}</td>
-                    <td className="px-4 py-4 max-w-xs truncate text-structural/55" title={r.message}>
+                    <td className="px-4 py-4 max-w-xs truncate text-structural/65" title={r.message}>
                       {r.message}
                     </td>
                     <td className="px-4 py-4">
@@ -117,7 +117,7 @@ export default async function InquiriesPage({
                   ← 이전
                 </Link>
               )}
-              <span className="font-mono text-xs text-structural/55">
+              <span className="font-mono text-xs text-structural/65">
                 {page} / {totalPages}
               </span>
               {page >= totalPages ? (

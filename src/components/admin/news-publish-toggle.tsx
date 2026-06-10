@@ -35,7 +35,7 @@ export function NewsPublishToggle({
         className={`inline-flex items-center px-2 py-0.5 font-mono text-[10px] font-medium uppercase tracking-[0.08em] transition-opacity hover:opacity-80 disabled:opacity-50 ${
           isPublished
             ? "bg-primary/10 text-primary"
-            : "bg-structural/10 text-structural/55"
+            : "bg-structural/10 text-structural/65"
         }`}
       >
         {isPublished ? "Published" : "Draft"}

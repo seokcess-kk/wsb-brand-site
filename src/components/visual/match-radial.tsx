@@ -1,7 +1,7 @@
 "use client";
 
-import { motion, useInView } from "motion/react";
-import { useRef } from "react";
+import { animate, motion, useInView, useMotionValue } from "motion/react";
+import { useEffect, useRef } from "react";
 import { useSafeReducedMotion } from "@/hooks/use-safe-reduced-motion";
 
 type Props = {
@@ -82,7 +82,7 @@ export function MatchRadial({ filled, total, label }: Props) {
             className="font-sans font-extrabold tracking-tight text-primary leading-none"
             style={{ fontSize: "3rem" }}
           >
-            {filled}
+            <RadialCount to={filled} run={show} reduced={reduced} />
             <span className="text-canvas/35">/{total}</span>
           </span>
           <span className="mono-label mt-2 text-[11px] text-canvas/50">
@@ -92,4 +92,40 @@ export function MatchRadial({ filled, total, label }: Props) {
       </div>
     </div>
   );
+}
+
+/**
+ * Counts the center numeral from 0 to `to` in sync with the ring sweep (same
+ * 1.4s duration and 0.2s delay). Updates textContent via a ref so the parent
+ * SVG does not re-render each frame. Reduced motion renders the final value.
+ */
+function RadialCount({
+  to,
+  run,
+  reduced,
+}: {
+  to: number;
+  run: boolean;
+  reduced: boolean | null;
+}) {
+  const ref = useRef<HTMLSpanElement>(null);
+  const mv = useMotionValue(reduced ? to : 0);
+
+  useEffect(() => {
+    if (reduced || !run) return;
+    const unsub = mv.on("change", (v) => {
+      if (ref.current) ref.current.textContent = String(Math.round(v));
+    });
+    const controls = animate(mv, to, {
+      duration: 1.4,
+      ease: [0.22, 1, 0.36, 1],
+      delay: 0.2,
+    });
+    return () => {
+      controls.stop();
+      unsub();
+    };
+  }, [run, reduced, to, mv]);
+
+  return <span ref={ref}>{reduced ? to : 0}</span>;
 }

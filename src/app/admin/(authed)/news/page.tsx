@@ -48,14 +48,14 @@ export default async function NewsListPage({
       <NewsFilters categories={categories} category={category} q={q} />
 
       {rows.length === 0 ? (
-        <p className="py-12 text-center text-sm text-structural/55">
+        <p className="py-12 text-center text-sm text-structural/65">
           조건에 맞는 News가 없습니다.
         </p>
       ) : (
         <div className="overflow-hidden border border-structural/10">
           <table className="w-full text-sm">
             <thead>
-              <tr className="bg-structural/[0.04] text-left font-mono text-[10px] font-medium uppercase tracking-[0.08em] text-structural/55">
+              <tr className="bg-structural/[0.04] text-left font-mono text-[10px] font-medium uppercase tracking-[0.08em] text-structural/65">
                 <th className="px-4 py-3">Date</th>
                 <th className="px-4 py-3">Slug</th>
                 <th className="px-4 py-3">Title (KO)</th>

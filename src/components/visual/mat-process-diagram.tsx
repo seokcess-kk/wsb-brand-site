@@ -57,7 +57,7 @@ export function MatProcessDiagram({
       <div className="relative grid items-center gap-6 sm:grid-cols-[1fr_auto_1fr_auto_1fr]">
         {/* STRESS INPUTS */}
         <div className="space-y-3">
-          <p className="mono-label text-[11px] text-structural/55">
+          <p className="mono-label text-[11px] text-structural/65">
             {stressLabel}
           </p>
           <ul className="space-y-2">
@@ -159,7 +159,7 @@ export function MatProcessDiagram({
               </g>
             </svg>
           </motion.div>
-          <p className="mono-label text-[11px] text-structural/60 whitespace-nowrap">
+          <p className="mono-label text-[11px] text-structural/65 whitespace-nowrap">
             {plantLabel}
           </p>
         </div>
@@ -185,7 +185,7 @@ export function MatProcessDiagram({
           >
             {outputValue}
           </p>
-          <p className="mono-label text-[11px] text-structural/55">
+          <p className="mono-label text-[11px] text-structural/65">
             vs. CONTROL GROUP
           </p>
         </motion.div>

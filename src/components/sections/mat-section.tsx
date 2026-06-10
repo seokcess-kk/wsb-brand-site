@@ -39,7 +39,7 @@ export async function MatSection() {
             <SectionEyebrow number={2} total={9} tag={t("sectionTag")} />
           </RevealOnView>
           <RevealOnView delay={0.05}>
-            <p className="mono-label text-structural/55">{t("sectionMeta")}</p>
+            <p className="mono-label text-structural/65">{t("sectionMeta")}</p>
           </RevealOnView>
         </div>
 
@@ -62,7 +62,7 @@ export async function MatSection() {
             <RevealOnView delay={0.34}>
               <div className="flex items-center gap-3 border-t border-structural/10 pt-6">
                 <span aria-hidden className="h-px w-4 bg-primary" />
-                <p className="mono-label text-structural/60">
+                <p className="mono-label text-structural/65">
                   MAT · METABOLITE AGRICULTURE TECHNOLOGY
                 </p>
               </div>
@@ -119,7 +119,7 @@ function StressorCard({
   return (
     <article className="group relative h-full bg-canvas p-6 md:p-8 transition-colors hover:bg-primary/[0.03]">
       <div className="flex items-center justify-between">
-        <p className="mono-label text-structural/55">{label}</p>
+        <p className="mono-label text-structural/65">{label}</p>
         <span
           aria-hidden
           className="h-1.5 w-1.5 rounded-full bg-primary/40 transition-all group-hover:bg-primary group-hover:scale-150"

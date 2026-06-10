@@ -100,7 +100,7 @@ function DetailField({
 }) {
   return (
     <div className="bg-canvas p-5">
-      <dt className="font-mono text-[10px] font-medium uppercase tracking-[0.08em] text-structural/55">
+      <dt className="font-mono text-[10px] font-medium uppercase tracking-[0.08em] text-structural/65">
         {label}
       </dt>
       <dd className="mt-2 text-sm text-structural/85">{children}</dd>

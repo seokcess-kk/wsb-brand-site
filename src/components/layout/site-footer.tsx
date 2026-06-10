@@ -82,7 +82,7 @@ export async function SiteFooter() {
           </div>
         </div>
 
-        <div className="mt-16 flex flex-col gap-2 border-t border-structural/10 pt-6 text-xs text-structural/55 md:flex-row md:items-center md:justify-between">
+        <div className="mt-16 flex flex-col gap-2 border-t border-structural/10 pt-6 text-xs text-structural/65 md:flex-row md:items-center md:justify-between">
           <p>{t("copyright")}</p>
           <p className="mono-label">WSB · BRAND SITE · v1.0</p>
         </div>

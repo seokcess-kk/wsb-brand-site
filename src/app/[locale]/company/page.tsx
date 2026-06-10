@@ -51,7 +51,7 @@ export default async function CompanyPage({
           <dl className="grid gap-px bg-structural/10 sm:grid-cols-2 lg:grid-cols-4">
             {overviewItems.map((it) => (
               <div key={it.label} className="bg-canvas p-6">
-                <dt className="mono-label text-structural/55">{it.label}</dt>
+                <dt className="mono-label text-structural/65">{it.label}</dt>
                 <dd className="mt-3 font-sans text-xl font-bold tracking-tight text-structural tabular-nums">
                   {it.value}
                 </dd>
@@ -84,7 +84,7 @@ export default async function CompanyPage({
               </RevealOnView>
               <RevealOnView delay={0.26}>
                 <div className="border-t border-structural/10 pt-6 space-y-3">
-                  <p className="mono-label text-structural/55">
+                  <p className="mono-label text-structural/65">
                     {t("ceo.name").toUpperCase()} · {t("ceo.role")}
                   </p>
                   <ul className="space-y-2 text-sm text-structural/70">
@@ -268,7 +268,7 @@ export default async function CompanyPage({
                     className="relative block h-3 w-3 rounded-full bg-primary"
                   />
                 </div>
-                <p className="mono-label text-[10px] text-structural/55">
+                <p className="mono-label text-[10px] text-structural/65">
                   {t("location.mapPlaceholder")}
                 </p>
               </div>
@@ -291,7 +291,7 @@ function InfoBlock({
 }) {
   return (
     <div className="space-y-1.5">
-      <p className="mono-label text-structural/55">{label}</p>
+      <p className="mono-label text-structural/65">{label}</p>
       {href ? (
         <a
           href={href}

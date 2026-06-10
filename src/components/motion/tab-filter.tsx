@@ -107,7 +107,7 @@ export function TabFilter({
               variant === "pill" && "px-4 py-2 rounded-full",
               isActive
                 ? "text-primary"
-                : "text-structural/55 hover:text-structural",
+                : "text-structural/65 hover:text-structural",
             )}
           >
             <span className="relative z-10 inline-flex items-center gap-1.5">
@@ -116,7 +116,7 @@ export function TabFilter({
                 <span
                   className={cn(
                     "mono-label text-[10px] transition-colors",
-                    isActive ? "text-primary/70" : "text-structural/55",
+                    isActive ? "text-primary/70" : "text-structural/65",
                   )}
                 >
                   {item.count}

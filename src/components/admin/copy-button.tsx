@@ -52,7 +52,7 @@ export function CopyButton({
       onClick={handleCopy}
       className={
         className ??
-        "inline-flex items-center gap-1 text-xs text-structural/60 hover:text-primary"
+        "inline-flex items-center gap-1 text-xs text-structural/65 hover:text-primary"
       }
     >
       {copied ? <Check size={12} /> : <Copy size={12} />}

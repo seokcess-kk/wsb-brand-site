@@ -120,7 +120,7 @@ export function DataOverlayPlant({ labels }: { labels: Labels }) {
         </PulseLabel>
 
         {/* Batch ID (rolling) */}
-        <div className="absolute bottom-3 right-3 mono-label text-[10px] tracking-widest text-structural/60 flex items-baseline gap-1.5">
+        <div className="absolute bottom-3 right-3 mono-label text-[10px] tracking-widest text-structural/65 flex items-baseline gap-1.5">
           <span>{labels.batchPrefix}</span>
           <RollingDigits idx={batchIdx} />
         </div>
