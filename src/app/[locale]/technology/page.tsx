@@ -206,7 +206,7 @@ export default async function TechnologyPage({
                 >
                   <div className="flex items-center justify-between">
                     <p className="mono-label text-primary">{l.code}</p>
-                    <p className="mono-label text-canvas/45">{l.type}</p>
+                    <p className="mono-label text-canvas/55">{l.type}</p>
                   </div>
                   <h3 className="font-sans text-xl font-bold tracking-tight text-canvas">
                     {l.name}

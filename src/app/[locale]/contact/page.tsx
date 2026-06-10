@@ -94,7 +94,7 @@ export default async function ContactPage({
                         className="relative block h-3 w-3 rounded-full bg-primary"
                       />
                     </div>
-                    <p className="font-mono text-[10px] tracking-[0.08em] uppercase text-canvas/40 text-center max-w-[24ch]">
+                    <p className="font-mono text-[10px] tracking-[0.08em] uppercase text-canvas/55 text-center max-w-[24ch]">
                       {tHome("mapPlaceholder")}
                     </p>
                   </div>

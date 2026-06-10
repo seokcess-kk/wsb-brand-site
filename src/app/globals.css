@@ -62,6 +62,10 @@ body {
   font-family: var(--font-sans);
   font-size: var(--text-body);
   line-height: 1.6;
+  /* Avoid orphaned last words in multi-line body copy. Inherited, but headings
+     override with text-wrap: balance below, and single-line labels are
+     unaffected. Degrades gracefully where unsupported. */
+  text-wrap: pretty;
 }
 
 /* Korean editorial line-breaking.

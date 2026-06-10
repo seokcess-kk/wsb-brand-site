@@ -30,14 +30,14 @@ export async function ScaleSection() {
       aria-labelledby="scale-heading"
       className="relative isolate bg-canvas border-t border-structural/10"
     >
-      <div className="mx-auto max-w-7xl px-6 py-24 md:py-32 lg:py-40">
+      <div className="mx-auto max-w-7xl px-6 py-20 md:py-28 lg:py-32">
         {/* Header */}
         <div className="mb-14 flex flex-col gap-3 md:flex-row md:items-end md:justify-between">
           <RevealOnView>
             <SectionEyebrow tag={t("sectionTag")} />
           </RevealOnView>
           <RevealOnView delay={0.05}>
-            <p className="mono-label text-structural/50">{t("sectionMeta")}</p>
+            <p className="mono-label text-structural/55">{t("sectionMeta")}</p>
           </RevealOnView>
         </div>
 
@@ -176,7 +176,7 @@ function PhotoWell({
           <div className="absolute inset-0 bg-grid opacity-70" />
           <div className="absolute inset-0 flex flex-col items-center justify-center gap-2 px-6 text-center">
             <p className="mono-label text-[11px] text-primary">{pending}</p>
-            <p className="mono-label text-[11px] text-structural/40 max-w-[28ch]">
+            <p className="mono-label text-[11px] text-structural/55 max-w-[28ch]">
               {caption}
             </p>
           </div>

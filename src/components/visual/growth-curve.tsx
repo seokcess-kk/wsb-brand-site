@@ -154,7 +154,7 @@ export function GrowthCurve({
       </motion.div>
 
       {/* CAGR label (bottom center) */}
-      <div className="absolute bottom-2 left-1/2 -translate-x-1/2 mono-label text-[11px] text-structural/50 whitespace-nowrap">
+      <div className="absolute bottom-2 left-1/2 -translate-x-1/2 mono-label text-[11px] text-structural/55 whitespace-nowrap">
         {cagrLabel}
       </div>
     </div>

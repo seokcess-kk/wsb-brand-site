@@ -49,7 +49,7 @@ export function NewsFilters({
       <form action="/admin/news" method="get" className="flex items-center gap-2">
         {category && <input type="hidden" name="category" value={category} />}
         <div className="flex items-center border border-structural/20 px-3 py-1.5">
-          <Search size={14} className="text-structural/40" />
+          <Search size={14} className="text-structural/55" />
           <input
             name="q"
             defaultValue={q}

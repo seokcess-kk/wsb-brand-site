@@ -24,8 +24,8 @@ export function FdaTable({
       {/* Desktop / tablet table */}
       <div className="mt-14 hidden gap-px bg-canvas/10 md:grid">
         <div className="grid grid-cols-[3rem_1fr_1fr] bg-structural">
-          <div className="px-4 py-3 mono-label text-canvas/45">{headerNo}</div>
-          <div className="px-4 py-3 mono-label text-canvas/45">{headerFda}</div>
+          <div className="px-4 py-3 mono-label text-canvas/55">{headerNo}</div>
+          <div className="px-4 py-3 mono-label text-canvas/55">{headerFda}</div>
           <div className="px-4 py-3 mono-label text-primary">{headerWsb}</div>
         </div>
         {rows.map((r, i) => (

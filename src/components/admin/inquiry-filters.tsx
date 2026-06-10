@@ -41,7 +41,7 @@ export function InquiryFilters({
       <form action="/admin/inquiries" method="get" className="flex items-center gap-2">
         {current && <input type="hidden" name="status" value={current} />}
         <div className="flex items-center border border-structural/20 px-3 py-1.5">
-          <Search size={14} className="text-structural/40" />
+          <Search size={14} className="text-structural/55" />
           <input
             name="q"
             defaultValue={q}

@@ -27,14 +27,17 @@ export async function TractionSection() {
         }}
       />
 
-      <div className="relative mx-auto max-w-7xl px-6 py-24 md:py-32 lg:py-40">
+      {/* Reduced top padding: this dark section follows the dark FDA section
+          with no divider, so the doubled section padding would read as a long
+          empty void. Keep full bottom padding into the next (light) section. */}
+      <div className="relative mx-auto max-w-7xl px-6 pt-12 pb-20 md:pt-16 md:pb-28 lg:pt-20 lg:pb-32">
         {/* Header */}
         <div className="mb-14 flex flex-col gap-3 md:flex-row md:items-end md:justify-between">
           <RevealOnView>
             <SectionEyebrow number={4} total={9} tag={t("sectionTag")} inverse />
           </RevealOnView>
           <RevealOnView delay={0.05}>
-            <p className="mono-label text-canvas/40">{t("sectionMeta")}</p>
+            <p className="mono-label text-canvas/55">{t("sectionMeta")}</p>
           </RevealOnView>
         </div>
 
@@ -149,7 +152,7 @@ function KpiCell({
         {caption}
       </p>
       {(source || asOf) && (
-        <div className="mt-3 flex flex-wrap items-center gap-x-2 gap-y-1 mono-label text-[10px] text-canvas/40">
+        <div className="mt-3 flex flex-wrap items-center gap-x-2 gap-y-1 mono-label text-[10px] text-canvas/55">
           {asOf && <span className="tabular-nums">{asOf}</span>}
           {asOf && source && <span aria-hidden>·</span>}
           {source && <span>{source}</span>}

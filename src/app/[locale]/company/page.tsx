@@ -268,7 +268,7 @@ export default async function CompanyPage({
                     className="relative block h-3 w-3 rounded-full bg-primary"
                   />
                 </div>
-                <p className="mono-label text-[10px] text-structural/45">
+                <p className="mono-label text-[10px] text-structural/55">
                   {t("location.mapPlaceholder")}
                 </p>
               </div>

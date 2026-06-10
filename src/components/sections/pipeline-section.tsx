@@ -42,13 +42,13 @@ export async function PipelineSection() {
         }}
       />
 
-      <div className="mx-auto max-w-7xl px-6 py-24 md:py-32 lg:py-40">
+      <div className="mx-auto max-w-7xl px-6 py-20 md:py-28 lg:py-32">
         <div className="mb-14 flex flex-col gap-3 md:flex-row md:items-end md:justify-between">
           <RevealOnView>
             <SectionEyebrow number={6} total={9} tag={t("sectionTag")} />
           </RevealOnView>
           <RevealOnView delay={0.05}>
-            <p className="mono-label text-structural/50">{t("sectionMeta")}</p>
+            <p className="mono-label text-structural/55">{t("sectionMeta")}</p>
           </RevealOnView>
         </div>
 
@@ -107,7 +107,7 @@ export async function PipelineSection() {
 
 function HeaderCell({ text }: { text: string }) {
   return (
-    <div className="bg-canvas px-5 py-3 mono-label text-structural/50">
+    <div className="bg-canvas px-5 py-3 mono-label text-structural/55">
       {text}
     </div>
   );
@@ -120,7 +120,7 @@ function PipelineRow({ item, stages }: { item: Item; stages: string[] }) {
         <p className="font-sans text-base font-semibold text-structural">
           {item.name}
         </p>
-        <p className="mono-label text-[10px] text-structural/45 italic">
+        <p className="mono-label text-[10px] text-structural/55 italic">
           {item.latin}
         </p>
       </Cell>
@@ -208,7 +208,7 @@ function StageBar({
           <span
             key={s}
             className={`mono-label text-[11px] truncate px-1 ${
-              i <= current ? "text-primary" : "text-structural/40"
+              i <= current ? "text-primary" : "text-structural/55"
             }`}
           >
             {s}

@@ -32,14 +32,14 @@ export async function MatSection() {
         }}
       />
 
-      <div className="mx-auto max-w-7xl px-6 py-24 md:py-32 lg:py-40">
+      <div className="mx-auto max-w-7xl px-6 py-20 md:py-28 lg:py-32">
         {/* Header */}
         <div className="mb-14 flex flex-col gap-3 md:flex-row md:items-end md:justify-between">
           <RevealOnView>
             <SectionEyebrow number={2} total={9} tag={t("sectionTag")} />
           </RevealOnView>
           <RevealOnView delay={0.05}>
-            <p className="mono-label text-structural/50">{t("sectionMeta")}</p>
+            <p className="mono-label text-structural/55">{t("sectionMeta")}</p>
           </RevealOnView>
         </div>
 

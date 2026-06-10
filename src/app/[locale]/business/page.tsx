@@ -105,21 +105,19 @@ export default async function BusinessPage({
         accent="light"
       >
         <FadeInSection
-          className="mt-12 grid items-start gap-4 md:grid-cols-3"
+          className="mt-12 grid items-stretch gap-4 md:grid-cols-3"
           staggerChildren={0.06}
         >
-          {lineup.map((p, i) => (
-            <FadeInItem key={p.name}>
+          {lineup.map((p) => (
+            <FadeInItem key={p.name} className="h-full">
               <MotionCard
                 as="article"
                 className="flex h-full flex-col gap-5 p-6 md:p-8"
               >
-                {/* Product placeholder — alternating aspect for bento rhythm */}
+                {/* Product placeholder — consistent 4:5 portrait so the lineup
+                    reads as an aligned product catalog. */}
                 <div
-                  className={cn(
-                    "relative overflow-hidden bg-structural/[0.04] transition-colors duration-500 group-hover:bg-structural/[0.07]",
-                    i % 2 === 1 ? "aspect-square" : "aspect-[4/5]",
-                  )}
+                  className="relative aspect-[4/5] overflow-hidden bg-structural/[0.04] transition-colors duration-500 group-hover:bg-structural/[0.07]"
                 >
                   <div className="absolute inset-0 flex items-center justify-center">
                     <p className="mono-label text-[10px] text-structural/35 text-center max-w-[18ch]">
@@ -129,7 +127,7 @@ export default async function BusinessPage({
                   {/* Card-play indicator: spins on hover */}
                   <span
                     aria-hidden
-                    className="absolute bottom-3 right-3 grid h-7 w-7 place-items-center rounded-full border border-structural/15 bg-canvas/70 text-structural/40 backdrop-blur transition-all duration-500 group-hover:rotate-90 group-hover:border-primary/40 group-hover:text-primary"
+                    className="absolute bottom-3 right-3 grid h-7 w-7 place-items-center rounded-full border border-structural/15 bg-canvas/70 text-structural/55 backdrop-blur transition-all duration-500 group-hover:rotate-90 group-hover:border-primary/40 group-hover:text-primary"
                   >
                     <Plus size={12} strokeWidth={2.25} />
                   </span>

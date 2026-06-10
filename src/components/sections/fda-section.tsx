@@ -31,7 +31,7 @@ export async function FdaSection() {
         className="pointer-events-none absolute -top-px left-0 right-0 h-px bg-gradient-to-r from-transparent via-primary/30 to-transparent"
       />
 
-      <div className="relative mx-auto max-w-7xl px-6 py-24 md:py-32 lg:py-40">
+      <div className="relative mx-auto max-w-7xl px-6 py-20 md:py-28 lg:py-32">
         {/* Header */}
         <div className="mb-12 flex flex-col gap-6 md:flex-row md:items-end md:justify-between">
           <div className="space-y-5">
@@ -48,13 +48,13 @@ export async function FdaSection() {
           {/* Match ratio radial */}
           <div className="flex items-end gap-6 self-start md:self-end">
             <MatchRadial filled={5} total={5} label={t("matchTag")} />
-            <p className="mono-label text-canvas/40 pb-2">{t("sectionMeta")}</p>
+            <p className="mono-label text-canvas/55 pb-2">{t("sectionMeta")}</p>
           </div>
         </div>
 
         <Lede text={t("lede")} inverse className="max-w-3xl" />
 
-        <p className="mt-4 max-w-3xl text-xs leading-relaxed text-canvas/45">
+        <p className="mt-4 max-w-3xl text-xs leading-relaxed text-canvas/55">
           <span aria-hidden className="mr-2 inline-block h-1 w-1 -translate-y-[3px] rounded-full bg-canvas/45 align-middle" />
           {t("disclaimer")}
         </p>

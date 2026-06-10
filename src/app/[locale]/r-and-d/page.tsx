@@ -214,7 +214,7 @@ export default async function RnDPage({
                     className={`font-mono text-[10px] font-medium uppercase tracking-[0.08em] ${
                       p.status === "수행 중" || p.status === "Ongoing"
                         ? "text-primary"
-                        : "text-canvas/45"
+                        : "text-canvas/55"
                     }`}
                   >
                     {p.status}

@@ -114,7 +114,7 @@ export function ChaosScatter({
       <div className="absolute right-2 top-[42%] mono-label text-[11px] text-primary/80">
         {toleranceLabel}
       </div>
-      <div className="absolute bottom-2 left-1/2 -translate-x-1/2 mono-label text-[11px] text-structural/45 whitespace-nowrap">
+      <div className="absolute bottom-2 left-1/2 -translate-x-1/2 mono-label text-[11px] text-structural/55 whitespace-nowrap">
         {xLabel}
       </div>
     </div>

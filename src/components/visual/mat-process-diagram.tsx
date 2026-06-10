@@ -185,7 +185,7 @@ export function MatProcessDiagram({
           >
             {outputValue}
           </p>
-          <p className="mono-label text-[11px] text-structural/45">
+          <p className="mono-label text-[11px] text-structural/55">
             vs. CONTROL GROUP
           </p>
         </motion.div>

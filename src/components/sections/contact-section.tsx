@@ -29,13 +29,13 @@ export async function ContactSection() {
         className="pointer-events-none absolute -top-px left-0 right-0 h-px bg-gradient-to-r from-transparent via-primary/30 to-transparent"
       />
 
-      <div className="relative mx-auto max-w-7xl px-6 py-24 md:py-32 lg:py-40">
+      <div className="relative mx-auto max-w-7xl px-6 py-20 md:py-28 lg:py-32">
         <div className="mb-14 flex flex-col gap-3 md:flex-row md:items-end md:justify-between">
           <RevealOnView>
             <SectionEyebrow number={9} total={9} tag={t("sectionTag")} inverse />
           </RevealOnView>
           <RevealOnView delay={0.05}>
-            <p className="mono-label text-canvas/40">{t("sectionMeta")}</p>
+            <p className="mono-label text-canvas/55">{t("sectionMeta")}</p>
           </RevealOnView>
         </div>
 
@@ -120,7 +120,7 @@ export async function ContactSection() {
                       className="relative block h-3 w-3 rounded-full bg-primary"
                     />
                   </div>
-                  <p className="font-mono text-[10px] tracking-[0.08em] uppercase text-canvas/40 text-center max-w-[24ch]">
+                  <p className="font-mono text-[10px] tracking-[0.08em] uppercase text-canvas/55 text-center max-w-[24ch]">
                     {t("mapPlaceholder")}
                   </p>
                 </div>

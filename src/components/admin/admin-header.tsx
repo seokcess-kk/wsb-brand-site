@@ -28,7 +28,7 @@ export function AdminHeader({
       <div className="flex items-center gap-4">
         {action}
         {meta && (
-          <p className="font-mono text-[10px] tracking-[0.08em] uppercase text-structural/40">
+          <p className="font-mono text-[10px] tracking-[0.08em] uppercase text-structural/55">
             {meta}
           </p>
         )}

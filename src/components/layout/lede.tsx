@@ -27,7 +27,7 @@ export function Lede({ text, inverse = false, className }: Props) {
     return (
       <p
         className={cn(
-          "text-base leading-relaxed md:text-lg",
+          "text-pretty text-base leading-relaxed md:text-lg",
           secondaryTone,
           className,
         )}
@@ -44,7 +44,7 @@ export function Lede({ text, inverse = false, className }: Props) {
   return (
     <p
       className={cn(
-        "max-w-2xl text-base leading-relaxed md:text-lg",
+        "max-w-2xl text-pretty text-base leading-relaxed md:text-lg",
         secondaryTone,
         className,
       )}

@@ -1,6 +1,7 @@
 import Image from "next/image";
 import { getTranslations } from "next-intl/server";
 import { Link } from "@/i18n/navigation";
+import { HeaderShell } from "./header-shell";
 import { LanguageToggle } from "./language-toggle";
 import { MobileNav, type MobileNavItem } from "./mobile-nav";
 
@@ -24,7 +25,7 @@ export async function SiteHeader() {
   }));
 
   return (
-    <header className="sticky top-0 z-40 border-b border-structural/10 bg-canvas/85 backdrop-blur supports-[backdrop-filter]:bg-canvas/70">
+    <HeaderShell>
       <a
         href="#main"
         className="sr-only focus:not-sr-only focus:absolute focus:left-2 focus:top-2 focus:rounded focus:bg-primary focus:px-3 focus:py-2 focus:text-canvas"
@@ -71,6 +72,6 @@ export async function SiteHeader() {
           />
         </div>
       </div>
-    </header>
+    </HeaderShell>
   );
 }

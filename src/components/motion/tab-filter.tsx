@@ -116,7 +116,7 @@ export function TabFilter({
                 <span
                   className={cn(
                     "mono-label text-[10px] transition-colors",
-                    isActive ? "text-primary/70" : "text-structural/40",
+                    isActive ? "text-primary/70" : "text-structural/55",
                   )}
                 >
                   {item.count}
