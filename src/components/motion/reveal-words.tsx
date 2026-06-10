@@ -75,27 +75,24 @@ export function RevealWords({
   // to observe the viewport; only then gate on inView so the reveal can fire on
   // scroll. initial={false} keeps opacity:0 out of the SSR markup, and an
   // off-screen heading flips to hidden after mount without a visible flash.
-  const canReveal = mounted && canObserveViewport();
+  // Reduced motion (or SSR / no IntersectionObserver) shows the heading
+  // immediately with no scroll gating, so it is never hidden waiting for an
+  // observer that may never fire.
+  const canReveal = !reduced && mounted && canObserveViewport();
   const active = canReveal ? inView : true;
 
   if (reduced) {
-    // Fade the whole block in (opacity only, no per-word rise/blur).
+    // Plain, always-visible text. Reduced motion gets no scroll-triggered
+    // reveal at all, matching the accessibility intent.
     return (
-      <motion.span
-        ref={ref}
-        className={className}
-        aria-label={text}
-        initial={false}
-        animate={{ opacity: active ? 1 : 0 }}
-        transition={{ duration: 0.7, delay, ease: [0.22, 1, 0.36, 1] }}
-      >
+      <span ref={ref} className={className} aria-label={text}>
         {lines.map((line, lineIdx) => (
           <Fragment key={lineIdx}>
             {lineIdx > 0 && <br aria-hidden />}
             {line}
           </Fragment>
         ))}
-      </motion.span>
+      </span>
     );
   }
 

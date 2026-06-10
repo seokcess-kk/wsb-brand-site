@@ -71,16 +71,15 @@ export function FadeInSection({
     margin: "0px 0px -15% 0px",
   });
   const mounted = useHasMounted();
+  const reduced = useSafeReducedMotion();
 
-  // The container only orchestrates stagger timing (no visual props), so it is
-  // identical for reduced motion; the FadeInItem children decide whether to add
-  // spatial motion on top of the fade.
-  //
-  // Children stay "visible" until the container has mounted and can observe the
-  // viewport, so SSR / no-JS / no-IntersectionObserver renders the copy instead
-  // of hiding it. Off-screen sections flip to "hidden" after mount (no visible
-  // flash) and reveal on scroll. initial={false} keeps opacity:0 out of SSR.
-  const canReveal = mounted && canObserveViewport();
+  // Children stay "visible" until motion is allowed AND the container has
+  // mounted and can observe the viewport. Reduced motion (or SSR / no-JS /
+  // no-IntersectionObserver) keeps them visible, so the copy is never hidden
+  // waiting for an observer that may never fire. Off-screen sections flip to
+  // "hidden" after mount (no visible flash) and reveal on scroll.
+  // initial={false} keeps opacity:0 out of the SSR markup.
+  const canReveal = !reduced && mounted && canObserveViewport();
   return (
     <motion.div
       ref={ref}
@@ -90,7 +89,7 @@ export function FadeInSection({
         visible: { transition: { staggerChildren, delayChildren } },
       }}
       initial={false}
-      animate={canReveal ? (inView ? "visible" : "hidden") : "visible"}
+      animate={!canReveal ? "visible" : inView ? "visible" : "hidden"}
       className={className}
       {...aria}
     >

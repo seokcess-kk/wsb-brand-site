@@ -38,20 +38,17 @@ export function RevealOnView({
   const reduced = useSafeReducedMotion();
   const mounted = useHasMounted();
 
-  // Reduced motion fades opacity only; the rise + blur are added only when
-  // motion is allowed.
-  const hidden = reduced
-    ? { opacity: 0, y: 0, filter: "blur(0px)" }
-    : { opacity: 0, y, filter: "blur(4px)" };
+  const hidden = { opacity: 0, y, filter: "blur(4px)" };
   const shown = { opacity: 1, y: 0, filter: "blur(0px)" };
 
-  // Only drive the reveal once mounted and able to observe the viewport. Until
-  // then (SSR, first render, or environments without IntersectionObserver) the
-  // element stays shown, so the copy is never gated behind JS. Off-screen
-  // elements flip to `hidden` after mount without a visible flash, then reveal
-  // on scroll. initial={false} keeps motion from emitting opacity:0 into SSR.
-  const canReveal = mounted && canObserveViewport();
-  const animate = canReveal ? (inView ? shown : hidden) : shown;
+  // Drive the scroll reveal only when motion is allowed AND we are mounted and
+  // able to observe the viewport. Reduced motion (or SSR / no IntersectionObserver)
+  // shows the content immediately with no scroll gating, so the copy is never
+  // hidden waiting for an observer that may never fire. Off-screen elements flip
+  // to `hidden` after mount without a visible flash, then reveal on scroll.
+  // initial={false} keeps motion from emitting opacity:0 into the SSR markup.
+  const canReveal = !reduced && mounted && canObserveViewport();
+  const animate = !canReveal ? shown : inView ? shown : hidden;
 
   return (
     <motion.div
