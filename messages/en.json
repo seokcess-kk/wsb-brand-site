@@ -41,7 +41,8 @@
       "batchMeta": "BATCH · WSB-2026-001",
       "overlayLabel1": "SAPONIN · +8×",
       "overlayLabel2": "pH 5.8 · EC 1.4",
-      "overlayLabel3": "μmol UV-B · 285nm"
+      "overlayLabel3": "μmol UV-B · 285nm",
+      "scrollCue": "SCROLL TO DECODE"
     },
     "credibility": {
       "ariaLabel": "Woori Smart Bio credibility signals",
@@ -79,7 +80,8 @@
       "problem": {
         "label": "PROBLEM",
         "title": "Botanicals resist standardization",
-        "body": "Field and greenhouse cultivation expose plants to uncontrollable variables. Climate, soil, harvest season, and pesticide exposure all shift active compound content from one harvest to the next. Pharmaceutical-grade standardization is effectively impossible."
+        "body": "Field and greenhouse cultivation expose plants to uncontrollable variables. Climate, soil, harvest season, and pesticide exposure all shift active compound content from one harvest to the next. Pharmaceutical-grade standardization is effectively impossible.",
+        "source": "Conventional cultivation batch variance · 0/5 on-spec"
       },
       "opportunity": {
         "label": "OPPORTUNITY",
@@ -89,7 +91,8 @@
           { "label": "GLOBAL MARKET 2024", "value": "$45B" },
           { "label": "CAGR 2024 ~ 2033", "value": "+6.7%" },
           { "label": "MARKET 2033E", "value": "$81B" }
-        ]
+        ],
+        "source": "Source · global botanical drug market estimate (2024)"
       }
     },
     "mat": {
@@ -98,9 +101,10 @@
       "heading": "MAT\nWe trigger the plant's own defense\nto surface active compounds on purpose",
       "diagram": {
         "stressLabel": "STRESS · 4 INPUTS",
-        "plantLabel": "PANAX · MAT",
+        "plantLabel": "GINSENG · PANAX",
         "outputLabel": "API YIELD",
-        "outputValue": "+8×"
+        "outputValue": "+8×",
+        "note": "Basis · in-house trial vs. same-cultivar control"
       },
       "body": "MAT (Metabolite Agriculture Technology) targets active compound yield rather than biomass growth. Specific UV-B wavelengths, brief thermal shocks, regulated water deficit, and mineral cues are applied as precision stressors to induce secondary metabolite production.",
       "stressors": [

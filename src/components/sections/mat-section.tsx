@@ -98,6 +98,7 @@ export async function MatSection() {
             plantLabel={t("diagram.plantLabel")}
             outputLabel={t("diagram.outputLabel")}
             outputValue={t("diagram.outputValue")}
+            note={t("diagram.note")}
           />
         </RevealOnView>
       </div>

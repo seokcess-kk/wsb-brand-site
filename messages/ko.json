@@ -41,7 +41,8 @@
       "batchMeta": "BATCH · WSB-2026-001",
       "overlayLabel1": "SAPONIN · +8×",
       "overlayLabel2": "pH 5.8 · EC 1.4",
-      "overlayLabel3": "μmol UV-B · 285nm"
+      "overlayLabel3": "μmol UV-B · 285nm",
+      "scrollCue": "SCROLL TO DECODE"
     },
     "credibility": {
       "ariaLabel": "우리스마트바이오 신뢰 지표",
@@ -79,7 +80,8 @@
       "problem": {
         "label": "PROBLEM",
         "title": "표준화 불가능한 천연물",
-        "body": "노지와 온실 재배는 기후·토양·채집 시기·농약 오염 등 통제 불가능한 변수에 노출됩니다. 동일 식물이라도 유효성분 함량과 화학적 구성이 매번 달라져 의약품 표준화가 사실상 불가능합니다."
+        "body": "노지와 온실 재배는 기후·토양·채집 시기·농약 오염 등 통제 불가능한 변수에 노출됩니다. 동일 식물이라도 유효성분 함량과 화학적 구성이 매번 달라져 의약품 표준화가 사실상 불가능합니다.",
+        "source": "관행 재배 배치 변동 · 기준 적중 0/5"
       },
       "opportunity": {
         "label": "OPPORTUNITY",
@@ -89,7 +91,8 @@
           { "label": "GLOBAL MARKET 2024", "value": "₩60조" },
           { "label": "CAGR 2024 ~ 2033", "value": "+6.7%" },
           { "label": "MARKET 2033E", "value": "₩108조" }
-        ]
+        ],
+        "source": "출처 · 글로벌 식물의약품 시장 추정 (2024)"
       }
     },
     "mat": {
@@ -98,9 +101,10 @@
       "heading": "MAT\n식물 본연의 방어 기전을 깨워\n유효성분을 의도적으로 끌어냅니다",
       "diagram": {
         "stressLabel": "STRESS · 4 INPUTS",
-        "plantLabel": "PANAX · MAT",
+        "plantLabel": "인삼 · PANAX",
         "outputLabel": "API YIELD",
-        "outputValue": "+8×"
+        "outputValue": "+8×",
+        "note": "기준 · 동일 품종 대조군 대비 자사 시험"
       },
       "body": "MAT(Metabolite Agriculture Technology)는 생육량이 아닌 유효성분 수율을 목표로 합니다. 특정 파장의 UV-B·단기 열충격·수분 결핍·미네랄 조합 등 정밀한 스트레스 인자를 단계별로 적용해 2차 대사산물 생성을 유도합니다.",
       "stressors": [

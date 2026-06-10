@@ -157,6 +157,33 @@ body {
   will-change: transform, opacity;
 }
 
+/* Hero scroll cue: a dot travels down a short track, inviting the reader to
+   keep going (where the hero's instrument readouts get decoded). */
+@keyframes hero-scroll-dot {
+  0% {
+    transform: translateY(-100%);
+    opacity: 0;
+  }
+  20%,
+  80% {
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(900%);
+    opacity: 0;
+  }
+}
+.hero-scroll-dot {
+  animation: hero-scroll-dot 2.4s cubic-bezier(0.65, 0, 0.35, 1) infinite;
+}
+@media (prefers-reduced-motion: reduce) {
+  .hero-scroll-dot {
+    animation: none;
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
 /* Subtle modular grid overlay utility (Data Overlay primitive) */
 .bg-grid {
   background-image:

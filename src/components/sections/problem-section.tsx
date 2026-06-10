@@ -54,6 +54,7 @@ export async function ProblemSection() {
               }
               footerLeft={{ label: "σ · VARIATION", value: "±35%" }}
               footerRight={{ label: "PHARMA MATCH", value: "0/5" }}
+              source={t("problem.source")}
             />
           </RevealOnView>
 
@@ -78,6 +79,7 @@ export async function ProblemSection() {
                 label: metrics[2].label,
                 value: <CountUp value={metrics[2].value} duration={1.2} />,
               }}
+              source={t("opportunity.source")}
             />
           </RevealOnView>
         </div>
@@ -94,6 +96,7 @@ function CompareCard({
   chart,
   footerLeft,
   footerRight,
+  source,
 }: {
   accent: "muted" | "primary";
   label: string;
@@ -102,6 +105,8 @@ function CompareCard({
   chart: React.ReactNode;
   footerLeft: { label: string; value: React.ReactNode };
   footerRight: { label: string; value: React.ReactNode };
+  /** Small source / basis line so the figures read as evidence, not decoration. */
+  source?: string;
 }) {
   return (
     <article className="relative flex h-full flex-col gap-7 overflow-hidden bg-canvas p-8 md:p-10">
@@ -155,6 +160,13 @@ function CompareCard({
           accent={accent === "primary"}
         />
       </dl>
+
+      {source && (
+        <p className="relative -mt-1 flex items-center gap-1.5 mono-label text-[10px] text-structural/65">
+          <span aria-hidden className="inline-block h-1 w-1 rounded-full bg-structural/30" />
+          {source}
+        </p>
+      )}
     </article>
   );
 }

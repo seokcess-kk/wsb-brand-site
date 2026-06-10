@@ -96,6 +96,18 @@ export async function HeroSection() {
           </div>
         </div>
       </div>
+
+      {/* Scroll cue: invites the reader past the atmospheric hero to the
+          sections where these instrument readouts get decoded. */}
+      <div
+        aria-hidden
+        className="pointer-events-none absolute inset-x-0 bottom-6 hidden flex-col items-center gap-2 text-canvas/55 md:flex"
+      >
+        <span className="mono-label text-[10px]">{t("scrollCue")}</span>
+        <span className="relative block h-9 w-px overflow-hidden bg-canvas/20">
+          <span className="hero-scroll-dot absolute left-0 top-0 block h-3 w-px bg-canvas/80" />
+        </span>
+      </div>
     </section>
   );
 }

@@ -10,6 +10,8 @@ type Props = {
   plantLabel: string;
   outputLabel: string;
   outputValue: string;
+  /** Small basis/source line so the +8× figure reads as a measured result. */
+  note?: string;
 };
 
 const STRESSORS = [
@@ -28,6 +30,7 @@ export function MatProcessDiagram({
   plantLabel,
   outputLabel,
   outputValue,
+  note,
 }: Props) {
   const ref = useRef<HTMLDivElement>(null);
   const inView = useInView(ref, { once: true, amount: 0.35 });
@@ -190,6 +193,13 @@ export function MatProcessDiagram({
           </p>
         </motion.div>
       </div>
+
+      {note && (
+        <p className="relative mt-8 flex items-center gap-1.5 border-t border-structural/10 pt-4 mono-label text-[10px] text-structural/65">
+          <span aria-hidden className="inline-block h-1 w-1 rounded-full bg-primary/50" />
+          {note}
+        </p>
+      )}
 
       <style>{`
         @keyframes matPulse {
