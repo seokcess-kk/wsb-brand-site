@@ -31,6 +31,21 @@ export async function listNews(opts: {
     .orderBy(desc(schema.newsPosts.createdAt));
 }
 
+/**
+ * Most recent published posts, newest first, for the public site (home teaser
+ * and the news list share this source). Returns [] when the DB is not
+ * configured so callers can fall back to placeholder copy.
+ */
+export async function listRecentPublished(limit?: number): Promise<NewsPost[]> {
+  if (!isDbConfigured()) return [];
+  const base = db()
+    .select()
+    .from(schema.newsPosts)
+    .where(eq(schema.newsPosts.isPublished, true))
+    .orderBy(desc(schema.newsPosts.publishedAt));
+  return limit ? base.limit(limit) : base;
+}
+
 export async function listNewsCategories(): Promise<string[]> {
   if (!isDbConfigured()) return [];
   const rows = await db()

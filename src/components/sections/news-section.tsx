@@ -1,6 +1,8 @@
-import { getTranslations } from "next-intl/server";
+import { getLocale, getTranslations } from "next-intl/server";
 import { ArrowUpRight } from "lucide-react";
 import { Link } from "@/i18n/navigation";
+import { listRecentPublished } from "@/lib/news-query";
+import type { NewsPost } from "@/db/schema";
 import { RevealOnView } from "@/components/motion/reveal-on-view";
 import { RevealWords } from "@/components/motion/reveal-words";
 import {
@@ -18,9 +20,32 @@ type Item = {
   summary: string;
 };
 
+/** Map a published post to the teaser card shape for the active locale. */
+function toItem(post: NewsPost, locale: string): Item {
+  const d = post.publishedAt ?? post.createdAt;
+  const date = `${d.getFullYear()}.${String(d.getMonth() + 1).padStart(2, "0")}`;
+  const en = locale === "en";
+  return {
+    date,
+    category: post.category,
+    title: (en && post.titleEn) || post.titleKo,
+    summary: (en && post.summaryEn) || post.summaryKo,
+  };
+}
+
 export async function NewsSection() {
   const t = await getTranslations("home.news");
-  const items = t.raw("items") as Item[];
+  const locale = await getLocale();
+
+  // Share the published-news source with the /news page. When the DB has no
+  // published posts (or is not configured, as in local dev), fall back to the
+  // curated placeholder items so the section never renders empty. The home page
+  // is revalidated on news changes via revalidatePath("/", "layout").
+  const posts = await listRecentPublished(3);
+  const items: Item[] =
+    posts.length > 0
+      ? posts.map((p) => toItem(p, locale))
+      : (t.raw("items") as Item[]);
 
   return (
     <section
