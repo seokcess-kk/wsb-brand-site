@@ -9,7 +9,7 @@
 - Next.js 16 (App Router, Turbopack)
 - React 19, Tailwind v4
 - next-intl (`/` 한국어 기본, `/en` 영문)
-- Drizzle ORM + Neon Postgres
+- Drizzle ORM + Supabase Postgres
 - Resend (transactional email)
 - Vercel Blob (file uploads)
 - Auth.js v5 (admin)
@@ -32,7 +32,8 @@ http://localhost:3000 (포트 사용 중이면 자동으로 다음 포트)
 
 | Key | 용도 | 비고 |
 |---|---|---|
-| `DATABASE_URL` | Neon/Vercel Postgres | 없으면 폼/어드민이 콘솔 로그로 fallback |
+| `DATABASE_URL` | Supabase Postgres (transaction pooler, 6543) | 없으면 폼/어드민이 콘솔 로그로 fallback |
+| `DIRECT_DATABASE_URL` | 마이그레이션 전용 (direct/session, 5432) | `drizzle-kit`에서만 사용. 로컬·CI |
 | `RESEND_API_KEY` | 알림·자동회신 메일 | 없으면 콘솔 로그로 fallback |
 | `RESEND_FROM` | 발신 주소 | 도메인 verification 필요 |
 | `INQUIRY_NOTIFY_TO` | 폼 알림 수신 (콤마 구분) | 어드민 설정에서 override 가능 |
