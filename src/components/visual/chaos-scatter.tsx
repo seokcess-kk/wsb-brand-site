@@ -13,11 +13,9 @@ import { useSafeReducedMotion } from "@/hooks/use-safe-reduced-motion";
  */
 export function ChaosScatter({
   yLabel = "API CONTENT",
-  xLabel = "BATCH 1 ~ 5",
   toleranceLabel = "PHARMA SPEC",
 }: {
   yLabel?: string;
-  xLabel?: string;
   toleranceLabel?: string;
 }) {
   const ref = useRef<HTMLDivElement>(null);
@@ -128,15 +126,15 @@ export function ChaosScatter({
         ))}
       </svg>
 
-      {/* Axis labels (overlay) */}
+      {/* Axis labels (overlay). The y-axis label sits top-left clear of the
+          scatter; the spec-band label rides the band on a canvas chip so it
+          stays legible even where sample points fall behind it. The x-axis is
+          read directly from the B1~B5 ticks, so no separate batch label. */}
       <div className="absolute left-2 top-2 mono-label text-[11px] text-structural/65">
         {yLabel}
       </div>
-      <div className="absolute right-2 top-[42%] mono-label text-[11px] text-primary/80">
+      <div className="absolute right-2 top-1/2 -translate-y-1/2 bg-canvas/90 px-1.5 py-0.5 mono-label text-[10px] leading-none text-primary">
         {toleranceLabel}
-      </div>
-      <div className="absolute bottom-2 left-1/2 -translate-x-1/2 mono-label text-[11px] text-structural/65 whitespace-nowrap">
-        {xLabel}
       </div>
     </div>
   );

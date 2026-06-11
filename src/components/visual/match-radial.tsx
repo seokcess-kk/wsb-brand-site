@@ -79,7 +79,7 @@ export function MatchRadial({ filled, total, label }: Props) {
         {/* Center label */}
         <div className="absolute inset-0 flex flex-col items-center justify-center">
           <span
-            className="font-sans font-extrabold tracking-tight text-primary leading-none"
+            className="font-sans font-extrabold tracking-tight text-canvas leading-none"
             style={{ fontSize: "3rem" }}
           >
             <RadialCount to={filled} run={show} reduced={reduced} />

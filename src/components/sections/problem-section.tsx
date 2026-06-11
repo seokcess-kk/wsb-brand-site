@@ -48,7 +48,6 @@ export async function ProblemSection() {
               chart={
                 <ChaosScatter
                   yLabel="API CONTENT"
-                  xLabel="BATCH 1 ~ 5"
                   toleranceLabel="PHARMA SPEC"
                 />
               }
