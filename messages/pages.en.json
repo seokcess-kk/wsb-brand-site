@@ -4,7 +4,14 @@
       "tag": "COMPANY",
       "meta": "01 / WSB OVERVIEW",
       "title": "Engineered by data.\nGrown by design.",
-      "lede": "A green bio company founded in 2018. By pairing a data-driven precision smart farm with proprietary MAT bio technology, we produce standardized botanical drug ingredients with the same quality in every batch."
+      "lede": "A green bio company founded in 2018. By pairing a data-driven precision smart farm with proprietary MAT bio technology, we produce standardized functional botanical materials with the same quality in every batch."
+    },
+    "cta": {
+      "eyebrow": "FOR INVESTORS & INSTITUTIONS",
+      "heading": "Need our company profile?",
+      "body": "We'll send a company introduction deck for investor and institutional review. We respond within two business days.",
+      "primary": "Request the profile",
+      "secondary": "See the business"
     },
     "overview": {
       "sectionTag": "AT A GLANCE",
@@ -67,7 +74,7 @@
     "vision": {
       "sectionTag": "VISION",
       "title": "Botanical Data Platform.",
-      "body": "Our ultimate asset is data, not factories. AI-driven new-material discovery, personalized healthcare, and global standard ownership. We evolve into a botanical data platform that owns the cultivation and bioactive data layer."
+      "body": "Our ultimate asset is data, not factories. AI-driven new-material discovery, personalized healthcare, and global standard leadership. We evolve into a botanical data platform built on proprietary cultivation and bioactive data."
     },
     "location": {
       "sectionTag": "HEADQUARTERS",
@@ -85,7 +92,14 @@
       "tag": "TECHNOLOGY",
       "meta": "02 / CORE STACK",
       "title": "Technology is our moat.",
-      "lede": "MAT bio technology and the AI-driven precision smart farm are built around the core requirements of the FDA's five botanical drug guidelines and deliver standardized botanical drug ingredients."
+      "lede": "MAT bio technology and the AI-driven precision smart farm are structured to address the core requirements of the FDA's five botanical drug guidelines and deliver standardized functional botanical materials."
+    },
+    "cta": {
+      "eyebrow": "TECHNOLOGY INQUIRY",
+      "heading": "Evaluating a MAT solution rollout?",
+      "body": "We advise on adopting the integrated solution, from cultivation recipes to control software and facility build-out.",
+      "primary": "Talk to solutions",
+      "secondary": "See the business"
     },
     "stack": {
       "sectionTag": "TECHNOLOGY STACK",
@@ -126,28 +140,28 @@
           "field": "Impossible",
           "smartfarm": "Partial",
           "synthetic": "Complete",
-          "wsb": "Complete"
+          "wsb": "Batch variation <10%"
         },
         {
           "label": "API POTENCY",
           "field": "Low · uneven",
           "smartfarm": "Low · uneven",
           "synthetic": "High (single)",
-          "wsb": "Maximized (MAT +8×)"
+          "wsb": "MAT +8× (in-house trial)"
         },
         {
           "label": "SAFETY",
           "field": "Vulnerable",
           "smartfarm": "High",
           "synthetic": "Long-term risk",
-          "wsb": "Highest (clean cultivation)"
+          "wsb": "Closed clean cultivation blocks contaminants"
         },
         {
           "label": "MARKET POSITION",
           "field": "Low-value produce",
           "smartfarm": "Mid-value fresh",
           "synthetic": "High-value drug",
-          "wsb": "High-value botanical drug API"
+          "wsb": "High-value functional botanical material"
         }
       ],
       "headers": {
@@ -159,7 +173,7 @@
     },
     "moat": {
       "sectionTag": "TECHNICAL MOAT",
-      "sectionTitle": "A multi-layered moat that cannot be copied.",
+      "sectionTitle": "A multi-layered technical moat that is hard to replicate.",
       "layers": [
         {
           "code": "L1",
@@ -197,17 +211,23 @@
         { "code": "IP", "name": "MAT SOP", "body": "Plant- and effect-specific digital cultivation recipes" },
         { "code": "SW", "name": "AI Operating System", "body": "Software that executes the SOP without drift" },
         { "code": "HW", "name": "Precision Smart Farm", "body": "Hardware that acts as a bio-reactor" }
-      ]
+      ],
+      "cta": "Talk to solutions",
+      "processLabel": "Rollout process",
+      "process": ["Consult & scope", "Pilot validation", "SOP transfer & build-out", "Operation support"]
     },
     "material": {
       "tag": "PILLAR 02 / B2B MATERIAL",
       "title": "We supply standardized high-potency materials.",
-      "body": "We directly produce and supply cGMP-grade botanical drug APIs, high-potency nutraceutical ingredients, and efficacy-verified cosmetic botanicals.",
+      "body": "We directly produce and supply materials designed to address cGMP requirements, from API-oriented botanical materials to high-potency nutraceutical ingredients and efficacy-verified cosmetic botanicals.",
       "segments": [
-        { "name": "Pharma · API", "body": "FDA / cGMP-grade botanical drug ingredients" },
+        { "name": "Pharma · API", "body": "API-oriented materials addressing FDA / cGMP requirements" },
         { "name": "Nutraceutical", "body": "MAT-enhanced individually-recognized ingredients" },
         { "name": "Cosmetic", "body": "Botanical material verified for safety and efficacy" }
-      ]
+      ],
+      "cta": "Material / ODM inquiry",
+      "supplyLabel": "Supply notes",
+      "supplyNote": "Supply items include standardized materials such as ginseng, isatis, angelica, and dendropanax, with content-guaranteed specs and batch-consistency data (COA). ODM runs from inquiry to sample to spec agreement to recurring supply."
     },
     "phytopresso": {
       "tag": "PILLAR 03 / BRAND",
@@ -233,20 +253,28 @@
       "distribution": "B2C distribution is handled by an influencer-marketing specialist. WSB focuses on R&D and production.",
       "externalCta": "Visit Phytopresso Store",
       "externalHref": "#",
-      "photoPlaceholder": "Product image coming soon"
+      "photoPlaceholder": "Product image coming soon",
+      "cta": "Brand partnership"
     }
   },
   "rnd": {
     "hero": {
       "tag": "R&D",
       "meta": "04 / RESEARCH",
-      "title": "20+ patents.\n6 botanical pipelines.\nProving a standard with data.",
-      "lede": "R&D leadership spanning pharmacy, engineering, and agriculture, plus an impossible-to-copy digital SOP. Every additional plant adds a new API on top of the same platform."
+      "title": "20+ patents.\n6 botanical pipelines.\nAdvancing a botanical API standard with data.",
+      "lede": "R&D leadership spanning pharmacy, engineering, and agriculture, plus a hard-to-replicate digital SOP. Every additional plant adds a new API on top of the same platform."
+    },
+    "cta": {
+      "eyebrow": "R&D & CLINICAL",
+      "heading": "Let's discuss research and clinical collaboration",
+      "body": "Botanical API standardization, clinical material supply, and technical data requests.",
+      "primary": "R&D / clinical inquiry",
+      "secondary": "See the company"
     },
     "pipeline": {
       "sectionTag": "PIPELINE",
       "sectionTitle": "6 botanicals on a single platform.",
-      "lede": "Ginseng is fully commercial. Isatis is shipping clinical material. Four more pipelines complete R&D and target commercialization in 2026-2027."
+      "lede": "Ginseng is fully commercial. Isatis and Angelica are at pre-launch. Three more pipelines are in R&D and target commercialization in 2026-2027."
     },
     "patents": {
       "sectionTag": "PATENTS",

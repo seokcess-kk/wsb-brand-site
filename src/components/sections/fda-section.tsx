@@ -47,17 +47,24 @@ export async function FdaSection() {
 
           {/* Match ratio radial */}
           <div className="flex items-end gap-6 self-start md:self-end">
-            <MatchRadial filled={5} total={5} label={t("matchTag")} />
+            <MatchRadial
+              filled={5}
+              total={5}
+              label={t("matchTag")}
+              sublabel="ADDRESSED"
+            />
             <p className="mono-label text-canvas/55 pb-2">{t("sectionMeta")}</p>
           </div>
         </div>
 
         <Lede text={t("lede")} inverse className="max-w-3xl" />
 
-        <p className="mt-4 max-w-3xl text-xs leading-relaxed text-canvas/55">
-          <span aria-hidden className="mr-2 inline-block h-1 w-1 -translate-y-[3px] rounded-full bg-canvas/45 align-middle" />
-          {t("disclaimer")}
-        </p>
+        <div className="mt-5 max-w-3xl border-l-2 border-primary/50 bg-canvas/[0.04] py-3 pl-4 pr-4">
+          <p className="mono-label mb-1.5 text-[10px] text-canvas/60">NOTE</p>
+          <p className="text-sm leading-relaxed text-canvas/75">
+            {t("disclaimer")}
+          </p>
+        </div>
 
         {/* Table is interactive — client component */}
         <FdaTable

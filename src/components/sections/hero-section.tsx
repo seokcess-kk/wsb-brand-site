@@ -47,9 +47,14 @@ export async function HeroSection() {
               </span>
             </h1>
 
-            <p className="max-w-xl text-base md:text-lg text-canvas/75 leading-relaxed">
-              {t("subhead")}
-            </p>
+            <div className="space-y-4">
+              <p className="max-w-2xl text-lg font-medium leading-relaxed text-canvas/90 md:text-xl">
+                {t("definition")}
+              </p>
+              <p className="max-w-xl text-sm leading-relaxed text-canvas/60 md:text-base">
+                {t("subhead")}
+              </p>
+            </div>
 
             <div className="flex flex-wrap items-center gap-4 pt-2">
               <Link

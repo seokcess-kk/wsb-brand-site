@@ -22,8 +22,9 @@ export async function RoadmapSection() {
 
   return (
     <section
+      id="roadmap"
       aria-labelledby="roadmap-heading"
-      className="relative isolate bg-structural text-canvas overflow-hidden"
+      className="relative isolate scroll-mt-24 bg-structural text-canvas overflow-hidden"
     >
       <div
         aria-hidden

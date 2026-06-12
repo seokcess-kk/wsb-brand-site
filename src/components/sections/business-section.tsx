@@ -1,5 +1,6 @@
 import { getTranslations } from "next-intl/server";
-import { ArrowUpRight } from "lucide-react";
+import { ArrowRight, ArrowUpRight } from "lucide-react";
+import { Link } from "@/i18n/navigation";
 import { RevealOnView } from "@/components/motion/reveal-on-view";
 import { RevealWords } from "@/components/motion/reveal-words";
 import {
@@ -21,7 +22,10 @@ type Pillar = {
   cases: string[];
   externalLabel?: string;
   externalHref?: string;
+  cta?: string;
 };
+
+const PILLAR_TOPICS = ["solution", "material", "brand"] as const;
 
 export async function BusinessSection() {
   const t = await getTranslations("home.business");
@@ -29,8 +33,9 @@ export async function BusinessSection() {
 
   return (
     <section
+      id="business"
       aria-labelledby="business-heading"
-      className="relative isolate bg-canvas"
+      className="relative isolate scroll-mt-24 bg-canvas"
     >
       <div
         aria-hidden
@@ -65,9 +70,9 @@ export async function BusinessSection() {
           delayChildren={0.12}
           staggerChildren={0.08}
         >
-          {pillars.map((p) => (
+          {pillars.map((p, i) => (
             <FadeInItem key={p.label} className="h-full">
-              <PillarCard pillar={p} />
+              <PillarCard pillar={p} index={i} />
             </FadeInItem>
           ))}
         </FadeInSection>
@@ -76,7 +81,7 @@ export async function BusinessSection() {
   );
 }
 
-function PillarCard({ pillar }: { pillar: Pillar }) {
+function PillarCard({ pillar, index }: { pillar: Pillar; index: number }) {
   return (
     <MotionCard
       as="article"
@@ -147,6 +152,19 @@ function PillarCard({ pillar }: { pillar: Pillar }) {
             />
           </a>
         )}
+
+      {pillar.cta && (
+        <Link
+          href={`/contact?topic=${PILLAR_TOPICS[index] ?? "material"}`}
+          className="group/cta inline-flex items-center gap-2 border-t border-structural/10 pt-5 text-sm font-medium text-primary transition-opacity hover:opacity-70"
+        >
+          {pillar.cta}
+          <ArrowRight
+            size={14}
+            className="transition-transform group-hover/cta:translate-x-0.5"
+          />
+        </Link>
+      )}
     </MotionCard>
   );
 }

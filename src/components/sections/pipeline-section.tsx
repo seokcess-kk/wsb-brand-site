@@ -3,34 +3,24 @@ import { ArrowUpRight } from "lucide-react";
 import { Link } from "@/i18n/navigation";
 import { RevealOnView } from "@/components/motion/reveal-on-view";
 import { RevealWords } from "@/components/motion/reveal-words";
-import {
-  FadeInItem,
-  FadeInSection,
-} from "@/components/motion/fade-in-section";
 import { SectionEyebrow } from "@/components/layout/section-eyebrow";
 import { Lede } from "@/components/layout/lede";
-
-type Item = {
-  name: string;
-  latin: string;
-  api: string;
-  indication: string;
-  stage: number; // 0..3
-};
+import { PipelineTable, type PipelineItem } from "./pipeline-table";
 
 export async function PipelineSection() {
   const t = await getTranslations("home.pipeline");
   const stages = t.raw("stages") as string[];
-  const allItems = t.raw("items") as Item[];
+  const allItems = t.raw("items") as PipelineItem[];
+  const investigationalTag = t("investigationalTag");
+  const disclaimer = t("disclaimer");
   // Home shows only the 3 most advanced pipelines; full list lives on /r-and-d.
-  const items = [...allItems]
-    .sort((a, b) => b.stage - a.stage)
-    .slice(0, 3);
+  const items = [...allItems].sort((a, b) => b.stage - a.stage).slice(0, 3);
 
   return (
     <section
+      id="pipeline"
       aria-labelledby="pipeline-heading"
-      className="relative isolate bg-canvas"
+      className="relative isolate scroll-mt-24 bg-canvas"
     >
       <div
         aria-hidden
@@ -65,27 +55,13 @@ export async function PipelineSection() {
           </RevealOnView>
         </div>
 
-        {/* Pipeline table */}
-        <div className="mt-16 overflow-hidden border border-structural/10">
-          {/* Table header */}
-          <div className="hidden grid-cols-[2fr_2fr_2fr_3fr] gap-px bg-structural/10 md:grid">
-            <HeaderCell text="BOTANICAL" />
-            <HeaderCell text="ACTIVE COMPOUND" />
-            <HeaderCell text="INDICATION" />
-            <HeaderCell text={`STAGE  ·  ${stages.join("  /  ")}`} />
-          </div>
-
-          {/* Rows */}
-          <FadeInSection
-            className="grid gap-px bg-structural/10"
-            staggerChildren={0.06}
-          >
-            {items.map((item) => (
-              <FadeInItem key={item.name}>
-                <PipelineRow item={item} stages={stages} />
-              </FadeInItem>
-            ))}
-          </FadeInSection>
+        <div className="mt-16">
+          <PipelineTable
+            items={items}
+            stages={stages}
+            investigationalTag={investigationalTag}
+            disclaimer={disclaimer}
+          />
         </div>
 
         <div className="mt-8 flex justify-end">
@@ -102,119 +78,5 @@ export async function PipelineSection() {
         </div>
       </div>
     </section>
-  );
-}
-
-function HeaderCell({ text }: { text: string }) {
-  return (
-    <div className="bg-canvas px-5 py-3 mono-label text-structural/65">
-      {text}
-    </div>
-  );
-}
-
-function PipelineRow({ item, stages }: { item: Item; stages: string[] }) {
-  return (
-    <div className="group grid grid-cols-1 gap-px bg-structural/5 transition-colors md:grid-cols-[2fr_2fr_2fr_3fr]">
-      <Cell>
-        <p className="font-sans text-base font-semibold text-structural">
-          {item.name}
-        </p>
-        <p className="mono-label text-[10px] text-structural/65 italic">
-          {item.latin}
-        </p>
-      </Cell>
-      <Cell>
-        <p className="font-mono text-sm font-semibold tracking-tight text-primary">
-          {item.api}
-        </p>
-      </Cell>
-      <Cell>
-        <p className="text-sm text-structural/75">{item.indication}</p>
-      </Cell>
-      <Cell>
-        <StageBar current={item.stage} stages={stages} />
-      </Cell>
-    </div>
-  );
-}
-
-function Cell({ children }: { children: React.ReactNode }) {
-  return (
-    <div className="bg-canvas px-5 py-6 transition-colors duration-300 group-hover:bg-primary/[0.03]">
-      {children}
-    </div>
-  );
-}
-
-function StageBar({
-  current,
-  stages,
-}: {
-  current: number;
-  stages: string[];
-}) {
-  // Each stage anchored at column center; track sits behind, dots on top.
-  const cols = stages.length;
-  return (
-    <div className="space-y-3 pt-1">
-      <div
-        className="relative h-3"
-        style={{
-          display: "grid",
-          gridTemplateColumns: `repeat(${cols}, 1fr)`,
-        }}
-      >
-        {/* Track and fill use percentages of inner span. We inset by half a
-            column so the line starts at the first dot and ends at the last. */}
-        <span
-          aria-hidden
-          className="absolute top-1/2 -translate-y-1/2 h-px bg-structural/20"
-          style={{ left: `${100 / (cols * 2)}%`, right: `${100 / (cols * 2)}%` }}
-        />
-        <span
-          aria-hidden
-          className="absolute top-1/2 -translate-y-1/2 h-px bg-primary"
-          style={{
-            left: `${100 / (cols * 2)}%`,
-            width:
-              current === 0
-                ? "0%"
-                : `calc(${(current / (cols - 1)) * 100}% - ${100 / cols}%)`,
-          }}
-        />
-        {stages.map((_, i) => {
-          const filled = i <= current;
-          const isCurrent = i === current;
-          return (
-            <div key={i} className="relative flex items-center justify-center">
-              <span
-                aria-hidden
-                className={`relative z-10 block h-3 w-3 rounded-full ${
-                  filled
-                    ? "bg-primary"
-                    : "bg-canvas ring-1 ring-structural/30"
-                } ${isCurrent ? "ring-2 ring-primary/30" : ""}`}
-              />
-            </div>
-          );
-        })}
-      </div>
-      <div
-        className="grid text-center"
-        style={{ gridTemplateColumns: `repeat(${cols}, 1fr)` }}
-      >
-        {stages.map((s, i) => (
-          <span
-            key={s}
-            className={`mono-label text-[11px] truncate px-1 ${
-              i <= current ? "text-primary" : "text-structural/65"
-            }`}
-          >
-            {s}
-          </span>
-        ))}
-      </div>
-    </div>
   );
 }

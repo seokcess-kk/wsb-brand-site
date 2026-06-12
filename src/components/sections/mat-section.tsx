@@ -18,8 +18,9 @@ export async function MatSection() {
 
   return (
     <section
+      id="mat"
       aria-labelledby="mat-heading"
-      className="relative isolate bg-canvas"
+      className="relative isolate scroll-mt-24 bg-canvas"
     >
       {/* Subtle dotted grid background */}
       <div
@@ -55,14 +56,22 @@ export async function MatSection() {
               >
                 <RevealWords text={t("heading")} triggerOnView />
               </h2>
+              <RevealOnView delay={0.16}>
+                <p className="max-w-prose text-base font-medium leading-relaxed text-structural md:text-lg">
+                  {t("plain")}
+                </p>
+              </RevealOnView>
               <RevealOnView delay={0.22}>
                 <Lede text={t("body")} className="max-w-prose" />
               </RevealOnView>
             </div>
             <RevealOnView delay={0.34}>
-              <div className="flex items-center gap-3 border-t border-structural/10 pt-6">
-                <span aria-hidden className="h-px w-4 bg-primary" />
-                <p className="mono-label text-structural/65">
+              <div className="border-t border-structural/10 pt-6">
+                <p className="flex items-start gap-3 text-sm font-medium leading-relaxed text-structural">
+                  <span aria-hidden className="mt-[0.4em] h-px w-4 flex-none bg-primary" />
+                  <span>{t("value")}</span>
+                </p>
+                <p className="mono-label mt-4 pl-7 text-structural/65">
                   MAT · METABOLITE AGRICULTURE TECHNOLOGY
                 </p>
               </div>

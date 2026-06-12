@@ -13,6 +13,8 @@ type Props = {
   items: MobileNavItem[];
   openLabel: string;
   closeLabel: string;
+  ctaLabel: string;
+  ctaHref: string;
 };
 
 /**
@@ -20,7 +22,13 @@ type Props = {
  * closes when a nav link is tapped (each Link handles its own setOpen call
  * so we avoid a setState-in-effect cascade on route changes).
  */
-export function MobileNav({ items, openLabel, closeLabel }: Props) {
+export function MobileNav({
+  items,
+  openLabel,
+  closeLabel,
+  ctaLabel,
+  ctaHref,
+}: Props) {
   const [open, setOpen] = useState(false);
   const pathname = usePathname();
   const reduced = useSafeReducedMotion();
@@ -110,6 +118,15 @@ export function MobileNav({ items, openLabel, closeLabel }: Props) {
                 );
               })}
             </ul>
+            <div className="mx-auto max-w-7xl px-6 pb-5">
+              <Link
+                href={ctaHref}
+                onClick={() => setOpen(false)}
+                className="flex w-full items-center justify-center bg-primary px-5 py-3.5 text-base font-medium text-canvas"
+              >
+                {ctaLabel}
+              </Link>
+            </div>
           </motion.nav>
         )}
       </AnimatePresence>

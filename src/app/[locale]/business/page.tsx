@@ -1,5 +1,6 @@
 import { getTranslations, setRequestLocale } from "next-intl/server";
-import { ArrowUpRight, Plus } from "lucide-react";
+import { ArrowRight, ArrowUpRight, Plus } from "lucide-react";
+import { Link } from "@/i18n/navigation";
 import { PageHero } from "@/components/layout/page-hero";
 import { SectionEyebrow } from "@/components/layout/section-eyebrow";
 import { Lede } from "@/components/layout/lede";
@@ -26,6 +27,7 @@ export default async function BusinessPage({
 
   const t = await getTranslations("pages.business");
   const solComponents = t.raw("solution.components") as Component[];
+  const solProcess = t.raw("solution.process") as string[];
   const matSegments = t.raw("material.segments") as Segment[];
   const lineup = t.raw("phytopresso.lineup") as LineupItem[];
 
@@ -44,6 +46,8 @@ export default async function BusinessPage({
         title={t("solution.title")}
         body={t("solution.body")}
         accent="light"
+        ctaLabel={t("solution.cta")}
+        ctaHref="/contact?topic=solution"
       >
         <FadeInSection
           className="mt-12 grid gap-4 md:grid-cols-3"
@@ -66,6 +70,22 @@ export default async function BusinessPage({
             </FadeInItem>
           ))}
         </FadeInSection>
+
+        <div className="mt-12 border-t border-structural/10 pt-8">
+          <p className="mono-label mb-5 text-structural/65">
+            {t("solution.processLabel")}
+          </p>
+          <ol className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
+            {solProcess.map((step, i) => (
+              <li key={step} className="flex items-start gap-3">
+                <span className="font-mono text-xs font-bold tabular-nums text-primary">
+                  {String(i + 1).padStart(2, "0")}
+                </span>
+                <span className="text-sm text-structural/75">{step}</span>
+              </li>
+            ))}
+          </ol>
+        </div>
       </PillarSection>
 
       {/* PILLAR 02 — B2B Material */}
@@ -74,6 +94,8 @@ export default async function BusinessPage({
         title={t("material.title")}
         body={t("material.body")}
         accent="dark"
+        ctaLabel={t("material.cta")}
+        ctaHref="/contact?topic=material"
       >
         <FadeInSection
           className="mt-12 grid gap-4 md:grid-cols-3"
@@ -95,6 +117,15 @@ export default async function BusinessPage({
             </FadeInItem>
           ))}
         </FadeInSection>
+
+        <div className="mt-12 border-t border-canvas/10 pt-8">
+          <p className="mono-label mb-3 text-canvas/55">
+            {t("material.supplyLabel")}
+          </p>
+          <p className="max-w-3xl text-sm leading-relaxed text-canvas/70">
+            {t("material.supplyNote")}
+          </p>
+        </div>
       </PillarSection>
 
       {/* PILLAR 03 — Phytopresso */}
@@ -103,6 +134,8 @@ export default async function BusinessPage({
         title={t("phytopresso.title")}
         body={t("phytopresso.body")}
         accent="light"
+        ctaLabel={t("phytopresso.cta")}
+        ctaHref="/contact?topic=brand"
       >
         <FadeInSection
           className="mt-12 grid items-stretch gap-4 md:grid-cols-3"
@@ -180,12 +213,16 @@ function PillarSection({
   body,
   children,
   accent,
+  ctaLabel,
+  ctaHref,
 }: {
   tag: string;
   title: string;
   body: string;
   children: React.ReactNode;
   accent: "light" | "dark";
+  ctaLabel?: string;
+  ctaHref?: string;
 }) {
   const isDark = accent === "dark";
   return (
@@ -217,6 +254,20 @@ function PillarSection({
           </RevealOnView>
         </div>
         {children}
+        {ctaLabel && ctaHref && (
+          <div className="mt-12">
+            <Link
+              href={ctaHref}
+              className="group inline-flex items-center gap-3 bg-primary px-6 py-3.5 text-sm font-medium text-canvas transition-opacity hover:opacity-90"
+            >
+              {ctaLabel}
+              <ArrowRight
+                size={16}
+                className="transition-transform group-hover:translate-x-0.5"
+              />
+            </Link>
+          </div>
+        )}
       </div>
     </section>
   );

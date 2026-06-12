@@ -3,7 +3,7 @@
     "name": "Woori Smart Bio",
     "shortName": "WSB",
     "slogan": "Engineered by Data, Grown by Design.",
-    "tagline": "Standardized botanical drug ingredients grown on a data-driven precision smart farm. Same quality every batch."
+    "tagline": "A green bio company standardizing functional botanical materials on a data-driven precision smart farm. The same quality in every batch."
   },
   "nav": {
     "company": "Company",
@@ -29,37 +29,49 @@
     "tel": "+82-31-834-4515",
     "email": "contact@woorismartbio.com",
     "copyright": "© 2026 Woori Smart Bio. All rights reserved.",
-    "brandPromise": "We cultivate plants on a data-driven precision smart farm. Our single promise is the same quality of botanical drug ingredient in every batch.",
+    "brandPromise": "We cultivate plants on a data-driven precision smart farm. Our single promise is the same quality of functional botanical material in every batch.",
     "explore": "EXPLORE",
     "contactLabel": "CONTACT",
     "brandPromiseLabel": "BRAND PROMISE"
   },
   "home": {
     "hero": {
-      "tag": "WSB · BOTANICAL DRUG INGREDIENT",
-      "subhead": "Batch-to-batch consistency that field cultivation could never deliver. Precision smart farming and MAT standardize our botanical drug ingredients.",
+      "tag": "GREEN BIO · PRECISION SMART FARM",
+      "definition": "Woori Smart Bio is a green bio company standardizing functional botanical materials on a data-driven precision smart farm.",
+      "subhead": "MAT lifts active compounds consistently so every batch ships the same quality of material.",
       "batchMeta": "BATCH · WSB-2026-001",
       "overlayLabel1": "SAPONIN · +8×",
       "overlayLabel2": "pH 5.8 · EC 1.4",
       "overlayLabel3": "μmol UV-B · 285nm",
-      "scrollCue": "SCROLL TO DECODE"
+      "scrollCue": "SCROLL TO EXPLORE"
+    },
+    "personas": {
+      "ariaLabel": "Find your path",
+      "eyebrow": "What brings you here",
+      "heading": "Jump straight to what matters to you",
+      "items": [
+        { "key": "material", "audience": "Material buyers & brands", "need": "Standardized functional botanical materials and ODM supply", "cta": "See B2B Material", "href": "#business" },
+        { "key": "solution", "audience": "Technology adopters", "need": "MAT cultivation and precision smart farm solutions", "cta": "See MAT", "href": "#mat" },
+        { "key": "investor", "audience": "Investors & institutions", "need": "Market opportunity, growth roadmap, IP and infrastructure", "cta": "See the roadmap", "href": "#roadmap" },
+        { "key": "research", "audience": "Research & pharma", "need": "Botanical API standardization and the R&D pipeline", "cta": "See the pipeline", "href": "#pipeline" }
+      ]
     },
     "credibility": {
       "ariaLabel": "Woori Smart Bio credibility signals",
       "items": [
         { "label": "ESTABLISHED", "value": "2018", "caption": "Plant-based green bio materials company" },
-        { "label": "CERTIFICATION", "value": "Green Bio", "caption": "Recognized Green Bio enterprise" },
-        { "label": "STATUS", "value": "Venture", "caption": "Venture company and corporate R&D center" },
-        { "label": "IP PORTFOLIO", "value": "Patents", "caption": "MAT, hydroponic cultivation, and material IP" },
+        { "label": "PATENTS", "value": "20+", "caption": "MAT, hydroponic, and material patents" },
+        { "label": "CERTIFICATION", "value": "Green Bio", "caption": "Recognized Green Bio enterprise (2025)" },
+        { "label": "STATUS", "value": "Venture", "caption": "Venture company and corporate R&D center (2024)" },
         { "label": "FACILITY", "value": "Yeoncheon", "caption": "Yeoncheon R&D production center" },
-        { "label": "CAPA", "value": "2.52M plants/y", "caption": "Yeoncheon production capacity basis" }
+        { "label": "CAPA", "value": "2.52M plants/y", "caption": "Annual production capacity basis" }
       ]
     },
     "scale": {
       "sectionTag": "PRODUCTION & R&D SCALE",
       "sectionMeta": "SCALE · YEONCHEON",
       "heading": "Data is proven at scale",
-      "lede": "The precision smart farm and research infrastructure at our Yeoncheon R&D production center run botanical drug ingredients under identical conditions, 365 days a year.",
+      "lede": "The precision smart farm and research infrastructure at our Yeoncheon R&D production center produce functional botanical materials under identical conditions, 365 days a year.",
       "metrics": [
         { "label": "ANNUAL CAPACITY", "value": "2.52M", "caption": "Plants per year" },
         { "label": "SITE AREA", "value": "11,158㎡", "caption": "Yeoncheon R&D production center site" },
@@ -92,13 +104,15 @@
           { "label": "CAGR 2024 ~ 2033", "value": "+6.7%" },
           { "label": "MARKET 2033E", "value": "$81B" }
         ],
-        "source": "Source · global botanical drug market estimate (2024)"
+        "source": "Source · global botanical drug market estimate (2024) · approx ₩60T → ₩108T at 1,333 KRW/USD"
       }
     },
     "mat": {
       "sectionTag": "CORE TECHNOLOGY",
       "sectionMeta": "02 / MAT",
       "heading": "MAT\nWe trigger the plant's own defense\nto surface active compounds on purpose",
+      "plain": "In plain terms, MAT precisely controls light, temperature, water, and minerals to guide plants toward producing more active compounds, more consistently.",
+      "value": "So every batch can ship the same active-compound content, reliably.",
       "diagram": {
         "stressLabel": "STRESS · 4 INPUTS",
         "plantLabel": "GINSENG · PANAX",
@@ -137,7 +151,7 @@
     "fda": {
       "sectionTag": "REGULATORY FIT",
       "sectionMeta": "03 / FDA STANDARDIZATION",
-      "heading": "The FDA's five guidelines\nWSB is built around the core production requirements",
+      "heading": "The FDA's five guidelines\nWSB is structured to address the core production requirements",
       "lede": "The five core requirements the FDA applies to botanical drug approval. Conventional cultivation struggles to address them at the same time. WSB's precision-controlled smart farm and MAT are structured around raw-material identity, records, contaminant control, quality consistency, and long-term supply stability.",
       "rows": [
         {
@@ -166,28 +180,28 @@
           "wsb": "365-day identical-condition production. Long-term supply stability data secured"
         }
       ],
-      "matchTag": "MATCH RATIO",
+      "matchTag": "GUIDELINE FIT",
       "matchValue": "5/5",
-      "disclaimer": "This matrix shows FDA guideline alignment. Certification and approval follow a separate process."
+      "disclaimer": "This matrix shows FDA guideline alignment, not FDA approval or certification. Certification and approval follow a separate process."
     },
     "traction": {
       "sectionTag": "PROVEN CAPABILITY",
       "sectionMeta": "04 / CAPACITY & EVIDENCE",
-      "heading": "Proven by data\nBacked by production scale",
-      "lede": "MAT and the precision-controlled smart farm prove active-compound gains and batch consistency with data. The Yeoncheon R&D production center's capacity and our clinical material supply record back it up.",
+      "heading": "Backed by data\nSupported by production scale",
+      "lede": "MAT and the precision-controlled smart farm show active-compound gains and batch consistency with data. The Yeoncheon R&D production center's capacity and our clinical material supply record back it up.",
       "kpis": {
         "saponin": {
           "label": "SAPONIN ↑",
           "value": "+8×",
           "caption": "Ginsenoside content vs. control group",
-          "source": "WSB internal analysis",
+          "source": "WSB internal analysis · same-cultivar control · HPLC",
           "asOf": "2025.Q4"
         },
         "batch": {
           "label": "BATCH VARIATION",
           "value": "<10%",
           "caption": "Across all key compounds batch to batch",
-          "source": "WSB batch records",
+          "source": "WSB batch records · all-compound HPLC",
           "asOf": "2025.Q4"
         },
         "traction": {
@@ -223,17 +237,19 @@
           "metricLabel": "DELIVERY MODEL",
           "metricValue": "3-IN-1",
           "metricCaption": "Recipe, control software, and facility as one",
-          "cases": ["Digital cultivation recipe (SOP) transfer", "Precision control software supply", "Smart farm facility build-out"]
+          "cases": ["Digital cultivation recipe (SOP) transfer", "Precision control software supply", "Smart farm facility build-out"],
+          "cta": "Technology inquiry"
         },
         {
           "label": "PILLAR 02",
           "title": "B2B Material",
           "subtitle": "Standardized API supply",
-          "body": "We produce and supply cGMP-grade botanical drug APIs, high-potency nutraceutical ingredients, and efficacy-verified cosmetic botanicals. A stable cash-generating business.",
+          "body": "We produce and supply materials designed to address cGMP requirements, from API-oriented botanical materials to high-potency nutraceutical ingredients and efficacy-verified cosmetic botanicals. A stable supply and revenue base.",
           "metricLabel": "CLINICAL API SUPPLIED",
           "metricValue": "100kg",
           "metricCaption": "Crohn's-disease botanical API",
-          "cases": ["Botanical drug API clinical material supply", "Nutraceutical and cosmetic botanical ODM"]
+          "cases": ["API-oriented clinical material supply", "Nutraceutical and cosmetic botanical ODM"],
+          "cta": "Material / ODM inquiry"
         },
         {
           "label": "PILLAR 03",
@@ -245,17 +261,33 @@
           "metricCaption": "Hydroponic Ginseng SHOT · Angelica DECURSIN · Dendropanax CGA",
           "cases": ["B2C distribution outsourced to an influencer-marketing specialist", "Run as a separate storefront"],
           "externalLabel": "Visit Phytopresso Store",
-          "externalHref": "#"
+          "externalHref": "#",
+          "cta": "Brand partnership"
         }
       ]
+    },
+    "ctaProof": {
+      "eyebrow": "READY TO PARTNER",
+      "heading": "Seen the proof? It's time to talk partnership",
+      "body": "Material supply, technology solutions, clinical collaboration, and more. We respond within two business days.",
+      "primary": "Discuss a partnership",
+      "secondary": "See the business"
+    },
+    "ctaRnd": {
+      "eyebrow": "R&D · CLINICAL",
+      "heading": "We're looking for partners to develop new materials",
+      "body": "Botanical API standardization, clinical material supply, and technical data requests.",
+      "primary": "R&D / clinical inquiry"
     },
     "pipeline": {
       "sectionTag": "R&D PIPELINE",
       "sectionMeta": "06 / 6 BOTANICALS",
       "viewAll": "See all 6 pipelines",
       "heading": "Six botanical pipelines on the same platform",
-      "lede": "Each new plant species adds a new API on top of the same precision-controlled smart farm and MAT stack. Ginseng is already commercial. Isatis is shipping clinical material. Four more are at R&D completion.",
+      "lede": "Each new plant species adds a new material on top of the same precision-controlled smart farm and MAT stack. Ginseng is commercial. Isatis and Angelica are at pre-launch. Three more are in R&D.",
       "stages": ["Discovery", "R&D", "Pre-launch", "Commercial"],
+      "investigationalTag": "Investigational",
+      "disclaimer": "Indications are research targets and do not represent confirmed efficacy. Items beyond the commercial stage are under development.",
       "items": [
         {
           "name": "Hydroponic Ginseng",
@@ -268,35 +300,35 @@
           "name": "Isatis",
           "latin": "Isatis indigotica",
           "api": "Indirubin",
-          "indication": "Crohn's disease · IBD",
+          "indication": "Crohn's disease · IBD (target)",
           "stage": 2
         },
         {
           "name": "Angelica",
           "latin": "Angelica gigas",
           "api": "Decursin",
-          "indication": "Vasodilation · Anti-inflammation · Triglyceride",
+          "indication": "Vascular health · Anti-inflammation (target)",
           "stage": 2
         },
         {
           "name": "Dendropanax",
           "latin": "Dendropanax morbifera",
           "api": "Chlorogenic Acid",
-          "indication": "Liver · Neuroprotection · Sleep",
+          "indication": "Liver · Neuroprotection · Sleep (target)",
           "stage": 1
         },
         {
           "name": "Sallicho",
           "latin": "Capsicum F1 leaf",
           "api": "Alpha-Glucosidase Inhibitor",
-          "indication": "Anti-diabetic",
+          "indication": "Anti-diabetic (target)",
           "stage": 1
         },
         {
           "name": "Soybean Leaf",
           "latin": "Glycine max",
           "api": "Isoflavone",
-          "indication": "Menopause symptom relief",
+          "indication": "Menopause (target)",
           "stage": 1
         }
       ]
@@ -324,7 +356,7 @@
           "date": "2024.11",
           "category": "Clinical",
           "title": "Crohn's-disease botanical API supplied",
-          "summary": "Indirubin-rich Isatis clinical material, 100kg supplied. Proves standardized botanical drug production capability."
+          "summary": "Indirubin-rich Isatis clinical material, 100kg supplied. Shows standardized botanical material production capability."
         }
       ]
     },
@@ -341,14 +373,18 @@
         "country": "Country or region",
         "category": "Inquiry type",
         "categoryOptions": [
-          "B2B Solution",
-          "B2B Material",
+          "B2B Material (supply / ODM)",
+          "B2B Solution (MAT)",
+          "R&D / Clinical",
+          "Investment / Institution",
           "Brand Partnership",
-          "Other"
+          "Media / Other"
         ],
         "message": "Message",
         "messagePlaceholder": "Tell us about your company and the area you would like to collaborate in.",
         "consent": "I agree to the collection and use of personal information.",
+        "privacyTitle": "Personal data collection notice",
+        "privacyBody": "Purpose: receiving and responding to inquiries. Items collected: company, contact name, email, phone, country, and message. Retention: deleted without delay once the inquiry is resolved, except where retention is required by law. You may decline consent, in which case we cannot process your inquiry.",
         "submit": "Send inquiry",
         "required": "required",
         "successHeading": "Inquiry received.",
@@ -371,14 +407,14 @@
       "sectionTag": "GROWTH ROADMAP",
       "sectionMeta": "07 / 3 PHASES",
       "heading": "Phase 1 foundation\nPhase 2 expansion\nPhase 3 standard",
-      "lede": "FDA compliance and Korean traction in Phase 1. Global expansion and cGMP scale-up in Phase 2. Evolution into a botanical data platform in Phase 3.",
+      "lede": "FDA guideline alignment and Korean traction in Phase 1. Global expansion and cGMP scale-up in Phase 2. Evolution into a botanical data platform in Phase 3.",
       "phases": [
         {
           "label": "PHASE 01",
           "period": "by 2027",
           "title": "Foundation and validation",
           "bullets": [
-            "GACP certification and full FDA botanical-drug guideline match",
+            "GACP certification and FDA botanical-drug guideline alignment",
             "Lead the Korean B2B high-potency botanical material market",
             "Commercialize three or more pipelines beyond ginseng"
           ]
@@ -399,7 +435,7 @@
           "title": "Market leadership and standards",
           "bullets": [
             "Core API supplier in the global botanical drug market",
-            "Botanical data platform owning cultivation and bioactive data",
+            "Botanical data platform built on proprietary cultivation and bioactive data",
             "AI-driven new-material discovery and personalized healthcare"
           ]
         }

@@ -11,6 +11,7 @@ import {
 import { MotionCard } from "@/components/motion/motion-card";
 import { MatSection } from "@/components/sections/mat-section";
 import { FdaSection } from "@/components/sections/fda-section";
+import { CtaBand } from "@/components/sections/cta-band";
 
 export default async function TechnologyPage({
   params,
@@ -220,6 +221,17 @@ export default async function TechnologyPage({
           </FadeInSection>
         </div>
       </section>
+
+      <CtaBand
+        tone="light"
+        eyebrow={t("cta.eyebrow")}
+        heading={t("cta.heading")}
+        body={t("cta.body")}
+        primaryLabel={t("cta.primary")}
+        primaryHref="/contact?topic=solution"
+        secondaryLabel={t("cta.secondary")}
+        secondaryHref="/business"
+      />
     </>
   );
 }

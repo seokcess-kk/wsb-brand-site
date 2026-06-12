@@ -3,10 +3,23 @@ import { PageHero } from "@/components/layout/page-hero";
 import { RevealOnView } from "@/components/motion/reveal-on-view";
 import { ContactForm } from "@/components/sections/contact-form";
 
+// Maps a ?topic= deep-link to the matching inquiry category by index, so a
+// section CTA can land a visitor on the form with their topic preselected.
+const TOPIC_INDEX: Record<string, number> = {
+  material: 0,
+  solution: 1,
+  rnd: 2,
+  investor: 3,
+  brand: 4,
+  media: 5,
+};
+
 export default async function ContactPage({
   params,
+  searchParams,
 }: {
   params: Promise<{ locale: string }>;
+  searchParams: Promise<{ [key: string]: string | string[] | undefined }>;
 }) {
   const { locale } = await params;
   setRequestLocale(locale);
@@ -15,6 +28,11 @@ export default async function ContactPage({
   const tHome = await getTranslations("home.contact");
   const tForm = await getTranslations("home.contact.form");
   const categoryOptions = tForm.raw("categoryOptions") as string[];
+
+  const { topic } = await searchParams;
+  const topicIdx = typeof topic === "string" ? TOPIC_INDEX[topic] : undefined;
+  const defaultCategory =
+    typeof topicIdx === "number" ? categoryOptions[topicIdx] : undefined;
 
   return (
     <>
@@ -30,6 +48,7 @@ export default async function ContactPage({
           <div className="grid items-stretch gap-px bg-canvas/10 lg:grid-cols-[1.4fr_1fr]">
             <RevealOnView delay={0.1} className="h-full">
               <ContactForm
+                defaultCategory={defaultCategory}
                 labels={{
                   company: tForm("company"),
                   name: tForm("name"),
@@ -41,6 +60,8 @@ export default async function ContactPage({
                   message: tForm("message"),
                   messagePlaceholder: tForm("messagePlaceholder"),
                   consent: tForm("consent"),
+                  privacyTitle: tForm("privacyTitle"),
+                  privacyBody: tForm("privacyBody"),
                   submit: tForm("submit"),
                   required: tForm("required"),
                   successHeading: tForm("successHeading"),

@@ -67,6 +67,8 @@ export async function ContactSection() {
                 message: tForm("message"),
                 messagePlaceholder: tForm("messagePlaceholder"),
                 consent: tForm("consent"),
+                privacyTitle: tForm("privacyTitle"),
+                privacyBody: tForm("privacyBody"),
                 submit: tForm("submit"),
                 required: tForm("required"),
                 successHeading: tForm("successHeading"),

@@ -8,13 +8,19 @@ type Props = {
   filled: number;
   total: number;
   label: string;
+  sublabel?: string;
 };
 
 /**
  * Radial 5/5 indicator. SVG ring fills from 0 to filled/total when the
  * element scrolls into view. Honors reduced motion (renders final state).
  */
-export function MatchRadial({ filled, total, label }: Props) {
+export function MatchRadial({
+  filled,
+  total,
+  label,
+  sublabel = "REQUIREMENTS",
+}: Props) {
   const ref = useRef<HTMLDivElement>(null);
   const inView = useInView(ref, { once: true, amount: 0.5 });
   const reduced = useSafeReducedMotion();
@@ -86,7 +92,7 @@ export function MatchRadial({ filled, total, label }: Props) {
             <span className="text-canvas/35">/{total}</span>
           </span>
           <span className="mono-label mt-2 text-[11px] text-canvas/50">
-            REQUIREMENTS
+            {sublabel}
           </span>
         </div>
       </div>

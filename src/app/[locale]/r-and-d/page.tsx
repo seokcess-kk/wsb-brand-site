@@ -8,6 +8,12 @@ import {
   FadeInSection,
 } from "@/components/motion/fade-in-section";
 import { MotionCard } from "@/components/motion/motion-card";
+import { Lede } from "@/components/layout/lede";
+import {
+  PipelineTable,
+  type PipelineItem,
+} from "@/components/sections/pipeline-table";
+import { CtaBand } from "@/components/sections/cta-band";
 
 export default async function RnDPage({
   params,
@@ -40,6 +46,16 @@ export default async function RnDPage({
     status: string;
   }[];
 
+  // The full 6-botanical pipeline reuses the home pipeline data (items, stages,
+  // tags, disclaimer) so the home "see all" link lands on real content.
+  const tPipe = await getTranslations("home.pipeline");
+  const pipelineStages = tPipe.raw("stages") as string[];
+  const pipelineItems = [...(tPipe.raw("items") as PipelineItem[])].sort(
+    (a, b) => b.stage - a.stage,
+  );
+  const pipelineTag = tPipe("investigationalTag");
+  const pipelineDisclaimer = tPipe("disclaimer");
+
   return (
     <>
       <PageHero
@@ -48,6 +64,36 @@ export default async function RnDPage({
         title={t("hero.title")}
         lede={t("hero.lede")}
       />
+
+      {/* PIPELINE — all six botanicals (home "see all" lands here) */}
+      <section id="pipeline" className="scroll-mt-24 bg-canvas">
+        <div className="mx-auto max-w-7xl px-6 py-24 md:py-32">
+          <div className="mb-12">
+            <RevealOnView>
+              <SectionEyebrow tag={t("pipeline.sectionTag")} />
+            </RevealOnView>
+          </div>
+          <div className="grid gap-10 lg:grid-cols-[1.4fr_1fr] lg:gap-16">
+            <h2
+              className="font-sans font-bold leading-[1.18] tracking-tight text-structural"
+              style={{ fontSize: "clamp(1.5rem, 3vw, 2.25rem)" }}
+            >
+              <RevealWords text={t("pipeline.sectionTitle")} triggerOnView />
+            </h2>
+            <RevealOnView delay={0.15}>
+              <Lede text={t("pipeline.lede")} className="max-w-xl" />
+            </RevealOnView>
+          </div>
+          <div className="mt-12">
+            <PipelineTable
+              items={pipelineItems}
+              stages={pipelineStages}
+              investigationalTag={pipelineTag}
+              disclaimer={pipelineDisclaimer}
+            />
+          </div>
+        </div>
+      </section>
 
       {/* PATENTS */}
       <section className="bg-canvas border-t border-structural/10">
@@ -225,6 +271,17 @@ export default async function RnDPage({
           </FadeInSection>
         </div>
       </section>
+
+      <CtaBand
+        tone="light"
+        eyebrow={t("cta.eyebrow")}
+        heading={t("cta.heading")}
+        body={t("cta.body")}
+        primaryLabel={t("cta.primary")}
+        primaryHref="/contact?topic=rnd"
+        secondaryLabel={t("cta.secondary")}
+        secondaryHref="/company"
+      />
     </>
   );
 }

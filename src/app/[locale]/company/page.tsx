@@ -9,6 +9,7 @@ import {
   FadeInSection,
 } from "@/components/motion/fade-in-section";
 import { MotionCard } from "@/components/motion/motion-card";
+import { CtaBand } from "@/components/sections/cta-band";
 
 export default async function CompanyPage({
   params,
@@ -276,6 +277,16 @@ export default async function CompanyPage({
           </div>
         </div>
       </section>
+
+      <CtaBand
+        eyebrow={t("cta.eyebrow")}
+        heading={t("cta.heading")}
+        body={t("cta.body")}
+        primaryLabel={t("cta.primary")}
+        primaryHref="/contact?topic=investor"
+        secondaryLabel={t("cta.secondary")}
+        secondaryHref="/business"
+      />
     </>
   );
 }

@@ -18,7 +18,9 @@ export async function SiteHeader() {
   const t = await getTranslations("nav");
   const tSite = await getTranslations("site");
 
-  const items: MobileNavItem[] = NAV_ITEMS.map((i) => ({
+  const items: MobileNavItem[] = NAV_ITEMS.filter(
+    (i) => i.key !== "contact",
+  ).map((i) => ({
     key: i.key,
     href: i.href,
     label: t(i.key),
@@ -50,7 +52,7 @@ export async function SiteHeader() {
 
         <nav aria-label="Primary" className="hidden md:block">
           <ul className="flex items-center gap-8">
-            {NAV_ITEMS.map((item) => (
+            {NAV_ITEMS.filter((item) => item.key !== "contact").map((item) => (
               <li key={item.key}>
                 <Link
                   href={item.href}
@@ -63,12 +65,20 @@ export async function SiteHeader() {
           </ul>
         </nav>
 
-        <div className="flex items-center gap-3 md:gap-6">
+        <div className="flex items-center gap-3 md:gap-5">
+          <Link
+            href="/contact"
+            className="hidden items-center bg-primary px-4 py-2 text-sm font-medium text-canvas transition-opacity hover:opacity-90 md:inline-flex"
+          >
+            {t("contact")}
+          </Link>
           <LanguageToggle />
           <MobileNav
             items={items}
             openLabel={t("openMenu")}
             closeLabel={t("closeMenu")}
+            ctaLabel={t("contact")}
+            ctaHref="/contact"
           />
         </div>
       </div>

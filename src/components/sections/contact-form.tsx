@@ -17,6 +17,8 @@ type Labels = {
   message: string;
   messagePlaceholder: string;
   consent: string;
+  privacyTitle: string;
+  privacyBody: string;
   submit: string;
   required: string;
   successHeading: string;
@@ -26,7 +28,13 @@ type Labels = {
 
 const INITIAL: InquiryFormState = { status: "idle" };
 
-export function ContactForm({ labels }: { labels: Labels }) {
+export function ContactForm({
+  labels,
+  defaultCategory,
+}: {
+  labels: Labels;
+  defaultCategory?: string;
+}) {
   const locale = useLocale();
   const [state, formAction] = useActionState(submitInquiry, INITIAL);
   const formRef = useRef<HTMLFormElement>(null);
@@ -104,6 +112,7 @@ export function ContactForm({ labels }: { labels: Labels }) {
           requiredLabel={labels.required}
           name="category"
           options={labels.categoryOptions}
+          initialValue={defaultCategory}
           errors={state.fieldErrors?.category}
         />
       </div>
@@ -133,6 +142,15 @@ export function ContactForm({ labels }: { labels: Labels }) {
           <span className="ml-1 text-primary">*</span>
         </label>
       </div>
+
+      <details className="border-t border-canvas/10 pt-4">
+        <summary className="cursor-pointer font-mono text-[11px] uppercase tracking-[0.08em] text-canvas/65 transition-colors hover:text-primary">
+          {labels.privacyTitle}
+        </summary>
+        <p className="mt-3 text-xs leading-relaxed text-canvas/55">
+          {labels.privacyBody}
+        </p>
+      </details>
 
       {state.status === "error" && (
         <div
@@ -222,12 +240,14 @@ function FormField({
         type={type}
         required={required}
         aria-invalid={hasError || undefined}
+        aria-describedby={hasError ? `${id}-error` : undefined}
         className={`w-full border-0 border-b bg-transparent px-0 py-2.5 font-sans text-sm text-canvas placeholder:text-canvas/30 focus:outline-none focus:ring-0 ${
           hasError
             ? "border-rose-400 focus:border-rose-300"
             : "border-canvas/30 focus:border-primary"
         }`}
       />
+      <FieldError id={id} errors={errors} />
     </div>
   );
 }
@@ -264,12 +284,14 @@ function TextareaField({
         rows={5}
         placeholder={placeholder}
         aria-invalid={hasError || undefined}
+        aria-describedby={hasError ? `${id}-error` : undefined}
         className={`w-full resize-y border bg-transparent px-4 py-3 font-sans text-sm text-canvas placeholder:text-canvas/30 focus:outline-none focus:ring-0 ${
           hasError
             ? "border-rose-400 focus:border-rose-300"
             : "border-canvas/30 focus:border-primary"
         }`}
       />
+      <FieldError id={id} errors={errors} />
     </div>
   );
 }
@@ -280,6 +302,7 @@ function SelectField({
   requiredLabel,
   name,
   options,
+  initialValue,
   errors,
 }: {
   label: string;
@@ -287,6 +310,7 @@ function SelectField({
   requiredLabel?: string;
   name: string;
   options: string[];
+  initialValue?: string;
   errors?: string[];
 }) {
   const id = `contact-${name}`;
@@ -303,8 +327,9 @@ function SelectField({
         id={id}
         name={name}
         required={required}
-        defaultValue=""
+        defaultValue={initialValue || ""}
         aria-invalid={hasError || undefined}
+        aria-describedby={hasError ? `${id}-error` : undefined}
         className={`w-full appearance-none border-0 border-b bg-transparent px-0 py-2.5 font-sans text-sm text-canvas focus:outline-none focus:ring-0 ${
           hasError
             ? "border-rose-400 focus:border-rose-300"
@@ -328,7 +353,17 @@ function SelectField({
           </option>
         ))}
       </select>
+      <FieldError id={id} errors={errors} />
     </div>
+  );
+}
+
+function FieldError({ id, errors }: { id: string; errors?: string[] }) {
+  if (!errors?.length) return null;
+  return (
+    <p id={`${id}-error`} role="alert" className="text-xs text-rose-300">
+      {errors[0]}
+    </p>
   );
 }
 
