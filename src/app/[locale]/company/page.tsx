@@ -159,7 +159,7 @@ export default async function CompanyPage({
                   <h3 className="font-sans text-xl font-bold tracking-tight text-structural">
                     {m.name}
                   </h3>
-                  <p className="text-sm leading-relaxed text-structural/70">
+                  <p className="text-sm leading-[1.6] text-structural/70">
                     {m.bio}
                   </p>
                 </MotionCard>

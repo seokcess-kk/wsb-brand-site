@@ -322,7 +322,7 @@ function OverlaySvg() {
             cx={pt.cx}
             cy={pt.cy}
             r="1.5"
-            fill="#0F5132"
+            fill="var(--color-data)"
             initial={{ opacity: 0 }}
             animate={{ opacity: [0, 1, 0.6, 1] }}
             transition={{

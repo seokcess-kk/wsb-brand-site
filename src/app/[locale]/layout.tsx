@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { JetBrains_Mono } from "next/font/google";
+import localFont from "next/font/local";
 import { hasLocale, NextIntlClientProvider } from "next-intl";
 import { getTranslations, setRequestLocale } from "next-intl/server";
 import { notFound } from "next/navigation";
@@ -14,6 +15,16 @@ const jetbrainsMono = JetBrains_Mono({
   variable: "--font-jetbrains-mono",
   subsets: ["latin"],
   weight: ["400", "500", "600"],
+  display: "swap",
+});
+
+// Pretendard self-hosted (variable woff2) via next/font, replacing the
+// render-blocking third-party CDN @import. next/font handles preload and a
+// metric-matched fallback, so swap costs no layout shift.
+const pretendard = localFont({
+  src: "../fonts/PretendardVariable.woff2",
+  variable: "--font-pretendard",
+  weight: "45 920",
   display: "swap",
 });
 
@@ -86,7 +97,10 @@ export default async function LocaleLayout({
   setRequestLocale(locale);
 
   return (
-    <html lang={locale} className={`${jetbrainsMono.variable} h-full`}>
+    <html
+      lang={locale}
+      className={`${pretendard.variable} ${jetbrainsMono.variable} h-full`}
+    >
       <body className="min-h-full flex flex-col bg-canvas text-structural">
         <OrganizationJsonLd locale={locale} />
         <Analytics />

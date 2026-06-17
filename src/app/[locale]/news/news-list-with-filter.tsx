@@ -126,7 +126,7 @@ function NewsCard({
         {title}
       </h3>
 
-      <p className="text-sm leading-relaxed text-structural/70">{summary}</p>
+      <p className="text-sm leading-[1.6] text-structural/70">{summary}</p>
 
       {post.externalUrl ? (
         <a

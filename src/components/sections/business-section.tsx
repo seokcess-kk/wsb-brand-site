@@ -32,7 +32,7 @@ export async function BusinessSection() {
     <section
       id="business"
       aria-labelledby="business-heading"
-      className="relative isolate scroll-mt-24 bg-canvas"
+      className="relative isolate scroll-mt-24 bg-surface"
     >
       <div
         aria-hidden
@@ -89,7 +89,7 @@ function PillarCard({ pillar, index }: { pillar: Pillar; index: number }) {
       </div>
 
       {/* Body */}
-      <p className="min-h-[6.5rem] text-sm leading-relaxed text-structural/75">
+      <p className="text-base leading-[1.6] text-structural/75">
         {pillar.body}
       </p>
 

@@ -147,7 +147,7 @@ export function ContactForm({
         <summary className="cursor-pointer font-mono text-[11px] uppercase tracking-[0.08em] text-canvas/65 transition-colors hover:text-primary">
           {labels.privacyTitle}
         </summary>
-        <p className="mt-3 text-xs leading-relaxed text-canvas/55">
+        <p className="mt-3 text-xs leading-[1.6] text-canvas/70">
           {labels.privacyBody}
         </p>
       </details>
@@ -201,7 +201,7 @@ function SuccessPanel({ labels }: { labels: Labels }) {
         <h3 className="font-sans text-2xl font-bold tracking-tight text-canvas">
           {labels.successHeading}
         </h3>
-        <p className="max-w-md text-sm leading-relaxed text-canvas/75">
+        <p className="max-w-md text-base leading-[1.6] text-canvas/75">
           {labels.successBody}
         </p>
       </div>

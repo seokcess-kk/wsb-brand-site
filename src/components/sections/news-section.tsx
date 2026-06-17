@@ -69,7 +69,7 @@ export async function NewsSection() {
         <div className="grid items-end gap-10 lg:grid-cols-[1.4fr_1fr] lg:gap-16">
           <h2
             id="news-heading"
-            className="font-sans font-bold leading-[1.15] tracking-tight text-structural"
+            className="font-sans font-bold leading-[1.25] tracking-[-0.015em] text-structural"
             style={{ fontSize: "clamp(1.875rem, 4vw, 3rem)" }}
           >
             <RevealWords text={t("heading")} triggerOnView />
@@ -145,7 +145,7 @@ function NewsCard({ item }: { item: Item }) {
       </h3>
 
       {/* Summary */}
-      <p className="text-sm leading-relaxed text-structural/70">
+      <p className="text-base leading-[1.6] text-structural/70">
         {item.summary}
       </p>
 

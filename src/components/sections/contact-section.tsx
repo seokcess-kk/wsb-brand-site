@@ -42,7 +42,7 @@ export async function ContactSection() {
         <div className="grid items-end gap-10 lg:grid-cols-[1.4fr_1fr] lg:gap-16">
           <h2
             id="contact-heading"
-            className="font-sans font-bold leading-[1.1] tracking-tight text-canvas"
+            className="font-sans font-bold leading-[1.25] tracking-[-0.015em] text-canvas"
             style={{ fontSize: "clamp(2rem, 5vw, 3.75rem)" }}
           >
             <RevealWords text={t("heading")} triggerOnView />

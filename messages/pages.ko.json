@@ -4,7 +4,7 @@
       "tag": "COMPANY",
       "meta": "01 / WSB OVERVIEW",
       "title": "데이터로 설계하고\n데이터로 길러냅니다.",
-      "lede": "2018년 설립된 그린바이오 기업. 데이터 기반 정밀제어 스마트팜과 MAT 바이오 기술을 결합해 모든 배치에서 동일한 품질의 기능성 식물원료를 생산합니다."
+      "lede": "2018년 연구를 시작한 이래, 2025년에는 대규모 데이터 기반의 정밀 제어 스마트팜을 구축하는 성과를 거두었습니다. 특히, 정밀 환경 제어를 통해 식물의 대사 합성을 조절하는 MAT(Metabolic Agricultural Technology) 기술을 기반으로, 모든 생산 배치(Batch)에서 동일한 품질의 표준화된 식물 기반 그린바이오 소재를 안정적으로 생산하고 있습니다."
     },
     "cta": {
       "eyebrow": "FOR INVESTORS & INSTITUTIONS",
@@ -278,7 +278,7 @@
     },
     "patents": {
       "sectionTag": "PATENTS",
-      "sectionTitle": "대표 등록 특허",
+      "sectionTitle": "보유 지적 재산권",
       "items": [
         { "no": "10-2229953", "title": "인삼재배방법", "year": "2021" },
         { "no": "10-2595012", "title": "진세노사이드 함량 증대 수경인삼 재배방법", "year": "2023" },

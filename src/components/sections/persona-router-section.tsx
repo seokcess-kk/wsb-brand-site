@@ -49,7 +49,7 @@ export async function PersonaRouterSection() {
                   className="mt-1 h-1.5 w-1.5 flex-none rounded-full bg-primary/50 transition-transform duration-300 group-hover:scale-150"
                 />
               </div>
-              <p className="min-h-[3.5rem] text-sm leading-relaxed text-structural/70">
+              <p className="text-sm leading-[1.6] text-structural/70">
                 {item.need}
               </p>
               <span className="mt-auto inline-flex items-center gap-1.5 font-mono text-[11px] font-medium uppercase tracking-[0.06em] text-primary">

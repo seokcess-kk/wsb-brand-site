@@ -4,7 +4,7 @@
       "tag": "COMPANY",
       "meta": "01 / WSB OVERVIEW",
       "title": "Engineered by data.\nGrown by design.",
-      "lede": "A green bio company founded in 2018. By pairing a data-driven precision smart farm with proprietary MAT bio technology, we produce standardized functional botanical materials with the same quality in every batch."
+      "lede": "Since beginning research in 2018, we reached a milestone in 2025 with a large-scale, data-driven precision-control smart farm. Built on MAT (Metabolic Agricultural Technology), which regulates plant metabolic synthesis through precise environmental control, we stably produce standardized plant-based green bio materials of the same quality in every production batch."
     },
     "cta": {
       "eyebrow": "FOR INVESTORS & INSTITUTIONS",
@@ -278,7 +278,7 @@
     },
     "patents": {
       "sectionTag": "PATENTS",
-      "sectionTitle": "Representative registered patents",
+      "sectionTitle": "Intellectual property portfolio",
       "items": [
         { "no": "10-2229953", "title": "Ginseng cultivation method", "year": "2021" },
         { "no": "10-2595012", "title": "Hydroponic ginseng cultivation increasing ginsenoside content", "year": "2023" },

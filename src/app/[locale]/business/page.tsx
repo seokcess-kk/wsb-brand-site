@@ -80,7 +80,7 @@ export default async function BusinessPage({
                 <h4 className="font-sans text-base font-semibold text-structural">
                   {c.name}
                 </h4>
-                <p className="text-sm leading-relaxed text-structural/70">
+                <p className="text-sm leading-[1.6] text-structural/70">
                   {c.body}
                 </p>
               </MotionCard>
@@ -127,7 +127,7 @@ export default async function BusinessPage({
                 <h4 className="font-sans text-base font-semibold text-canvas">
                   {s.name}
                 </h4>
-                <p className="text-sm leading-relaxed text-canvas/70">
+                <p className="text-sm leading-[1.6] text-canvas/70">
                   {s.body}
                 </p>
               </MotionCard>
@@ -139,7 +139,7 @@ export default async function BusinessPage({
           <p className="mono-label mb-3 text-canvas/55">
             {t("material.supplyLabel")}
           </p>
-          <p className="max-w-3xl text-sm leading-relaxed text-canvas/70">
+          <p className="max-w-3xl text-sm leading-[1.6] text-canvas/70">
             {t("material.supplyNote")}
           </p>
         </div>
@@ -259,7 +259,7 @@ function PillarSection({
         <div className="grid items-end gap-10 lg:grid-cols-[1.4fr_1fr] lg:gap-16">
           <h2
             className={cn(
-              "font-sans font-bold leading-[1.18] tracking-tight",
+              "font-sans font-bold leading-[1.25] tracking-[-0.015em]",
               isDark ? "text-canvas" : "text-structural",
             )}
             style={{ fontSize: "clamp(1.75rem, 3.4vw, 2.5rem)" }}

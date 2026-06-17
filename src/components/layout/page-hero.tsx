@@ -53,7 +53,7 @@ export function PageHero({ tag, title, lede, meta, rightRail }: Props) {
           <RevealOnView delay={0.1}>
             <h1
               id="page-hero-heading"
-              className="whitespace-pre-line font-sans font-bold leading-[1.1] tracking-tight text-structural"
+              className="whitespace-pre-line font-sans font-bold leading-[1.2] tracking-[-0.015em] text-structural"
               style={{ fontSize: "clamp(2.25rem, 5vw, 3.75rem)" }}
             >
               {title}
@@ -61,7 +61,7 @@ export function PageHero({ tag, title, lede, meta, rightRail }: Props) {
           </RevealOnView>
           <RevealOnView delay={0.2}>
             {rightRail ?? (
-              <p className="max-w-xl text-base leading-relaxed text-structural/75">
+              <p className="max-w-xl text-base leading-[1.6] text-structural/75">
                 {lede}
               </p>
             )}

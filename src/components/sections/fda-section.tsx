@@ -38,7 +38,7 @@ export async function FdaSection() {
             <SectionEyebrow number={3} total={9} tag={t("sectionTag")} inverse />
             <h2
               id="fda-heading"
-              className="max-w-3xl font-sans font-bold leading-[1.18] tracking-tight text-canvas"
+              className="max-w-3xl font-sans font-bold leading-[1.25] tracking-[-0.015em] text-canvas"
               style={{ fontSize: "clamp(1.875rem, 4vw, 3rem)" }}
             >
               <RevealWords text={t("heading")} triggerOnView />
@@ -61,7 +61,7 @@ export async function FdaSection() {
 
         <div className="mt-5 max-w-3xl border-l-2 border-primary/50 bg-canvas/[0.04] py-3 pl-4 pr-4">
           <p className="mono-label mb-1.5 text-[10px] text-canvas/60">NOTE</p>
-          <p className="text-sm leading-relaxed text-canvas/75">
+          <p className="text-sm leading-[1.6] text-canvas/75">
             {t("disclaimer")}
           </p>
         </div>

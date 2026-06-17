@@ -16,7 +16,7 @@ export async function ProblemSection() {
   return (
     <section
       aria-labelledby="problem-heading"
-      className="relative isolate bg-canvas"
+      className="relative isolate bg-surface"
     >
       <div className="mx-auto max-w-7xl px-6 py-20 md:py-28 lg:py-32">
         <div className="mb-14 flex flex-col gap-3 md:flex-row md:items-end md:justify-between">
@@ -30,7 +30,7 @@ export async function ProblemSection() {
 
         <h2
           id="problem-heading"
-          className="max-w-4xl font-sans font-bold leading-[1.18] tracking-tight text-structural"
+          className="max-w-4xl font-sans font-bold leading-[1.25] tracking-[-0.015em] text-structural"
           style={{ fontSize: "clamp(1.875rem, 4vw, 3rem)" }}
         >
           <RevealWords text={t("heading")} triggerOnView />
@@ -142,7 +142,7 @@ function CompareCard({
         <h3 className="font-sans text-2xl font-bold tracking-tight text-structural">
           {title}
         </h3>
-        <p className="min-h-[6.5rem] text-base leading-relaxed text-structural/75">
+        <p className="text-base leading-[1.6] text-structural/75">
           {body}
         </p>
       </div>

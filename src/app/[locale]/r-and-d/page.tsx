@@ -46,11 +46,6 @@ export default async function RnDPage({
     title: string;
     year: string;
   }[];
-  const research = t.raw("research.items") as {
-    author: string;
-    title: string;
-    institution: string;
-  }[];
   const certs = t.raw("cert.items") as {
     name: string;
     year: string;
@@ -92,7 +87,7 @@ export default async function RnDPage({
           </div>
           <div className="grid gap-10 lg:grid-cols-[1.4fr_1fr] lg:gap-16">
             <h2
-              className="font-sans font-bold leading-[1.18] tracking-tight text-structural"
+              className="font-sans font-bold leading-[1.25] tracking-[-0.015em] text-structural"
               style={{ fontSize: "clamp(1.5rem, 3vw, 2.25rem)" }}
             >
               <RevealWords text={t("pipeline.sectionTitle")} triggerOnView />
@@ -154,7 +149,7 @@ export default async function RnDPage({
                 {patents.map((p) => (
                   <tr
                     key={p.no || p.title}
-                    className="border-t border-structural/10 align-top"
+                    className="border-t border-structural/10 align-top even:bg-structural/[0.02]"
                   >
                     <td className="px-4 py-4 font-mono text-xs">
                       {p.no ? (
@@ -196,44 +191,6 @@ export default async function RnDPage({
               </div>
             ))}
           </div>
-        </div>
-      </section>
-
-      {/* RESEARCH */}
-      <section className="bg-canvas border-t border-structural/10">
-        <div className="mx-auto max-w-7xl px-6 py-24 md:py-32">
-          <div className="mb-12">
-            <RevealOnView>
-              <SectionEyebrow tag={t("research.sectionTag")} />
-            </RevealOnView>
-          </div>
-          <h2
-            className="mb-10 max-w-3xl font-sans font-bold tracking-tight text-structural"
-            style={{ fontSize: "clamp(1.5rem, 3vw, 2.25rem)" }}
-          >
-            <RevealWords text={t("research.sectionTitle")} triggerOnView />
-          </h2>
-          <FadeInSection
-            className="grid gap-4 md:grid-cols-2"
-            staggerChildren={0.08}
-          >
-            {research.map((r) => (
-              <FadeInItem key={r.title} className="h-full">
-                <MotionCard
-                  as="article"
-                  className="flex h-full flex-col gap-3 p-6 md:p-8"
-                >
-                  <p className="mono-label text-primary">{r.author}</p>
-                  <h3 className="font-sans text-base font-semibold text-structural leading-snug">
-                    {r.title}
-                  </h3>
-                  <p className="mt-auto text-xs text-structural/65">
-                    {r.institution}
-                  </p>
-                </MotionCard>
-              </FadeInItem>
-            ))}
-          </FadeInSection>
         </div>
       </section>
 

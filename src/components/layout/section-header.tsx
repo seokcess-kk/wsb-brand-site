@@ -61,7 +61,7 @@ export function SectionHeader({
         <h2
           id={headingId}
           className={cn(
-            "font-sans font-bold leading-[1.15] tracking-tight",
+            "font-sans font-bold leading-[1.25] tracking-[-0.015em]",
             inverse ? "text-canvas" : "text-structural",
           )}
           style={{ fontSize: "clamp(1.875rem, 4vw, 3rem)" }}

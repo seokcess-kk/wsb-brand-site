@@ -64,7 +64,7 @@ export default async function NewsPage({
                   <span aria-hidden className="relative block h-2.5 w-2.5 rounded-full bg-primary" />
                 </div>
                 <p className="mono-label text-primary">{t("hero.meta")} · 0</p>
-                <p className="max-w-md text-sm leading-relaxed text-structural/65">
+                <p className="max-w-md text-base leading-[1.6] text-structural/65">
                   {t("empty")}
                 </p>
                 <Link

@@ -48,7 +48,7 @@ export function CtaBand({
           <div className="max-w-2xl space-y-4">
             {eyebrow && <p className="mono-label text-primary">{eyebrow}</p>}
             <h2
-              className={`font-sans font-bold leading-[1.15] tracking-tight ${
+              className={`font-sans font-bold leading-[1.25] tracking-[-0.015em] ${
                 dark ? "text-canvas" : "text-structural"
               }`}
               style={{ fontSize: "clamp(1.5rem, 3.2vw, 2.25rem)" }}
@@ -57,7 +57,7 @@ export function CtaBand({
             </h2>
             {body && (
               <p
-                className={`text-sm leading-relaxed md:text-base ${
+                className={`text-base leading-[1.6] md:text-base ${
                   dark ? "text-canvas/70" : "text-structural/70"
                 }`}
               >

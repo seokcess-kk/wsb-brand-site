@@ -112,7 +112,7 @@ function PhaseCard({
         {phase.bullets.map((b) => (
           <li
             key={b}
-            className="flex items-start gap-2 text-xs leading-relaxed text-canvas/70"
+            className="flex items-start gap-2 text-xs leading-[1.6] text-canvas/70"
           >
             <span
               aria-hidden

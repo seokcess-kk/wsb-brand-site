@@ -108,7 +108,7 @@ export default async function TechnologyPage({
                     </h3>
                     <p className="mono-label text-primary">{it.subtitle}</p>
                   </div>
-                  <p className="text-sm leading-relaxed text-structural/75 min-h-[6rem]">
+                  <p className="text-base leading-[1.6] text-structural/75">
                     {it.body}
                   </p>
                   <div className="mt-auto border-t border-structural/10 pt-5">
@@ -145,7 +145,7 @@ export default async function TechnologyPage({
           </div>
           <div className="grid gap-10 lg:grid-cols-[1.4fr_1fr] lg:gap-16">
             <h2
-              className="font-sans font-bold leading-[1.18] tracking-tight text-structural"
+              className="font-sans font-bold leading-[1.25] tracking-[-0.015em] text-structural"
               style={{ fontSize: "clamp(1.5rem, 3vw, 2.25rem)" }}
             >
               <RevealWords text={t("competition.sectionTitle")} triggerOnView />
@@ -225,7 +225,7 @@ export default async function TechnologyPage({
             </RevealOnView>
           </div>
           <h2
-            className="max-w-3xl font-sans font-bold leading-[1.18] tracking-tight text-canvas"
+            className="max-w-3xl font-sans font-bold leading-[1.25] tracking-[-0.015em] text-canvas"
             style={{ fontSize: "clamp(1.875rem, 4vw, 3rem)" }}
           >
             <RevealWords text={t("moat.sectionTitle")} triggerOnView />
@@ -247,7 +247,7 @@ export default async function TechnologyPage({
                   <h3 className="font-sans text-xl font-bold tracking-tight text-canvas">
                     {l.name}
                   </h3>
-                  <p className="text-sm leading-relaxed text-canvas/70">
+                  <p className="text-base leading-[1.6] text-canvas/70">
                     {l.body}
                   </p>
                 </MotionCard>

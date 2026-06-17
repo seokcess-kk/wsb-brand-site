@@ -54,13 +54,13 @@ export async function MatSection() {
             <div className="space-y-7">
               <h2
                 id="mat-heading"
-                className="font-sans font-bold leading-[1.2] tracking-tight text-structural"
+                className="font-sans font-bold leading-[1.25] tracking-[-0.015em] text-structural"
                 style={{ fontSize: "clamp(1.875rem, 3.4vw, 2.75rem)" }}
               >
                 <RevealWords text={t("heading")} triggerOnView />
               </h2>
               <RevealOnView delay={0.16}>
-                <p className="max-w-prose text-base font-medium leading-relaxed text-structural md:text-lg">
+                <p className="max-w-prose text-base font-medium leading-[1.6] text-structural md:text-lg">
                   {t("plain")}
                 </p>
               </RevealOnView>
@@ -70,7 +70,7 @@ export async function MatSection() {
             </div>
             <RevealOnView delay={0.34}>
               <div className="border-t border-structural/10 pt-6">
-                <p className="flex items-start gap-3 text-sm font-medium leading-relaxed text-structural">
+                <p className="flex items-start gap-3 text-base font-medium leading-[1.6] text-structural">
                   <span aria-hidden className="mt-[0.4em] h-px w-4 flex-none bg-primary" />
                   <span>{t("value")}</span>
                 </p>
@@ -160,7 +160,7 @@ function StressorCard({
         {value}
       </p>
 
-      <p className="mt-4 text-sm leading-relaxed text-structural/65 max-w-[28ch]">
+      <p className="mt-4 text-sm leading-[1.6] text-structural/65 max-w-[28ch]">
         {caption}
       </p>
 

@@ -33,9 +33,9 @@ export function PipelineTable({
       <div className="overflow-hidden border border-structural/10">
         {/* Table header */}
         <div className="hidden grid-cols-[2fr_2fr_2fr_3fr] gap-px bg-structural/10 md:grid">
-          <HeaderCell text="BOTANICAL" />
-          <HeaderCell text="ACTIVE COMPOUND" />
           <HeaderCell text="INDICATION" />
+          <HeaderCell text="ACTIVE COMPOUND" />
+          <HeaderCell text="BOTANICAL" />
           <HeaderCell text={`STAGE  ·  ${stages.join("  /  ")}`} />
         </div>
 
@@ -44,12 +44,13 @@ export function PipelineTable({
           className="grid gap-px bg-structural/10"
           staggerChildren={0.06}
         >
-          {items.map((item) => (
+          {items.map((item, i) => (
             <FadeInItem key={item.name}>
               <PipelineRow
                 item={item}
                 stages={stages}
                 investigationalTag={investigationalTag}
+                tinted={i % 2 === 1}
               />
             </FadeInItem>
           ))}
@@ -57,7 +58,7 @@ export function PipelineTable({
       </div>
 
       {disclaimer && (
-        <p className="mt-4 max-w-3xl text-xs leading-relaxed text-structural/55">
+        <p className="mt-4 max-w-3xl text-xs leading-[1.6] text-structural/70">
           {disclaimer}
         </p>
       )}
@@ -77,27 +78,16 @@ function PipelineRow({
   item,
   stages,
   investigationalTag,
+  tinted,
 }: {
   item: PipelineItem;
   stages: string[];
   investigationalTag: string;
+  tinted?: boolean;
 }) {
   return (
     <div className="group grid grid-cols-1 gap-px bg-structural/5 transition-colors md:grid-cols-[2fr_2fr_2fr_3fr]">
-      <Cell>
-        <p className="font-sans text-base font-semibold text-structural">
-          {item.name}
-        </p>
-        <p className="mono-label text-[10px] text-structural/65 italic">
-          {item.latin}
-        </p>
-      </Cell>
-      <Cell>
-        <p className="font-mono text-sm font-semibold tracking-tight text-primary">
-          {item.api}
-        </p>
-      </Cell>
-      <Cell>
+      <Cell tinted={tinted}>
         <p className="text-sm text-structural/75">{item.indication}</p>
         {item.stage < 3 && (
           <span className="mono-label mt-2 inline-block border border-structural/20 px-1.5 py-0.5 text-[9px] text-structural/55">
@@ -105,16 +95,37 @@ function PipelineRow({
           </span>
         )}
       </Cell>
-      <Cell>
+      <Cell tinted={tinted}>
+        <p className="font-mono text-sm font-semibold tracking-tight text-primary">
+          {item.api}
+        </p>
+      </Cell>
+      <Cell tinted={tinted}>
+        <p className="font-sans text-base font-semibold text-structural">
+          {item.name}
+        </p>
+        <p className="mono-label text-[10px] text-structural/65 italic">
+          {item.latin}
+        </p>
+      </Cell>
+      <Cell tinted={tinted}>
         <StageBar current={item.stage} stages={stages} />
       </Cell>
     </div>
   );
 }
 
-function Cell({ children }: { children: React.ReactNode }) {
+function Cell({
+  children,
+  tinted,
+}: {
+  children: React.ReactNode;
+  tinted?: boolean;
+}) {
   return (
-    <div className="bg-canvas px-5 py-6 transition-colors duration-300 group-hover:bg-primary/[0.03]">
+    <div
+      className={`${tinted ? "bg-surface" : "bg-canvas"} px-5 py-6 transition-colors duration-300 group-hover:bg-primary/[0.03]`}
+    >
       {children}
     </div>
   );

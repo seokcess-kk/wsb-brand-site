@@ -118,8 +118,8 @@ export function GrowthCurve({
         <motion.circle
           cx={endPt.x - 0.6}
           cy={endPt.y}
-          r="1.8"
-          fill="#0F5132"
+          r="2"
+          fill="var(--color-data)"
           initial={false}
           animate={show ? { scale: 1 } : { scale: 0 }}
           transition={{ duration: 0.4, delay: 1.4, ease: [0.22, 1.4, 0.36, 1] }}

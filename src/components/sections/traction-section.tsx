@@ -44,7 +44,7 @@ export async function TractionSection() {
         <div className="grid items-end gap-10 lg:grid-cols-[1.4fr_1fr] lg:gap-16">
           <h2
             id="traction-heading"
-            className="font-sans font-bold leading-[1.15] tracking-tight text-canvas"
+            className="font-sans font-bold leading-[1.25] tracking-[-0.015em] text-canvas"
             style={{ fontSize: "clamp(1.875rem, 4vw, 3rem)" }}
           >
             <RevealWords text={t("heading")} triggerOnView />
@@ -90,7 +90,7 @@ export async function TractionSection() {
           </RevealOnView>
           <RevealOnView delay={0.06}>
             <div className="grid gap-8 border-t border-canvas/10 pt-8 lg:grid-cols-[1.4fr_1fr] lg:gap-16">
-              <p className="max-w-2xl text-base leading-relaxed text-canvas/70">
+              <p className="max-w-2xl text-base leading-[1.6] text-canvas/70">
                 {t("networkNote")}
               </p>
               <div className="flex items-start lg:justify-end">
@@ -148,7 +148,7 @@ function KpiCell({
       >
         {plain ? value : <CountUp value={value} />}
       </dd>
-      <p className="mt-5 text-sm leading-relaxed text-canvas/65 max-w-[28ch]">
+      <p className="mt-5 text-sm leading-[1.6] text-canvas/65 max-w-[28ch]">
         {caption}
       </p>
       {(source || asOf) && (
