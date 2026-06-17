@@ -3,6 +3,7 @@ import { getTranslations } from "next-intl/server";
 import { Link } from "@/i18n/navigation";
 import { HeaderShell } from "./header-shell";
 import { LanguageToggle } from "./language-toggle";
+import { NavLink } from "./nav-link";
 import { MobileNav, type MobileNavItem } from "./mobile-nav";
 
 const NAV_ITEMS = [
@@ -54,12 +55,7 @@ export async function SiteHeader() {
           <ul className="flex items-center gap-8">
             {NAV_ITEMS.filter((item) => item.key !== "contact").map((item) => (
               <li key={item.key}>
-                <Link
-                  href={item.href}
-                  className="text-sm font-medium text-structural/70 transition-colors hover:text-primary"
-                >
-                  {t(item.key)}
-                </Link>
+                <NavLink href={item.href} label={t(item.key)} />
               </li>
             ))}
           </ul>

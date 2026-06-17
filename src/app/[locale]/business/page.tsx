@@ -1,5 +1,7 @@
+import type { Metadata } from "next";
 import { getTranslations, setRequestLocale } from "next-intl/server";
 import { ArrowRight, ArrowUpRight, Plus } from "lucide-react";
+import { buildPageMetadata } from "@/lib/page-metadata";
 import { Link } from "@/i18n/navigation";
 import { PageHero } from "@/components/layout/page-hero";
 import { SectionEyebrow } from "@/components/layout/section-eyebrow";
@@ -16,6 +18,21 @@ import { cn } from "@/lib/utils";
 type Component = { code: string; name: string; body: string };
 type Segment = { name: string; body: string };
 type LineupItem = { name: string; category: string; spec: string };
+
+export async function generateMetadata({
+  params,
+}: {
+  params: Promise<{ locale: string }>;
+}): Promise<Metadata> {
+  const { locale } = await params;
+  const t = await getTranslations({ locale, namespace: "pages.business" });
+  return buildPageMetadata({
+    locale,
+    path: "/business",
+    title: locale === "ko" ? "사업 영역" : "Business",
+    description: t("hero.lede"),
+  });
+}
 
 export default async function BusinessPage({
   params,

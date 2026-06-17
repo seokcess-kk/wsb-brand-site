@@ -126,25 +126,29 @@
           "label": "STRESSOR 01",
           "title": "UV-B Light",
           "value": "285nm",
-          "caption": "특정 파장 자외선 정밀 조사로 2차 대사산물 합성 유도"
+          "caption": "특정 파장 자외선 정밀 조사로 2차 대사산물 합성 유도",
+          "tooltip": "2차 대사산물은 식물이 방어를 위해 만드는 기능 성분입니다. 특정 파장의 자외선이 이 합성을 유도합니다."
         },
         {
           "label": "STRESSOR 02",
           "title": "Thermal Shock",
           "value": "±ΔT",
-          "caption": "단기 열충격과 저온 처리로 방어 기전 자극"
+          "caption": "단기 열충격과 저온 처리로 방어 기전 자극",
+          "tooltip": "짧고 강한 온도 변화로 식물에 스트레스를 줘 방어 기전을 깨웁니다."
         },
         {
           "label": "STRESSOR 03",
           "title": "Water Deficit",
           "value": "−40% H₂O",
-          "caption": "가뭄 스트레스 유도용 수분 공급 정밀 제어"
+          "caption": "가뭄 스트레스 유도용 수분 공급 정밀 제어",
+          "tooltip": "수분 공급을 의도적으로 줄여 가뭄 스트레스를 유도합니다."
         },
         {
           "label": "STRESSOR 04",
           "title": "Mineral Cue",
           "value": "EC 1.4",
-          "caption": "특정 영양분 조합으로 유효성분 생성 경로 활성화"
+          "caption": "특정 영양분 조합으로 유효성분 생성 경로 활성화",
+          "tooltip": "EC는 양액의 영양분 농도 지표입니다. 특정 조합이 유효성분 생성 경로를 활성화합니다."
         }
       ]
     },

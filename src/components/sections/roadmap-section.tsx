@@ -1,13 +1,10 @@
 import { getTranslations } from "next-intl/server";
-import { RevealOnView } from "@/components/motion/reveal-on-view";
-import { RevealWords } from "@/components/motion/reveal-words";
 import {
   FadeInItem,
   FadeInSection,
 } from "@/components/motion/fade-in-section";
 import { MotionCard } from "@/components/motion/motion-card";
-import { SectionEyebrow } from "@/components/layout/section-eyebrow";
-import { Lede } from "@/components/layout/lede";
+import { SectionHeader } from "@/components/layout/section-header";
 
 type Phase = {
   label: string;
@@ -41,27 +38,15 @@ export async function RoadmapSection() {
       />
 
       <div className="relative mx-auto max-w-7xl px-6 py-20 md:py-28 lg:py-32">
-        <div className="mb-14 flex flex-col gap-3 md:flex-row md:items-end md:justify-between">
-          <RevealOnView>
-            <SectionEyebrow number={7} total={9} tag={t("sectionTag")} inverse />
-          </RevealOnView>
-          <RevealOnView delay={0.05}>
-            <p className="mono-label text-canvas/55">{t("sectionMeta")}</p>
-          </RevealOnView>
-        </div>
-
-        <div className="grid items-end gap-10 lg:grid-cols-[1.4fr_1fr] lg:gap-16">
-          <h2
-            id="roadmap-heading"
-            className="font-sans font-bold leading-[1.15] tracking-tight text-canvas"
-            style={{ fontSize: "clamp(1.875rem, 4vw, 3rem)" }}
-          >
-            <RevealWords text={t("heading")} triggerOnView />
-          </h2>
-          <RevealOnView delay={0.2}>
-            <Lede text={t("lede")} inverse />
-          </RevealOnView>
-        </div>
+        <SectionHeader
+          number={7}
+          inverse
+          tag={t("sectionTag")}
+          meta={t("sectionMeta")}
+          heading={t("heading")}
+          headingId="roadmap-heading"
+          lede={t("lede")}
+        />
 
         {/* Timeline */}
         <div className="relative mt-14">

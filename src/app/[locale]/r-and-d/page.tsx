@@ -1,4 +1,6 @@
+import type { Metadata } from "next";
 import { getTranslations, setRequestLocale } from "next-intl/server";
+import { buildPageMetadata } from "@/lib/page-metadata";
 import { PageHero } from "@/components/layout/page-hero";
 import { SectionEyebrow } from "@/components/layout/section-eyebrow";
 import { RevealOnView } from "@/components/motion/reveal-on-view";
@@ -14,6 +16,21 @@ import {
   type PipelineItem,
 } from "@/components/sections/pipeline-table";
 import { CtaBand } from "@/components/sections/cta-band";
+
+export async function generateMetadata({
+  params,
+}: {
+  params: Promise<{ locale: string }>;
+}): Promise<Metadata> {
+  const { locale } = await params;
+  const t = await getTranslations({ locale, namespace: "pages.rnd" });
+  return buildPageMetadata({
+    locale,
+    path: "/r-and-d",
+    title: locale === "ko" ? "R&D · 파이프라인" : "R&D",
+    description: t("hero.lede"),
+  });
+}
 
 export default async function RnDPage({
   params,
@@ -123,7 +140,8 @@ export default async function RnDPage({
             </div>
           </div>
 
-          <div className="overflow-hidden border border-structural/10">
+          {/* Desktop: table. Mobile: stacked patent cards. */}
+          <div className="hidden overflow-hidden border border-structural/10 md:block">
             <table className="w-full text-sm">
               <thead>
                 <tr className="bg-structural/[0.04] text-left font-mono text-[10px] font-medium uppercase tracking-[0.08em] text-structural/65">
@@ -155,6 +173,28 @@ export default async function RnDPage({
                 ))}
               </tbody>
             </table>
+          </div>
+
+          <div className="grid gap-3 md:hidden">
+            {patents.map((p) => (
+              <div
+                key={p.no || p.title}
+                className="border border-structural/10 p-4"
+              >
+                <p className="text-sm text-structural">{p.title}</p>
+                <div className="mt-2 flex items-center gap-3 font-mono text-xs">
+                  {p.no ? (
+                    <span className="text-primary tabular-nums">{p.no}</span>
+                  ) : (
+                    <span className="text-structural/35">
+                      {t("patents.pendingNo")}
+                    </span>
+                  )}
+                  <span aria-hidden className="h-3 w-px bg-structural/20" />
+                  <span className="tabular-nums text-structural/65">{p.year}</span>
+                </div>
+              </div>
+            ))}
           </div>
         </div>
       </section>

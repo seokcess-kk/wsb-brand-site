@@ -1,8 +1,10 @@
 import { getTranslations } from "next-intl/server";
+import { Info } from "lucide-react";
 import { RevealOnView } from "@/components/motion/reveal-on-view";
 import { RevealWords } from "@/components/motion/reveal-words";
 import { SectionEyebrow } from "@/components/layout/section-eyebrow";
 import { Lede } from "@/components/layout/lede";
+import { Tooltip } from "@/components/ui/tooltip";
 import { MatProcessDiagram } from "@/components/visual/mat-process-diagram";
 
 const STRESSOR_KEYS = [0, 1, 2, 3] as const;
@@ -14,6 +16,7 @@ export async function MatSection() {
     title: string;
     value: string;
     caption: string;
+    tooltip: string;
   }[];
 
   return (
@@ -93,6 +96,7 @@ export async function MatSection() {
                     title={s.title}
                     value={s.value}
                     caption={s.caption}
+                    tooltip={s.tooltip}
                   />
                 </RevealOnView>
               );
@@ -120,11 +124,13 @@ function StressorCard({
   title,
   value,
   caption,
+  tooltip,
 }: {
   label: string;
   title: string;
   value: string;
   caption: string;
+  tooltip: string;
 }) {
   return (
     <article className="group relative h-full bg-canvas p-6 md:p-8 transition-colors hover:bg-primary/[0.03]">
@@ -136,9 +142,14 @@ function StressorCard({
         />
       </div>
 
-      <h3 className="mt-5 font-sans text-lg font-semibold text-structural">
-        {title}
-      </h3>
+      <div className="mt-5 flex items-center gap-1.5">
+        <h3 className="font-sans text-lg font-semibold text-structural">
+          {title}
+        </h3>
+        <Tooltip content={tooltip}>
+          <Info size={13} aria-hidden />
+        </Tooltip>
+      </div>
       <p
         className="mt-2 font-mono font-semibold tracking-tight text-primary tabular-nums"
         style={{

@@ -1,21 +1,27 @@
+import type { Metadata } from "next";
 import { getTranslations, setRequestLocale } from "next-intl/server";
-import { desc, eq } from "drizzle-orm";
 import { ArrowUpRight } from "lucide-react";
+import { buildPageMetadata } from "@/lib/page-metadata";
 import { PageHero } from "@/components/layout/page-hero";
 import { Link } from "@/i18n/navigation";
-import { db, isDbConfigured, schema } from "@/db/client";
-import type { NewsPost } from "@/db/schema";
+import { listRecentPublished } from "@/lib/news-query";
 import { NewsListWithFilter } from "./news-list-with-filter";
 
 export const dynamic = "force-dynamic";
 
-async function listPublished(): Promise<NewsPost[]> {
-  if (!isDbConfigured()) return [];
-  return db()
-    .select()
-    .from(schema.newsPosts)
-    .where(eq(schema.newsPosts.isPublished, true))
-    .orderBy(desc(schema.newsPosts.publishedAt));
+export async function generateMetadata({
+  params,
+}: {
+  params: Promise<{ locale: string }>;
+}): Promise<Metadata> {
+  const { locale } = await params;
+  const t = await getTranslations({ locale, namespace: "pages.news" });
+  return buildPageMetadata({
+    locale,
+    path: "/news",
+    title: locale === "ko" ? "소식" : "News",
+    description: t("hero.lede"),
+  });
 }
 
 export default async function NewsPage({
@@ -28,7 +34,7 @@ export default async function NewsPage({
 
   const t = await getTranslations("pages.news");
   const tCta = await getTranslations("cta");
-  const posts = await listPublished();
+  const posts = await listRecentPublished();
 
   return (
     <>

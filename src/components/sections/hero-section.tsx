@@ -12,7 +12,6 @@ export async function HeroSection() {
 
   return (
     <section
-      id="main"
       aria-labelledby="hero-heading"
       className="relative isolate flex min-h-[90vh] items-center overflow-hidden bg-structural text-canvas"
     >
@@ -35,14 +34,14 @@ export async function HeroSection() {
               id="hero-heading"
               className="font-sans font-extrabold leading-[1.02] tracking-tight text-canvas"
               style={{
-                fontSize: "clamp(2.25rem, 6vw, 4.5rem)",
+                fontSize: "clamp(1.875rem, 6vw, 4.5rem)",
                 letterSpacing: "-0.025em",
               }}
             >
-              <span className="block whitespace-nowrap">
+              <span className="block whitespace-normal md:whitespace-nowrap">
                 <RevealWords text="Engineered by Data," />
               </span>
-              <span className="block whitespace-nowrap text-canvas/90">
+              <span className="block whitespace-normal md:whitespace-nowrap text-canvas/90">
                 <RevealWords text="Grown by Design." delay={0.45} />
               </span>
             </h1>

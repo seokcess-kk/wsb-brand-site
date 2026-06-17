@@ -24,11 +24,16 @@ export async function listNews(opts: {
   }
   const where = conditions.length ? and(...conditions) : undefined;
 
-  return db()
-    .select()
-    .from(schema.newsPosts)
-    .where(where)
-    .orderBy(desc(schema.newsPosts.createdAt));
+  try {
+    return await db()
+      .select()
+      .from(schema.newsPosts)
+      .where(where)
+      .orderBy(desc(schema.newsPosts.createdAt));
+  } catch (err) {
+    console.error("[news-query] listNews failed", err);
+    return [];
+  }
 }
 
 /**
@@ -38,18 +43,28 @@ export async function listNews(opts: {
  */
 export async function listRecentPublished(limit?: number): Promise<NewsPost[]> {
   if (!isDbConfigured()) return [];
-  const base = db()
-    .select()
-    .from(schema.newsPosts)
-    .where(eq(schema.newsPosts.isPublished, true))
-    .orderBy(desc(schema.newsPosts.publishedAt));
-  return limit ? base.limit(limit) : base;
+  try {
+    const base = db()
+      .select()
+      .from(schema.newsPosts)
+      .where(eq(schema.newsPosts.isPublished, true))
+      .orderBy(desc(schema.newsPosts.publishedAt));
+    return await (limit ? base.limit(limit) : base);
+  } catch (err) {
+    console.error("[news-query] listRecentPublished failed", err);
+    return [];
+  }
 }
 
 export async function listNewsCategories(): Promise<string[]> {
   if (!isDbConfigured()) return [];
-  const rows = await db()
-    .selectDistinct({ category: schema.newsPosts.category })
-    .from(schema.newsPosts);
-  return rows.map((r) => r.category).filter(Boolean).sort();
+  try {
+    const rows = await db()
+      .selectDistinct({ category: schema.newsPosts.category })
+      .from(schema.newsPosts);
+    return rows.map((r) => r.category).filter(Boolean).sort();
+  } catch (err) {
+    console.error("[news-query] listNewsCategories failed", err);
+    return [];
+  }
 }

@@ -1,4 +1,6 @@
+import type { Metadata } from "next";
 import { getTranslations, setRequestLocale } from "next-intl/server";
+import { buildPageMetadata } from "@/lib/page-metadata";
 import { PageHero } from "@/components/layout/page-hero";
 import { SectionEyebrow } from "@/components/layout/section-eyebrow";
 import { Lede } from "@/components/layout/lede";
@@ -10,6 +12,21 @@ import {
 } from "@/components/motion/fade-in-section";
 import { MotionCard } from "@/components/motion/motion-card";
 import { CtaBand } from "@/components/sections/cta-band";
+
+export async function generateMetadata({
+  params,
+}: {
+  params: Promise<{ locale: string }>;
+}): Promise<Metadata> {
+  const { locale } = await params;
+  const t = await getTranslations({ locale, namespace: "pages.company" });
+  return buildPageMetadata({
+    locale,
+    path: "/company",
+    title: locale === "ko" ? "회사 소개" : "Company",
+    description: t("hero.lede"),
+  });
+}
 
 export default async function CompanyPage({
   params,

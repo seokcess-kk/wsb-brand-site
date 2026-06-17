@@ -229,7 +229,23 @@ body {
 
 /* Respect reduced motion */
 @media (prefers-reduced-motion: reduce) {
-  .animate-grid-drift {
+  .animate-grid-drift,
+  .animate-ping,
+  .animate-pulse {
     animation: none;
   }
+}
+
+/* Visible keyboard focus for interactive elements (WCAG 2.4.7). Keyboard focus
+   only; pointer focus is unaffected. Inputs that opt out of the default outline
+   (e.g. the contact form) restore a ring at their usage site. */
+a:focus-visible,
+button:focus-visible,
+input:focus-visible,
+select:focus-visible,
+textarea:focus-visible,
+summary:focus-visible,
+[tabindex]:focus-visible {
+  outline: 2px solid var(--color-primary);
+  outline-offset: 2px;
 }

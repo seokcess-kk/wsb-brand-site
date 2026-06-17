@@ -1,10 +1,7 @@
 import { getTranslations } from "next-intl/server";
 import { ArrowUpRight } from "lucide-react";
 import { Link } from "@/i18n/navigation";
-import { RevealOnView } from "@/components/motion/reveal-on-view";
-import { RevealWords } from "@/components/motion/reveal-words";
-import { SectionEyebrow } from "@/components/layout/section-eyebrow";
-import { Lede } from "@/components/layout/lede";
+import { SectionHeader } from "@/components/layout/section-header";
 import { PipelineTable, type PipelineItem } from "./pipeline-table";
 
 export async function PipelineSection() {
@@ -33,27 +30,14 @@ export async function PipelineSection() {
       />
 
       <div className="mx-auto max-w-7xl px-6 py-20 md:py-28 lg:py-32">
-        <div className="mb-14 flex flex-col gap-3 md:flex-row md:items-end md:justify-between">
-          <RevealOnView>
-            <SectionEyebrow number={6} total={9} tag={t("sectionTag")} />
-          </RevealOnView>
-          <RevealOnView delay={0.05}>
-            <p className="mono-label text-structural/65">{t("sectionMeta")}</p>
-          </RevealOnView>
-        </div>
-
-        <div className="grid items-end gap-10 lg:grid-cols-[1.4fr_1fr] lg:gap-16">
-          <h2
-            id="pipeline-heading"
-            className="font-sans font-bold leading-[1.15] tracking-tight text-structural"
-            style={{ fontSize: "clamp(1.875rem, 4vw, 3rem)" }}
-          >
-            <RevealWords text={t("heading")} triggerOnView />
-          </h2>
-          <RevealOnView delay={0.2}>
-            <Lede text={t("lede")} />
-          </RevealOnView>
-        </div>
+        <SectionHeader
+          number={6}
+          tag={t("sectionTag")}
+          meta={t("sectionMeta")}
+          heading={t("heading")}
+          headingId="pipeline-heading"
+          lede={t("lede")}
+        />
 
         <div className="mt-16">
           <PipelineTable

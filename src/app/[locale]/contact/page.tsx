@@ -1,4 +1,6 @@
+import type { Metadata } from "next";
 import { getTranslations, setRequestLocale } from "next-intl/server";
+import { buildPageMetadata } from "@/lib/page-metadata";
 import { PageHero } from "@/components/layout/page-hero";
 import { RevealOnView } from "@/components/motion/reveal-on-view";
 import { ContactForm } from "@/components/sections/contact-form";
@@ -13,6 +15,21 @@ const TOPIC_INDEX: Record<string, number> = {
   brand: 4,
   media: 5,
 };
+
+export async function generateMetadata({
+  params,
+}: {
+  params: Promise<{ locale: string }>;
+}): Promise<Metadata> {
+  const { locale } = await params;
+  const t = await getTranslations({ locale, namespace: "pages.contact" });
+  return buildPageMetadata({
+    locale,
+    path: "/contact",
+    title: locale === "ko" ? "파트너십 문의" : "Contact",
+    description: t("hero.lede"),
+  });
+}
 
 export default async function ContactPage({
   params,

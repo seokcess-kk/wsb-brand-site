@@ -126,25 +126,29 @@
           "label": "STRESSOR 01",
           "title": "UV-B Light",
           "value": "285nm",
-          "caption": "Targeted wavelength induces secondary metabolite synthesis"
+          "caption": "Targeted wavelength induces secondary metabolite synthesis",
+          "tooltip": "Secondary metabolites are the functional compounds a plant makes to defend itself. A specific UV wavelength induces their synthesis."
         },
         {
           "label": "STRESSOR 02",
           "title": "Thermal Shock",
           "value": "±ΔT",
-          "caption": "Short heat and cold pulses trigger defense pathways"
+          "caption": "Short heat and cold pulses trigger defense pathways",
+          "tooltip": "Brief, sharp temperature swings stress the plant and wake its defense pathways."
         },
         {
           "label": "STRESSOR 03",
           "title": "Water Deficit",
           "value": "−40% H₂O",
-          "caption": "Controlled drought stress without compromising survival"
+          "caption": "Controlled drought stress without compromising survival",
+          "tooltip": "Water supply is deliberately reduced to induce drought stress."
         },
         {
           "label": "STRESSOR 04",
           "title": "Mineral Cue",
           "value": "EC 1.4",
-          "caption": "Specific nutrient blends activate biosynthesis routes"
+          "caption": "Specific nutrient blends activate biosynthesis routes",
+          "tooltip": "EC measures nutrient concentration in the solution. Specific blends activate biosynthesis routes."
         }
       ]
     },

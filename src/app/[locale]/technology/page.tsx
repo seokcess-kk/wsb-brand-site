@@ -1,4 +1,6 @@
+import type { Metadata } from "next";
 import { getTranslations, setRequestLocale } from "next-intl/server";
+import { buildPageMetadata } from "@/lib/page-metadata";
 import { PageHero } from "@/components/layout/page-hero";
 import { SectionEyebrow } from "@/components/layout/section-eyebrow";
 import { Lede } from "@/components/layout/lede";
@@ -12,6 +14,22 @@ import { MotionCard } from "@/components/motion/motion-card";
 import { MatSection } from "@/components/sections/mat-section";
 import { FdaSection } from "@/components/sections/fda-section";
 import { CtaBand } from "@/components/sections/cta-band";
+import { cn } from "@/lib/utils";
+
+export async function generateMetadata({
+  params,
+}: {
+  params: Promise<{ locale: string }>;
+}): Promise<Metadata> {
+  const { locale } = await params;
+  const t = await getTranslations({ locale, namespace: "pages.technology" });
+  return buildPageMetadata({
+    locale,
+    path: "/technology",
+    title: locale === "ko" ? "기술 · MAT" : "Technology",
+    description: t("hero.lede"),
+  });
+}
 
 export default async function TechnologyPage({
   params,
@@ -137,7 +155,8 @@ export default async function TechnologyPage({
             </RevealOnView>
           </div>
 
-          <div className="mt-12 overflow-x-auto">
+          {/* Desktop: comparison matrix. Mobile: one card per criterion. */}
+          <div className="mt-12 hidden overflow-x-auto md:block">
             <table className="w-full min-w-[720px] border border-structural/10 text-sm">
               <thead>
                 <tr className="bg-structural/[0.04] text-left font-mono text-[10px] font-medium uppercase tracking-[0.08em] text-structural/65">
@@ -173,6 +192,22 @@ export default async function TechnologyPage({
                 ))}
               </tbody>
             </table>
+          </div>
+
+          <div className="mt-12 grid gap-3 md:hidden">
+            {competition.map((r) => (
+              <div key={r.label} className="border border-structural/10">
+                <p className="border-b border-structural/10 bg-structural/[0.04] px-4 py-3 mono-label text-structural/65">
+                  {r.label}
+                </p>
+                <dl className="divide-y divide-structural/10">
+                  <CompRow label={compHeaders.field} value={r.field} />
+                  <CompRow label={compHeaders.smartfarm} value={r.smartfarm} />
+                  <CompRow label={compHeaders.synthetic} value={r.synthetic} />
+                  <CompRow label={compHeaders.wsb} value={r.wsb} highlight />
+                </dl>
+              </div>
+            ))}
           </div>
         </div>
       </section>
@@ -233,5 +268,34 @@ export default async function TechnologyPage({
         secondaryHref="/business"
       />
     </>
+  );
+}
+
+function CompRow({
+  label,
+  value,
+  highlight,
+}: {
+  label: string;
+  value: string;
+  highlight?: boolean;
+}) {
+  return (
+    <div
+      className={cn(
+        "flex items-start justify-between gap-4 px-4 py-3",
+        highlight && "bg-primary/[0.04]",
+      )}
+    >
+      <dt className="mono-label text-[10px] text-structural/55">{label}</dt>
+      <dd
+        className={cn(
+          "text-right text-sm",
+          highlight ? "font-medium text-primary" : "text-structural/75",
+        )}
+      >
+        {value}
+      </dd>
+    </div>
   );
 }

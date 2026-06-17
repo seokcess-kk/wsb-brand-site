@@ -241,7 +241,7 @@ function FormField({
         required={required}
         aria-invalid={hasError || undefined}
         aria-describedby={hasError ? `${id}-error` : undefined}
-        className={`w-full border-0 border-b bg-transparent px-0 py-2.5 font-sans text-sm text-canvas placeholder:text-canvas/30 focus:outline-none focus:ring-0 ${
+        className={`w-full border-0 border-b bg-transparent px-0 py-2.5 font-sans text-sm text-canvas placeholder:text-canvas/30 focus:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 focus-visible:ring-offset-structural ${
           hasError
             ? "border-rose-400 focus:border-rose-300"
             : "border-canvas/30 focus:border-primary"
@@ -285,7 +285,7 @@ function TextareaField({
         placeholder={placeholder}
         aria-invalid={hasError || undefined}
         aria-describedby={hasError ? `${id}-error` : undefined}
-        className={`w-full resize-y border bg-transparent px-4 py-3 font-sans text-sm text-canvas placeholder:text-canvas/30 focus:outline-none focus:ring-0 ${
+        className={`w-full resize-y border bg-transparent px-4 py-3 font-sans text-sm text-canvas placeholder:text-canvas/30 focus:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 focus-visible:ring-offset-structural ${
           hasError
             ? "border-rose-400 focus:border-rose-300"
             : "border-canvas/30 focus:border-primary"
@@ -330,7 +330,7 @@ function SelectField({
         defaultValue={initialValue || ""}
         aria-invalid={hasError || undefined}
         aria-describedby={hasError ? `${id}-error` : undefined}
-        className={`w-full appearance-none border-0 border-b bg-transparent px-0 py-2.5 font-sans text-sm text-canvas focus:outline-none focus:ring-0 ${
+        className={`w-full appearance-none border-0 border-b bg-transparent px-0 py-2.5 font-sans text-sm text-canvas focus:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 focus-visible:ring-offset-structural ${
           hasError
             ? "border-rose-400 focus:border-rose-300"
             : "border-canvas/30 focus:border-primary"
