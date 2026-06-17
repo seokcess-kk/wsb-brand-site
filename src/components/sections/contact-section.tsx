@@ -1,11 +1,13 @@
-import { getTranslations } from "next-intl/server";
+import { getLocale, getTranslations } from "next-intl/server";
 import { RevealOnView } from "@/components/motion/reveal-on-view";
 import { RevealWords } from "@/components/motion/reveal-words";
 import { SectionEyebrow } from "@/components/layout/section-eyebrow";
 import { Lede } from "@/components/layout/lede";
+import { LocationMap } from "./location-map";
 import { ContactForm } from "./contact-form";
 
 export async function ContactSection() {
+  const locale = await getLocale();
   const t = await getTranslations("home.contact");
   const tForm = await getTranslations("home.contact.form");
   const categoryOptions = tForm.raw("categoryOptions") as string[];
@@ -101,36 +103,13 @@ export async function ContactSection() {
                 />
               </div>
 
-              <div className="relative flex-1 min-h-[240px] bg-structural overflow-hidden">
-                <div
-                  aria-hidden
-                  className="absolute inset-0 opacity-30"
-                  style={{
-                    backgroundImage:
-                      "linear-gradient(to right, rgba(250,251,249,0.4) 1px, transparent 1px), linear-gradient(to bottom, rgba(250,251,249,0.4) 1px, transparent 1px)",
-                    backgroundSize: "32px 32px",
-                  }}
-                />
-                <div className="absolute inset-0 flex flex-col items-center justify-center gap-4">
-                  <div className="relative">
-                    <span
-                      aria-hidden
-                      className="absolute inset-0 rounded-full bg-primary/40 animate-ping"
-                    />
-                    <span
-                      aria-hidden
-                      className="relative block h-3 w-3 rounded-full bg-primary"
-                    />
-                  </div>
-                  <p className="font-mono text-[10px] tracking-[0.08em] uppercase text-canvas/55 text-center max-w-[24ch]">
-                    {t("mapPlaceholder")}
-                  </p>
-                </div>
-                <span aria-hidden className="absolute top-3 left-3 h-3 w-3 border-l border-t border-canvas/30" />
-                <span aria-hidden className="absolute top-3 right-3 h-3 w-3 border-r border-t border-canvas/30" />
-                <span aria-hidden className="absolute bottom-3 left-3 h-3 w-3 border-l border-b border-canvas/30" />
-                <span aria-hidden className="absolute bottom-3 right-3 h-3 w-3 border-r border-b border-canvas/30" />
-              </div>
+              <LocationMap
+                hl={locale}
+                address={t("info.addressValue")}
+                label={t("mapPlaceholder")}
+                directionsLabel={t("directions")}
+                className="flex-1 min-h-[240px]"
+              />
             </div>
           </RevealOnView>
         </div>

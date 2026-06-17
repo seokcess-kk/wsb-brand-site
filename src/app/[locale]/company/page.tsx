@@ -13,11 +13,6 @@ import {
 import { MotionCard } from "@/components/motion/motion-card";
 import { CtaBand } from "@/components/sections/cta-band";
 import { LocationMap } from "@/components/sections/location-map";
-import { env } from "@/env";
-
-// Yeoncheon headquarters pin. Approximate near 차옥로 149 until confirmed against
-// Naver; the deep-link fallback resolves the exact address regardless of this.
-const HQ_COORDS = { lat: 38.0966, lng: 127.0748 };
 
 export async function generateMetadata({
   params,
@@ -275,9 +270,7 @@ export default async function CompanyPage({
               />
             </div>
             <LocationMap
-              clientId={env.NEXT_PUBLIC_NAVER_MAP_CLIENT_ID}
-              lat={HQ_COORDS.lat}
-              lng={HQ_COORDS.lng}
+              hl={locale}
               address={t("location.address")}
               label={t("location.mapPlaceholder")}
               directionsLabel={t("location.directions")}

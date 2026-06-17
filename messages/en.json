@@ -405,7 +405,8 @@
         "hoursLabel": "RESPONSE TIME",
         "hoursValue": "Within two business days"
       },
-      "mapPlaceholder": "YEONCHEON HQ · MAP DATA"
+      "mapPlaceholder": "Woori Smart Bio Yeoncheon HQ",
+      "directions": "View on Google Maps"
     },
     "roadmap": {
       "sectionTag": "GROWTH ROADMAP",

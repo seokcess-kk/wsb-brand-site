@@ -4,6 +4,7 @@ import { buildPageMetadata } from "@/lib/page-metadata";
 import { PageHero } from "@/components/layout/page-hero";
 import { RevealOnView } from "@/components/motion/reveal-on-view";
 import { ContactForm } from "@/components/sections/contact-form";
+import { LocationMap } from "@/components/sections/location-map";
 
 // Maps a ?topic= deep-link to the matching inquiry category by index, so a
 // section CTA can land a visitor on the form with their topic preselected.
@@ -111,36 +112,13 @@ export default async function ContactPage({
                   />
                 </div>
 
-                <div className="relative flex-1 min-h-[280px] bg-structural overflow-hidden">
-                  <div
-                    aria-hidden
-                    className="absolute inset-0 opacity-30"
-                    style={{
-                      backgroundImage:
-                        "linear-gradient(to right, rgba(250,251,249,0.4) 1px, transparent 1px), linear-gradient(to bottom, rgba(250,251,249,0.4) 1px, transparent 1px)",
-                      backgroundSize: "32px 32px",
-                    }}
-                  />
-                  <div className="absolute inset-0 flex flex-col items-center justify-center gap-4">
-                    <div className="relative">
-                      <span
-                        aria-hidden
-                        className="absolute inset-0 rounded-full bg-primary/40 animate-ping"
-                      />
-                      <span
-                        aria-hidden
-                        className="relative block h-3 w-3 rounded-full bg-primary"
-                      />
-                    </div>
-                    <p className="font-mono text-[10px] tracking-[0.08em] uppercase text-canvas/55 text-center max-w-[24ch]">
-                      {tHome("mapPlaceholder")}
-                    </p>
-                  </div>
-                  <span aria-hidden className="absolute top-3 left-3 h-3 w-3 border-l border-t border-canvas/30" />
-                  <span aria-hidden className="absolute top-3 right-3 h-3 w-3 border-r border-t border-canvas/30" />
-                  <span aria-hidden className="absolute bottom-3 left-3 h-3 w-3 border-l border-b border-canvas/30" />
-                  <span aria-hidden className="absolute bottom-3 right-3 h-3 w-3 border-r border-b border-canvas/30" />
-                </div>
+                <LocationMap
+                  hl={locale}
+                  address={tHome("info.addressValue")}
+                  label={tHome("mapPlaceholder")}
+                  directionsLabel={tHome("directions")}
+                  className="flex-1 min-h-[280px]"
+                />
               </div>
             </RevealOnView>
           </div>

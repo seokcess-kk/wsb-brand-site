@@ -26,12 +26,6 @@ const schema = z.object({
     emptyToUndefined,
     z.string().url().default("https://woorismartbio.com"),
   ),
-  // Naver Maps (NCP) client id for the headquarters map. Public by design
-  // (domain-restricted). Absent = the map falls back to a Naver deep link.
-  NEXT_PUBLIC_NAVER_MAP_CLIENT_ID: z.preprocess(
-    emptyToUndefined,
-    z.string().optional(),
-  ),
 });
 
 const parsed = schema.safeParse({
@@ -41,7 +35,6 @@ const parsed = schema.safeParse({
   INQUIRY_NOTIFY_TO: process.env.INQUIRY_NOTIFY_TO,
   AUTH_SECRET: process.env.AUTH_SECRET,
   NEXT_PUBLIC_SITE_URL: process.env.NEXT_PUBLIC_SITE_URL,
-  NEXT_PUBLIC_NAVER_MAP_CLIENT_ID: process.env.NEXT_PUBLIC_NAVER_MAP_CLIENT_ID,
 });
 
 if (!parsed.success) {
