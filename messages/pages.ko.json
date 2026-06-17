@@ -84,7 +84,8 @@
       "tel": "031-834-4515",
       "emailLabel": "EMAIL",
       "email": "contact@woorismartbio.com",
-      "mapPlaceholder": "연천 본사 · 지도 준비 중"
+      "mapPlaceholder": "연천 본사",
+      "directions": "네이버 지도에서 보기"
     }
   },
   "technology": {

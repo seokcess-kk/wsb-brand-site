@@ -12,6 +12,12 @@ import {
 } from "@/components/motion/fade-in-section";
 import { MotionCard } from "@/components/motion/motion-card";
 import { CtaBand } from "@/components/sections/cta-band";
+import { LocationMap } from "@/components/sections/location-map";
+import { env } from "@/env";
+
+// Yeoncheon headquarters pin. Approximate near 차옥로 149 until confirmed against
+// Naver; the deep-link fallback resolves the exact address regardless of this.
+const HQ_COORDS = { lat: 38.0966, lng: 127.0748 };
 
 export async function generateMetadata({
   params,
@@ -237,7 +243,10 @@ export default async function CompanyPage({
       </section>
 
       {/* LOCATION */}
-      <section className="relative isolate bg-canvas border-t border-structural/10">
+      <section
+        id="location"
+        className="relative isolate scroll-mt-24 bg-canvas border-t border-structural/10"
+      >
         <div
           aria-hidden
           className="pointer-events-none absolute -top-px left-0 right-0 h-px bg-gradient-to-r from-transparent via-primary/30 to-transparent"
@@ -265,32 +274,14 @@ export default async function CompanyPage({
                 href={`mailto:${t("location.email")}`}
               />
             </div>
-            <div className="relative min-h-[320px] bg-structural/[0.04] overflow-hidden">
-              <div
-                aria-hidden
-                className="absolute inset-0 opacity-50"
-                style={{
-                  backgroundImage:
-                    "linear-gradient(to right, rgba(26,31,27,0.06) 1px, transparent 1px), linear-gradient(to bottom, rgba(26,31,27,0.06) 1px, transparent 1px)",
-                  backgroundSize: "32px 32px",
-                }}
-              />
-              <div className="absolute inset-0 flex flex-col items-center justify-center gap-4">
-                <div className="relative">
-                  <span
-                    aria-hidden
-                    className="absolute inset-0 rounded-full bg-primary/40 animate-ping"
-                  />
-                  <span
-                    aria-hidden
-                    className="relative block h-3 w-3 rounded-full bg-primary"
-                  />
-                </div>
-                <p className="mono-label text-[10px] text-structural/65">
-                  {t("location.mapPlaceholder")}
-                </p>
-              </div>
-            </div>
+            <LocationMap
+              clientId={env.NEXT_PUBLIC_NAVER_MAP_CLIENT_ID}
+              lat={HQ_COORDS.lat}
+              lng={HQ_COORDS.lng}
+              address={t("location.address")}
+              label={t("location.mapPlaceholder")}
+              directionsLabel={t("location.directions")}
+            />
           </div>
         </div>
       </section>
