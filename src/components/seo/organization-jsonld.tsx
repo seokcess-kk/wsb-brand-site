@@ -32,7 +32,7 @@ export function OrganizationJsonLd({ locale }: { locale: string }) {
         contactPoint: {
           "@type": "ContactPoint",
           telephone: "+82-31-834-4515",
-          email: "contact@woorismartbio.com",
+          email: "dasom@woorismartbio.com",
           contactType: "Partnership",
           areaServed: ["KR", "CN", "JP", "TW", "HK", "US"],
           availableLanguage: ["Korean", "English"],

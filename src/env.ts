@@ -15,11 +15,11 @@ const schema = z.object({
   RESEND_API_KEY: z.preprocess(emptyToUndefined, z.string().optional()),
   RESEND_FROM: z.preprocess(
     emptyToUndefined,
-    z.string().email().default("noreply@woorismartbio.com"),
+    z.string().email().default("dasom@woorismartbio.com"),
   ),
   INQUIRY_NOTIFY_TO: z.preprocess(
     emptyToUndefined,
-    z.string().default("contact@woorismartbio.com"),
+    z.string().default("dasom@woorismartbio.com"),
   ),
   AUTH_SECRET: z.preprocess(emptyToUndefined, z.string().optional()),
   NEXT_PUBLIC_SITE_URL: z.preprocess(

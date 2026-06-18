@@ -75,7 +75,7 @@ node scripts/screenshot.mjs / hero.png desktop "section[aria-labelledby=hero-hea
    - 자동으로 `DATABASE_URL`, `BLOB_READ_WRITE_TOKEN` 환경변수가 프로젝트에 주입됩니다
 3. **Settings → Environment Variables**에서 추가:
    - `RESEND_API_KEY` (Resend 대시보드에서 발급)
-   - `RESEND_FROM` (예: `noreply@woorismartbio.com`. 도메인 verification 완료된 주소)
+   - `RESEND_FROM` (예: `dasom@woorismartbio.com`. 도메인 verification 완료된 주소)
    - `INQUIRY_NOTIFY_TO` (콤마 구분 가능)
    - `AUTH_SECRET` (`openssl rand -base64 32`)
    - `ADMIN_EMAIL`, `ADMIN_PASSWORD`

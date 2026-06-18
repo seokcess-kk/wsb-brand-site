@@ -10,13 +10,13 @@ const COPY = {
   ko: {
     label: "ERROR",
     heading: "예상치 못한 오류가 발생했습니다",
-    body: "잠시 후 다시 시도해 주세요. 문제가 계속되면 contact@woorismartbio.com 으로 알려주세요.",
+    body: "잠시 후 다시 시도해 주세요. 문제가 계속되면 dasom@woorismartbio.com 으로 알려주세요.",
     retry: "다시 시도",
   },
   en: {
     label: "ERROR",
     heading: "Something went wrong",
-    body: "Please try again in a moment. If the problem persists, contact us at contact@woorismartbio.com.",
+    body: "Please try again in a moment. If the problem persists, contact us at dasom@woorismartbio.com.",
     retry: "Try again",
   },
 } as const;

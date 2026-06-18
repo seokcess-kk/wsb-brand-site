@@ -144,8 +144,8 @@ function renderAutoReplyHtml(p: InquiryEmailPayload) {
       <p style="font-size:14px;line-height:1.7;margin-top:16px;">
         ${
           ko
-            ? "회신이 지연될 경우 contact@woorismartbio.com 으로 다시 문의 주세요."
-            : "If you do not hear back, please reach us at contact@woorismartbio.com."
+            ? "회신이 지연될 경우 dasom@woorismartbio.com 으로 다시 문의 주세요."
+            : "If you do not hear back, please reach us at dasom@woorismartbio.com."
         }
       </p>
       <hr style="border:none;border-top:1px solid #1A1F1B22;margin:24px 0;" />

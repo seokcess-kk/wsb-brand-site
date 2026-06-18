@@ -37,7 +37,7 @@ export function SettingsForm({
             rows={3}
             required
             defaultValue={initialNotifyEmails}
-            placeholder="contact@woorismartbio.com, sales@..."
+            placeholder="dasom@woorismartbio.com, sales@..."
             className="w-full border border-structural/15 bg-canvas px-4 py-3 font-mono text-sm text-structural focus:border-primary focus:outline-none focus:ring-0"
           />
           <p className="text-xs text-structural/65">
