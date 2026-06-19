@@ -47,8 +47,6 @@
     },
     "personas": {
       "ariaLabel": "Find your path",
-      "eyebrow": "What brings you here",
-      "heading": "Jump straight to what matters to you",
       "items": [
         { "key": "material", "audience": "Material buyers & brands", "need": "Standardized functional botanical materials and ODM supply", "cta": "See B2B Material", "href": "#business" },
         { "key": "solution", "audience": "Technology adopters", "need": "MAT cultivation and precision smart farms", "cta": "See MAT", "href": "#mat" },
@@ -67,60 +65,43 @@
         { "label": "CAPA", "value": "2.52M plants/y", "caption": "Annual production capacity basis" }
       ]
     },
-    "scale": {
-      "sectionTag": "PRODUCTION & R&D SCALE",
-      "sectionMeta": "SCALE · YEONCHEON",
-      "heading": "Data is proven at scale",
-      "lede": "The precision smart farm at our Yeoncheon R&D production center produces functional botanical materials under identical conditions, 365 days a year.",
-      "metrics": [
-        { "label": "ANNUAL CAPACITY", "value": "2.52M", "caption": "Annual capacity (plants/year)" },
-        { "label": "SITE AREA", "value": "11,158㎡", "caption": "Yeoncheon R&D production center site" },
-        { "label": "FLOOR AREA", "value": "5,774㎡", "caption": "Production and R&D floor area" },
-        { "label": "SITE", "value": "Yeoncheon", "caption": "R&D production center" }
-      ],
-      "photos": [
-        { "caption": "Precision vertical farm production hall", "src": "/scale-hall.jpg" },
-        { "caption": "Yeoncheon R&D production center", "src": "/facility-exterior.jpg" },
-        { "caption": "Precise observation · botanical material R&D", "src": "/facility-lab.jpg" }
-      ],
-      "assetPending": "ASSET PENDING"
-    },
     "problem": {
       "sectionTag": "MARKET CONTEXT",
-      "sectionMeta": "01 / PROBLEM · OPPORTUNITY",
+      "sectionMeta": "01 / STANDARDIZATION · OPPORTUNITY",
       "heading": "Botanicals shut out by the wall of standardization\nA $54.7B botanical drug market awaits the answer",
       "problem": {
-        "label": "PROBLEM",
-        "title": "Botanicals resist standardization",
-        "body": "Field and greenhouse cultivation expose plants to uncontrollable variables. Climate, soil, harvest season, and pesticide exposure all shift active compound content from one harvest to the next. Pharmaceutical-grade standardization is effectively impossible.",
-        "source": "Conventional cultivation · same cultivar · 5 batches"
+        "label": "STANDARDIZATION",
+        "title": "WSB plant compound standardization",
+        "body": "MAT cultivation and precision control regulate light, temperature, water and minerals to standardize plant and product compounds inside the pharma-spec band.",
+        "source": "WSB batch data · full-panel HPLC"
       },
       "opportunity": {
         "label": "OPPORTUNITY",
-        "title": "$54.7B botanical drug market",
+        "title": "Botanical drug market $54.7B",
         "body": "The FDA-aligned global botanical drug market grows from $54.7B in 2026 to $79.7B by 2031. Market entry has one prerequisite. A standardized API supply.",
         "metrics": [
           { "label": "GLOBAL MARKET 2026", "value": "$54.7B" },
           { "label": "CAGR 2026 ~ 2031", "value": "+7.8%" },
           { "label": "MARKET 2031E", "value": "$79.7B" }
-        ],
-        "source": "Mordor Intelligence (2026) · $54.7B → $79.7B at 1,333 KRW/USD"
+        ]
       }
     },
     "mat": {
       "sectionTag": "CORE TECHNOLOGY",
       "sectionMeta": "02 / MAT",
       "heading": "MAT\nWe trigger the plant's own defense\nto surface active compounds on purpose",
-      "plain": "In plain terms, MAT precisely controls light, temperature, water, and minerals to guide plants toward producing more active compounds, more consistently.",
+      "plain": "MAT precisely controls light, temperature, water, and minerals to guide plants toward producing more active compounds, more consistently.",
       "value": "So every batch can ship the same active-compound content, reliably.",
       "diagram": {
-        "stressLabel": "STRESS · 4 INPUTS",
         "plantLabel": "GINSENG · PANAX",
         "outputLabel": "API YIELD",
-        "outputValue": "+8×",
+        "controlLabel": "Control",
+        "controlValue": "1×",
+        "wsbLabel": "WSB smart farm",
+        "wsbValue": "+8×",
         "note": "Basis · in-house trial vs. same-cultivar control"
       },
-      "body": "MAT targets active compound yield rather than biomass growth. Precision stressors are applied in stages to induce secondary metabolite production.",
+      "body": "It maximizes active compound yield. Precision stressors are applied in stages to induce secondary metabolite production.",
       "stressors": [
         {
           "label": "STRESSOR 01",
@@ -185,8 +166,7 @@
         }
       ],
       "matchTag": "GUIDELINE FIT",
-      "matchValue": "5/5",
-      "disclaimer": "This matrix shows FDA guideline alignment, not FDA approval or certification."
+      "matchValue": "5/5"
     },
     "traction": {
       "sectionTag": "PROVEN CAPABILITY",
@@ -208,13 +188,6 @@
           "source": "WSB batch records · all-compound HPLC",
           "asOf": "2025.Q4"
         },
-        "traction": {
-          "label": "ANNUAL CAPACITY",
-          "value": "2.52M",
-          "caption": "Annual production capacity, Yeoncheon R&D production center",
-          "source": "WSB production basis",
-          "asOf": "2025"
-        },
         "clinical": {
           "label": "CLINICAL API",
           "value": "100kg",
@@ -223,6 +196,17 @@
           "asOf": "2025"
         }
       },
+      "metrics": [
+        { "label": "ANNUAL CAPACITY", "value": "2.52M", "caption": "Annual capacity (plants/year)" },
+        { "label": "SITE AREA", "value": "11,158㎡", "caption": "Yeoncheon R&D production center site" },
+        { "label": "FLOOR AREA", "value": "5,774㎡", "caption": "Production and R&D floor area" }
+      ],
+      "photos": [
+        { "caption": "Precision vertical farm production hall", "src": "/scale-hall.jpg" },
+        { "caption": "Yeoncheon R&D production center", "src": "/facility-exterior.jpg" },
+        { "caption": "Precise observation · botanical material R&D", "src": "/facility-lab.jpg" }
+      ],
+      "assetPending": "ASSET PENDING",
       "partnersTag": "PARTNER NETWORK",
       "networkNote": "We collaborate with partners in Korea and abroad across solution, material, and brand lines. Publishable contracts and milestones are posted to News as they progress.",
       "networkCta": "See partnership updates in News"
@@ -231,7 +215,6 @@
       "sectionTag": "BUSINESS MODEL",
       "sectionMeta": "05 / 3 PILLARS",
       "heading": "Technology · Material · Brand\nA three-pillar vertical stack",
-      "lede": "The same MAT and precision-controlled smart farm extend into three businesses: solution, material, and brand.",
       "pillars": [
         {
           "label": "PILLAR 01",
@@ -270,76 +253,9 @@
         }
       ]
     },
-    "ctaProof": {
-      "eyebrow": "READY TO PARTNER",
-      "heading": "Seen the proof? It's time to talk partnership",
-      "body": "Material supply, technology solutions, clinical collaboration, and more. We respond within two business days.",
-      "primary": "Discuss a partnership",
-      "secondary": "See the business"
-    },
-    "ctaRnd": {
-      "eyebrow": "R&D · CLINICAL",
-      "heading": "We're looking for partners to develop new materials",
-      "body": "Botanical API standardization, clinical material supply, and technical data requests.",
-      "primary": "R&D / clinical inquiry"
-    },
-    "pipeline": {
-      "sectionTag": "R&D PIPELINE",
-      "sectionMeta": "06 / 6 BOTANICALS",
-      "viewAll": "See all 6 pipelines",
-      "heading": "Six pipelines, starting with ginseng\nexpanding on the same platform",
-      "lede": "Each added species yields a new material on the same precision smart farm and MAT. Ginseng is commercial; the rest are at pre-launch and R&D.",
-      "stages": ["Discovery", "R&D", "Pre-launch", "Commercial"],
-      "investigationalTag": "Investigational",
-      "disclaimer": "Indications are research targets and do not represent confirmed efficacy. Items beyond the commercial stage are under development.",
-      "items": [
-        {
-          "name": "Hydroponic Ginseng",
-          "latin": "Panax ginseng",
-          "api": "Ginsenoside Rh2 · Ck",
-          "indication": "Immunity · Fatigue recovery",
-          "stage": 3
-        },
-        {
-          "name": "Isatis",
-          "latin": "Isatis indigotica",
-          "api": "Indirubin",
-          "indication": "Crohn's disease · IBD (target)",
-          "stage": 2
-        },
-        {
-          "name": "Angelica",
-          "latin": "Angelica gigas",
-          "api": "Decursin",
-          "indication": "Vascular health · Anti-inflammation (target)",
-          "stage": 2
-        },
-        {
-          "name": "Dendropanax",
-          "latin": "Dendropanax morbifera",
-          "api": "Chlorogenic Acid",
-          "indication": "Liver · Neuroprotection · Sleep (target)",
-          "stage": 1
-        },
-        {
-          "name": "Sallicho",
-          "latin": "Capsicum F1 leaf",
-          "api": "Alpha-Glucosidase Inhibitor",
-          "indication": "Anti-diabetic (target)",
-          "stage": 1
-        },
-        {
-          "name": "Soybean Leaf",
-          "latin": "Glycine max",
-          "api": "Isoflavone",
-          "indication": "Menopause (target)",
-          "stage": 1
-        }
-      ]
-    },
     "news": {
       "sectionTag": "LATEST UPDATES",
-      "sectionMeta": "08 / NEWS",
+      "sectionMeta": "07 / NEWS",
       "heading": "Latest updates",
       "lede": "Contracts, clinical material supply, and certifications from our operating pipeline.",
       "viewAll": "See all news",
@@ -366,7 +282,7 @@
     },
     "contact": {
       "sectionTag": "PARTNERSHIP INQUIRY",
-      "sectionMeta": "09 / CONTACT",
+      "sectionMeta": "08 / CONTACT",
       "heading": "Let's start a\nglobal partnership",
       "lede": "We respond to API supply, technology solutions, and clinical collaboration inquiries within two business days.",
       "form": {
@@ -410,9 +326,10 @@
     },
     "roadmap": {
       "sectionTag": "GROWTH ROADMAP",
-      "sectionMeta": "07 / 3 PHASES",
-      "heading": "Phase 1 foundation\nPhase 2 expansion\nPhase 3 standard",
-      "lede": "From an FDA-aligned Korean base, we scale step by step into a global supplier and then a botanical data platform.",
+      "sectionMeta": "06 / 3 PHASES",
+      "subtitle": "Woori Smart Bio growth roadmap",
+      "heading": "From the home market\nto the global botanical drug standard",
+      "lede": "On an FDA-ready foundation and a proven track record, WSB expands step by step from global raw-material supplier to botanical data platform.",
       "phases": [
         {
           "label": "PHASE 01",

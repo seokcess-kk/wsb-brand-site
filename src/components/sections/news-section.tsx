@@ -59,7 +59,7 @@ export async function NewsSection() {
       <div className="mx-auto max-w-7xl px-6 py-20 md:py-28 lg:py-32">
         <div className="mb-14 flex flex-col gap-3 md:flex-row md:items-end md:justify-between">
           <RevealOnView>
-            <SectionEyebrow number={8} total={9} tag={t("sectionTag")} />
+            <SectionEyebrow number={7} total={8} tag={t("sectionTag")} />
           </RevealOnView>
           <RevealOnView delay={0.05}>
             <p className="mono-label text-structural/65">{t("sectionMeta")}</p>

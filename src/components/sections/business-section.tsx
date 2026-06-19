@@ -45,7 +45,6 @@ export async function BusinessSection() {
           meta={t("sectionMeta")}
           heading={t("heading")}
           headingId="business-heading"
-          lede={t("lede")}
         />
 
         {/* 3 pillar cards */}

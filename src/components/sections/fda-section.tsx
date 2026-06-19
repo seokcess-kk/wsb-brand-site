@@ -35,7 +35,7 @@ export async function FdaSection() {
         {/* Header */}
         <div className="mb-12 flex flex-col gap-6 md:flex-row md:items-end md:justify-between">
           <div className="space-y-5">
-            <SectionEyebrow number={3} total={9} tag={t("sectionTag")} inverse />
+            <SectionEyebrow number={3} total={8} tag={t("sectionTag")} inverse />
             <h2
               id="fda-heading"
               className="max-w-3xl font-sans font-bold leading-[1.25] tracking-[-0.015em] text-canvas"
@@ -58,13 +58,6 @@ export async function FdaSection() {
         </div>
 
         <Lede text={t("lede")} inverse className="max-w-3xl" />
-
-        <div className="mt-5 max-w-3xl border-l-2 border-primary/50 bg-canvas/[0.04] py-3 pl-4 pr-4">
-          <p className="mono-label mb-1.5 text-[10px] text-canvas/60">NOTE</p>
-          <p className="text-sm leading-[1.6] text-canvas/75">
-            {t("disclaimer")}
-          </p>
-        </div>
 
         {/* Table is interactive — client component */}
         <FdaTable

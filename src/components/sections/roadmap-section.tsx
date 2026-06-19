@@ -39,10 +39,11 @@ export async function RoadmapSection() {
 
       <div className="relative mx-auto max-w-7xl px-6 py-20 md:py-28 lg:py-32">
         <SectionHeader
-          number={7}
+          number={6}
           inverse
           tag={t("sectionTag")}
           meta={t("sectionMeta")}
+          subtitle={t("subtitle")}
           heading={t("heading")}
           headingId="roadmap-heading"
           lede={t("lede")}

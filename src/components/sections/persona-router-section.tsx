@@ -1,6 +1,5 @@
 import { getTranslations } from "next-intl/server";
 import { ArrowDownRight } from "lucide-react";
-import { SectionEyebrow } from "@/components/layout/section-eyebrow";
 
 type PersonaItem = {
   key: string;
@@ -26,33 +25,30 @@ export async function PersonaRouterSection() {
       className="border-b border-structural/10 bg-canvas"
     >
       <div className="mx-auto max-w-7xl px-6 py-16 md:py-20">
-        <div className="mb-10 flex flex-col gap-4 md:flex-row md:items-end md:justify-between">
-          <SectionEyebrow tag={t("eyebrow")} />
-          <h2 className="max-w-xl font-sans text-xl font-bold tracking-tight text-structural md:text-2xl">
-            {t("heading")}
-          </h2>
-        </div>
-
         <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
           {items.map((item) => (
             <a
               key={item.key}
               href={item.href}
-              className="group flex flex-col gap-4 border border-structural/[0.12] bg-canvas p-6 transition-colors hover:border-primary/50 hover:bg-primary/[0.03]"
+              className="group flex h-full flex-col border border-structural/[0.12] bg-canvas p-6 transition-colors hover:border-primary/50 hover:bg-primary/[0.03] md:p-7"
             >
               <div className="flex items-start justify-between gap-3">
-                <h3 className="font-sans text-base font-bold tracking-tight text-structural">
+                <h3 className="font-sans text-xl font-bold leading-snug tracking-tight text-structural md:text-2xl">
                   {item.audience}
                 </h3>
                 <span
                   aria-hidden
-                  className="mt-1 h-1.5 w-1.5 flex-none rounded-full bg-primary/50 transition-transform duration-300 group-hover:scale-150"
+                  className="mt-2 h-2 w-2 flex-none rounded-full bg-primary/50 transition-transform duration-300 group-hover:scale-150"
                 />
               </div>
-              <p className="text-sm leading-[1.6] text-structural/70">
+              <span
+                aria-hidden
+                className="mt-4 h-px w-10 bg-primary/40 transition-all duration-300 group-hover:w-16"
+              />
+              <p className="mt-4 text-sm leading-[1.6] text-structural/70">
                 {item.need}
               </p>
-              <span className="mt-auto inline-flex items-center gap-1.5 text-sm font-medium text-primary">
+              <span className="mt-auto inline-flex items-center gap-1.5 pt-7 text-sm font-medium text-primary">
                 {item.cta}
                 <ArrowDownRight
                   size={13}

@@ -40,7 +40,7 @@ export async function MatSection() {
         {/* Header */}
         <div className="mb-14 flex flex-col gap-3 md:flex-row md:items-end md:justify-between">
           <RevealOnView>
-            <SectionEyebrow number={2} total={9} tag={t("sectionTag")} />
+            <SectionEyebrow number={2} total={8} tag={t("sectionTag")} />
           </RevealOnView>
           <RevealOnView delay={0.05}>
             <p className="mono-label text-structural/65">{t("sectionMeta")}</p>
@@ -107,10 +107,12 @@ export async function MatSection() {
         {/* ROW 2: Full-width process diagram */}
         <RevealOnView delay={0.4} className="mt-16">
           <MatProcessDiagram
-            stressLabel={t("diagram.stressLabel")}
             plantLabel={t("diagram.plantLabel")}
             outputLabel={t("diagram.outputLabel")}
-            outputValue={t("diagram.outputValue")}
+            controlLabel={t("diagram.controlLabel")}
+            controlValue={t("diagram.controlValue")}
+            wsbLabel={t("diagram.wsbLabel")}
+            wsbValue={t("diagram.wsbValue")}
             note={t("diagram.note")}
           />
         </RevealOnView>

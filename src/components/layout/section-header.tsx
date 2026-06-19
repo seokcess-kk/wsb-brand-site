@@ -14,6 +14,8 @@ type Props = {
   heading: string;
   headingId?: string;
   lede?: string;
+  /** Optional kicker shown directly above the heading (e.g. a section subtitle). */
+  subtitle?: string;
   inverse?: boolean;
 };
 
@@ -24,12 +26,13 @@ type Props = {
  */
 export function SectionHeader({
   number,
-  total = 9,
+  total = 8,
   tag,
   meta,
   heading,
   headingId,
   lede,
+  subtitle,
   inverse,
 }: Props) {
   return (
@@ -58,16 +61,30 @@ export function SectionHeader({
       </div>
 
       <div className="grid items-end gap-10 lg:grid-cols-[1.4fr_1fr] lg:gap-16">
-        <h2
-          id={headingId}
-          className={cn(
-            "font-sans font-bold leading-[1.25] tracking-[-0.015em]",
-            inverse ? "text-canvas" : "text-structural",
+        <div>
+          {subtitle && (
+            <RevealOnView>
+              <p
+                className={cn(
+                  "mb-3 text-sm font-medium tracking-tight",
+                  inverse ? "text-canvas/70" : "text-primary",
+                )}
+              >
+                {subtitle}
+              </p>
+            </RevealOnView>
           )}
-          style={{ fontSize: "clamp(1.875rem, 4vw, 3rem)" }}
-        >
-          <RevealWords text={heading} triggerOnView />
-        </h2>
+          <h2
+            id={headingId}
+            className={cn(
+              "font-sans font-bold leading-[1.25] tracking-[-0.015em]",
+              inverse ? "text-canvas" : "text-structural",
+            )}
+            style={{ fontSize: "clamp(1.875rem, 4vw, 3rem)" }}
+          >
+            <RevealWords text={heading} triggerOnView />
+          </h2>
+        </div>
         {lede && (
           <RevealOnView delay={0.2}>
             <Lede text={lede} inverse={inverse} />
