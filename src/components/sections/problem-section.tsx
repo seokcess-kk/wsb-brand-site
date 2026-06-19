@@ -33,7 +33,7 @@ export async function ProblemSection() {
           className="max-w-4xl font-sans font-bold leading-[1.25] tracking-[-0.015em] text-structural"
           style={{ fontSize: "clamp(1.875rem, 4vw, 3rem)" }}
         >
-          <RevealWords text={t("heading")} triggerOnView />
+          <RevealWords text={t("heading")} triggerOnView responsiveBreak />
         </h2>
 
         {/* 2-column compare. items-stretch keeps both cards equal height. */}
@@ -51,8 +51,9 @@ export async function ProblemSection() {
                   toleranceLabel="PHARMA SPEC"
                 />
               }
-              footerLeft={{ label: "σ · VARIATION", value: "±35%" }}
-              footerRight={{ label: "PHARMA MATCH", value: "0/5" }}
+              heroLabel="BATCH VARIATION"
+              heroValue="±35%"
+              heroSub="관행 재배 5 batch"
               source={t("problem.source")}
             />
           </RevealOnView>
@@ -73,11 +74,9 @@ export async function ProblemSection() {
                   cagrLabel={`CAGR  ${metrics[1].value}`}
                 />
               }
-              footerLeft={{ label: metrics[1].label, value: metrics[1].value }}
-              footerRight={{
-                label: metrics[2].label,
-                value: <CountUp value={metrics[2].value} duration={1.2} />,
-              }}
+              heroLabel={metrics[2].label}
+              heroValue={<CountUp value={metrics[2].value} duration={1.2} />}
+              heroSub={`CAGR ${metrics[1].value}`}
               source={t("opportunity.source")}
             />
           </RevealOnView>
@@ -93,8 +92,9 @@ function CompareCard({
   title,
   body,
   chart,
-  footerLeft,
-  footerRight,
+  heroLabel,
+  heroValue,
+  heroSub,
   source,
 }: {
   accent: "muted" | "primary";
@@ -102,8 +102,10 @@ function CompareCard({
   title: string;
   body: string;
   chart: React.ReactNode;
-  footerLeft: { label: string; value: React.ReactNode };
-  footerRight: { label: string; value: React.ReactNode };
+  /** Hero figure: the card's single largest, most quotable number. */
+  heroLabel: string;
+  heroValue: React.ReactNode;
+  heroSub?: string;
   /** Small source / basis line so the figures read as evidence, not decoration. */
   source?: string;
 }) {
@@ -150,45 +152,33 @@ function CompareCard({
       {/* Chart fills available space */}
       <div className="relative mt-auto">{chart}</div>
 
-      {/* Footer metrics: identical shape on both cards for balance */}
-      <dl className="relative grid grid-cols-2 gap-px border-t border-structural/10 pt-6">
-        <FooterMetric label={footerLeft.label} value={footerLeft.value} />
-        <FooterMetric
-          label={footerRight.label}
-          value={footerRight.value}
-          accent={accent === "primary"}
-        />
-      </dl>
+      {/* Hero figure: one oversized number per card so the card's core evidence
+          is graspable at a glance. heroSub carries the secondary metric so no
+          data is lost from the old two-cell footer. */}
+      <div className="relative border-t border-structural/10 pt-6">
+        <div className="flex items-baseline justify-between gap-3">
+          <p className="mono-label text-[10px] text-structural/65">{heroLabel}</p>
+          {heroSub && (
+            <p className="mono-label text-[10px] tabular-nums text-structural/55">
+              {heroSub}
+            </p>
+          )}
+        </div>
+        <p
+          className={`mt-2.5 font-sans text-[2.75rem] font-extrabold leading-[0.95] tracking-tight tabular-nums ${
+            accent === "primary" ? "text-primary" : "text-structural"
+          }`}
+        >
+          {heroValue}
+        </p>
+      </div>
 
       {source && (
-        <p className="relative -mt-1 flex items-center gap-1.5 mono-label text-[10px] text-structural/65">
-          <span aria-hidden className="inline-block h-1 w-1 rounded-full bg-structural/30" />
-          {source}
+        <p className="relative -mt-1 flex items-start gap-1.5 mono-label text-[10px] text-structural/65">
+          <span aria-hidden className="mt-[0.45em] inline-block h-1 w-1 flex-none rounded-full bg-structural/30" />
+          <span>{source}</span>
         </p>
       )}
     </article>
-  );
-}
-
-function FooterMetric({
-  label,
-  value,
-  accent,
-}: {
-  label: string;
-  value: React.ReactNode;
-  accent?: boolean;
-}) {
-  return (
-    <div className="flex flex-col gap-1.5">
-      <dt className="mono-label text-[10px] text-structural/65">{label}</dt>
-      <dd
-        className={`font-sans text-xl font-bold tabular-nums ${
-          accent ? "text-primary" : "text-structural"
-        }`}
-      >
-        {value}
-      </dd>
-    </div>
   );
 }

@@ -34,15 +34,17 @@ export function GrowthCurve({
   // draw on scroll. initial={false} keeps opacity:0 out of the SSR markup.
   const show = reduced || !(mounted && canObserveViewport()) || inView;
 
-  // 10 points (CAGR ~6.7%)
-  const values = Array.from({ length: 10 }, (_, i) =>
-    Math.round(60 * Math.pow(1.067, i)),
+  // 6 points: 2026~2031 at CAGR ~7.8% (Mordor Intelligence). The curve shape
+  // only needs the trajectory; absolute values are shown by the pinned labels.
+  const values = Array.from({ length: 6 }, (_, i) =>
+    Math.round(73 * Math.pow(1.0782, i)),
   );
   const min = Math.min(...values);
   const max = Math.max(...values);
   const W = 100;
   const H = 50;
-  const padTop = 8;
+  // Extra top room so the curve max sits clear of the pinned end-value label.
+  const padTop = 14;
   const padBottom = 8;
   const px = (i: number) => (i / (values.length - 1)) * W;
   const py = (v: number) =>
@@ -61,6 +63,8 @@ export function GrowthCurve({
         viewBox={`0 0 ${W} ${H}`}
         preserveAspectRatio="none"
         className="absolute inset-0 h-full w-full"
+        role="img"
+        aria-label={`식물의약품 시장 성장 곡선. ${startValue}에서 ${endValue}로, ${cagrLabel}.`}
       >
         <defs>
           <linearGradient id="growthArea" x1="0" y1="0" x2="0" y2="1">

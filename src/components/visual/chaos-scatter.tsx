@@ -23,14 +23,17 @@ export function ChaosScatter({
   const reduced = useSafeReducedMotion();
   const show = reduced || inView;
 
-  // Deterministic per-batch sample positions
+  // Deterministic per-batch sample positions. Every sample sits OUTSIDE the
+  // pharma-spec band (42..58) on purpose, so no point renders on-spec and the
+  // scatter agrees with the "0/5 reliable match" footer. The on-spec green
+  // coloring below stays in code for when real data eventually lands a hit.
   const batches = useMemo(
     () => [
       { x: 12, samples: [18, 28, 41, 22] },
-      { x: 30, samples: [62, 70, 55, 78] },
+      { x: 30, samples: [62, 70, 38, 78] },
       { x: 50, samples: [10, 25, 18, 32] },
       { x: 70, samples: [80, 65, 88, 74] },
-      { x: 88, samples: [38, 50, 28, 44] },
+      { x: 88, samples: [38, 62, 28, 40] },
     ],
     [],
   );
@@ -51,6 +54,8 @@ export function ChaosScatter({
         viewBox="0 0 100 50"
         preserveAspectRatio="none"
         className="absolute inset-0 h-full w-full"
+        role="img"
+        aria-label="배치별 유효성분 함량 산점도. 5개 배치 모두 의약품 기준 구간을 벗어나 적중 0/5."
       >
         {/* Tolerance band (pharma spec) — the target zone */}
         <rect
@@ -133,7 +138,7 @@ export function ChaosScatter({
       <div className="absolute left-2 top-2 mono-label text-[11px] text-structural/65">
         {yLabel}
       </div>
-      <div className="absolute right-2 top-1/2 -translate-y-1/2 bg-canvas/90 px-1.5 py-0.5 mono-label text-[10px] leading-none text-primary">
+      <div className="absolute left-2 top-[38%] bg-canvas/90 px-1.5 py-0.5 mono-label text-[10px] leading-none text-primary">
         {toleranceLabel}
       </div>
     </div>

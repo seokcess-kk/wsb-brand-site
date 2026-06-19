@@ -16,6 +16,11 @@ type Props = {
    * hero, where the entrance should fire as soon as the page paints.
    */
   triggerOnView?: boolean;
+  /**
+   * If true, manual \n breaks apply only at md+ and collapse to a space on
+   * mobile, so a desktop two-line heading does not double-wrap on small screens.
+   */
+  responsiveBreak?: boolean;
 };
 
 /**
@@ -32,6 +37,7 @@ export function RevealWords({
   delay = 0,
   stagger = 0.06,
   triggerOnView = false,
+  responsiveBreak = false,
 }: Props) {
   const reduced = useSafeReducedMotion();
   const mounted = useHasMounted();
@@ -52,7 +58,7 @@ export function RevealWords({
       <span ref={ref} className={className} aria-label={text}>
         {lines.map((line, lineIdx) => (
           <Fragment key={lineIdx}>
-            {lineIdx > 0 && <br aria-hidden />}
+            {lineIdx > 0 && <LineBreak responsive={responsiveBreak} />}
             <span
               className="inline-block"
               style={
@@ -88,7 +94,7 @@ export function RevealWords({
       <span ref={ref} className={className} aria-label={text}>
         {lines.map((line, lineIdx) => (
           <Fragment key={lineIdx}>
-            {lineIdx > 0 && <br aria-hidden />}
+            {lineIdx > 0 && <LineBreak responsive={responsiveBreak} />}
             {line}
           </Fragment>
         ))}
@@ -102,7 +108,7 @@ export function RevealWords({
         const words = line.split(" ");
         return (
           <Fragment key={lineIdx}>
-            {lineIdx > 0 && <br aria-hidden />}
+            {lineIdx > 0 && <LineBreak responsive={responsiveBreak} />}
             <span className="inline">
               {words.map((word, i) => (
                 <Fragment key={`${lineIdx}-${i}`}>
@@ -130,5 +136,16 @@ export function RevealWords({
         );
       })}
     </span>
+  );
+}
+
+function LineBreak({ responsive }: { responsive: boolean }) {
+  if (!responsive) return <br aria-hidden />;
+  // Mobile: collapse the manual break to a space so the line flows; md+: break.
+  return (
+    <>
+      <span aria-hidden className="md:hidden">{" "}</span>
+      <br aria-hidden className="hidden md:block" />
+    </>
   );
 }
