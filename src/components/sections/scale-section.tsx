@@ -58,7 +58,7 @@ export async function ScaleSection() {
                 ) : (
                   <>
                     <dd
-                      className="mt-4 font-sans font-extrabold leading-none tracking-tight text-primary tabular-nums"
+                      className="mt-4 font-mono font-bold leading-none tracking-tight text-primary tabular-nums"
                       style={{ fontSize: "clamp(1.875rem, 3vw, 2.5rem)" }}
                     >
                       {m.value}

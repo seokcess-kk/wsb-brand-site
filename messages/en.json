@@ -37,8 +37,8 @@
   "home": {
     "hero": {
       "tag": "GREEN BIO · PRECISION SMART FARM",
-      "definition": "Woori Smart Bio is a specialized company that develops and produces plant-based green bio materials standardized to API (active pharmaceutical ingredient) grade, powered by a data-driven precision-control smart farm.",
-      "subhead": "In particular, our MAT (Metabolic Agricultural Technology) regulates a plant's metabolic synthesis pathways, so we reliably and repeatedly supply standardized material of the same quality regardless of climate change or season.",
+      "definition": "On a data-driven precision-control smart farm, we develop and produce plant-based green bio materials standardized to API (active pharmaceutical ingredient) grade.",
+      "subhead": "MAT regulates a plant's metabolic pathways to reproduce the same quality in every batch regardless of season or climate.",
       "batchMeta": "BATCH · WSB-2026-001",
       "overlayLabel1": "SAPONIN · +8×",
       "overlayLabel2": "pH 5.8 · EC 1.4",
@@ -51,18 +51,18 @@
       "heading": "Jump straight to what matters to you",
       "items": [
         { "key": "material", "audience": "Material buyers & brands", "need": "Standardized functional botanical materials and ODM supply", "cta": "See B2B Material", "href": "#business" },
-        { "key": "solution", "audience": "Technology adopters", "need": "MAT cultivation and precision smart farm solutions", "cta": "See MAT", "href": "#mat" },
-        { "key": "investor", "audience": "Investors & institutions", "need": "Market opportunity, growth roadmap, IP and infrastructure", "cta": "See the roadmap", "href": "#roadmap" },
-        { "key": "research", "audience": "Research & pharma", "need": "Botanical API standardization and the R&D pipeline", "cta": "See the pipeline", "href": "#pipeline" }
+        { "key": "solution", "audience": "Technology adopters", "need": "MAT cultivation and precision smart farms", "cta": "See MAT", "href": "#mat" },
+        { "key": "investor", "audience": "Investors & institutions", "need": "Growth roadmap, IP and production infrastructure", "cta": "See the roadmap", "href": "#roadmap" },
+        { "key": "research", "audience": "Research & pharma", "need": "API standardization and the pipeline", "cta": "See the pipeline", "href": "#pipeline" }
       ]
     },
     "credibility": {
       "ariaLabel": "Woori Smart Bio credibility signals",
       "items": [
-        { "label": "ESTABLISHED", "value": "2018", "caption": "Plant-based green bio materials company" },
+        { "label": "ESTABLISHED", "value": "2018", "caption": "Plant-based green bio materials" },
         { "label": "PATENTS", "value": "20+", "caption": "MAT, hydroponic, and material patents" },
-        { "label": "CERTIFICATION", "value": "Green Bio", "caption": "Recognized Green Bio enterprise (2025)" },
-        { "label": "STATUS", "value": "Venture", "caption": "Venture company and corporate R&D center (2024)" },
+        { "label": "CERTIFICATION", "value": "Green Bio", "caption": "Recognized Green Bio enterprise" },
+        { "label": "STATUS", "value": "Venture", "caption": "Venture company and corporate R&D center" },
         { "label": "FACILITY", "value": "Yeoncheon", "caption": "Yeoncheon R&D production center" },
         { "label": "CAPA", "value": "2.52M plants/y", "caption": "Annual production capacity basis" }
       ]
@@ -71,9 +71,9 @@
       "sectionTag": "PRODUCTION & R&D SCALE",
       "sectionMeta": "SCALE · YEONCHEON",
       "heading": "Data is proven at scale",
-      "lede": "The precision smart farm and research infrastructure at our Yeoncheon R&D production center produce functional botanical materials under identical conditions, 365 days a year.",
+      "lede": "The precision smart farm at our Yeoncheon R&D production center produces functional botanical materials under identical conditions, 365 days a year.",
       "metrics": [
-        { "label": "ANNUAL CAPACITY", "value": "2.52M", "caption": "Plants per year" },
+        { "label": "ANNUAL CAPACITY", "value": "2.52M", "caption": "Annual capacity (plants/year)" },
         { "label": "SITE AREA", "value": "11,158㎡", "caption": "Yeoncheon R&D production center site" },
         { "label": "FLOOR AREA", "value": "5,774㎡", "caption": "Production and R&D floor area" },
         { "label": "SITE", "value": "Yeoncheon", "caption": "R&D production center" }
@@ -88,23 +88,23 @@
     "problem": {
       "sectionTag": "MARKET CONTEXT",
       "sectionMeta": "01 / PROBLEM · OPPORTUNITY",
-      "heading": "Botanicals shut out by the wall of standardization\nA $45B botanical drug market awaits the answer",
+      "heading": "Botanicals shut out by the wall of standardization\nA $54.7B botanical drug market awaits the answer",
       "problem": {
         "label": "PROBLEM",
         "title": "Botanicals resist standardization",
         "body": "Field and greenhouse cultivation expose plants to uncontrollable variables. Climate, soil, harvest season, and pesticide exposure all shift active compound content from one harvest to the next. Pharmaceutical-grade standardization is effectively impossible.",
-        "source": "Conventional cultivation batch variance · 0/5 on-spec"
+        "source": "Conventional cultivation · same cultivar · 5 batches"
       },
       "opportunity": {
         "label": "OPPORTUNITY",
-        "title": "$45B botanical drug market",
-        "body": "The FDA-aligned global botanical drug market grows from $45B in 2024 to $81B by 2033. Market entry has one prerequisite. A standardized API supply.",
+        "title": "$54.7B botanical drug market",
+        "body": "The FDA-aligned global botanical drug market grows from $54.7B in 2026 to $79.7B by 2031. Market entry has one prerequisite. A standardized API supply.",
         "metrics": [
-          { "label": "GLOBAL MARKET 2024", "value": "$45B" },
-          { "label": "CAGR 2024 ~ 2033", "value": "+6.7%" },
-          { "label": "MARKET 2033E", "value": "$81B" }
+          { "label": "GLOBAL MARKET 2026", "value": "$54.7B" },
+          { "label": "CAGR 2026 ~ 2031", "value": "+7.8%" },
+          { "label": "MARKET 2031E", "value": "$79.7B" }
         ],
-        "source": "Source · global botanical drug market estimate (2024) · approx ₩60T → ₩108T at 1,333 KRW/USD"
+        "source": "Mordor Intelligence (2026) · $54.7B → $79.7B at 1,333 KRW/USD"
       }
     },
     "mat": {
@@ -120,7 +120,7 @@
         "outputValue": "+8×",
         "note": "Basis · in-house trial vs. same-cultivar control"
       },
-      "body": "MAT (Metabolite Agriculture Technology) targets active compound yield rather than biomass growth. Specific UV-B wavelengths, brief thermal shocks, regulated water deficit, and mineral cues are applied as precision stressors to induce secondary metabolite production.",
+      "body": "MAT targets active compound yield rather than biomass growth. Precision stressors are applied in stages to induce secondary metabolite production.",
       "stressors": [
         {
           "label": "STRESSOR 01",
@@ -156,7 +156,7 @@
       "sectionTag": "REGULATORY FIT",
       "sectionMeta": "03 / FDA STANDARDIZATION",
       "heading": "The FDA's five guidelines\nWSB is structured to address the core production requirements",
-      "lede": "The five core requirements the FDA applies to botanical drug approval. Conventional cultivation struggles to address them at the same time. WSB's precision-controlled smart farm and MAT are structured around raw-material identity, records, contaminant control, quality consistency, and long-term supply stability.",
+      "lede": "The five core requirements the FDA applies to botanical drug approval. Conventional cultivation struggles to address them at the same time. WSB's precision-controlled smart farm and MAT are structured around all five.",
       "rows": [
         {
           "label": "01",
@@ -186,13 +186,13 @@
       ],
       "matchTag": "GUIDELINE FIT",
       "matchValue": "5/5",
-      "disclaimer": "This matrix shows FDA guideline alignment, not FDA approval or certification. Certification and approval follow a separate process."
+      "disclaimer": "This matrix shows FDA guideline alignment, not FDA approval or certification."
     },
     "traction": {
       "sectionTag": "PROVEN CAPABILITY",
       "sectionMeta": "04 / CAPACITY & EVIDENCE",
       "heading": "Backed by data\nSupported by production scale",
-      "lede": "MAT and the precision-controlled smart farm show active-compound gains and batch consistency with data. The Yeoncheon R&D production center's capacity and our clinical material supply record back it up.",
+      "lede": "MAT and the precision-controlled smart farm prove active-compound gains and batch consistency with data, backed by the Yeoncheon R&D production center's capacity and our clinical material supply record.",
       "kpis": {
         "saponin": {
           "label": "SAPONIN ↑",
@@ -211,7 +211,7 @@
         "traction": {
           "label": "ANNUAL CAPACITY",
           "value": "2.52M",
-          "caption": "Annual production capacity, Yeoncheon R&D production center (per plant)",
+          "caption": "Annual production capacity, Yeoncheon R&D production center",
           "source": "WSB production basis",
           "asOf": "2025"
         },
@@ -224,20 +224,20 @@
         }
       },
       "partnersTag": "PARTNER NETWORK",
-      "networkNote": "We collaborate with partners across solution, material, and brand lines in Korea and abroad. Confirmed contracts and milestones are announced through News as they become public.",
+      "networkNote": "We collaborate with partners in Korea and abroad across solution, material, and brand lines. Publishable contracts and milestones are posted to News as they progress.",
       "networkCta": "See partnership updates in News"
     },
     "business": {
       "sectionTag": "BUSINESS MODEL",
       "sectionMeta": "05 / 3 PILLARS",
       "heading": "Technology · Material · Brand\nA three-pillar vertical stack",
-      "lede": "The same MAT and precision-controlled smart farm power three businesses: solution sales, material supply, and a direct-to-consumer brand.",
+      "lede": "The same MAT and precision-controlled smart farm extend into three businesses: solution, material, and brand.",
       "pillars": [
         {
           "label": "PILLAR 01",
           "title": "B2B Solution",
           "subtitle": "Technology as a product",
-          "body": "MAT digital cultivation recipes, precision control software, and the controlled-environment hardware stack are sold as one integrated solution. We close the technology gap for our customers in a single deal.",
+          "body": "We supply MAT cultivation recipes, control software, and smart farm facilities as one integrated solution that closes a customer's technology gap in a single deal.",
           "metricLabel": "DELIVERY MODEL",
           "metricValue": "3-IN-1",
           "metricCaption": "Recipe, control software, and facility as one",
@@ -248,7 +248,7 @@
           "label": "PILLAR 02",
           "title": "B2B Material",
           "subtitle": "Standardized API supply",
-          "body": "We produce and supply materials designed to address cGMP requirements, from API-oriented botanical materials to high-potency nutraceutical ingredients and efficacy-verified cosmetic botanicals. A stable supply and revenue base.",
+          "body": "A stable revenue base, producing and supplying everything from cGMP-ready API-oriented materials to nutraceutical and cosmetic botanicals in-house.",
           "metricLabel": "CLINICAL API SUPPLIED",
           "metricValue": "100kg",
           "metricCaption": "Crohn's-disease botanical API",
@@ -259,7 +259,7 @@
           "label": "PILLAR 03",
           "title": "Phytopresso",
           "subtitle": "Validating value as a brand",
-          "body": "A high-concentration brand of natural functional compounds. A premium healthcare lineup on hydroponic ginseng that validates our material in the consumer market.",
+          "body": "A premium healthcare brand on hydroponic ginseng that validates our technology in the consumer market.",
           "metricLabel": "PRODUCT LINE",
           "metricValue": "3 SKU",
           "metricCaption": "Hydroponic Ginseng SHOT · Angelica DECURSIN · Dendropanax CGA",
@@ -287,8 +287,8 @@
       "sectionTag": "R&D PIPELINE",
       "sectionMeta": "06 / 6 BOTANICALS",
       "viewAll": "See all 6 pipelines",
-      "heading": "Six botanical pipelines on the same platform",
-      "lede": "Each new plant species adds a new material on top of the same precision-controlled smart farm and MAT stack. Ginseng is commercial. Isatis and Angelica are at pre-launch. Three more are in R&D.",
+      "heading": "Six pipelines, starting with ginseng\nexpanding on the same platform",
+      "lede": "Each added species yields a new material on the same precision smart farm and MAT. Ginseng is commercial; the rest are at pre-launch and R&D.",
       "stages": ["Discovery", "R&D", "Pre-launch", "Commercial"],
       "investigationalTag": "Investigational",
       "disclaimer": "Indications are research targets and do not represent confirmed efficacy. Items beyond the commercial stage are under development.",
@@ -341,14 +341,14 @@
       "sectionTag": "LATEST UPDATES",
       "sectionMeta": "08 / NEWS",
       "heading": "Latest updates",
-      "lede": "Contracts, clinical material supply, certifications, and media coverage from WSB's operating pipeline.",
+      "lede": "Contracts, clinical material supply, and certifications from our operating pipeline.",
       "viewAll": "See all news",
       "items": [
         {
           "date": "2025.04",
           "category": "Certification",
           "title": "Recognized as a Green Bio enterprise",
-          "summary": "Ministry-recognized as a Green Bio company. Accelerates plant-based functional material business."
+          "summary": "Recognized by MAFRA as a Green Bio industry company."
         },
         {
           "date": "2024.04",
@@ -360,7 +360,7 @@
           "date": "2024.11",
           "category": "Clinical",
           "title": "Crohn's-disease botanical API supplied",
-          "summary": "Indirubin-rich Isatis clinical material, 100kg supplied. Shows standardized botanical material production capability."
+          "summary": "Indirubin-rich Isatis clinical material, 100kg supplied."
         }
       ]
     },
@@ -368,7 +368,7 @@
       "sectionTag": "PARTNERSHIP INQUIRY",
       "sectionMeta": "09 / CONTACT",
       "heading": "Let's start a\nglobal partnership",
-      "lede": "API supply, technology licensing, clinical collaboration, and more. We respond within two business days.",
+      "lede": "We respond to API supply, technology solutions, and clinical collaboration inquiries within two business days.",
       "form": {
         "company": "Company",
         "name": "Contact name",
@@ -392,7 +392,7 @@
         "submit": "Send inquiry",
         "required": "required",
         "successHeading": "Inquiry received.",
-        "successBody": "Our team will reply to your email within two business days. A confirmation email is on its way.",
+        "successBody": "We will reply to your email within two business days. A confirmation email has also been sent.",
         "errorFallback": "Submission failed. Please try again in a moment."
       },
       "info": {
@@ -412,7 +412,7 @@
       "sectionTag": "GROWTH ROADMAP",
       "sectionMeta": "07 / 3 PHASES",
       "heading": "Phase 1 foundation\nPhase 2 expansion\nPhase 3 standard",
-      "lede": "FDA guideline alignment and Korean traction in Phase 1. Global expansion and cGMP scale-up in Phase 2. Evolution into a botanical data platform in Phase 3.",
+      "lede": "From an FDA-aligned Korean base, we scale step by step into a global supplier and then a botanical data platform.",
       "phases": [
         {
           "label": "PHASE 01",
@@ -420,7 +420,7 @@
           "title": "Foundation and validation",
           "bullets": [
             "GACP certification and FDA botanical-drug guideline alignment",
-            "Lead the Korean B2B high-potency botanical material market",
+            "Lead the B2B high-potency botanical material market",
             "Commercialize three or more pipelines beyond ginseng"
           ]
         },

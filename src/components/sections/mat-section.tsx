@@ -143,7 +143,7 @@ function StressorCard({
       </div>
 
       <div className="mt-5 flex items-center gap-1.5">
-        <h3 className="font-sans text-lg font-semibold text-structural">
+        <h3 className="font-mono text-lg font-semibold tracking-tight text-structural">
           {title}
         </h3>
         <Tooltip content={tooltip}>

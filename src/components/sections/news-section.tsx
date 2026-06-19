@@ -134,7 +134,7 @@ function NewsCard({ item }: { item: Item }) {
 
       {/* Meta row */}
       <div className="flex items-center gap-4">
-        <p className="mono-label text-[11px] text-structural/65">{item.date}</p>
+        <p className="mono-label text-[11px] tabular-nums text-structural/65">{item.date}</p>
         <span aria-hidden className="h-px w-3 bg-structural/30" />
         <p className="mono-label text-[11px] text-primary">{item.category}</p>
       </div>
@@ -152,7 +152,7 @@ function NewsCard({ item }: { item: Item }) {
       {/* Read more (placeholder link) */}
       <Link
         href="/news"
-        className="mt-auto inline-flex items-center gap-1.5 text-sm font-medium text-primary opacity-70 transition-opacity group-hover:opacity-100"
+        className="mt-auto inline-flex items-center gap-1.5 font-mono text-xs font-medium uppercase tracking-[0.08em] text-primary opacity-70 transition-opacity group-hover:opacity-100"
       >
         Read more
         <ArrowUpRight

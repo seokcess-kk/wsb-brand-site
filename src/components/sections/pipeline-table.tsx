@@ -36,7 +36,7 @@ export function PipelineTable({
           <HeaderCell text="INDICATION" />
           <HeaderCell text="ACTIVE COMPOUND" />
           <HeaderCell text="BOTANICAL" />
-          <HeaderCell text={`STAGE  ·  ${stages.join("  /  ")}`} />
+          <HeaderCell text="STAGE" />
         </div>
 
         {/* Rows */}
@@ -183,7 +183,7 @@ function StageBar({ current, stages }: { current: number; stages: string[] }) {
         {stages.map((s, i) => (
           <span
             key={s}
-            className={`mono-label text-[11px] truncate px-1 ${
+            className={`text-[11px] font-medium truncate px-1 ${
               i <= current ? "text-primary" : "text-structural/65"
             }`}
           >

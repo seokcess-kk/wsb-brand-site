@@ -1,11 +1,12 @@
 import { getTranslations } from "next-intl/server";
-import { ArrowUpRight } from "lucide-react";
+import { ArrowUpRight, Info } from "lucide-react";
 import { Link } from "@/i18n/navigation";
 import { RevealOnView } from "@/components/motion/reveal-on-view";
 import { RevealWords } from "@/components/motion/reveal-words";
 import { CountUp } from "@/components/motion/count-up";
 import { SectionEyebrow } from "@/components/layout/section-eyebrow";
 import { Lede } from "@/components/layout/lede";
+import { Tooltip } from "@/components/ui/tooltip";
 
 const KPI_KEYS = ["saponin", "batch", "traction", "clinical"] as const;
 
@@ -139,7 +140,7 @@ function KpiCell({
         <dt className="mono-label text-canvas/60">{label}</dt>
       </div>
       <dd
-        className="mt-4 font-sans font-extrabold tracking-tight text-canvas leading-none tabular-nums"
+        className="mt-4 font-mono font-bold tracking-tight text-canvas leading-none tabular-nums"
         style={{
           fontSize: emphasis
             ? "clamp(3rem, 6vw, 4.75rem)"
@@ -154,8 +155,14 @@ function KpiCell({
       {(source || asOf) && (
         <div className="mt-3 flex flex-wrap items-center gap-x-2 gap-y-1 mono-label text-[10px] text-canvas/55">
           {asOf && <span className="tabular-nums">{asOf}</span>}
-          {asOf && source && <span aria-hidden>·</span>}
-          {source && <span>{source}</span>}
+          {source && (
+            <Tooltip
+              content={source}
+              className="text-canvas/40 hover:text-canvas focus-visible:ring-offset-structural"
+            >
+              <Info size={11} aria-hidden />
+            </Tooltip>
+          )}
         </div>
       )}
       <span

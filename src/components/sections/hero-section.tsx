@@ -32,10 +32,10 @@ export async function HeroSection() {
 
             <h1
               id="hero-heading"
-              className="font-sans font-extrabold leading-[1.02] tracking-tight text-canvas"
+              className="font-mono font-bold leading-[1.08] text-canvas"
               style={{
-                fontSize: "clamp(1.875rem, 6vw, 4.5rem)",
-                letterSpacing: "-0.025em",
+                fontSize: "clamp(1.75rem, 5vw, 3.7rem)",
+                letterSpacing: "-0.035em",
               }}
             >
               <span className="block whitespace-normal md:whitespace-nowrap">

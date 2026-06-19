@@ -37,8 +37,8 @@
   "home": {
     "hero": {
       "tag": "GREEN BIO · PRECISION SMART FARM",
-      "definition": "우리스마트바이오는 데이터 기반의 정밀 제어 스마트팜을 통해, 원료의약품(API) 수준으로 표준화된 식물 기반 그린바이오 소재를 개발·생산하는 전문 기업입니다.",
-      "subhead": "특히 MAT(Metabolic Agricultural Technology) 기술로 식물의 대사 합성 경로를 조절함으로써, 기후 변화나 계절에 관계없이 항상 동일한 품질의 표준화된 원료를 안정적으로 반복 생산하여 공급합니다.",
+      "definition": "데이터 기반 정밀 제어 스마트팜으로 원료의약품(API) 수준의 표준화된 식물 그린바이오 소재를 개발·생산합니다.",
+      "subhead": "MAT 기술로 식물 대사 경로를 조절해 계절·기후와 무관하게 매 배치 동일 품질을 반복 생산합니다.",
       "batchMeta": "BATCH · WSB-2026-001",
       "overlayLabel1": "SAPONIN · +8×",
       "overlayLabel2": "pH 5.8 · EC 1.4",
@@ -50,19 +50,19 @@
       "eyebrow": "어떤 목적으로 오셨나요",
       "heading": "목적에 맞는 정보로 바로 이동하세요",
       "items": [
-        { "key": "material", "audience": "원료 구매·브랜드", "need": "표준화된 기능성 식물원료와 ODM 공급 역량", "cta": "B2B 소재 보기", "href": "#business" },
-        { "key": "solution", "audience": "기술 도입 기업", "need": "MAT 재배 기술과 정밀제어 스마트팜 솔루션", "cta": "MAT 기술 보기", "href": "#mat" },
-        { "key": "investor", "audience": "투자자·기관", "need": "시장 기회와 성장 로드맵, IP·생산 인프라", "cta": "성장 로드맵 보기", "href": "#roadmap" },
-        { "key": "research", "audience": "연구·제약", "need": "식물 기반 원료의약품(API) 표준화와 파이프라인", "cta": "파이프라인 보기", "href": "#pipeline" }
+        { "key": "material", "audience": "원료 구매·브랜드", "need": "표준화된 기능성 식물원료와 ODM 공급", "cta": "B2B 소재 보기", "href": "#business" },
+        { "key": "solution", "audience": "기술 도입 기업", "need": "MAT 재배 기술과 정밀제어 스마트팜", "cta": "MAT 기술 보기", "href": "#mat" },
+        { "key": "investor", "audience": "투자자·기관", "need": "성장 로드맵과 IP·생산 인프라", "cta": "성장 로드맵 보기", "href": "#roadmap" },
+        { "key": "research", "audience": "연구·제약", "need": "원료의약품(API) 표준화와 파이프라인", "cta": "파이프라인 보기", "href": "#pipeline" }
       ]
     },
     "credibility": {
       "ariaLabel": "우리스마트바이오 신뢰 지표",
       "items": [
-        { "label": "ESTABLISHED", "value": "2018", "caption": "식물 기반 그린바이오 소재화 기업" },
+        { "label": "ESTABLISHED", "value": "2018", "caption": "식물 기반 그린바이오 소재화" },
         { "label": "PATENTS", "value": "20+", "caption": "MAT·수경재배·소재화 등록 특허" },
-        { "label": "CERTIFICATION", "value": "Green Bio", "caption": "농림축산식품부 그린바이오 기업 인정 (2025)" },
-        { "label": "STATUS", "value": "Venture", "caption": "벤처기업·기업부설연구소 인정 (2024)" },
+        { "label": "CERTIFICATION", "value": "Green Bio", "caption": "농림축산식품부 그린바이오 기업 인정" },
+        { "label": "STATUS", "value": "Venture", "caption": "벤처기업·기업부설연구소 인정" },
         { "label": "FACILITY", "value": "Yeoncheon", "caption": "연천 R&D 생산센터" },
         { "label": "CAPA", "value": "2.52M plants/y", "caption": "연간 생산 역량 기준" }
       ]
@@ -71,9 +71,9 @@
       "sectionTag": "PRODUCTION & R&D SCALE",
       "sectionMeta": "SCALE · YEONCHEON",
       "heading": "데이터는 규모 위에서 증명됩니다",
-      "lede": "연천 R&D 생산센터의 정밀제어 스마트팜과 연구 인프라가 365일 동일 조건으로 기능성 식물원료를 생산합니다.",
+      "lede": "연천 R&D 생산센터의 정밀제어 스마트팜이 365일 동일 조건으로 기능성 식물원료를 생산합니다.",
       "metrics": [
-        { "label": "ANNUAL CAPACITY", "value": "2.52M", "caption": "연간 생산 역량 (주/년)" },
+        { "label": "ANNUAL CAPACITY", "value": "2.52M", "caption": "연간 생산 역량 · 주/년" },
         { "label": "SITE AREA", "value": "11,158㎡", "caption": "연천 R&D 생산센터 대지면적" },
         { "label": "FLOOR AREA", "value": "5,774㎡", "caption": "생산·R&D 연면적" },
         { "label": "SITE", "value": "Yeoncheon", "caption": "연천 R&D 생산센터" }
@@ -87,31 +87,31 @@
     },
     "problem": {
       "sectionTag": "MARKET CONTEXT",
-      "sectionMeta": "01 / PROBLEM · OPPORTUNITY",
-      "heading": "표준화의 벽에 막힌 천연물 시장\n60조 식물의약품 시장이 답을 기다립니다",
+      "sectionMeta": "PROBLEM · OPPORTUNITY",
+      "heading": "표준화의 벽에 막힌 천연물 시장\n73조 식물의약품 시장이 답을 기다립니다",
       "problem": {
         "label": "PROBLEM",
         "title": "표준화 불가능한 천연물",
         "body": "노지와 온실 재배는 기후·토양·채집 시기·농약 오염 등 통제 불가능한 변수에 노출됩니다. 동일 식물이라도 유효성분 함량과 화학적 구성이 매번 달라져 의약품 표준화가 사실상 불가능합니다.",
-        "source": "관행 재배 배치 변동 · 기준 적중 0/5"
+        "source": "관행 재배 동일 품종 5개 배치 측정"
       },
       "opportunity": {
         "label": "OPPORTUNITY",
-        "title": "60조 식물의약품 시장",
-        "body": "FDA 가이드라인 기반의 글로벌 식물의약품 시장이 2024년 60조원에서 2033년 108조원으로 성장합니다. 시장 진입의 전제는 단 하나. 표준화된 원료의약품(API) 공급 능력입니다.",
+        "title": "73조 식물의약품 시장",
+        "body": "FDA 가이드라인 기반의 글로벌 식물의약품 시장이 2026년 73조원에서 2031년 106조원으로 성장합니다. 시장 진입의 전제는 단 하나. 표준화된 원료의약품(API) 공급 능력입니다.",
         "metrics": [
-          { "label": "GLOBAL MARKET 2024", "value": "₩60조" },
-          { "label": "CAGR 2024 ~ 2033", "value": "+6.7%" },
-          { "label": "MARKET 2033E", "value": "₩108조" }
+          { "label": "GLOBAL MARKET 2026", "value": "73조원" },
+          { "label": "CAGR 2026 ~ 2031", "value": "+7.8%" },
+          { "label": "MARKET 2031E", "value": "106조원" }
         ],
-        "source": "출처 · 글로벌 식물의약품 시장 추정 (2024) · 환율 1,333원/USD 기준 약 $45B → $81B"
+        "source": "Mordor Intelligence (2026) · 환율 1,333원/USD 기준 $54.7B→$79.7B"
       }
     },
     "mat": {
       "sectionTag": "CORE TECHNOLOGY",
       "sectionMeta": "02 / MAT",
       "heading": "MAT\n식물 본연의 방어 기전을 깨워\n유효성분을 의도적으로 끌어냅니다",
-      "plain": "쉽게 말해 MAT는 빛·온도·수분·미네랄을 정밀하게 제어해 식물이 유효성분을 더 많이, 더 일관되게 만들도록 유도하는 재배 기술입니다.",
+      "plain": "쉽게 말해 MAT는 빛·온도·수분·미네랄을 정밀 제어해 식물이 유효성분을 더 많고 일관되게 만들도록 유도하는 재배 기술입니다.",
       "value": "그래서 매 배치 동일한 함량의 원료를 안정적으로 공급할 수 있습니다.",
       "diagram": {
         "stressLabel": "STRESS · 4 INPUTS",
@@ -120,7 +120,7 @@
         "outputValue": "+8×",
         "note": "기준 · 동일 품종 대조군 대비 자사 시험"
       },
-      "body": "MAT(Metabolite Agriculture Technology)는 생육량이 아닌 유효성분 수율을 목표로 합니다. 특정 파장의 UV-B·단기 열충격·수분 결핍·미네랄 조합 등 정밀한 스트레스 인자를 단계별로 적용해 2차 대사산물 생성을 유도합니다.",
+      "body": "MAT는 생육량이 아닌 유효성분 수율을 목표로 합니다. 정밀한 스트레스 인자를 단계별로 적용해 2차 대사산물 생성을 유도합니다.",
       "stressors": [
         {
           "label": "STRESSOR 01",
@@ -156,7 +156,7 @@
       "sectionTag": "REGULATORY FIT",
       "sectionMeta": "03 / FDA STANDARDIZATION",
       "heading": "FDA 5대 가이드라인\nWSB는 핵심 요건에 맞춘 생산 체계를 구축합니다",
-      "lede": "미국 FDA가 식물의약품 허가를 위해 제시하는 5가지 핵심 기준입니다. 기존 농업 방식으로는 동시에 대응하기 어려운 시장 진입 장벽입니다. WSB의 정밀제어 스마트팜과 MAT는 원료 동일성·기록·오염 관리·품질 일관성·장기 공급 안정성에 대응하는 구조를 갖춥니다.",
+      "lede": "미국 FDA가 식물의약품 허가를 위해 제시하는 5가지 핵심 기준입니다. 기존 농업 방식으로는 동시에 대응하기 어려운 시장 진입 장벽입니다. WSB의 정밀제어 스마트팜과 MAT는 이 5개 요건에 대응하는 생산 구조를 갖춥니다.",
       "rows": [
         {
           "label": "01",
@@ -166,7 +166,7 @@
         {
           "label": "02",
           "fda": "우수 농업·채집 기준 (GACP)",
-          "wsb": "디지털 재배 레시피(SOP)로 환경 변수 정밀 제어 및 전 과정 데이터 기록"
+          "wsb": "디지털 재배 레시피(SOP)로 환경 변수 정밀 제어. 전 과정 데이터 기록"
         },
         {
           "label": "03",
@@ -186,13 +186,13 @@
       ],
       "matchTag": "GUIDELINE FIT",
       "matchValue": "5/5",
-      "disclaimer": "본 매트릭스는 FDA 가이드라인 대응 체계를 나타내며 FDA 승인이나 인증을 의미하지 않습니다. 인증·허가는 별도 절차로 진행됩니다."
+      "disclaimer": "본 매트릭스는 FDA 가이드라인 대응 체계를 나타내며 FDA 승인이나 인증을 의미하지 않습니다."
     },
     "traction": {
       "sectionTag": "PROVEN CAPABILITY",
       "sectionMeta": "04 / CAPACITY & EVIDENCE",
       "heading": "데이터로 뒷받침되는 기술\n규모가 받쳐주는 생산 역량",
-      "lede": "MAT와 정밀제어 스마트팜의 유효성분 증대와 배치 일관성을 데이터로 보여줍니다. 연천 R&D 생산센터의 생산 역량과 임상 원료 공급 실적이 이를 뒷받침합니다.",
+      "lede": "MAT와 정밀제어 스마트팜의 유효성분 증대와 배치 일관성을 데이터로 보여줍니다. 연천 R&D 생산센터의 생산 역량과 임상 원료 공급 실적이 뒷받침합니다.",
       "kpis": {
         "saponin": {
           "label": "SAPONIN ↑",
@@ -211,7 +211,7 @@
         "traction": {
           "label": "ANNUAL CAPACITY",
           "value": "2.52M",
-          "caption": "연천 R&D 생산센터 연간 생산 역량 (개체 기준)",
+          "caption": "연천 R&D 생산센터 연간 생산 역량",
           "source": "WSB 생산 기준",
           "asOf": "2025"
         },
@@ -224,20 +224,20 @@
         }
       },
       "partnersTag": "PARTNER NETWORK",
-      "networkNote": "솔루션·소재·브랜드 전 영역에서 국내외 파트너와 협업을 진행하고 있습니다. 공개 가능한 계약과 협력 성과는 News에서 순차적으로 업데이트합니다.",
+      "networkNote": "솔루션·소재·브랜드 전 영역에서 국내외 파트너와 협업하고 있습니다. 공개 가능한 계약과 성과는 News에서 순차 업데이트합니다.",
       "networkCta": "News에서 협력 소식 보기"
     },
     "business": {
       "sectionTag": "BUSINESS MODEL",
       "sectionMeta": "05 / 3 PILLARS",
       "heading": "기술 · 소재 · 브랜드\n3축 수직계열화",
-      "lede": "동일한 MAT와 정밀제어 스마트팜 기술이 솔루션 판매·소재 공급·자체 브랜드 3개 사업으로 확장됩니다.",
+      "lede": "하나의 MAT와 정밀제어 스마트팜 기술이 솔루션·소재·브랜드 3개 사업으로 확장됩니다.",
       "pillars": [
         {
           "label": "PILLAR 01",
           "title": "B2B Solution",
           "subtitle": "기술 자체 판매",
-          "body": "MAT 디지털 재배 레시피·정밀제어 운영 소프트웨어·정밀제어 스마트팜 설비를 통합 솔루션으로 공급합니다. 고객사의 기술 격차를 한 번에 메웁니다.",
+          "body": "MAT 재배 레시피·운영 소프트웨어·스마트팜 설비를 통합 솔루션으로 공급해 고객사의 기술 격차를 한 번에 메웁니다.",
           "metricLabel": "DELIVERY MODEL",
           "metricValue": "3-IN-1",
           "metricCaption": "재배 레시피·운영 SW·설비 통합 공급",
@@ -248,7 +248,7 @@
           "label": "PILLAR 02",
           "title": "B2B Material",
           "subtitle": "표준화된 원료 공급",
-          "body": "cGMP 기준에 대응하도록 설계한 원료의약품(API) 지향 소재부터 고기능성 건강기능식품 원료, 효능 검증 화장품 천연물 소재까지 직접 생산해 공급합니다. 안정적인 공급과 매출 기반입니다.",
+          "body": "cGMP 기준 대응 원료의약품(API) 지향 소재부터 건기식·화장품 천연물 소재까지 직접 생산해 공급하는 안정적 매출 기반입니다.",
           "metricLabel": "CLINICAL API SUPPLIED",
           "metricValue": "100kg",
           "metricCaption": "크론병 타겟 대청 임상 원료",
@@ -259,7 +259,7 @@
           "label": "PILLAR 03",
           "title": "Phytopresso",
           "subtitle": "자체 브랜드로 기술 검증",
-          "body": "천연 기능성 물질의 고농축 브랜드. 수경인삼 기반 프리미엄 헬스케어 제품군으로 기술 가치를 시장에서 검증합니다.",
+          "body": "수경인삼 기반 프리미엄 헬스케어 브랜드로 기술 가치를 시장에서 검증합니다.",
           "metricLabel": "PRODUCT LINE",
           "metricValue": "3 SKU",
           "metricCaption": "수경인삼 SHOT · 참당귀 DECURSIN · 황칠 CGA",
@@ -287,11 +287,11 @@
       "sectionTag": "R&D PIPELINE",
       "sectionMeta": "06 / 6 BOTANICALS",
       "viewAll": "전체 6개 파이프라인 보기",
-      "heading": "인삼을 시작으로 6개 파이프라인\n동일 플랫폼이 계속 확장됩니다",
-      "lede": "같은 정밀제어 스마트팜과 MAT 위에서 식물 종이 더해질 때마다 신규 소재가 추가됩니다. 인삼은 상용화 단계, 대청과 참당귀는 상용화 준비 단계, 나머지 3종은 R&D 단계입니다.",
+      "heading": "인삼을 시작으로 6개 파이프라인\n동일 플랫폼으로 확장 중",
+      "lede": "같은 정밀제어 스마트팜과 MAT 위에서 식물 종이 더해질 때마다 신규 소재가 추가됩니다. 인삼은 상용화 단계이고 나머지는 상용화 준비와 R&D 단계입니다.",
       "stages": ["탐색", "R&D", "상용화 준비", "상용화"],
       "investigationalTag": "연구 중",
-      "disclaimer": "적응증은 연구 대상이며 효능·효과가 확정된 것이 아닙니다. 상용화 단계 외 항목은 개발 중입니다.",
+      "disclaimer": "적응증은 연구 대상이며 효능·효과가 확정된 것은 아닙니다. 상용화 단계 외 항목은 개발 중입니다.",
       "items": [
         {
           "name": "수경인삼",
@@ -341,26 +341,26 @@
       "sectionTag": "LATEST UPDATES",
       "sectionMeta": "08 / NEWS",
       "heading": "최신 소식",
-      "lede": "계약·임상 원료 공급·인증·미디어 노출 등 사업 진행 상황을 업데이트합니다.",
+      "lede": "계약·임상 원료 공급·인증 등 사업 진행 상황을 전합니다.",
       "viewAll": "모든 보도자료 보기",
       "items": [
         {
           "date": "2025.04",
           "category": "Certification",
           "title": "그린바이오 기업 인정 취득",
-          "summary": "농림축산식품부 그린바이오 산업 인정 기업으로 선정. 식물 기반 기능성 소재 사업 가속화의 기반 마련."
+          "summary": "농림축산식품부 그린바이오 산업 인정 기업으로 선정."
         },
         {
           "date": "2024.04",
           "category": "R&D",
           "title": "스마트팜 다부처패키지 국가 R&D 과제 수행",
-          "summary": "농림축산식품부 지능형 분무경 수경재배시스템 개발 국가연구개발사업 수행. 2027년까지 진행."
+          "summary": "농림축산식품부 지능형 분무경 수경재배시스템 개발 국가 R&D 수행. 2027년까지."
         },
         {
           "date": "2024.11",
           "category": "Clinical",
           "title": "크론병 타겟 임상 원료 공급",
-          "summary": "대청엽 기반 인디루빈 임상 원료 100kg 공급. 식물 기반 원료 표준화 생산 역량을 보여줌."
+          "summary": "대청엽 기반 인디루빈 임상 원료 100kg 공급."
         }
       ]
     },
@@ -368,7 +368,7 @@
       "sectionTag": "PARTNERSHIP INQUIRY",
       "sectionMeta": "09 / CONTACT",
       "heading": "글로벌 파트너십을\n시작하세요",
-      "lede": "API 공급·기술 솔루션 도입·임상 협업 등 모든 사업 문의에 영업일 기준 2일 이내 회신드립니다.",
+      "lede": "API 공급·기술 솔루션·임상 협업 등 모든 문의에 영업일 2일 이내 회신드립니다.",
       "form": {
         "company": "회사명",
         "name": "담당자명",
@@ -385,14 +385,14 @@
           "미디어·기타"
         ],
         "message": "문의 내용",
-        "messagePlaceholder": "회사 소개와 협업하고 싶은 영역을 자유롭게 적어주세요.",
+        "messagePlaceholder": "회사 소개와 협업하고 싶은 영역을 적어주세요.",
         "consent": "개인정보 수집·이용에 동의합니다.",
         "privacyTitle": "개인정보 수집·이용 안내",
         "privacyBody": "수집 목적은 문의 접수 및 응대입니다. 수집 항목은 회사명, 담당자명, 이메일, 연락처, 국가, 문의 내용입니다. 보유 기간은 문의 처리 완료 후 지체 없이 파기하며 관계 법령에 따른 보존 의무가 있는 경우 해당 기간 동안 보관합니다. 동의를 거부할 수 있으나 이 경우 문의 접수가 제한됩니다.",
         "submit": "문의 보내기",
         "required": "필수",
         "successHeading": "문의가 정상 접수되었습니다.",
-        "successBody": "영업일 기준 2일 이내에 담당자가 등록하신 이메일로 회신드리겠습니다. 확인 메일도 함께 발송되었습니다.",
+        "successBody": "영업일 2일 이내에 등록하신 이메일로 회신드립니다. 확인 메일도 발송되었습니다.",
         "errorFallback": "전송에 실패했습니다. 잠시 후 다시 시도해 주세요."
       },
       "info": {
@@ -412,14 +412,14 @@
       "sectionTag": "GROWTH ROADMAP",
       "sectionMeta": "07 / 3 PHASES",
       "heading": "Phase 1 기반\nPhase 2 확장\nPhase 3 표준 선점",
-      "lede": "FDA 가이드라인 대응과 국내 트랙션 확보를 1단계로, 글로벌 진출과 cGMP 확장을 2단계로, 보태니컬 데이터 플랫폼으로의 진화를 3단계 목표로 둡니다.",
+      "lede": "FDA 대응과 국내 트랙션 기반에서 글로벌 공급자로 다시 보태니컬 데이터 플랫폼으로 단계적으로 확장합니다.",
       "phases": [
         {
           "label": "PHASE 01",
           "period": "~ 2027",
           "title": "기반 구축과 검증",
           "bullets": [
-            "GACP 인증 및 미국 FDA 식물의약품 가이드라인 대응 체계 확립",
+            "GACP 인증과 FDA 식물의약품 가이드라인 대응 체계 확립",
             "B2B 고기능성 바이오 소재 시장 선점",
             "인삼 외 3종 이상 핵심 파이프라인 상용화"
           ]
@@ -440,7 +440,7 @@
           "title": "시장 선도와 표준 확립",
           "bullets": [
             "글로벌 식물의약품 시장의 핵심 API 공급자 포지셔닝",
-            "식물 재배 및 유효성분 데이터를 축적·선점하는 보태니컬 데이터 플랫폼",
+            "재배와 유효성분 데이터를 선점하는 보태니컬 데이터 플랫폼",
             "AI 기반 신약·소재 발굴 및 맞춤형 헬스케어 솔루션"
           ]
         }

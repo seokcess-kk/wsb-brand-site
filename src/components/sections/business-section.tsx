@@ -85,11 +85,13 @@ function PillarCard({ pillar, index }: { pillar: Pillar; index: number }) {
         <h3 className="font-sans text-2xl font-bold tracking-tight text-structural">
           {pillar.title}
         </h3>
-        <p className="mono-label text-primary">{pillar.subtitle}</p>
+        <p className="text-sm font-medium text-primary">{pillar.subtitle}</p>
       </div>
 
-      {/* Body */}
-      <p className="text-base leading-[1.6] text-structural/75">
+      {/* Body. Fixed min height on desktop so the metric strip and the cases
+          block below start at the same line across all three cards (copy runs
+          3 to 4 lines). Adjust if the longest body grows past 4 lines. */}
+      <p className="text-base leading-[1.6] text-structural/75 lg:min-h-[6.5rem]">
         {pillar.body}
       </p>
 
@@ -98,7 +100,7 @@ function PillarCard({ pillar, index }: { pillar: Pillar; index: number }) {
         <p className="mono-label text-[10px] text-structural/65">
           {pillar.metricLabel}
         </p>
-        <p className="mt-2 font-sans text-3xl font-extrabold tracking-tight text-primary leading-none tabular-nums">
+        <p className="mt-2 font-mono text-3xl font-bold tracking-tight text-primary leading-none tabular-nums">
           {pillar.metricValue}
         </p>
         <p className="mt-2 text-xs text-structural/65">
@@ -106,8 +108,10 @@ function PillarCard({ pillar, index }: { pillar: Pillar; index: number }) {
         </p>
       </div>
 
-      {/* Cases */}
-      <ul className="mt-auto space-y-2 border-t border-structural/10 pt-5">
+      {/* Cases. Pinned directly under the metric strip (no mt-auto) so its top
+          divider aligns across cards. The mt-auto now lives on the actions
+          block below, which keeps the CTA on the card floor. */}
+      <ul className="space-y-2 border-t border-structural/10 pt-5">
         {pillar.cases.map((c) => (
           <li key={c} className="flex items-start gap-2 text-sm text-structural/70">
             <span
@@ -119,36 +123,40 @@ function PillarCard({ pillar, index }: { pillar: Pillar; index: number }) {
         ))}
       </ul>
 
-      {/* External link (only on Phytopresso) */}
-      {pillar.externalLabel &&
-        pillar.externalHref &&
-        pillar.externalHref !== "#" && (
-          <a
-            href={pillar.externalHref}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="inline-flex items-center gap-2 text-sm font-medium text-primary transition-opacity hover:opacity-70"
-          >
-            {pillar.externalLabel}
-            <ArrowUpRight
-              size={14}
-              className="transition-transform duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5"
-            />
-          </a>
-        )}
+      {/* Bottom actions pinned to the card floor (mt-auto) so the CTA lines up
+          across cards. External link sits above the CTA on Phytopresso only. */}
+      <div className="mt-auto flex flex-col gap-7">
+        {/* External link (only on Phytopresso) */}
+        {pillar.externalLabel &&
+          pillar.externalHref &&
+          pillar.externalHref !== "#" && (
+            <a
+              href={pillar.externalHref}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-2 text-sm font-medium text-primary transition-opacity hover:opacity-70"
+            >
+              {pillar.externalLabel}
+              <ArrowUpRight
+                size={14}
+                className="transition-transform duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5"
+              />
+            </a>
+          )}
 
-      {pillar.cta && (
-        <Link
-          href={`/contact?topic=${PILLAR_TOPICS[index] ?? "material"}`}
-          className="group/cta inline-flex items-center gap-2 border-t border-structural/10 pt-5 text-sm font-medium text-primary transition-opacity hover:opacity-70"
-        >
-          {pillar.cta}
-          <ArrowRight
-            size={14}
-            className="transition-transform group-hover/cta:translate-x-0.5"
-          />
-        </Link>
-      )}
+        {pillar.cta && (
+          <Link
+            href={`/contact?topic=${PILLAR_TOPICS[index] ?? "material"}`}
+            className="group/cta inline-flex items-center gap-2 border-t border-structural/10 pt-5 text-sm font-medium text-primary transition-opacity hover:opacity-70"
+          >
+            {pillar.cta}
+            <ArrowRight
+              size={14}
+              className="transition-transform group-hover/cta:translate-x-0.5"
+            />
+          </Link>
+        )}
+      </div>
     </MotionCard>
   );
 }
