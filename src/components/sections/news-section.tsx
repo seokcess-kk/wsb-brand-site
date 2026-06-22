@@ -13,6 +13,10 @@ import { MotionCard } from "@/components/motion/motion-card";
 import { NewsThumbnail } from "@/components/sections/news-thumbnail";
 import { SectionEyebrow } from "@/components/layout/section-eyebrow";
 import { Lede } from "@/components/layout/lede";
+import { truncateSummary } from "@/lib/truncate";
+
+/** Teaser summaries are clamped to this length, then end with a "… 더보기" link. */
+const TEASER_SUMMARY_MAX = 100;
 
 type Item = {
   date: string;
@@ -114,6 +118,13 @@ export async function NewsSection() {
 }
 
 function NewsCard({ item }: { item: Item }) {
+  const { text: summaryText, truncated } = truncateSummary(
+    item.summary,
+    TEASER_SUMMARY_MAX,
+  );
+  const moreClass =
+    "whitespace-nowrap font-medium text-primary transition-opacity hover:opacity-80";
+
   return (
     <MotionCard
       as="article"
@@ -137,37 +148,59 @@ function NewsCard({ item }: { item: Item }) {
         {item.title}
       </h3>
 
-      {/* Summary */}
+      {/* Summary, clamped with a "… 더보기" cue when it runs long. */}
       <p className="text-base leading-[1.6] text-structural/70">
-        {item.summary}
+        {summaryText}
+        {truncated &&
+          (item.externalUrl ? (
+            <>
+              {" "}
+              <a
+                href={item.externalUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                className={moreClass}
+              >
+                … 더보기
+              </a>
+            </>
+          ) : (
+            <>
+              {" "}
+              <Link href="/news" className={moreClass}>
+                … 더보기
+              </Link>
+            </>
+          ))}
       </p>
 
-      {/* Read more: the article itself when published, otherwise the news list. */}
-      {item.externalUrl ? (
-        <a
-          href={item.externalUrl}
-          target="_blank"
-          rel="noopener noreferrer"
-          className="mt-auto inline-flex items-center gap-1.5 font-mono text-xs font-medium uppercase tracking-[0.08em] text-primary opacity-70 transition-opacity group-hover:opacity-100"
-        >
-          Read more
-          <ArrowUpRight
-            size={13}
-            className="transition-transform duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5"
-          />
-        </a>
-      ) : (
-        <Link
-          href="/news"
-          className="mt-auto inline-flex items-center gap-1.5 font-mono text-xs font-medium uppercase tracking-[0.08em] text-primary opacity-70 transition-opacity group-hover:opacity-100"
-        >
-          Read more
-          <ArrowUpRight
-            size={13}
-            className="transition-transform duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5"
-          />
-        </Link>
-      )}
+      {/* Persistent CTA when the summary fits and has no inline 더보기 cue. */}
+      {!truncated &&
+        (item.externalUrl ? (
+          <a
+            href={item.externalUrl}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="mt-auto inline-flex items-center gap-1.5 font-mono text-xs font-medium uppercase tracking-[0.08em] text-primary opacity-70 transition-opacity group-hover:opacity-100"
+          >
+            Read more
+            <ArrowUpRight
+              size={13}
+              className="transition-transform duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5"
+            />
+          </a>
+        ) : (
+          <Link
+            href="/news"
+            className="mt-auto inline-flex items-center gap-1.5 font-mono text-xs font-medium uppercase tracking-[0.08em] text-primary opacity-70 transition-opacity group-hover:opacity-100"
+          >
+            Read more
+            <ArrowUpRight
+              size={13}
+              className="transition-transform duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5"
+            />
+          </Link>
+        ))}
     </MotionCard>
   );
 }
