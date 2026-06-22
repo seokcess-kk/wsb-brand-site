@@ -6,7 +6,12 @@ import { eq, sql } from "drizzle-orm";
 import { z } from "zod";
 import { requireAdmin } from "@/lib/admin-auth";
 import { db, isDbConfigured, schema } from "@/db/client";
-import { decodeHtml, parseHtmlMetadata, suggestSlug } from "@/lib/url-metadata";
+import {
+  decodeHtml,
+  extractArticleBody,
+  parseHtmlMetadata,
+  suggestSlug,
+} from "@/lib/url-metadata";
 import { assertUrlAllowed } from "@/lib/url-safety";
 import { kstDatetimeLocalToDate } from "@/lib/datetime";
 
@@ -52,6 +57,7 @@ const MAX_REDIRECTS = 5;
 export type NewsMetadataData = {
   titleKo: string;
   summaryKo: string;
+  bodyKo: string;
   thumbnailUrl: string;
   externalUrl: string;
   publishedAt: string;
@@ -187,6 +193,7 @@ export async function fetchNewsMetadata(
     const data: NewsMetadataData = {
       titleKo: meta.title ?? "",
       summaryKo: meta.description ?? "",
+      bodyKo: extractArticleBody(html) ?? "",
       thumbnailUrl: meta.image ?? "",
       externalUrl: finalUrl,
       publishedAt: meta.publishedTime ?? "",
@@ -198,6 +205,7 @@ export async function fetchNewsMetadata(
     const filled: string[] = [];
     if (data.titleKo) filled.push("titleKo");
     if (data.summaryKo) filled.push("summaryKo");
+    if (data.bodyKo) filled.push("bodyKo");
     if (data.thumbnailUrl) filled.push("thumbnailUrl");
     if (data.publishedAt) filled.push("publishedAt");
     if (data.slug) filled.push("slug");

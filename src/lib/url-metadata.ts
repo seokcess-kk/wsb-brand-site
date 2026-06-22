@@ -110,6 +110,7 @@ type JsonLdPick = {
   datePublished: string | null;
   siteName: string | null;
   section: string | null;
+  articleBody: string | null;
 };
 
 function pickImageFromJsonLd(value: unknown): string | null {
@@ -155,6 +156,7 @@ function extractJsonLd(html: string): JsonLdPick {
     datePublished: null,
     siteName: null,
     section: null,
+    articleBody: null,
   };
   const re =
     /<script\b[^>]*type=["']application\/ld\+json["'][^>]*>([\s\S]*?)<\/script>/gi;
@@ -206,6 +208,8 @@ function extractJsonLd(html: string): JsonLdPick {
     if (typeof section === "string") result.section = section;
     else if (Array.isArray(section) && typeof section[0] === "string")
       result.section = section[0];
+    if (typeof article.articleBody === "string")
+      result.articleBody = article.articleBody;
     const publisher = article.publisher;
     if (publisher && typeof publisher === "object") {
       const name = (publisher as Record<string, unknown>).name;
@@ -475,4 +479,160 @@ export function suggestSlug(rawUrl: string): string {
   if (combined.length >= 3) return trim(combined);
 
   return hostLabel || "";
+}
+
+// ---------------------------------------------------------------------------
+// Article body extraction. Best-effort: pull the main article text from the
+// fetched HTML so it can pre-fill the editor for review. Korean news CMSs share
+// a handful of body container ids/classes; JSON-LD articleBody is preferred when
+// present. Always reviewed by an admin before publish.
+// ---------------------------------------------------------------------------
+
+const BODY_MIN_LENGTH = 120;
+const BODY_MAX_LENGTH = 40000;
+
+// Container ids used by common Korean/legacy news CMSs (gnews, Naver, etc.).
+const BODY_ID_SELECTORS = [
+  "article-view-content-div",
+  "articleBody",
+  "article-body",
+  "articleBodyContents",
+  "newsEndContents",
+  "newsct_article",
+  "dic_area",
+  "articeBody",
+  "CmAdContent",
+  "content",
+];
+
+const BODY_CLASS_SELECTORS = [
+  "article-body",
+  "article_body",
+  "article-view-content",
+  "news-article-body",
+  "art_text",
+  "view_con",
+  "news_body",
+  "post-content",
+  "entry-content",
+  "articleView",
+];
+
+/** Extract the inner HTML of the first element matching `openRe`, balancing nested same-name tags. */
+function balancedExtract(html: string, openRe: RegExp): string | null {
+  const m = openRe.exec(html);
+  if (!m) return null;
+  const tagMatch = /^<\s*([a-zA-Z][\w-]*)/.exec(m[0]);
+  if (!tagMatch) return null;
+  const tag = tagMatch[1].toLowerCase();
+  const start = m.index + m[0].length;
+  const tagRe = new RegExp(`<(/?)\\s*${tag}\\b[^>]*>`, "gi");
+  tagRe.lastIndex = start;
+  let depth = 1;
+  let mm: RegExpExecArray | null;
+  while ((mm = tagRe.exec(html))) {
+    if (mm[1]) {
+      depth -= 1;
+      if (depth === 0) return html.slice(start, mm.index);
+    } else {
+      depth += 1;
+    }
+  }
+  return html.slice(start);
+}
+
+function normalizeBodyText(text: string): string {
+  return text
+    .replace(/\r/g, "")
+    .split("\n")
+    .map((line) => line.replace(/[ \t ]+/g, " ").trim())
+    .join("\n")
+    .replace(/\n{3,}/g, "\n\n")
+    .trim()
+    .slice(0, BODY_MAX_LENGTH);
+}
+
+/** Strip an HTML fragment to readable text, turning block boundaries into line breaks. */
+function htmlFragmentToText(fragment: string): string {
+  const stripped = fragment
+    .replace(/<script\b[^>]*>[\s\S]*?<\/script>/gi, "")
+    .replace(/<style\b[^>]*>[\s\S]*?<\/style>/gi, "")
+    .replace(/<noscript\b[^>]*>[\s\S]*?<\/noscript>/gi, "")
+    .replace(/<!--[\s\S]*?-->/g, "")
+    .replace(/<(p|div|li|h[1-6]|blockquote|figcaption|tr|br)\s*\/?>/gi, "\n")
+    .replace(/<\/(p|div|li|h[1-6]|blockquote|figcaption|tr)>/gi, "\n")
+    .replace(/<[^>]+>/g, "");
+  return normalizeBodyText(decodeEntities(stripped));
+}
+
+function findArticleContainer(html: string): string | null {
+  for (const id of BODY_ID_SELECTORS) {
+    const re = new RegExp(
+      `<(?:div|article|section|td)\\b[^>]*\\bid=["']${id}["'][^>]*>`,
+      "i",
+    );
+    const content = balancedExtract(html, re);
+    if (content) return content;
+  }
+  {
+    const re = /<(?:div|article|section|td)\b[^>]*\bitemprop=["']articleBody["'][^>]*>/i;
+    const content = balancedExtract(html, re);
+    if (content) return content;
+  }
+  for (const cls of BODY_CLASS_SELECTORS) {
+    const re = new RegExp(
+      `<(?:div|article|section)\\b[^>]*\\bclass=["'][^"']*\\b${cls}\\b[^"']*["'][^>]*>`,
+      "i",
+    );
+    const content = balancedExtract(html, re);
+    if (content) return content;
+  }
+  {
+    const content = balancedExtract(html, /<article\b[^>]*>/i);
+    if (content) return content;
+  }
+  return null;
+}
+
+/** Trim the copyright/byline/related-article footer Korean news articles append. */
+function stripBoilerplate(text: string): string {
+  let cut = text.length;
+  for (const re of [/저작권자\s*©/, /무단\s*전재/, /ⓒ\s*[A-Za-z가-힣]/]) {
+    const m = re.exec(text);
+    if (m && m.index < cut) cut = m.index;
+  }
+  const out = text
+    .slice(0, cut)
+    .split("\n")
+    .filter((line) => {
+      const l = line.trim();
+      if (!l) return true;
+      if (/^[★▶▮◆◇■▷]/.test(l)) return false;
+      if (/(다른기사 보기|투표하러 가기|기사제보)/.test(l)) return false;
+      return true;
+    })
+    .join("\n");
+  return normalizeBodyText(out);
+}
+
+/**
+ * Best-effort full article body from a fetched HTML document. Prefers JSON-LD
+ * articleBody, then a known content container. Returns null when nothing
+ * substantial is found, so callers leave the body empty for manual entry.
+ */
+export function extractArticleBody(html: string): string | null {
+  const doc = html.replace(/<!--[\s\S]*?-->/g, "");
+
+  const jsonLd = extractJsonLd(doc);
+  if (jsonLd.articleBody && jsonLd.articleBody.trim().length >= BODY_MIN_LENGTH) {
+    const text = stripBoilerplate(normalizeBodyText(decodeEntities(jsonLd.articleBody)));
+    if (text.length >= BODY_MIN_LENGTH) return text;
+  }
+
+  const fragment = findArticleContainer(doc);
+  if (fragment) {
+    const text = stripBoilerplate(htmlFragmentToText(fragment));
+    if (text.length >= BODY_MIN_LENGTH) return text;
+  }
+  return null;
 }

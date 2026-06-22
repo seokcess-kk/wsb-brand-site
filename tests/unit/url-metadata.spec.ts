@@ -6,6 +6,7 @@ import {
   detectCharsetFromHeader,
   detectCharsetFromHtml,
   suggestSlug,
+  extractArticleBody,
 } from "../../src/lib/url-metadata";
 
 const BASE = "https://news.example.com/articles/green-bio-2025";
@@ -97,6 +98,45 @@ test("drops non-http(s) og:image schemes", () => {
   expect(parseHtmlMetadata(js, BASE).image).toBeNull();
   const data = `<meta property="og:image" content="data:image/png;base64,AAAA">`;
   expect(parseHtmlMetadata(data, BASE).image).toBeNull();
+});
+
+test("extracts article body from a CMS content container and strips the footer", () => {
+  const html = `
+    <html><body>
+      <nav>메뉴 잡음</nav>
+      <div id="article-view-content-div">
+        <p>우리스마트바이오가 농림축산식품부와 기능성 식물원료 공급 계약을 체결했다고 19일 밝혔다. 이번 계약은 정밀제어 스마트팜 기반 소재의 안정적 공급을 위한 것이다.</p>
+        <p>회사는 동일 품질의 식물원료를 반복 생산하는 플랫폼을 기반으로 사업을 확대하고 있다. 인삼을 시작으로 대청, 참당귀 등으로 파이프라인을 넓혀가고 있다.</p>
+        <p>회사 관계자는 추가 파이프라인의 상용화도 순차적으로 준비 중이라고 설명했다.</p>
+        <p>저작권자 © 테스트뉴스 무단전재 및 재배포 금지</p>
+        <p>홍길동 기자</p>
+      </div>
+    </body></html>`;
+  const body = extractArticleBody(html);
+  expect(body).not.toBeNull();
+  expect(body).toContain("신규 계약을 체결");
+  expect(body).toContain("추가 파이프라인");
+  // footer is trimmed
+  expect(body).not.toContain("저작권자");
+  expect(body).not.toContain("홍길동 기자");
+  // paragraphs are separated by blank lines
+  expect(body!.split(/\n{2,}/).length).toBeGreaterThanOrEqual(3);
+});
+
+test("prefers JSON-LD articleBody when present", () => {
+  const long = "정밀제어 스마트팜으로 동일 품질의 기능성 식물원료를 생산합니다. ".repeat(4);
+  const html = `<script type="application/ld+json">${JSON.stringify({
+    "@type": "NewsArticle",
+    headline: "x",
+    articleBody: long,
+  })}</script>`;
+  const body = extractArticleBody(html);
+  expect(body).not.toBeNull();
+  expect(body).toContain("기능성 식물원료");
+});
+
+test("returns null when no article body is found", () => {
+  expect(extractArticleBody("<html><body><p>짧은 글</p></body></html>")).toBeNull();
 });
 
 test("detects charset from header and from html meta", () => {

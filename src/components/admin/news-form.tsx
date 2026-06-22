@@ -37,6 +37,7 @@ export function NewsForm({
     externalUrl: post?.externalUrl ?? "",
     titleKo: post?.titleKo ?? "",
     summaryKo: post?.summaryKo ?? "",
+    bodyKo: post?.bodyKo ?? "",
   });
   const [fetching, setFetching] = useState(false);
   const [fetchState, setFetchState] = useState<FetchState>(null);
@@ -79,6 +80,7 @@ export function NewsForm({
       };
       apply("titleKo", d.titleKo);
       apply("summaryKo", d.summaryKo);
+      apply("bodyKo", d.bodyKo);
       apply("thumbnailUrl", d.thumbnailUrl);
       apply("externalUrl", d.externalUrl);
       apply("publishedAt", d.publishedAt ? toKstDatetimeLocal(d.publishedAt) : "");
@@ -300,9 +302,11 @@ export function NewsForm({
         <Textarea
           label="BODY (선택)"
           name="bodyKo"
-          rows={10}
-          defaultValue={post?.bodyKo ?? ""}
-          placeholder="상세 페이지에 전체 기사 본문을 보여주려면 입력하세요. 비워두면 요약과 원문보기 링크만 노출됩니다. 빈 줄로 문단을 구분합니다."
+          rows={12}
+          value={fields.bodyKo}
+          onValueChange={(v) => setField("bodyKo", v)}
+          filled={filled.has("bodyKo")}
+          placeholder="URL 불러오기 시 기사 본문이 자동으로 채워집니다(추출 정확도는 사이트마다 다르니 확인 후 저장하세요). 비워두면 상세 페이지에 요약과 원문보기 링크만 노출됩니다. 빈 줄로 문단을 구분합니다."
         />
       </Section>
 
