@@ -214,3 +214,23 @@ test("extracts the article section for category auto-fill", () => {
   const ld = `<script type="application/ld+json">{"@type":"NewsArticle","headline":"x","articleSection":"경제"}</script>`;
   expect(parseHtmlMetadata(ld, BASE).section).toBe("경제");
 });
+
+test("skips regional sections, keeping the topical one", () => {
+  // a regional desk alone -> no category (better empty than "경북")
+  expect(
+    parseHtmlMetadata(`<meta property="article:section" content="경북">`, BASE)
+      .section,
+  ).toBeNull();
+  expect(
+    parseHtmlMetadata(`<meta property="article:section" content="대구광역시">`, BASE)
+      .section,
+  ).toBeNull();
+  // region + topic -> pick the topic
+  const both = `<meta property="article:section" content="경북"><meta property="article:section" content="산업">`;
+  expect(parseHtmlMetadata(both, BASE).section).toBe("산업");
+  // a topic that merely ends in 도 must not be treated as a region
+  expect(
+    parseHtmlMetadata(`<meta property="article:section" content="보도">`, BASE)
+      .section,
+  ).toBe("보도");
+});

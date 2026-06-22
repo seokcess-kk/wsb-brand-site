@@ -98,6 +98,39 @@ function collectMeta(html: string): Map<string, string> {
   return map;
 }
 
+/** All content values for a given meta property/name (a page may repeat article:section). */
+function collectMetaAll(html: string, property: string): string[] {
+  const out: string[] = [];
+  const re = /<meta\b(?:"[^"]*"|'[^']*'|[^>])*>/gi;
+  let m: RegExpExecArray | null;
+  while ((m = re.exec(html))) {
+    const attrs = parseAttrs(m[0]);
+    const key = (attrs.property || attrs.name || attrs.itemprop || "")
+      .trim()
+      .toLowerCase();
+    if (key === property && attrs.content) out.push(attrs.content);
+  }
+  return out;
+}
+
+// Korean administrative regions. A news article:section set to one of these is a
+// local desk (e.g. "경북"), not a topical category, so it is skipped for the
+// auto-filled category.
+const REGION_SECTIONS = new Set([
+  "서울", "부산", "대구", "인천", "광주", "대전", "울산", "세종",
+  "경기", "강원", "충북", "충남", "전북", "전남", "경북", "경남", "제주",
+  "충청", "전라", "경상", "영남", "호남", "수도권", "지역",
+  "경기도", "강원도", "충청북도", "충청남도", "전라북도", "전라남도",
+  "경상북도", "경상남도", "제주도",
+]);
+
+function isRegionSection(value: string): boolean {
+  const v = value.replace(/\s+/g, "");
+  if (REGION_SECTIONS.has(v)) return true;
+  // Administrative suffixes are effectively always regional.
+  return /(특별자치도|특별자치시|특별시|광역시)$/.test(v);
+}
+
 function extractTitleTag(html: string): string | null {
   const m = /<title[^>]*>([\s\S]*?)<\/title>/i.exec(html);
   return m ? clean(m[1]) : null;
@@ -289,9 +322,18 @@ export function parseHtmlMetadata(html: string, baseUrl: string): ParsedMetadata
   const siteName =
     clean(get("og:site_name", "application-name")) ?? clean(jsonLd.siteName);
 
-  const section =
-    clean(get("article:section", "articlesection", "section")) ??
-    clean(jsonLd.section);
+  // Category = the topical section. A page may carry several (often a regional
+  // desk plus a topic), so gather all candidates and take the first that is not
+  // a Korean region, leaving it empty rather than auto-filling "경북" etc.
+  const sectionCandidates = [
+    ...collectMetaAll(doc, "article:section"),
+    meta.get("articlesection") ?? "",
+    meta.get("section") ?? "",
+    jsonLd.section ?? "",
+  ]
+    .map((s) => clean(s))
+    .filter((s): s is string => Boolean(s));
+  const section = sectionCandidates.find((s) => !isRegionSection(s)) ?? null;
 
   return {
     title,
