@@ -304,13 +304,6 @@ export function NewsForm({
           filled={filled.has("summaryKo")}
           error={state.fieldErrors?.summaryKo}
         />
-        <Textarea
-          label="BODY"
-          name="bodyKo"
-          rows={10}
-          defaultValue={post?.bodyKo ?? ""}
-          placeholder="Markdown 지원 예정"
-        />
       </Section>
 
       {/* English content */}
@@ -325,12 +318,6 @@ export function NewsForm({
           name="summaryEn"
           rows={3}
           defaultValue={post?.summaryEn ?? ""}
-        />
-        <Textarea
-          label="BODY"
-          name="bodyEn"
-          rows={10}
-          defaultValue={post?.bodyEn ?? ""}
         />
       </Section>
 
