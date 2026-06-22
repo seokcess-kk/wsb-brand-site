@@ -9,6 +9,7 @@ import {
 import { MotionCard } from "@/components/motion/motion-card";
 import { NewsThumbnail } from "@/components/sections/news-thumbnail";
 import { TabFilter, type TabItem } from "@/components/motion/tab-filter";
+import { truncateSummary } from "@/lib/truncate";
 import type { NewsPost } from "@/db/schema";
 
 const ALL = "__all__";
@@ -81,7 +82,10 @@ function NewsCard({
 }) {
   const isKo = locale === "ko";
   const title = isKo ? post.titleKo : post.titleEn || post.titleKo;
-  const summary = isKo ? post.summaryKo : post.summaryEn || post.summaryKo;
+  const summarySource = isKo ? post.summaryKo : post.summaryEn || post.summaryKo;
+  const { text: summary, truncated } = truncateSummary(summarySource);
+  const moreClass =
+    "whitespace-nowrap font-medium text-primary transition-opacity hover:opacity-80";
 
   return (
     <MotionCard
@@ -104,9 +108,28 @@ function NewsCard({
         {title}
       </h3>
 
-      <p className="text-sm leading-[1.6] text-structural/70">{summary}</p>
+      {/* Summary, clamped with a "… 더보기" cue (linked only when there is an article). */}
+      <p className="text-sm leading-[1.6] text-structural/70">
+        {summary}
+        {truncated &&
+          (post.externalUrl ? (
+            <>
+              {" "}
+              <a
+                href={post.externalUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                className={moreClass}
+              >
+                … 더보기
+              </a>
+            </>
+          ) : (
+            "…"
+          ))}
+      </p>
 
-      {post.externalUrl ? (
+      {!truncated && post.externalUrl ? (
         <a
           href={post.externalUrl}
           target="_blank"

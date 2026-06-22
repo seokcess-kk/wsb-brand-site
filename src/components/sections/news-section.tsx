@@ -15,9 +15,6 @@ import { SectionEyebrow } from "@/components/layout/section-eyebrow";
 import { Lede } from "@/components/layout/lede";
 import { truncateSummary } from "@/lib/truncate";
 
-/** Teaser summaries are clamped to this length, then end with a "… 더보기" link. */
-const TEASER_SUMMARY_MAX = 100;
-
 type Item = {
   date: string;
   category: string;
@@ -118,10 +115,7 @@ export async function NewsSection() {
 }
 
 function NewsCard({ item }: { item: Item }) {
-  const { text: summaryText, truncated } = truncateSummary(
-    item.summary,
-    TEASER_SUMMARY_MAX,
-  );
+  const { text: summaryText, truncated } = truncateSummary(item.summary);
   const moreClass =
     "whitespace-nowrap font-medium text-primary transition-opacity hover:opacity-80";
 

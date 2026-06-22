@@ -1,3 +1,6 @@
+/** Shared teaser-summary clamp so the home and /news cards stay identical. */
+export const SUMMARY_CLAMP = 100;
+
 /**
  * Truncate a teaser summary to a maximum length, cutting on a Korean word
  * boundary (어절 are space separated) when one is reasonably close to the limit
@@ -6,7 +9,7 @@
  */
 export function truncateSummary(
   text: string,
-  max = 100,
+  max = SUMMARY_CLAMP,
 ): { text: string; truncated: boolean } {
   const normalized = text.replace(/\s+/g, " ").trim();
   if (normalized.length <= max) return { text: normalized, truncated: false };
