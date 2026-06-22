@@ -7,8 +7,6 @@ const NAV = [
   { href: "/admin", label: "Dashboard", code: "00" },
   { href: "/admin/news", label: "News", code: "01" },
   { href: "/admin/inquiries", label: "Inquiries", code: "02" },
-  { href: "/admin/files", label: "Files", code: "03" },
-  { href: "/admin/settings", label: "Settings", code: "04" },
 ] as const;
 
 export function AdminNav() {

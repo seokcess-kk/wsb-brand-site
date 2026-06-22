@@ -82,9 +82,9 @@ export default async function AdminDashboard() {
             body="신규 보도자료를 한국어와 영어로 등록합니다."
           />
           <QuickLink
-            href="/admin/settings"
-            title="수신 이메일 설정"
-            body="Partnership Inquiry 알림 받을 이메일을 변경합니다."
+            href="/admin/inquiries"
+            title="문의 확인"
+            body="접수된 Partnership Inquiry를 확인하고 상태를 관리합니다."
           />
         </div>
       </section>

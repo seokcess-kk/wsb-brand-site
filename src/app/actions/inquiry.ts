@@ -5,7 +5,6 @@ import { z } from "zod";
 import { eq } from "drizzle-orm";
 import { db, isDbConfigured, schema } from "@/db/client";
 import { sendInquiryEmails } from "@/lib/email";
-import { getNotifyEmails } from "@/app/actions/settings";
 import { requireAdmin } from "@/lib/admin-auth";
 import { settableStatusSchema, type SettableStatus } from "@/lib/inquiry-status";
 
@@ -72,7 +71,7 @@ export async function submitInquiry(
   }
 
   // Notify + auto-reply (best-effort; we don't fail the submission if email fails)
-  const notifyTo = await getNotifyEmails().catch(() => "");
+  const notifyTo = process.env.INQUIRY_NOTIFY_TO ?? "";
   await sendInquiryEmails(
     {
       company: data.company,
