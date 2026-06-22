@@ -1,0 +1,408 @@
+/**
+ * Pure helpers that turn a fetched HTML document into news metadata.
+ *
+ * The network fetch lives in the news server action; everything here operates
+ * on already-downloaded bytes or strings so it stays unit testable. The parser
+ * leans on Open Graph and JSON-LD which most press release and news sites
+ * expose, with sensible fallbacks (twitter:* tags, <title>, meta description).
+ */
+
+export type ParsedMetadata = {
+  title: string | null;
+  description: string | null;
+  image: string | null;
+  publishedTime: string | null;
+  siteName: string | null;
+};
+
+const NAMED_ENTITIES: Record<string, string> = {
+  amp: "&",
+  lt: "<",
+  gt: ">",
+  quot: '"',
+  apos: "'",
+  nbsp: " ",
+  copy: "©",
+  reg: "®",
+  trade: "™",
+  hellip: "…",
+  mdash: "—",
+  ndash: "–",
+  lsquo: "‘",
+  rsquo: "’",
+  ldquo: "“",
+  rdquo: "”",
+  middot: "·",
+  deg: "°",
+};
+
+/** Decode the HTML entities that commonly survive into meta tag content. */
+export function decodeEntities(input: string): string {
+  return input.replace(
+    /&(#x[0-9a-fA-F]+|#\d+|[a-zA-Z][a-zA-Z0-9]*);/g,
+    (full, body: string) => {
+      if (body[0] === "#") {
+        const code =
+          body[1] === "x" || body[1] === "X"
+            ? Number.parseInt(body.slice(2), 16)
+            : Number.parseInt(body.slice(1), 10);
+        if (Number.isFinite(code) && code > 0) {
+          try {
+            return String.fromCodePoint(code);
+          } catch {
+            return full;
+          }
+        }
+        return full;
+      }
+      const named = NAMED_ENTITIES[body] ?? NAMED_ENTITIES[body.toLowerCase()];
+      return named ?? full;
+    },
+  );
+}
+
+function clean(value: string | null | undefined): string | null {
+  if (!value) return null;
+  const text = decodeEntities(value).replace(/\s+/g, " ").trim();
+  return text.length ? text : null;
+}
+
+function parseAttrs(tag: string): Record<string, string> {
+  const attrs: Record<string, string> = {};
+  const re =
+    /([a-zA-Z_:][-a-zA-Z0-9_:.]*)\s*=\s*(?:"([^"]*)"|'([^']*)'|([^\s"'>]+))/g;
+  let m: RegExpExecArray | null;
+  while ((m = re.exec(tag))) {
+    attrs[m[1].toLowerCase()] = m[2] ?? m[3] ?? m[4] ?? "";
+  }
+  return attrs;
+}
+
+/** Build a property/name -> content map from every <meta> tag (first wins). */
+function collectMeta(html: string): Map<string, string> {
+  const map = new Map<string, string>();
+  // Tolerate quoted '>' inside attribute values (e.g. og:title="<속보> ...").
+  const re = /<meta\b(?:"[^"]*"|'[^']*'|[^>])*>/gi;
+  let m: RegExpExecArray | null;
+  while ((m = re.exec(html))) {
+    const attrs = parseAttrs(m[0]);
+    const key = (attrs.property || attrs.name || attrs.itemprop || "")
+      .trim()
+      .toLowerCase();
+    const content = attrs.content;
+    if (key && content != null && content !== "" && !map.has(key)) {
+      map.set(key, content);
+    }
+  }
+  return map;
+}
+
+function extractTitleTag(html: string): string | null {
+  const m = /<title[^>]*>([\s\S]*?)<\/title>/i.exec(html);
+  return m ? clean(m[1]) : null;
+}
+
+type JsonLdPick = {
+  headline: string | null;
+  description: string | null;
+  image: string | null;
+  datePublished: string | null;
+  siteName: string | null;
+};
+
+function pickImageFromJsonLd(value: unknown): string | null {
+  if (!value) return null;
+  if (typeof value === "string") return value;
+  if (Array.isArray(value)) {
+    for (const item of value) {
+      const found = pickImageFromJsonLd(item);
+      if (found) return found;
+    }
+    return null;
+  }
+  if (typeof value === "object") {
+    const url = (value as Record<string, unknown>).url;
+    return typeof url === "string" ? url : null;
+  }
+  return null;
+}
+
+const ARTICLE_TYPES = new Set([
+  "article",
+  "newsarticle",
+  "blogposting",
+  "report",
+  "pressrelease",
+  "webpage",
+]);
+
+function isArticleNode(node: Record<string, unknown>): boolean {
+  const type = node["@type"];
+  const types = Array.isArray(type) ? type : [type];
+  if (types.some((t) => typeof t === "string" && ARTICLE_TYPES.has(t.toLowerCase()))) {
+    return true;
+  }
+  return typeof node.headline === "string";
+}
+
+function extractJsonLd(html: string): JsonLdPick {
+  const result: JsonLdPick = {
+    headline: null,
+    description: null,
+    image: null,
+    datePublished: null,
+    siteName: null,
+  };
+  const re =
+    /<script\b[^>]*type=["']application\/ld\+json["'][^>]*>([\s\S]*?)<\/script>/gi;
+  let m: RegExpExecArray | null;
+  const nodes: Record<string, unknown>[] = [];
+  while ((m = re.exec(html))) {
+    // Strip CDATA / comment guards that legacy templates wrap JSON-LD in, and
+    // retry on entity-decoded text when the whole block was HTML-escaped.
+    const raw = m[1]
+      .trim()
+      .replace(/^\/\/\s*/, "")
+      .replace(/^<!\[CDATA\[/, "")
+      .replace(/\]\]>\s*$/, "")
+      .replace(/\/\/\s*$/, "")
+      .trim();
+    let data: unknown;
+    try {
+      data = JSON.parse(raw);
+    } catch {
+      try {
+        data = JSON.parse(decodeEntities(raw));
+      } catch {
+        continue;
+      }
+    }
+    const queue = Array.isArray(data) ? [...data] : [data];
+    while (queue.length) {
+      const item = queue.shift();
+      if (!item || typeof item !== "object") continue;
+      const obj = item as Record<string, unknown>;
+      if (Array.isArray(obj["@graph"])) {
+        queue.push(...(obj["@graph"] as Record<string, unknown>[]));
+      }
+      nodes.push(obj);
+    }
+  }
+
+  const article = nodes.find(isArticleNode);
+  if (article) {
+    if (typeof article.headline === "string") result.headline = article.headline;
+    if (typeof article.description === "string")
+      result.description = article.description;
+    if (typeof article.datePublished === "string")
+      result.datePublished = article.datePublished;
+    else if (typeof article.dateCreated === "string")
+      result.datePublished = article.dateCreated;
+    result.image = pickImageFromJsonLd(article.image);
+    const publisher = article.publisher;
+    if (publisher && typeof publisher === "object") {
+      const name = (publisher as Record<string, unknown>).name;
+      if (typeof name === "string") result.siteName = name;
+    }
+  }
+  return result;
+}
+
+function absolutize(url: string | null, base: string): string | null {
+  if (!url) return null;
+  const trimmed = url.trim();
+  if (!trimmed) return null;
+  try {
+    const resolved = new URL(trimmed, base);
+    // Only surface fetchable image URLs; drop javascript:/data:/etc.
+    if (resolved.protocol !== "http:" && resolved.protocol !== "https:") {
+      return null;
+    }
+    return resolved.toString();
+  } catch {
+    return null;
+  }
+}
+
+/**
+ * Extract the title / description / image / published date / site name from a
+ * page, preferring Open Graph, then Twitter cards, then JSON-LD, then plain
+ * <title>/<meta description>. `baseUrl` resolves relative image URLs.
+ */
+export function parseHtmlMetadata(html: string, baseUrl: string): ParsedMetadata {
+  // Drop HTML comments so commented-out placeholder OG tags don't win first-wins.
+  const doc = html.replace(/<!--[\s\S]*?-->/g, "");
+  const meta = collectMeta(doc);
+  const jsonLd = extractJsonLd(doc);
+  const get = (...keys: string[]): string | null => {
+    for (const key of keys) {
+      const value = meta.get(key);
+      if (value && value.trim()) return value;
+    }
+    return null;
+  };
+
+  const title =
+    clean(get("og:title", "twitter:title")) ??
+    clean(jsonLd.headline) ??
+    extractTitleTag(doc);
+
+  const description =
+    clean(
+      get("og:description", "twitter:description", "description"),
+    ) ?? clean(jsonLd.description);
+
+  const rawImage =
+    get(
+      "og:image:secure_url",
+      "og:image:url",
+      "og:image",
+      "twitter:image",
+      "twitter:image:src",
+    ) ?? jsonLd.image;
+
+  const publishedTime =
+    clean(
+      get(
+        "article:published_time",
+        "article:modified_time",
+        "datepublished",
+        "date",
+        "dc.date",
+        "dc.date.issued",
+        "og:updated_time",
+      ),
+    ) ?? clean(jsonLd.datePublished);
+
+  // twitter:site is an @handle, not a publication name, so it is excluded.
+  const siteName =
+    clean(get("og:site_name", "application-name")) ?? clean(jsonLd.siteName);
+
+  return {
+    title,
+    description,
+    image: absolutize(rawImage ? decodeEntities(rawImage) : null, baseUrl),
+    publishedTime,
+    siteName,
+  };
+}
+
+// ---------------------------------------------------------------------------
+// Charset detection + decoding (operates on bytes, still pure & testable)
+// ---------------------------------------------------------------------------
+
+export function detectCharsetFromHeader(contentType?: string | null): string | null {
+  if (!contentType) return null;
+  const m = /charset\s*=\s*["']?([^;"'\s]+)/i.exec(contentType);
+  return m ? m[1] : null;
+}
+
+export function detectCharsetFromHtml(head: string): string | null {
+  let m = /<meta[^>]+charset\s*=\s*["']?\s*([a-zA-Z0-9_-]+)/i.exec(head);
+  if (m) return m[1];
+  m = /<meta[^>]+content\s*=\s*["'][^"']*charset=([a-zA-Z0-9_-]+)/i.exec(head);
+  return m ? m[1] : null;
+}
+
+function normalizeCharset(charset: string): string {
+  const c = charset.trim().toLowerCase();
+  if (c === "utf8" || c === "utf-8") return "utf-8";
+  if (c === "ks_c_5601-1987" || c === "ksc5601" || c === "korean") return "euc-kr";
+  if (c === "cp949" || c === "ms949" || c === "windows-949") return "euc-kr";
+  if (c === "iso-8859-1" || c === "latin1") return "windows-1252";
+  return c;
+}
+
+/**
+ * Decode a fetched HTML byte buffer into a string. Korean press sites still
+ * occasionally ship EUC-KR, so we honour the declared charset (header first,
+ * then a <meta charset> sniff over the ASCII-safe head) before falling back to
+ * UTF-8.
+ */
+export function decodeHtml(bytes: Uint8Array, contentType?: string | null): string {
+  const headerCharset = detectCharsetFromHeader(contentType);
+  // Sniff a generous head window: real sites sometimes push <meta charset>
+  // past the first few KB behind preload/CSP tags.
+  const head = new TextDecoder("latin1").decode(bytes.subarray(0, 16384));
+  const htmlCharset = detectCharsetFromHtml(head);
+
+  // Try header, then the HTML-declared charset, then UTF-8, skipping any label
+  // the runtime's TextDecoder does not recognise.
+  const candidates = [headerCharset, htmlCharset, "utf-8"]
+    .filter((c): c is string => Boolean(c))
+    .map(normalizeCharset);
+  for (const label of candidates) {
+    try {
+      return new TextDecoder(label).decode(bytes);
+    } catch {
+      // unknown label, fall through to the next candidate
+    }
+  }
+  return new TextDecoder("utf-8").decode(bytes);
+}
+
+/** Generic path words that make for collision-prone slugs (n.news.naver.com/article/...). */
+const GENERIC_SEGMENTS = new Set([
+  "view",
+  "article",
+  "articles",
+  "news",
+  "read",
+  "post",
+  "posts",
+  "story",
+  "mnews",
+  "amp",
+  "index",
+  "default",
+  "m",
+  "p",
+]);
+
+/**
+ * Best-effort slug suggestion from a URL. Prefers the last meaningful path
+ * segment (numeric article IDs are valid and unique, so they are kept), skips
+ * generic words like "article"/"view", and falls back to the host label.
+ * Always shown in an editable field, so the admin can override it.
+ */
+export function suggestSlug(rawUrl: string): string {
+  let url: URL;
+  try {
+    url = new URL(rawUrl);
+  } catch {
+    return "";
+  }
+
+  const segments = url.pathname
+    .split("/")
+    .filter(Boolean)
+    .map((raw) => {
+      let s = raw;
+      try {
+        s = decodeURIComponent(raw);
+      } catch {
+        // keep the raw segment if it is not valid percent-encoding
+      }
+      return s
+        .replace(/\.(html?|php|aspx?|jsp)$/i, "")
+        .toLowerCase()
+        .replace(/[^a-z0-9]+/g, "-")
+        .replace(/^-+|-+$/g, "");
+    })
+    .filter((s) => s.length > 0);
+
+  for (let i = segments.length - 1; i >= 0; i--) {
+    const seg = segments[i];
+    if (seg.length >= 3 && !GENERIC_SEGMENTS.has(seg)) {
+      return seg.slice(0, 80).replace(/-+$/, "");
+    }
+  }
+
+  const combined = segments.filter((s) => !GENERIC_SEGMENTS.has(s)).join("-");
+  if (combined.length >= 3) {
+    return combined.slice(0, 80).replace(/-+$/, "");
+  }
+
+  const host = url.hostname.replace(/^www\./, "").split(".")[0] ?? "";
+  return host.toLowerCase().replace(/[^a-z0-9]+/g, "-") || "";
+}

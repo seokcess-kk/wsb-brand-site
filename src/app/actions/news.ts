@@ -6,6 +6,8 @@ import { eq, sql } from "drizzle-orm";
 import { z } from "zod";
 import { requireAdmin } from "@/lib/admin-auth";
 import { db, isDbConfigured, schema } from "@/db/client";
+import { decodeHtml, parseHtmlMetadata, suggestSlug } from "@/lib/url-metadata";
+import { assertUrlAllowed } from "@/lib/url-safety";
 
 const NewsSchema = z.object({
   slug: z
@@ -36,6 +38,172 @@ export type NewsFormState = {
   fieldErrors?: Record<string, string[] | undefined>;
 };
 
+
+// ---------------------------------------------------------------------------
+// URL auto-fill: paste a published article URL, scrape its Open Graph / JSON-LD
+// metadata, and pre-fill the form so the admin only reviews instead of retypes.
+// ---------------------------------------------------------------------------
+
+const FETCH_TIMEOUT_MS = 8000;
+const MAX_HTML_BYTES = 2_000_000;
+const MAX_REDIRECTS = 5;
+
+export type NewsMetadataData = {
+  titleKo: string;
+  summaryKo: string;
+  thumbnailUrl: string;
+  externalUrl: string;
+  publishedAt: string;
+  siteName: string;
+  slug: string;
+};
+
+export type NewsMetadataResult =
+  | { ok: true; data: NewsMetadataData; filled: string[] }
+  | { ok: false; error: string };
+
+/** Read a response body up to `max` bytes, cancelling the stream once the cap is hit. */
+async function readCapped(res: Response, max: number): Promise<Uint8Array> {
+  const reader = res.body?.getReader();
+  if (!reader) {
+    const buf = new Uint8Array(await res.arrayBuffer());
+    return buf.byteLength > max ? buf.subarray(0, max) : buf;
+  }
+  const chunks: Uint8Array[] = [];
+  let total = 0;
+  for (;;) {
+    const { done, value } = await reader.read();
+    if (done) break;
+    if (value) {
+      chunks.push(value);
+      total += value.byteLength;
+      if (total >= max) {
+        await reader.cancel().catch(() => {});
+        break;
+      }
+    }
+  }
+  const out = new Uint8Array(Math.min(total, max));
+  let offset = 0;
+  for (const chunk of chunks) {
+    if (offset >= out.length) break;
+    const slice = chunk.subarray(0, out.length - offset);
+    out.set(slice, offset);
+    offset += slice.byteLength;
+  }
+  return out;
+}
+
+const FetchUrlSchema = z.string().trim().url();
+
+export async function fetchNewsMetadata(
+  rawUrl: string,
+): Promise<NewsMetadataResult> {
+  await requireAdmin();
+
+  const validated = FetchUrlSchema.safeParse(rawUrl);
+  if (!validated.success) {
+    return { ok: false, error: "올바른 URL을 입력해 주세요." };
+  }
+
+  // One AbortController bounds total wall-clock time across all redirect hops.
+  const controller = new AbortController();
+  const timer = setTimeout(() => controller.abort(), FETCH_TIMEOUT_MS);
+  try {
+    let current = validated.data;
+    let res: Response | null = null;
+
+    for (let hop = 0; hop <= MAX_REDIRECTS; hop++) {
+      // Re-validate every hop (scheme + DNS-resolved IP) so a redirect cannot
+      // smuggle us onto an internal host.
+      const allowed = await assertUrlAllowed(current);
+      if (!allowed.ok) return { ok: false, error: allowed.reason };
+
+      let hopRes: Response;
+      try {
+        hopRes = await fetch(allowed.url, {
+          redirect: "manual",
+          signal: controller.signal,
+          headers: {
+            "user-agent":
+              "Mozilla/5.0 (compatible; WooriSmartBioBot/1.0; +https://woorismartbio.com)",
+            accept: "text/html,application/xhtml+xml,text/plain",
+          },
+        });
+      } catch (err) {
+        console.error("[news] metadata fetch failed", err);
+        return {
+          ok: false,
+          error: "페이지를 불러오지 못했습니다. 주소를 확인해 주세요.",
+        };
+      }
+
+      const location = hopRes.headers.get("location");
+      if (hopRes.status >= 300 && hopRes.status < 400 && location) {
+        await hopRes.body?.cancel().catch(() => {});
+        let next: URL;
+        try {
+          next = new URL(location, allowed.url);
+        } catch {
+          return { ok: false, error: "잘못된 리다이렉트 주소입니다." };
+        }
+        current = next.toString();
+        continue;
+      }
+
+      res = hopRes;
+      break;
+    }
+
+    if (!res) {
+      return { ok: false, error: "리다이렉트가 너무 많습니다." };
+    }
+    if (!res.ok) {
+      return { ok: false, error: `페이지 응답 오류입니다 (HTTP ${res.status}).` };
+    }
+
+    const contentType = res.headers.get("content-type") ?? "";
+    if (
+      contentType &&
+      !/text\/html|application\/xhtml|text\/plain/i.test(contentType)
+    ) {
+      await res.body?.cancel().catch(() => {});
+      return { ok: false, error: "HTML 페이지가 아니어서 읽을 수 없습니다." };
+    }
+
+    const declaredLength = Number(res.headers.get("content-length"));
+    if (Number.isFinite(declaredLength) && declaredLength > MAX_HTML_BYTES * 8) {
+      await res.body?.cancel().catch(() => {});
+      return { ok: false, error: "페이지가 너무 큽니다." };
+    }
+
+    const bytes = await readCapped(res, MAX_HTML_BYTES);
+    const finalUrl = res.url || current;
+    const html = decodeHtml(bytes, contentType);
+    const meta = parseHtmlMetadata(html, finalUrl);
+
+    const data: NewsMetadataData = {
+      titleKo: meta.title ?? "",
+      summaryKo: meta.description ?? "",
+      thumbnailUrl: meta.image ?? "",
+      externalUrl: finalUrl,
+      publishedAt: meta.publishedTime ?? "",
+      siteName: meta.siteName ?? "",
+      slug: suggestSlug(finalUrl),
+    };
+
+    const filled: string[] = [];
+    if (data.titleKo) filled.push("titleKo");
+    if (data.summaryKo) filled.push("summaryKo");
+    if (data.thumbnailUrl) filled.push("thumbnailUrl");
+    if (data.publishedAt) filled.push("publishedAt");
+    if (data.slug) filled.push("slug");
+
+    return { ok: true, data, filled };
+  } finally {
+    clearTimeout(timer);
+  }
+}
 
 export async function createOrUpdateNews(
   id: number | null,

@@ -3,6 +3,7 @@ import { notFound } from "next/navigation";
 import { db, isDbConfigured, schema } from "@/db/client";
 import { AdminHeader } from "@/components/admin/admin-header";
 import { NewsForm } from "@/components/admin/news-form";
+import { listNewsCategories } from "@/lib/news-query";
 
 export const dynamic = "force-dynamic";
 
@@ -31,6 +32,8 @@ export default async function EditNewsPage({
 
   if (!post) notFound();
 
+  const categories = await listNewsCategories();
+
   return (
     <div className="px-10 py-10 space-y-10">
       <AdminHeader
@@ -38,7 +41,7 @@ export default async function EditNewsPage({
         title={post.titleKo}
         meta={`01 / ID ${post.id}`}
       />
-      <NewsForm post={post} />
+      <NewsForm post={post} categories={categories} />
     </div>
   );
 }

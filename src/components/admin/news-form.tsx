@@ -1,20 +1,115 @@
 "use client";
 
+import { useState } from "react";
 import { useActionState } from "react";
 import { useFormStatus } from "react-dom";
-import { Trash2, Save } from "lucide-react";
+import { Trash2, Save, Download, Loader2, Sparkles } from "lucide-react";
 import {
   createOrUpdateNews,
   deleteNews,
+  fetchNewsMetadata,
   type NewsFormState,
 } from "@/app/actions/news";
 import type { NewsPost } from "@/db/schema";
 
 const INITIAL: NewsFormState = { status: "idle" };
 
-export function NewsForm({ post }: { post?: NewsPost }) {
+/** Convert a stored/scraped date into the value a datetime-local input expects. */
+function toDatetimeLocal(value: string | Date | null | undefined): string {
+  if (!value) return "";
+  const date = value instanceof Date ? value : new Date(value);
+  if (Number.isNaN(date.getTime())) return "";
+  return date.toISOString().slice(0, 16);
+}
+
+type FetchState = { ok: boolean; message: string } | null;
+
+export function NewsForm({
+  post,
+  categories = [],
+}: {
+  post?: NewsPost;
+  categories?: string[];
+}) {
   const action = createOrUpdateNews.bind(null, post?.id ?? null);
   const [state, formAction] = useActionState(action, INITIAL);
+
+  // Fields that the URL auto-fill can populate are controlled so a fetch can
+  // update them; everything else stays uncontrolled with defaultValue.
+  const [fields, setFields] = useState({
+    slug: post?.slug ?? "",
+    category: post?.category ?? "",
+    publishedAt: toDatetimeLocal(post?.publishedAt),
+    thumbnailUrl: post?.thumbnailUrl ?? "",
+    externalUrl: post?.externalUrl ?? "",
+    titleKo: post?.titleKo ?? "",
+    summaryKo: post?.summaryKo ?? "",
+  });
+  const [fetching, setFetching] = useState(false);
+  const [fetchState, setFetchState] = useState<FetchState>(null);
+  const [filled, setFilled] = useState<Set<string>>(new Set());
+  const [thumbBroken, setThumbBroken] = useState(false);
+
+  const setField = (name: keyof typeof fields, value: string) => {
+    setFields((prev) => ({ ...prev, [name]: value }));
+    // A manual edit means the value is no longer "auto", so drop its badge.
+    setFilled((prev) => {
+      if (!prev.has(name)) return prev;
+      const next = new Set(prev);
+      next.delete(name);
+      return next;
+    });
+    if (name === "thumbnailUrl") setThumbBroken(false);
+  };
+
+  async function handleFetch() {
+    const url = fields.externalUrl.trim();
+    if (!url || fetching) return;
+    setFetching(true);
+    setFetchState(null);
+    try {
+      const result = await fetchNewsMetadata(url);
+      if (!result.ok) {
+        setFetchState({ ok: false, message: result.error });
+        return;
+      }
+      const d = result.data;
+      // Only mark a field "auto" when the fetch actually changed it.
+      const next = { ...fields };
+      const applied = new Set<string>();
+      const apply = (key: keyof typeof fields, value: string) => {
+        if (value && value !== next[key]) {
+          next[key] = value;
+          applied.add(key);
+        }
+      };
+      apply("titleKo", d.titleKo);
+      apply("summaryKo", d.summaryKo);
+      apply("thumbnailUrl", d.thumbnailUrl);
+      apply("externalUrl", d.externalUrl);
+      apply("publishedAt", d.publishedAt ? toDatetimeLocal(d.publishedAt) : "");
+      // Never clobber a slug the admin already chose.
+      if (!next.slug && d.slug) {
+        next.slug = d.slug;
+        applied.add("slug");
+      }
+
+      setFields(next);
+      if (applied.has("thumbnailUrl")) setThumbBroken(false);
+      setFilled(applied);
+      setFetchState({
+        ok: true,
+        message: applied.size
+          ? `${applied.size}개 항목을 채웠어요. 내용을 확인한 뒤 저장하세요.`
+          : "가져올 수 있는 새 정보가 없습니다. 직접 입력해 주세요.",
+      });
+    } catch (err) {
+      console.error("[news-form] metadata fetch failed", err);
+      setFetchState({ ok: false, message: "불러오기에 실패했습니다." });
+    } finally {
+      setFetching(false);
+    }
+  }
 
   async function handleDelete() {
     if (!post) return;
@@ -25,6 +120,58 @@ export function NewsForm({ post }: { post?: NewsPost }) {
 
   return (
     <form action={formAction} className="space-y-10">
+      {/* Quick fill from a published URL */}
+      <section className="space-y-4 border border-primary/25 bg-primary/[0.03] p-6">
+        <div className="flex items-center gap-3">
+          <span aria-hidden className="h-px w-6 bg-primary" />
+          <h2 className="font-mono text-[11px] font-medium uppercase tracking-[0.08em] text-primary">
+            URL 자동 채우기
+          </h2>
+        </div>
+        <p className="text-sm text-structural/70">
+          보도자료·뉴스 기사 URL을 붙여넣고 불러오면 제목·요약·썸네일·발행일을 자동으로 채웁니다.
+        </p>
+        <div className="flex flex-col gap-3 sm:flex-row sm:items-stretch">
+          <input
+            type="url"
+            value={fields.externalUrl}
+            onChange={(e) => setField("externalUrl", e.target.value)}
+            onKeyDown={(e) => {
+              if (e.key === "Enter") {
+                e.preventDefault();
+                handleFetch();
+              }
+            }}
+            placeholder="https://news.example.com/article/123"
+            aria-label="발행 URL"
+            className="flex-1 border-0 border-b border-structural/25 bg-transparent px-0 py-2.5 text-sm text-structural placeholder:text-structural/30 focus:border-primary focus:outline-none focus:ring-0"
+          />
+          <button
+            type="button"
+            onClick={handleFetch}
+            disabled={fetching || !fields.externalUrl.trim()}
+            className="inline-flex shrink-0 items-center justify-center gap-2 bg-structural px-5 py-2.5 text-sm font-medium text-canvas transition-opacity hover:opacity-90 disabled:opacity-40"
+          >
+            {fetching ? (
+              <Loader2 size={14} className="animate-spin" />
+            ) : (
+              <Download size={14} />
+            )}
+            {fetching ? "불러오는 중..." : "불러오기"}
+          </button>
+        </div>
+        {fetchState && (
+          <p
+            role="status"
+            className={`text-sm ${
+              fetchState.ok ? "text-primary" : "text-rose-600"
+            }`}
+          >
+            {fetchState.message}
+          </p>
+        )}
+      </section>
+
       {/* Meta block */}
       <Section title="META">
         <div className="grid gap-6 md:grid-cols-2">
@@ -32,7 +179,9 @@ export function NewsForm({ post }: { post?: NewsPost }) {
             label="SLUG"
             name="slug"
             required
-            defaultValue={post?.slug ?? ""}
+            value={fields.slug}
+            onValueChange={(v) => setField("slug", v)}
+            filled={filled.has("slug")}
             placeholder="green-bio-recognition-2025"
             error={state.fieldErrors?.slug}
           />
@@ -40,34 +189,39 @@ export function NewsForm({ post }: { post?: NewsPost }) {
             label="CATEGORY"
             name="category"
             required
-            defaultValue={post?.category ?? ""}
+            value={fields.category}
+            onValueChange={(v) => setField("category", v)}
+            list={categories.length ? "news-categories" : undefined}
             placeholder="Partnership / Certification / Business / Clinical / R&D"
             error={state.fieldErrors?.category}
           />
+          {categories.length > 0 && (
+            <datalist id="news-categories">
+              {categories.map((c) => (
+                <option key={c} value={c} />
+              ))}
+            </datalist>
+          )}
           <Field
             label="PUBLISHED AT"
             name="publishedAt"
             type="datetime-local"
-            defaultValue={
-              post?.publishedAt
-                ? new Date(post.publishedAt).toISOString().slice(0, 16)
-                : ""
-            }
+            value={fields.publishedAt}
+            onValueChange={(v) => setField("publishedAt", v)}
+            filled={filled.has("publishedAt")}
           />
           <Field
             label="THUMBNAIL URL"
             name="thumbnailUrl"
             type="url"
-            defaultValue={post?.thumbnailUrl ?? ""}
+            value={fields.thumbnailUrl}
+            onValueChange={(v) => setField("thumbnailUrl", v)}
+            filled={filled.has("thumbnailUrl")}
             placeholder="https://..."
+            error={state.fieldErrors?.thumbnailUrl}
           />
-          <Field
-            label="EXTERNAL URL (optional)"
-            name="externalUrl"
-            type="url"
-            defaultValue={post?.externalUrl ?? ""}
-            placeholder="https://news.example.com/..."
-          />
+          {/* externalUrl is captured by the quick-fill input above and submitted here. */}
+          <input type="hidden" name="externalUrl" value={fields.externalUrl} />
           <div className="flex items-center gap-3 self-end pb-2">
             <input
               id="news-published"
@@ -84,6 +238,15 @@ export function NewsForm({ post }: { post?: NewsPost }) {
             </label>
           </div>
         </div>
+        {fields.thumbnailUrl && !thumbBroken && (
+          // eslint-disable-next-line @next/next/no-img-element
+          <img
+            src={fields.thumbnailUrl}
+            alt="썸네일 미리보기"
+            className="mt-2 h-32 w-auto border border-structural/15 object-cover"
+            onError={() => setThumbBroken(true)}
+          />
+        )}
       </Section>
 
       {/* Korean content */}
@@ -92,7 +255,9 @@ export function NewsForm({ post }: { post?: NewsPost }) {
           label="TITLE"
           name="titleKo"
           required
-          defaultValue={post?.titleKo ?? ""}
+          value={fields.titleKo}
+          onValueChange={(v) => setField("titleKo", v)}
+          filled={filled.has("titleKo")}
           error={state.fieldErrors?.titleKo}
         />
         <Textarea
@@ -100,7 +265,9 @@ export function NewsForm({ post }: { post?: NewsPost }) {
           name="summaryKo"
           required
           rows={3}
-          defaultValue={post?.summaryKo ?? ""}
+          value={fields.summaryKo}
+          onValueChange={(v) => setField("summaryKo", v)}
+          filled={filled.has("summaryKo")}
           error={state.fieldErrors?.summaryKo}
         />
         <Textarea
@@ -198,28 +365,40 @@ function Field({
   name,
   type = "text",
   required,
+  value,
+  onValueChange,
   defaultValue,
   placeholder,
   error,
+  filled,
+  list,
 }: {
   label: string;
   name: string;
   type?: string;
   required?: boolean;
+  value?: string;
+  onValueChange?: (value: string) => void;
   defaultValue?: string;
   placeholder?: string;
   error?: string[];
+  filled?: boolean;
+  list?: string;
 }) {
   const id = `news-${name}`;
+  const controlled = value !== undefined && onValueChange !== undefined;
   return (
     <div className="space-y-2">
-      <Label htmlFor={id} label={label} required={required} />
+      <Label htmlFor={id} label={label} required={required} filled={filled} />
       <input
         id={id}
         name={name}
         type={type}
         required={required}
-        defaultValue={defaultValue}
+        list={list}
+        {...(controlled
+          ? { value, onChange: (e) => onValueChange(e.target.value) }
+          : { defaultValue })}
         placeholder={placeholder}
         aria-invalid={error?.length ? true : undefined}
         className={`w-full border-0 border-b bg-transparent px-0 py-2.5 text-sm text-structural placeholder:text-structural/30 focus:outline-none focus:ring-0 ${
@@ -237,28 +416,37 @@ function Textarea({
   name,
   required,
   rows = 4,
+  value,
+  onValueChange,
   defaultValue,
   placeholder,
   error,
+  filled,
 }: {
   label: string;
   name: string;
   required?: boolean;
   rows?: number;
+  value?: string;
+  onValueChange?: (value: string) => void;
   defaultValue?: string;
   placeholder?: string;
   error?: string[];
+  filled?: boolean;
 }) {
   const id = `news-${name}`;
+  const controlled = value !== undefined && onValueChange !== undefined;
   return (
     <div className="space-y-2">
-      <Label htmlFor={id} label={label} required={required} />
+      <Label htmlFor={id} label={label} required={required} filled={filled} />
       <textarea
         id={id}
         name={name}
         required={required}
         rows={rows}
-        defaultValue={defaultValue}
+        {...(controlled
+          ? { value, onChange: (e) => onValueChange(e.target.value) }
+          : { defaultValue })}
         placeholder={placeholder}
         aria-invalid={error?.length ? true : undefined}
         className={`w-full resize-y border bg-canvas px-4 py-3 font-sans text-sm text-structural placeholder:text-structural/30 focus:outline-none focus:ring-0 ${
@@ -275,10 +463,12 @@ function Label({
   htmlFor,
   label,
   required,
+  filled,
 }: {
   htmlFor: string;
   label: string;
   required?: boolean;
+  filled?: boolean;
 }) {
   return (
     <label
@@ -287,6 +477,12 @@ function Label({
     >
       {label}
       {required && <span className="text-primary">*</span>}
+      {filled && (
+        <span className="inline-flex items-center gap-1 rounded-sm bg-primary/10 px-1.5 py-0.5 text-[9px] font-medium text-primary">
+          <Sparkles size={9} />
+          자동
+        </span>
+      )}
     </label>
   );
 }
