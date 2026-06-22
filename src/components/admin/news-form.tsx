@@ -10,17 +10,10 @@ import {
   fetchNewsMetadata,
   type NewsFormState,
 } from "@/app/actions/news";
+import { toKstDatetimeLocal } from "@/lib/datetime";
 import type { NewsPost } from "@/db/schema";
 
 const INITIAL: NewsFormState = { status: "idle" };
-
-/** Convert a stored/scraped date into the value a datetime-local input expects. */
-function toDatetimeLocal(value: string | Date | null | undefined): string {
-  if (!value) return "";
-  const date = value instanceof Date ? value : new Date(value);
-  if (Number.isNaN(date.getTime())) return "";
-  return date.toISOString().slice(0, 16);
-}
 
 type FetchState = { ok: boolean; message: string } | null;
 
@@ -39,7 +32,7 @@ export function NewsForm({
   const [fields, setFields] = useState({
     slug: post?.slug ?? "",
     category: post?.category ?? "",
-    publishedAt: toDatetimeLocal(post?.publishedAt),
+    publishedAt: toKstDatetimeLocal(post?.publishedAt),
     thumbnailUrl: post?.thumbnailUrl ?? "",
     externalUrl: post?.externalUrl ?? "",
     titleKo: post?.titleKo ?? "",
@@ -88,7 +81,7 @@ export function NewsForm({
       apply("summaryKo", d.summaryKo);
       apply("thumbnailUrl", d.thumbnailUrl);
       apply("externalUrl", d.externalUrl);
-      apply("publishedAt", d.publishedAt ? toDatetimeLocal(d.publishedAt) : "");
+      apply("publishedAt", d.publishedAt ? toKstDatetimeLocal(d.publishedAt) : "");
       // Never clobber a slug or category the admin already chose.
       if (!next.slug && d.slug) {
         next.slug = d.slug;

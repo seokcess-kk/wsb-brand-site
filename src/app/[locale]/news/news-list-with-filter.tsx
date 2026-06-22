@@ -10,6 +10,7 @@ import { MotionCard } from "@/components/motion/motion-card";
 import { NewsThumbnail } from "@/components/sections/news-thumbnail";
 import { TabFilter, type TabItem } from "@/components/motion/tab-filter";
 import { truncateSummary } from "@/lib/truncate";
+import { formatKstDate } from "@/lib/datetime";
 import type { NewsPost } from "@/db/schema";
 
 const ALL = "__all__";
@@ -96,9 +97,7 @@ function NewsCard({
 
       <div className="flex items-center gap-4">
         <p className="mono-label text-[10px] text-structural/65">
-          {post.publishedAt
-            ? new Date(post.publishedAt).toISOString().slice(0, 10)
-            : "—"}
+          {post.publishedAt ? formatKstDate(post.publishedAt) : "—"}
         </p>
         <span aria-hidden className="h-px w-3 bg-structural/30" />
         <p className="mono-label text-[10px] text-primary">{post.category}</p>

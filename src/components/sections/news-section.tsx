@@ -14,6 +14,7 @@ import { NewsThumbnail } from "@/components/sections/news-thumbnail";
 import { SectionEyebrow } from "@/components/layout/section-eyebrow";
 import { Lede } from "@/components/layout/lede";
 import { truncateSummary } from "@/lib/truncate";
+import { formatKstYearMonth } from "@/lib/datetime";
 
 type Item = {
   date: string;
@@ -26,8 +27,7 @@ type Item = {
 
 /** Map a published post to the teaser card shape for the active locale. */
 function toItem(post: NewsPost, locale: string): Item {
-  const d = post.publishedAt ?? post.createdAt;
-  const date = `${d.getFullYear()}.${String(d.getMonth() + 1).padStart(2, "0")}`;
+  const date = formatKstYearMonth(post.publishedAt ?? post.createdAt);
   const en = locale === "en";
   return {
     date,

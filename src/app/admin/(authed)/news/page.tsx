@@ -4,6 +4,7 @@ import { AdminHeader } from "@/components/admin/admin-header";
 import { AdminPage } from "@/components/admin/admin-page";
 import { NewsFilters } from "@/components/admin/news-filters";
 import { NewsPublishToggle } from "@/components/admin/news-publish-toggle";
+import { formatKstDate } from "@/lib/datetime";
 import { listNews, listNewsCategories } from "@/lib/news-query";
 import { isDbConfigured } from "@/db/client";
 
@@ -72,9 +73,7 @@ export default async function NewsListPage({
                   className="border-t border-structural/10 transition-colors hover:bg-primary/[0.03]"
                 >
                   <td className="px-3 py-2.5 font-mono text-xs text-structural/65">
-                    {r.publishedAt
-                      ? new Date(r.publishedAt).toISOString().slice(0, 10)
-                      : "—"}
+                    {r.publishedAt ? formatKstDate(r.publishedAt) : "—"}
                   </td>
                   <td className="px-3 py-2.5 font-mono text-xs text-structural/65">
                     {r.slug}

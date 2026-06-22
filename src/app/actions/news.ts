@@ -8,6 +8,7 @@ import { requireAdmin } from "@/lib/admin-auth";
 import { db, isDbConfigured, schema } from "@/db/client";
 import { decodeHtml, parseHtmlMetadata, suggestSlug } from "@/lib/url-metadata";
 import { assertUrlAllowed } from "@/lib/url-safety";
+import { kstDatetimeLocalToDate } from "@/lib/datetime";
 
 const NewsSchema = z.object({
   slug: z
@@ -237,7 +238,9 @@ export async function createOrUpdateNews(
     thumbnailUrl: data.thumbnailUrl || null,
     externalUrl: data.externalUrl || null,
     isPublished: data.isPublished,
-    publishedAt: data.publishedAt ? new Date(data.publishedAt) : null,
+    publishedAt: data.publishedAt
+      ? kstDatetimeLocalToDate(data.publishedAt)
+      : null,
     updatedAt: sql`now()`,
   };
 
