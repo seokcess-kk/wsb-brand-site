@@ -10,6 +10,7 @@ import {
   FadeInSection,
 } from "@/components/motion/fade-in-section";
 import { MotionCard } from "@/components/motion/motion-card";
+import { NewsThumbnail } from "@/components/sections/news-thumbnail";
 import { SectionEyebrow } from "@/components/layout/section-eyebrow";
 import { Lede } from "@/components/layout/lede";
 
@@ -18,6 +19,8 @@ type Item = {
   category: string;
   title: string;
   summary: string;
+  thumbnailUrl?: string | null;
+  externalUrl?: string | null;
 };
 
 /** Map a published post to the teaser card shape for the active locale. */
@@ -30,6 +33,8 @@ function toItem(post: NewsPost, locale: string): Item {
     category: post.category,
     title: (en && post.titleEn) || post.titleKo,
     summary: (en && post.summaryEn) || post.summaryKo,
+    thumbnailUrl: post.thumbnailUrl,
+    externalUrl: post.externalUrl,
   };
 }
 
@@ -114,23 +119,11 @@ function NewsCard({ item }: { item: Item }) {
       as="article"
       className="flex h-full flex-col gap-5 p-8 md:p-10"
     >
-      {/* Structured media well until final press imagery is available. */}
-      <div className="relative aspect-[16/9] overflow-hidden bg-structural/[0.04] transition-colors duration-500 group-hover:bg-structural/[0.07]">
-        <div className="absolute inset-0 bg-grid opacity-70" />
-        <div className="absolute inset-0 flex flex-col items-center justify-center gap-2">
-          <p className="mono-label text-[11px] text-primary">
-            WSB UPDATE
-          </p>
-          <p className="mono-label text-[11px] text-structural/35">
-            {item.category} · {item.date}
-          </p>
-        </div>
-        {/* Corner ticks for the brand frame feel */}
-        <span aria-hidden className="absolute top-2 left-2 h-2 w-2 border-l border-t border-structural/20 transition-colors duration-500 group-hover:border-primary/50" />
-        <span aria-hidden className="absolute top-2 right-2 h-2 w-2 border-r border-t border-structural/20 transition-colors duration-500 group-hover:border-primary/50" />
-        <span aria-hidden className="absolute bottom-2 left-2 h-2 w-2 border-l border-b border-structural/20 transition-colors duration-500 group-hover:border-primary/50" />
-        <span aria-hidden className="absolute bottom-2 right-2 h-2 w-2 border-r border-b border-structural/20 transition-colors duration-500 group-hover:border-primary/50" />
-      </div>
+      <NewsThumbnail
+        src={item.thumbnailUrl}
+        category={item.category}
+        date={item.date}
+      />
 
       {/* Meta row */}
       <div className="flex items-center gap-4">
@@ -149,17 +142,32 @@ function NewsCard({ item }: { item: Item }) {
         {item.summary}
       </p>
 
-      {/* Read more (placeholder link) */}
-      <Link
-        href="/news"
-        className="mt-auto inline-flex items-center gap-1.5 font-mono text-xs font-medium uppercase tracking-[0.08em] text-primary opacity-70 transition-opacity group-hover:opacity-100"
-      >
-        Read more
-        <ArrowUpRight
-          size={13}
-          className="transition-transform duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5"
-        />
-      </Link>
+      {/* Read more: the article itself when published, otherwise the news list. */}
+      {item.externalUrl ? (
+        <a
+          href={item.externalUrl}
+          target="_blank"
+          rel="noopener noreferrer"
+          className="mt-auto inline-flex items-center gap-1.5 font-mono text-xs font-medium uppercase tracking-[0.08em] text-primary opacity-70 transition-opacity group-hover:opacity-100"
+        >
+          Read more
+          <ArrowUpRight
+            size={13}
+            className="transition-transform duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5"
+          />
+        </a>
+      ) : (
+        <Link
+          href="/news"
+          className="mt-auto inline-flex items-center gap-1.5 font-mono text-xs font-medium uppercase tracking-[0.08em] text-primary opacity-70 transition-opacity group-hover:opacity-100"
+        >
+          Read more
+          <ArrowUpRight
+            size={13}
+            className="transition-transform duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5"
+          />
+        </Link>
+      )}
     </MotionCard>
   );
 }
