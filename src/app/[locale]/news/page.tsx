@@ -83,7 +83,7 @@ export default async function NewsPage({
             <NewsListWithFilter
               posts={posts}
               locale={locale}
-              readMore={t("readMore")}
+              viewDetail={t("viewDetail")}
               allLabel={t("filterAll")}
             />
           )}

@@ -56,6 +56,29 @@ export async function listRecentPublished(limit?: number): Promise<NewsPost[]> {
   }
 }
 
+/** A single published post by slug, for the public detail page. Null if missing or unpublished. */
+export async function getPublishedNewsBySlug(
+  slug: string,
+): Promise<NewsPost | null> {
+  if (!isDbConfigured()) return null;
+  try {
+    const [row] = await db()
+      .select()
+      .from(schema.newsPosts)
+      .where(
+        and(
+          eq(schema.newsPosts.slug, slug),
+          eq(schema.newsPosts.isPublished, true),
+        ),
+      )
+      .limit(1);
+    return row ?? null;
+  } catch (err) {
+    console.error("[news-query] getPublishedNewsBySlug failed", err);
+    return null;
+  }
+}
+
 export async function listNewsCategories(): Promise<string[]> {
   if (!isDbConfigured()) return [];
   try {

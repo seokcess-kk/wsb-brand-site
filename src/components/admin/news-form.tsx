@@ -297,6 +297,13 @@ export function NewsForm({
           filled={filled.has("summaryKo")}
           error={state.fieldErrors?.summaryKo}
         />
+        <Textarea
+          label="BODY (선택)"
+          name="bodyKo"
+          rows={10}
+          defaultValue={post?.bodyKo ?? ""}
+          placeholder="상세 페이지에 전체 기사 본문을 보여주려면 입력하세요. 비워두면 요약과 원문보기 링크만 노출됩니다. 빈 줄로 문단을 구분합니다."
+        />
       </Section>
 
       {/* English content */}
@@ -311,6 +318,12 @@ export function NewsForm({
           name="summaryEn"
           rows={3}
           defaultValue={post?.summaryEn ?? ""}
+        />
+        <Textarea
+          label="BODY (optional)"
+          name="bodyEn"
+          rows={10}
+          defaultValue={post?.bodyEn ?? ""}
         />
       </Section>
 

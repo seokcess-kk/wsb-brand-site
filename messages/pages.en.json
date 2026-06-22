@@ -396,7 +396,11 @@
     },
     "empty": "No press releases yet.",
     "readMore": "Read more",
-    "filterAll": "All"
+    "filterAll": "All",
+    "viewDetail": "View article",
+    "readOriginal": "Read the original",
+    "backToList": "All news",
+    "notFound": "That update could not be found."
   },
   "contact": {
     "hero": {

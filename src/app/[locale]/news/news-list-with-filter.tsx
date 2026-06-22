@@ -11,6 +11,7 @@ import { NewsThumbnail } from "@/components/sections/news-thumbnail";
 import { TabFilter, type TabItem } from "@/components/motion/tab-filter";
 import { truncateSummary } from "@/lib/truncate";
 import { formatKstDate } from "@/lib/datetime";
+import { Link } from "@/i18n/navigation";
 import type { NewsPost } from "@/db/schema";
 
 const ALL = "__all__";
@@ -18,7 +19,7 @@ const ALL = "__all__";
 type Props = {
   posts: NewsPost[];
   locale: string;
-  readMore: string;
+  viewDetail: string;
   allLabel: string;
 };
 
@@ -30,7 +31,7 @@ type Props = {
 export function NewsListWithFilter({
   posts,
   locale,
-  readMore,
+  viewDetail,
   allLabel,
 }: Props) {
   const [active, setActive] = useState<string>(ALL);
@@ -64,7 +65,7 @@ export function NewsListWithFilter({
       >
         {filtered.map((p) => (
           <FadeInItem key={p.id} className="h-full">
-            <NewsCard post={p} locale={locale} readMore={readMore} />
+            <NewsCard post={p} locale={locale} viewDetail={viewDetail} />
           </FadeInItem>
         ))}
       </FadeInSection>
@@ -75,24 +76,29 @@ export function NewsListWithFilter({
 function NewsCard({
   post,
   locale,
-  readMore,
+  viewDetail,
 }: {
   post: NewsPost;
   locale: string;
-  readMore: string;
+  viewDetail: string;
 }) {
   const isKo = locale === "ko";
   const title = isKo ? post.titleKo : post.titleEn || post.titleKo;
   const summarySource = isKo ? post.summaryKo : post.summaryEn || post.summaryKo;
   const { text: summary, truncated } = truncateSummary(summarySource);
-  const moreClass =
-    "whitespace-nowrap font-medium text-primary transition-opacity hover:opacity-80";
 
   return (
     <MotionCard
       as="article"
       className="flex h-full flex-col gap-5 p-8 md:p-10"
     >
+      {/* Stretched link: the whole card opens the detail page. */}
+      <Link
+        href={`/news/${post.slug}`}
+        aria-label={title}
+        className="absolute inset-0 z-10"
+      />
+
       <NewsThumbnail src={post.thumbnailUrl} category={post.category} />
 
       <div className="flex items-center gap-4">
@@ -103,45 +109,22 @@ function NewsCard({
         <p className="mono-label text-[10px] text-primary">{post.category}</p>
       </div>
 
-      <h3 className="font-sans text-lg font-bold tracking-tight text-structural">
+      <h3 className="font-sans text-lg font-bold tracking-tight text-structural transition-colors group-hover:text-primary">
         {title}
       </h3>
 
-      {/* Summary, clamped with a "… 더보기" cue (linked only when there is an article). */}
       <p className="text-sm leading-[1.6] text-structural/70">
         {summary}
-        {truncated &&
-          (post.externalUrl ? (
-            <>
-              {" "}
-              <a
-                href={post.externalUrl}
-                target="_blank"
-                rel="noopener noreferrer"
-                className={moreClass}
-              >
-                … 더보기
-              </a>
-            </>
-          ) : (
-            "…"
-          ))}
+        {truncated && "…"}
       </p>
 
-      {!truncated && post.externalUrl ? (
-        <a
-          href={post.externalUrl}
-          target="_blank"
-          rel="noopener noreferrer"
-          className="mt-auto inline-flex items-center gap-1.5 text-sm font-medium text-primary opacity-70 transition-opacity group-hover:opacity-100"
-        >
-          {readMore}
-          <ArrowUpRight
-            size={13}
-            className="transition-transform duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5"
-          />
-        </a>
-      ) : null}
+      <span className="mt-auto inline-flex items-center gap-1.5 text-sm font-medium text-primary opacity-70 transition-opacity group-hover:opacity-100">
+        {viewDetail}
+        <ArrowUpRight
+          size={13}
+          className="transition-transform duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5"
+        />
+      </span>
     </MotionCard>
   );
 }

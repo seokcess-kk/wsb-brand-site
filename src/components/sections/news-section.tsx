@@ -22,7 +22,8 @@ type Item = {
   title: string;
   summary: string;
   thumbnailUrl?: string | null;
-  externalUrl?: string | null;
+  /** Present for real posts; the whole card links to /news/[slug]. */
+  slug?: string;
 };
 
 /** Map a published post to the teaser card shape for the active locale. */
@@ -35,7 +36,7 @@ function toItem(post: NewsPost, locale: string): Item {
     title: (en && post.titleEn) || post.titleKo,
     summary: (en && post.summaryEn) || post.summaryKo,
     thumbnailUrl: post.thumbnailUrl,
-    externalUrl: post.externalUrl,
+    slug: post.slug,
   };
 }
 
@@ -105,7 +106,7 @@ export async function NewsSection() {
         >
           {items.map((item) => (
             <FadeInItem key={item.title} className="h-full">
-              <NewsCard item={item} />
+              <NewsCard item={item} viewDetail={t("viewDetail")} />
             </FadeInItem>
           ))}
         </FadeInSection>
@@ -114,16 +115,23 @@ export async function NewsSection() {
   );
 }
 
-function NewsCard({ item }: { item: Item }) {
+function NewsCard({ item, viewDetail }: { item: Item; viewDetail: string }) {
   const { text: summaryText, truncated } = truncateSummary(item.summary);
-  const moreClass =
-    "whitespace-nowrap font-medium text-primary transition-opacity hover:opacity-80";
+  // Real posts open their detail page; placeholder items fall back to the list.
+  const href = item.slug ? `/news/${item.slug}` : "/news";
 
   return (
     <MotionCard
       as="article"
       className="flex h-full flex-col gap-5 p-8 md:p-10"
     >
+      {/* Stretched link: the whole card opens the detail page. */}
+      <Link
+        href={href}
+        aria-label={item.title}
+        className="absolute inset-0 z-10"
+      />
+
       <NewsThumbnail
         src={item.thumbnailUrl}
         category={item.category}
@@ -138,63 +146,23 @@ function NewsCard({ item }: { item: Item }) {
       </div>
 
       {/* Title */}
-      <h3 className="font-sans text-lg font-bold tracking-tight text-structural">
+      <h3 className="font-sans text-lg font-bold tracking-tight text-structural transition-colors group-hover:text-primary">
         {item.title}
       </h3>
 
-      {/* Summary, clamped with a "… 더보기" cue when it runs long. */}
+      {/* Summary, clamped with a plain ellipsis (the card itself is the link). */}
       <p className="text-base leading-[1.6] text-structural/70">
         {summaryText}
-        {truncated &&
-          (item.externalUrl ? (
-            <>
-              {" "}
-              <a
-                href={item.externalUrl}
-                target="_blank"
-                rel="noopener noreferrer"
-                className={moreClass}
-              >
-                … 더보기
-              </a>
-            </>
-          ) : (
-            <>
-              {" "}
-              <Link href="/news" className={moreClass}>
-                … 더보기
-              </Link>
-            </>
-          ))}
+        {truncated && "…"}
       </p>
 
-      {/* Persistent CTA when the summary fits and has no inline 더보기 cue. */}
-      {!truncated &&
-        (item.externalUrl ? (
-          <a
-            href={item.externalUrl}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="mt-auto inline-flex items-center gap-1.5 font-mono text-xs font-medium uppercase tracking-[0.08em] text-primary opacity-70 transition-opacity group-hover:opacity-100"
-          >
-            Read more
-            <ArrowUpRight
-              size={13}
-              className="transition-transform duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5"
-            />
-          </a>
-        ) : (
-          <Link
-            href="/news"
-            className="mt-auto inline-flex items-center gap-1.5 font-mono text-xs font-medium uppercase tracking-[0.08em] text-primary opacity-70 transition-opacity group-hover:opacity-100"
-          >
-            Read more
-            <ArrowUpRight
-              size={13}
-              className="transition-transform duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5"
-            />
-          </Link>
-        ))}
+      <span className="mt-auto inline-flex items-center gap-1.5 font-mono text-xs font-medium uppercase tracking-[0.08em] text-primary opacity-70 transition-opacity group-hover:opacity-100">
+        {viewDetail}
+        <ArrowUpRight
+          size={13}
+          className="transition-transform duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5"
+        />
+      </span>
     </MotionCard>
   );
 }
