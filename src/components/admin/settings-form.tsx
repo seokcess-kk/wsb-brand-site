@@ -15,8 +15,8 @@ export function SettingsForm({
   const [state, formAction] = useActionState(saveNotifyEmails, INITIAL);
 
   return (
-    <form action={formAction} className="space-y-8 max-w-2xl">
-      <section className="space-y-5">
+    <form action={formAction} className="space-y-6 max-w-2xl">
+      <section className="space-y-4">
         <div className="flex items-center gap-3">
           <span aria-hidden className="h-px w-6 bg-primary" />
           <h2 className="font-mono text-[11px] font-medium uppercase tracking-[0.08em] text-primary">
@@ -68,7 +68,7 @@ function SaveButton() {
     <button
       type="submit"
       disabled={pending}
-      className="inline-flex items-center gap-2 bg-primary px-6 py-3 text-sm font-medium text-canvas transition-opacity hover:opacity-90 disabled:opacity-50"
+      className="inline-flex items-center gap-2 bg-primary px-5 py-2.5 text-sm font-medium text-canvas transition-opacity hover:opacity-90 disabled:opacity-50"
     >
       <Save size={14} />
       {pending ? "저장 중..." : "변경 저장"}

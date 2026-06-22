@@ -39,7 +39,7 @@ export function InquiryActions({
   }
 
   const btn =
-    "inline-flex items-center gap-2 px-4 py-2 text-sm transition-colors disabled:opacity-50";
+    "inline-flex items-center gap-2 px-3.5 py-2 text-sm transition-colors disabled:opacity-50";
 
   return (
     <div className="space-y-3">

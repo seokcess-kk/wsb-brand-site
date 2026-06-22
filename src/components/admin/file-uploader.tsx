@@ -30,7 +30,7 @@ export function FileUploader({ disabled }: { disabled?: boolean }) {
     <form
       ref={formRef}
       action={handleSubmit}
-      className="flex flex-wrap items-end gap-4 border border-structural/10 bg-canvas p-6"
+      className="flex flex-wrap items-end gap-3 border border-structural/10 bg-canvas p-4"
     >
       <div className="space-y-2">
         <label

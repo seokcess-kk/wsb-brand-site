@@ -2,6 +2,7 @@ import { eq } from "drizzle-orm";
 import { notFound } from "next/navigation";
 import { db, isDbConfigured, schema } from "@/db/client";
 import { AdminHeader } from "@/components/admin/admin-header";
+import { AdminPage } from "@/components/admin/admin-page";
 import { NewsForm } from "@/components/admin/news-form";
 import { listNewsCategories } from "@/lib/news-query";
 
@@ -18,7 +19,7 @@ export default async function EditNewsPage({
 
   if (!isDbConfigured()) {
     return (
-      <div className="px-10 py-10">
+      <div className="px-6 py-7 md:px-8">
         <p className="text-sm text-structural/65">DATABASE_URL이 설정되지 않았습니다.</p>
       </div>
     );
@@ -35,13 +36,13 @@ export default async function EditNewsPage({
   const categories = await listNewsCategories();
 
   return (
-    <div className="px-10 py-10 space-y-10">
+    <AdminPage>
       <AdminHeader
         tag="EDIT NEWS POST"
         title={post.titleKo}
         meta={`01 / ID ${post.id}`}
       />
       <NewsForm post={post} categories={categories} />
-    </div>
+    </AdminPage>
   );
 }

@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { Plus, ExternalLink } from "lucide-react";
 import { AdminHeader } from "@/components/admin/admin-header";
+import { AdminPage } from "@/components/admin/admin-page";
 import { NewsFilters } from "@/components/admin/news-filters";
 import { NewsPublishToggle } from "@/components/admin/news-publish-toggle";
 import { listNews, listNewsCategories } from "@/lib/news-query";
@@ -23,7 +24,7 @@ export default async function NewsListPage({
   ]);
 
   return (
-    <div className="px-10 py-10 space-y-8">
+    <AdminPage>
       <AdminHeader
         tag="NEWS POSTS"
         title="보도자료"
@@ -31,7 +32,7 @@ export default async function NewsListPage({
         action={
           <Link
             href="/admin/news/new"
-            className="inline-flex items-center gap-2 bg-primary px-4 py-2 text-sm text-canvas transition-opacity hover:opacity-90"
+            className="inline-flex items-center gap-2 bg-primary px-3.5 py-2 text-sm text-canvas transition-opacity hover:opacity-90"
           >
             <Plus size={14} />
             새 글
@@ -56,12 +57,12 @@ export default async function NewsListPage({
           <table className="w-full text-sm">
             <thead>
               <tr className="bg-structural/[0.04] text-left font-mono text-[10px] font-medium uppercase tracking-[0.08em] text-structural/65">
-                <th className="px-4 py-3">Date</th>
-                <th className="px-4 py-3">Slug</th>
-                <th className="px-4 py-3">Title (KO)</th>
-                <th className="px-4 py-3">Category</th>
-                <th className="px-4 py-3">Status</th>
-                <th className="px-4 py-3">Preview</th>
+                <th className="px-3 py-2.5">Date</th>
+                <th className="px-3 py-2.5">Slug</th>
+                <th className="px-3 py-2.5">Title (KO)</th>
+                <th className="px-3 py-2.5">Category</th>
+                <th className="px-3 py-2.5">Status</th>
+                <th className="px-3 py-2.5">Preview</th>
               </tr>
             </thead>
             <tbody>
@@ -70,15 +71,15 @@ export default async function NewsListPage({
                   key={r.id}
                   className="border-t border-structural/10 transition-colors hover:bg-primary/[0.03]"
                 >
-                  <td className="px-4 py-4 font-mono text-xs text-structural/65">
+                  <td className="px-3 py-2.5 font-mono text-xs text-structural/65">
                     {r.publishedAt
                       ? new Date(r.publishedAt).toISOString().slice(0, 10)
                       : "—"}
                   </td>
-                  <td className="px-4 py-4 font-mono text-xs text-structural/65">
+                  <td className="px-3 py-2.5 font-mono text-xs text-structural/65">
                     {r.slug}
                   </td>
-                  <td className="px-4 py-4">
+                  <td className="px-3 py-2.5">
                     <Link
                       href={`/admin/news/${r.id}`}
                       className="font-medium text-structural hover:text-primary"
@@ -86,11 +87,11 @@ export default async function NewsListPage({
                       {r.titleKo}
                     </Link>
                   </td>
-                  <td className="px-4 py-4 text-structural/65">{r.category}</td>
-                  <td className="px-4 py-4">
+                  <td className="px-3 py-2.5 text-structural/65">{r.category}</td>
+                  <td className="px-3 py-2.5">
                     <NewsPublishToggle id={r.id} isPublished={r.isPublished} />
                   </td>
-                  <td className="px-4 py-4">
+                  <td className="px-3 py-2.5">
                     {r.isPublished ? (
                       <a
                         href="/news"
@@ -111,6 +112,6 @@ export default async function NewsListPage({
           </table>
         </div>
       )}
-    </div>
+    </AdminPage>
   );
 }

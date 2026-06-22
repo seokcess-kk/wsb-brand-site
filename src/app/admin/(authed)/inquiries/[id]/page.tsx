@@ -2,6 +2,7 @@ import { eq } from "drizzle-orm";
 import { notFound } from "next/navigation";
 import { db, isDbConfigured, schema } from "@/db/client";
 import { AdminHeader } from "@/components/admin/admin-header";
+import { AdminPage } from "@/components/admin/admin-page";
 import { StatusBadge } from "@/components/admin/status-badge";
 import { CopyButton } from "@/components/admin/copy-button";
 import { MarkRead } from "@/components/admin/mark-read";
@@ -21,7 +22,7 @@ export default async function InquiryDetailPage({
 
   if (!isDbConfigured()) {
     return (
-      <div className="px-10 py-10">
+      <div className="px-6 py-7 md:px-8">
         <p className="text-sm text-structural/65">
           DATABASE_URL이 설정되지 않았습니다.
         </p>
@@ -45,7 +46,7 @@ export default async function InquiryDetailPage({
   });
 
   return (
-    <div className="px-10 py-10 space-y-10">
+    <AdminPage>
       {row.status === "new" && <MarkRead id={row.id} />}
 
       <AdminHeader
@@ -87,7 +88,7 @@ export default async function InquiryDetailPage({
           {row.message}
         </p>
       </section>
-    </div>
+    </AdminPage>
   );
 }
 
@@ -99,11 +100,11 @@ function DetailField({
   children: React.ReactNode;
 }) {
   return (
-    <div className="bg-canvas p-5">
+    <div className="bg-canvas p-4">
       <dt className="font-mono text-[10px] font-medium uppercase tracking-[0.08em] text-structural/65">
         {label}
       </dt>
-      <dd className="mt-2 text-sm text-structural/85">{children}</dd>
+      <dd className="mt-1.5 text-sm text-structural/85">{children}</dd>
     </div>
   );
 }

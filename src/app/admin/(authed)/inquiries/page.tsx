@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { Download } from "lucide-react";
 import { AdminHeader } from "@/components/admin/admin-header";
+import { AdminPage } from "@/components/admin/admin-page";
 import { StatusBadge } from "@/components/admin/status-badge";
 import { InquiryFilters } from "@/components/admin/inquiry-filters";
 import { listInquiries } from "@/lib/inquiries-query";
@@ -30,7 +31,7 @@ export default async function InquiriesPage({
   }
 
   return (
-    <div className="px-10 py-10 space-y-8">
+    <AdminPage>
       <AdminHeader
         tag="PARTNERSHIP INQUIRIES"
         title="문의 내역"
@@ -38,7 +39,7 @@ export default async function InquiriesPage({
         action={
           <Link
             href="/admin/inquiries/export"
-            className="inline-flex items-center gap-2 border border-structural/20 px-4 py-2 text-sm text-structural transition-colors hover:border-primary hover:text-primary"
+            className="inline-flex items-center gap-2 border border-structural/20 px-3.5 py-2 text-sm text-structural transition-colors hover:border-primary hover:text-primary"
           >
             <Download size={14} />
             CSV
@@ -64,12 +65,12 @@ export default async function InquiriesPage({
             <table className="w-full text-sm">
               <thead>
                 <tr className="bg-structural/[0.04] text-left font-mono text-[10px] font-medium uppercase tracking-[0.08em] text-structural/65">
-                  <th className="px-4 py-3">Date</th>
-                  <th className="px-4 py-3">Company</th>
-                  <th className="px-4 py-3">Name</th>
-                  <th className="px-4 py-3">Category</th>
-                  <th className="px-4 py-3">Message</th>
-                  <th className="px-4 py-3">Status</th>
+                  <th className="px-3 py-2.5">Date</th>
+                  <th className="px-3 py-2.5">Company</th>
+                  <th className="px-3 py-2.5">Name</th>
+                  <th className="px-3 py-2.5">Category</th>
+                  <th className="px-3 py-2.5">Message</th>
+                  <th className="px-3 py-2.5">Status</th>
                 </tr>
               </thead>
               <tbody>
@@ -78,10 +79,10 @@ export default async function InquiriesPage({
                     key={r.id}
                     className="border-t border-structural/10 transition-colors hover:bg-primary/[0.03]"
                   >
-                    <td className="px-4 py-4 font-mono text-xs text-structural/65">
+                    <td className="px-3 py-2.5 font-mono text-xs text-structural/65">
                       {new Date(r.createdAt).toISOString().slice(0, 16).replace("T", " ")}
                     </td>
-                    <td className="px-4 py-4 font-medium text-structural">
+                    <td className="px-3 py-2.5 font-medium text-structural">
                       <Link
                         href={`/admin/inquiries/${r.id}`}
                         className="hover:text-primary"
@@ -89,12 +90,12 @@ export default async function InquiriesPage({
                         {r.company}
                       </Link>
                     </td>
-                    <td className="px-4 py-4 text-structural/85">{r.name}</td>
-                    <td className="px-4 py-4 text-structural/85">{r.category}</td>
-                    <td className="px-4 py-4 max-w-xs truncate text-structural/65" title={r.message}>
+                    <td className="px-3 py-2.5 text-structural/85">{r.name}</td>
+                    <td className="px-3 py-2.5 text-structural/85">{r.category}</td>
+                    <td className="px-3 py-2.5 max-w-xs truncate text-structural/65" title={r.message}>
                       {r.message}
                     </td>
-                    <td className="px-4 py-4">
+                    <td className="px-3 py-2.5">
                       <StatusBadge status={r.status} />
                     </td>
                   </tr>
@@ -136,6 +137,6 @@ export default async function InquiriesPage({
           )}
         </>
       )}
-    </div>
+    </AdminPage>
   );
 }

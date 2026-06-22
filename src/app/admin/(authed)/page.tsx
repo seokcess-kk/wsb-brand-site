@@ -4,6 +4,7 @@ import { ArrowUpRight } from "lucide-react";
 import { db, isDbConfigured, schema } from "@/db/client";
 import { listRecentInquiries } from "@/lib/inquiries-query";
 import { AdminHeader } from "@/components/admin/admin-header";
+import { AdminPage } from "@/components/admin/admin-page";
 import { StatusBadge } from "@/components/admin/status-badge";
 import { QuickArchiveButton } from "@/components/admin/quick-archive-button";
 
@@ -38,7 +39,7 @@ export default async function AdminDashboard() {
   ]);
 
   return (
-    <div className="px-10 py-10 space-y-10">
+    <AdminPage>
       <AdminHeader
         tag="DASHBOARD"
         title="Overview"
@@ -70,7 +71,7 @@ export default async function AdminDashboard() {
         />
       </dl>
 
-      <section className="space-y-4">
+      <section className="space-y-3">
         <h2 className="font-mono text-[11px] font-medium uppercase tracking-[0.08em] text-structural/65">
           QUICK ACTIONS
         </h2>
@@ -88,7 +89,7 @@ export default async function AdminDashboard() {
         </div>
       </section>
 
-      <section className="space-y-4">
+      <section className="space-y-3">
         <h2 className="font-mono text-[11px] font-medium uppercase tracking-[0.08em] text-structural/65">
           RECENT INQUIRIES
         </h2>
@@ -101,12 +102,12 @@ export default async function AdminDashboard() {
                 {recent.map((r) => (
                   <tr
                     key={r.id}
-                    className="border-t border-structural/10 first:border-t-0"
+                    className="border-t border-structural/10 first:border-t-0 transition-colors hover:bg-primary/[0.03]"
                   >
-                    <td className="px-4 py-3 font-mono text-xs text-structural/65">
+                    <td className="px-3 py-2.5 font-mono text-xs text-structural/65">
                       {new Date(r.createdAt).toISOString().slice(0, 10)}
                     </td>
-                    <td className="px-4 py-3">
+                    <td className="px-3 py-2.5">
                       <Link
                         href={`/admin/inquiries/${r.id}`}
                         className="font-medium text-structural hover:text-primary"
@@ -114,11 +115,11 @@ export default async function AdminDashboard() {
                         {r.company}
                       </Link>
                     </td>
-                    <td className="px-4 py-3 text-structural/65">{r.category}</td>
-                    <td className="px-4 py-3">
+                    <td className="px-3 py-2.5 text-structural/65">{r.category}</td>
+                    <td className="px-3 py-2.5">
                       <StatusBadge status={r.status} />
                     </td>
-                    <td className="px-4 py-3 text-right">
+                    <td className="px-3 py-2.5 text-right">
                       {r.status !== "archived" && <QuickArchiveButton id={r.id} />}
                     </td>
                   </tr>
@@ -128,7 +129,7 @@ export default async function AdminDashboard() {
           </div>
         )}
       </section>
-    </div>
+    </AdminPage>
   );
 }
 
@@ -146,10 +147,10 @@ function StatCard({
   return (
     <Link
       href={href}
-      className="group bg-canvas p-8 transition-colors hover:bg-primary/[0.03]"
+      className="group bg-canvas p-5 transition-colors hover:bg-primary/[0.03]"
     >
       <div className="flex items-center justify-between">
-        <p className="font-mono text-[11px] font-medium uppercase tracking-[0.08em] text-structural/65">
+        <p className="font-mono text-[10px] font-medium uppercase tracking-[0.08em] text-structural/65">
           {label}
         </p>
         <ArrowUpRight
@@ -158,10 +159,10 @@ function StatCard({
         />
       </div>
       <p
-        className={`mt-5 font-sans font-extrabold tracking-tight leading-none ${
+        className={`mt-3 font-sans font-extrabold tracking-tight leading-none ${
           accent ? "text-primary" : "text-structural"
         }`}
-        style={{ fontSize: "2.5rem" }}
+        style={{ fontSize: "1.875rem" }}
       >
         {value}
       </p>
@@ -181,18 +182,18 @@ function QuickLink({
   return (
     <Link
       href={href}
-      className="group bg-canvas p-6 transition-colors hover:bg-primary/[0.03]"
+      className="group bg-canvas p-4 transition-colors hover:bg-primary/[0.03]"
     >
       <div className="flex items-start justify-between gap-4">
         <div>
-          <p className="font-sans text-base font-semibold text-structural">
+          <p className="font-sans text-sm font-semibold text-structural">
             {title}
           </p>
-          <p className="mt-1 text-sm text-structural/65">{body}</p>
+          <p className="mt-1 text-xs text-structural/65">{body}</p>
         </div>
         <ArrowUpRight
           size={14}
-          className="mt-1 flex-none text-structural/30 transition-all group-hover:text-primary"
+          className="mt-0.5 flex-none text-structural/30 transition-all group-hover:text-primary"
         />
       </div>
     </Link>

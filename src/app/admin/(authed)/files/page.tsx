@@ -1,4 +1,5 @@
 import { AdminHeader } from "@/components/admin/admin-header";
+import { AdminPage } from "@/components/admin/admin-page";
 import { listFiles } from "@/app/actions/files";
 import { FileUploader } from "@/components/admin/file-uploader";
 import { fileKindLabel } from "@/lib/file-kinds";
@@ -11,7 +12,7 @@ export default async function FilesPage() {
   const blobReady = Boolean(process.env.BLOB_READ_WRITE_TOKEN);
 
   return (
-    <div className="px-10 py-10 space-y-10">
+    <AdminPage>
       <AdminHeader
         tag="UPLOADED FILES"
         title="첨부 파일"
@@ -36,23 +37,23 @@ export default async function FilesPage() {
           <table className="w-full text-sm">
             <thead>
               <tr className="bg-structural/[0.04] text-left font-mono text-[10px] font-medium uppercase tracking-[0.08em] text-structural/65">
-                <th className="px-4 py-3">Uploaded</th>
-                <th className="px-4 py-3">Kind</th>
-                <th className="px-4 py-3">Filename</th>
-                <th className="px-4 py-3">Actions</th>
+                <th className="px-3 py-2.5">Uploaded</th>
+                <th className="px-3 py-2.5">Kind</th>
+                <th className="px-3 py-2.5">Filename</th>
+                <th className="px-3 py-2.5">Actions</th>
               </tr>
             </thead>
             <tbody>
               {rows.map((r) => (
-                <tr key={r.id} className="border-t border-structural/10">
-                  <td className="px-4 py-3 font-mono text-xs text-structural/65">
+                <tr key={r.id} className="border-t border-structural/10 transition-colors hover:bg-primary/[0.03]">
+                  <td className="px-3 py-2.5 font-mono text-xs text-structural/65">
                     {new Date(r.createdAt).toISOString().slice(0, 10)}
                   </td>
-                  <td className="px-4 py-3 text-xs text-structural/65">
+                  <td className="px-3 py-2.5 text-xs text-structural/65">
                     {fileKindLabel(r.kind)}
                   </td>
-                  <td className="px-4 py-3 text-structural">{r.filename}</td>
-                  <td className="px-4 py-3">
+                  <td className="px-3 py-2.5 text-structural">{r.filename}</td>
+                  <td className="px-3 py-2.5">
                     <FileRowActions id={r.id} url={r.url} />
                   </td>
                 </tr>
@@ -61,6 +62,6 @@ export default async function FilesPage() {
           </table>
         </div>
       )}
-    </div>
+    </AdminPage>
   );
 }

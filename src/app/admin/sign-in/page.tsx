@@ -42,7 +42,7 @@ export default async function SignInPage({
           등록된 관리자 계정으로 로그인하세요.
         </p>
 
-        <form action={action} className="mt-8 space-y-5">
+        <form action={action} className="mt-7 space-y-5">
           <input type="hidden" name="callbackUrl" value={callbackUrl ?? ""} />
 
           <Field name="email" label="EMAIL" type="email" required />
@@ -59,13 +59,13 @@ export default async function SignInPage({
 
           <button
             type="submit"
-            className="w-full bg-structural px-5 py-3 text-sm font-medium text-canvas transition-opacity hover:opacity-90"
+            className="w-full bg-structural px-5 py-2.5 text-sm font-medium text-canvas transition-opacity hover:opacity-90"
           >
             Sign in
           </button>
         </form>
 
-        <p className="mt-10 font-mono text-[10px] tracking-[0.08em] uppercase text-structural/35">
+        <p className="mt-8 font-mono text-[10px] tracking-[0.08em] uppercase text-structural/35">
           NON-PUBLIC · INDEX BLOCKED
         </p>
       </div>

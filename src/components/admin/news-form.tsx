@@ -124,9 +124,9 @@ export function NewsForm({
   }
 
   return (
-    <form action={formAction} className="space-y-10">
+    <form action={formAction} className="space-y-8">
       {/* Quick fill from a published URL */}
-      <section className="space-y-4 border border-primary/25 bg-primary/[0.03] p-6">
+      <section className="space-y-4 border border-primary/25 bg-primary/[0.03] p-5">
         <div className="flex items-center gap-3">
           <span aria-hidden className="h-px w-6 bg-primary" />
           <h2 className="font-mono text-[11px] font-medium uppercase tracking-[0.08em] text-primary">
@@ -179,7 +179,7 @@ export function NewsForm({
 
       {/* Meta block */}
       <Section title="META">
-        <div className="grid gap-6 md:grid-cols-2">
+        <div className="grid gap-5 md:grid-cols-2">
           <Field
             label="SLUG"
             name="slug"
@@ -366,7 +366,7 @@ function SaveButton({ hasPost }: { hasPost: boolean }) {
     <button
       type="submit"
       disabled={pending}
-      className="ml-auto inline-flex items-center gap-2 bg-primary px-6 py-3 text-sm font-medium text-canvas transition-opacity hover:opacity-90 disabled:opacity-50"
+      className="ml-auto inline-flex items-center gap-2 bg-primary px-5 py-2.5 text-sm font-medium text-canvas transition-opacity hover:opacity-90 disabled:opacity-50"
     >
       <Save size={14} />
       {pending ? "저장 중..." : hasPost ? "변경 저장" : "새 글 등록"}
@@ -382,7 +382,7 @@ function Section({
   children: React.ReactNode;
 }) {
   return (
-    <section className="space-y-5">
+    <section className="space-y-4">
       <div className="flex items-center gap-3">
         <span aria-hidden className="h-px w-6 bg-primary" />
         <h2 className="font-mono text-[11px] font-medium uppercase tracking-[0.08em] text-primary">
