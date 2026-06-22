@@ -13,6 +13,7 @@ export type ParsedMetadata = {
   image: string | null;
   publishedTime: string | null;
   siteName: string | null;
+  section: string | null;
 };
 
 const NAMED_ENTITIES: Record<string, string> = {
@@ -108,6 +109,7 @@ type JsonLdPick = {
   image: string | null;
   datePublished: string | null;
   siteName: string | null;
+  section: string | null;
 };
 
 function pickImageFromJsonLd(value: unknown): string | null {
@@ -152,6 +154,7 @@ function extractJsonLd(html: string): JsonLdPick {
     image: null,
     datePublished: null,
     siteName: null,
+    section: null,
   };
   const re =
     /<script\b[^>]*type=["']application\/ld\+json["'][^>]*>([\s\S]*?)<\/script>/gi;
@@ -199,6 +202,10 @@ function extractJsonLd(html: string): JsonLdPick {
     else if (typeof article.dateCreated === "string")
       result.datePublished = article.dateCreated;
     result.image = pickImageFromJsonLd(article.image);
+    const section = article.articleSection;
+    if (typeof section === "string") result.section = section;
+    else if (Array.isArray(section) && typeof section[0] === "string")
+      result.section = section[0];
     const publisher = article.publisher;
     if (publisher && typeof publisher === "object") {
       const name = (publisher as Record<string, unknown>).name;
@@ -278,12 +285,17 @@ export function parseHtmlMetadata(html: string, baseUrl: string): ParsedMetadata
   const siteName =
     clean(get("og:site_name", "application-name")) ?? clean(jsonLd.siteName);
 
+  const section =
+    clean(get("article:section", "articlesection", "section")) ??
+    clean(jsonLd.section);
+
   return {
     title,
     description,
     image: absolutize(rawImage ? decodeEntities(rawImage) : null, baseUrl),
     publishedTime,
     siteName,
+    section,
   };
 }
 
@@ -341,11 +353,16 @@ export function decodeHtml(bytes: Uint8Array, contentType?: string | null): stri
   return new TextDecoder("utf-8").decode(bytes);
 }
 
-/** Generic path words that make for collision-prone slugs (n.news.naver.com/article/...). */
+/** Generic path words that make for collision-prone slugs (articleView.html, /news/...). */
 const GENERIC_SEGMENTS = new Set([
   "view",
   "article",
   "articles",
+  "articleview",
+  "articledetail",
+  "newsview",
+  "boardview",
+  "detail",
   "news",
   "read",
   "post",
@@ -359,11 +376,59 @@ const GENERIC_SEGMENTS = new Set([
   "p",
 ]);
 
+/** Query keys Korean/legacy CMSs use to carry the real article id (articleView.html?idxno=...). */
+const ID_QUERY_KEYS = [
+  "idxno",
+  "idx",
+  "id",
+  "no",
+  "seq",
+  "aid",
+  "artid",
+  "articleid",
+  "article_id",
+  "articleno",
+  "nttid",
+  "bbsidx",
+  "wr_id",
+  "documentid",
+  "contentid",
+  "newsid",
+];
+
+function sanitizeSegment(raw: string): string {
+  let s = raw;
+  try {
+    s = decodeURIComponent(raw);
+  } catch {
+    // keep the raw segment when it is not valid percent-encoding
+  }
+  return s
+    .replace(/\.(html?|php|aspx?|jsp)$/i, "")
+    .toLowerCase()
+    .replace(/[^a-z0-9]+/g, "-")
+    .replace(/^-+|-+$/g, "");
+}
+
+function queryId(url: URL): string | null {
+  for (const key of ID_QUERY_KEYS) {
+    const value = url.searchParams.get(key);
+    if (value) {
+      const cleaned = value
+        .toLowerCase()
+        .replace(/[^a-z0-9]+/g, "-")
+        .replace(/^-+|-+$/g, "");
+      if (cleaned.length >= 2) return cleaned.slice(0, 40);
+    }
+  }
+  return null;
+}
+
 /**
- * Best-effort slug suggestion from a URL. Prefers the last meaningful path
- * segment (numeric article IDs are valid and unique, so they are kept), skips
- * generic words like "article"/"view", and falls back to the host label.
- * Always shown in an editable field, so the admin can override it.
+ * Best-effort slug suggestion from a URL. Order: a descriptive non-generic path
+ * segment, then a host+query-id pair for CMS pages whose unique id lives in the
+ * query string (cbci.co.kr/news/articleView.html?idxno=583344 -> cbci-583344),
+ * then a non-generic numeric segment, then the host label. Always editable.
  */
 export function suggestSlug(rawUrl: string): string {
   let url: URL;
@@ -376,33 +441,38 @@ export function suggestSlug(rawUrl: string): string {
   const segments = url.pathname
     .split("/")
     .filter(Boolean)
-    .map((raw) => {
-      let s = raw;
-      try {
-        s = decodeURIComponent(raw);
-      } catch {
-        // keep the raw segment if it is not valid percent-encoding
-      }
-      return s
-        .replace(/\.(html?|php|aspx?|jsp)$/i, "")
-        .toLowerCase()
-        .replace(/[^a-z0-9]+/g, "-")
-        .replace(/^-+|-+$/g, "");
-    })
+    .map(sanitizeSegment)
     .filter((s) => s.length > 0);
+  const hostLabel = (url.hostname.replace(/^www\./, "").split(".")[0] ?? "")
+    .toLowerCase()
+    .replace(/[^a-z0-9]+/g, "-");
+  const id = queryId(url);
+  const trim = (s: string) => s.slice(0, 80).replace(/-+$/, "");
 
+  // 1. A descriptive, non-generic path segment that reads like a real slug.
   for (let i = segments.length - 1; i >= 0; i--) {
     const seg = segments[i];
-    if (seg.length >= 3 && !GENERIC_SEGMENTS.has(seg)) {
-      return seg.slice(0, 80).replace(/-+$/, "");
+    if (seg.length >= 3 && !GENERIC_SEGMENTS.has(seg) && /[a-z]/.test(seg)) {
+      return trim(seg);
     }
   }
 
-  const combined = segments.filter((s) => !GENERIC_SEGMENTS.has(s)).join("-");
-  if (combined.length >= 3) {
-    return combined.slice(0, 80).replace(/-+$/, "");
+  // 2. A CMS-style id in the query string, prefixed by the host for uniqueness.
+  if (id) {
+    return trim(hostLabel ? `${hostLabel}-${id}` : id);
   }
 
-  const host = url.hostname.replace(/^www\./, "").split(".")[0] ?? "";
-  return host.toLowerCase().replace(/[^a-z0-9]+/g, "-") || "";
+  // 3. A non-generic numeric path segment (e.g. a Naver article id).
+  for (let i = segments.length - 1; i >= 0; i--) {
+    const seg = segments[i];
+    if (seg.length >= 3 && !GENERIC_SEGMENTS.has(seg)) {
+      return trim(seg);
+    }
+  }
+
+  // 4. Combined non-generic segments, then the host label.
+  const combined = segments.filter((s) => !GENERIC_SEGMENTS.has(s)).join("-");
+  if (combined.length >= 3) return trim(combined);
+
+  return hostLabel || "";
 }

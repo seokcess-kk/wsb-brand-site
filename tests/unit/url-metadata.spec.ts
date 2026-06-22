@@ -160,3 +160,17 @@ test("suggestSlug keeps unique IDs and skips generic path words", () => {
     "akr20250312001000001",
   );
 });
+
+test("suggestSlug uses the query-string id for CMS articleView pages", () => {
+  // The real id lives in ?idxno=, not the generic articleView path word
+  expect(
+    suggestSlug("https://www.cbci.co.kr/news/articleView.html?idxno=583344"),
+  ).toBe("cbci-583344");
+});
+
+test("extracts the article section for category auto-fill", () => {
+  const metaTag = `<meta property="article:section" content="산업">`;
+  expect(parseHtmlMetadata(metaTag, BASE).section).toBe("산업");
+  const ld = `<script type="application/ld+json">{"@type":"NewsArticle","headline":"x","articleSection":"경제"}</script>`;
+  expect(parseHtmlMetadata(ld, BASE).section).toBe("경제");
+});

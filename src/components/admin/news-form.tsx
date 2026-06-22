@@ -49,6 +49,7 @@ export function NewsForm({
   const [fetchState, setFetchState] = useState<FetchState>(null);
   const [filled, setFilled] = useState<Set<string>>(new Set());
   const [thumbBroken, setThumbBroken] = useState(false);
+  const [published, setPublished] = useState(post?.isPublished ?? false);
 
   const setField = (name: keyof typeof fields, value: string) => {
     setFields((prev) => ({ ...prev, [name]: value }));
@@ -88,10 +89,14 @@ export function NewsForm({
       apply("thumbnailUrl", d.thumbnailUrl);
       apply("externalUrl", d.externalUrl);
       apply("publishedAt", d.publishedAt ? toDatetimeLocal(d.publishedAt) : "");
-      // Never clobber a slug the admin already chose.
+      // Never clobber a slug or category the admin already chose.
       if (!next.slug && d.slug) {
         next.slug = d.slug;
         applied.add("slug");
+      }
+      if (!next.category && d.category) {
+        next.category = d.category;
+        applied.add("category");
       }
 
       setFields(next);
@@ -191,6 +196,7 @@ export function NewsForm({
             required
             value={fields.category}
             onValueChange={(v) => setField("category", v)}
+            filled={filled.has("category")}
             list={categories.length ? "news-categories" : undefined}
             placeholder="Partnership / Certification / Business / Clinical / R&D"
             error={state.fieldErrors?.category}
@@ -222,19 +228,47 @@ export function NewsForm({
           />
           {/* externalUrl is captured by the quick-fill input above and submitted here. */}
           <input type="hidden" name="externalUrl" value={fields.externalUrl} />
-          <div className="flex items-center gap-3 self-end pb-2">
-            <input
-              id="news-published"
-              type="checkbox"
-              name="isPublished"
-              defaultChecked={post?.isPublished ?? false}
-              className="h-4 w-4 cursor-pointer appearance-none border border-structural/30 bg-canvas checked:border-primary checked:bg-primary"
-            />
+          <div className="md:col-span-2">
+            <Label htmlFor="news-published" label="공개 여부" />
             <label
               htmlFor="news-published"
-              className="cursor-pointer text-sm text-structural/80"
+              className="mt-2 flex cursor-pointer items-start gap-3 border border-structural/15 bg-canvas p-4"
             >
-              발행 상태
+              <input
+                id="news-published"
+                type="checkbox"
+                name="isPublished"
+                checked={published}
+                onChange={(e) => setPublished(e.target.checked)}
+                aria-label="공개 여부"
+                className="peer sr-only"
+              />
+              <span
+                aria-hidden
+                className={`mt-0.5 flex h-5 w-9 shrink-0 items-center p-0.5 transition-colors peer-focus-visible:outline peer-focus-visible:outline-2 peer-focus-visible:outline-offset-2 peer-focus-visible:outline-primary ${
+                  published ? "bg-primary" : "bg-structural/25"
+                }`}
+              >
+                <span
+                  className={`h-4 w-4 bg-canvas transition-transform ${
+                    published ? "translate-x-4" : "translate-x-0"
+                  }`}
+                />
+              </span>
+              <span className="min-w-0">
+                <span
+                  className={`block text-sm font-medium ${
+                    published ? "text-primary" : "text-structural"
+                  }`}
+                >
+                  {published ? "공개" : "비공개 · 임시저장"}
+                </span>
+                <span className="mt-0.5 block text-xs leading-relaxed text-structural/55">
+                  {published
+                    ? "저장하면 사이트 News 목록과 홈에 바로 노출됩니다."
+                    : "사이트에 노출되지 않습니다. 작성 후 나중에 공개로 바꿀 수 있습니다."}
+                </span>
+              </span>
             </label>
           </div>
         </div>

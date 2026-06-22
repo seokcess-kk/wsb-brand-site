@@ -56,6 +56,7 @@ export type NewsMetadataData = {
   publishedAt: string;
   siteName: string;
   slug: string;
+  category: string;
 };
 
 export type NewsMetadataResult =
@@ -190,6 +191,7 @@ export async function fetchNewsMetadata(
       publishedAt: meta.publishedTime ?? "",
       siteName: meta.siteName ?? "",
       slug: suggestSlug(finalUrl),
+      category: meta.section ?? "",
     };
 
     const filled: string[] = [];
@@ -198,6 +200,7 @@ export async function fetchNewsMetadata(
     if (data.thumbnailUrl) filled.push("thumbnailUrl");
     if (data.publishedAt) filled.push("publishedAt");
     if (data.slug) filled.push("slug");
+    if (data.category) filled.push("category");
 
     return { ok: true, data, filled };
   } finally {
