@@ -1,5 +1,5 @@
 import { getLocale, getTranslations } from "next-intl/server";
-import { ArrowUpRight } from "lucide-react";
+import { ArrowRight, ArrowUpRight } from "lucide-react";
 import { Link } from "@/i18n/navigation";
 import { listRecentPublished } from "@/lib/news-query";
 import type { NewsPost } from "@/db/schema";
@@ -22,8 +22,11 @@ type Item = {
   title: string;
   summary: string;
   thumbnailUrl?: string | null;
-  /** Present for real posts; the whole card links to /news/[slug]. */
+  /** Present for real posts; the whole card links to /news/[slug] when there is body. */
   slug?: string;
+  /** Whether the post has on-site body content (decides detail vs external link). */
+  hasBody?: boolean;
+  externalUrl?: string | null;
 };
 
 /** Map a published post to the teaser card shape for the active locale. */
@@ -37,6 +40,8 @@ function toItem(post: NewsPost, locale: string): Item {
     summary: (en && post.summaryEn) || post.summaryKo,
     thumbnailUrl: post.thumbnailUrl,
     slug: post.slug,
+    hasBody: Boolean((en && post.bodyEn) || post.bodyKo),
+    externalUrl: post.externalUrl,
   };
 }
 
@@ -106,7 +111,11 @@ export async function NewsSection() {
         >
           {items.map((item) => (
             <FadeInItem key={item.title} className="h-full">
-              <NewsCard item={item} viewDetail={t("viewDetail")} />
+              <NewsCard
+                item={item}
+                viewDetail={t("viewDetail")}
+                viewOriginal={t("viewOriginal")}
+              />
             </FadeInItem>
           ))}
         </FadeInSection>
@@ -115,22 +124,41 @@ export async function NewsSection() {
   );
 }
 
-function NewsCard({ item, viewDetail }: { item: Item; viewDetail: string }) {
+function NewsCard({
+  item,
+  viewDetail,
+  viewOriginal,
+}: {
+  item: Item;
+  viewDetail: string;
+  viewOriginal: string;
+}) {
   const { text: summaryText, truncated } = truncateSummary(item.summary);
-  // Real posts open their detail page; placeholder items fall back to the list.
-  const href = item.slug ? `/news/${item.slug}` : "/news";
+  // With on-site body, open our detail page; otherwise go straight to the source.
+  const goExternal = !item.hasBody && Boolean(item.externalUrl);
+  const detailHref = item.slug ? `/news/${item.slug}` : "/news";
 
   return (
     <MotionCard
       as="article"
       className="flex h-full flex-col gap-5 p-8 md:p-10"
     >
-      {/* Stretched link: the whole card opens the detail page. */}
-      <Link
-        href={href}
-        aria-label={item.title}
-        className="absolute inset-0 z-10"
-      />
+      {/* Stretched link covers the whole card. */}
+      {goExternal ? (
+        <a
+          href={item.externalUrl ?? "#"}
+          target="_blank"
+          rel="noopener noreferrer"
+          aria-label={item.title}
+          className="absolute inset-0 z-10"
+        />
+      ) : (
+        <Link
+          href={detailHref}
+          aria-label={item.title}
+          className="absolute inset-0 z-10"
+        />
+      )}
 
       <NewsThumbnail
         src={item.thumbnailUrl}
@@ -157,11 +185,18 @@ function NewsCard({ item, viewDetail }: { item: Item; viewDetail: string }) {
       </p>
 
       <span className="mt-auto inline-flex items-center gap-1.5 font-mono text-xs font-medium uppercase tracking-[0.08em] text-primary opacity-70 transition-opacity group-hover:opacity-100">
-        {viewDetail}
-        <ArrowUpRight
-          size={13}
-          className="transition-transform duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5"
-        />
+        {goExternal ? viewOriginal : viewDetail}
+        {goExternal ? (
+          <ArrowUpRight
+            size={13}
+            className="transition-transform duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5"
+          />
+        ) : (
+          <ArrowRight
+            size={13}
+            className="transition-transform duration-300 group-hover:translate-x-0.5"
+          />
+        )}
       </span>
     </MotionCard>
   );

@@ -1,6 +1,6 @@
 "use client";
 
-import { ArrowUpRight } from "lucide-react";
+import { ArrowRight, ArrowUpRight } from "lucide-react";
 import { useMemo, useState } from "react";
 import {
   FadeInItem,
@@ -20,6 +20,7 @@ type Props = {
   posts: NewsPost[];
   locale: string;
   viewDetail: string;
+  viewOriginal: string;
   allLabel: string;
 };
 
@@ -32,6 +33,7 @@ export function NewsListWithFilter({
   posts,
   locale,
   viewDetail,
+  viewOriginal,
   allLabel,
 }: Props) {
   const [active, setActive] = useState<string>(ALL);
@@ -65,7 +67,12 @@ export function NewsListWithFilter({
       >
         {filtered.map((p) => (
           <FadeInItem key={p.id} className="h-full">
-            <NewsCard post={p} locale={locale} viewDetail={viewDetail} />
+            <NewsCard
+              post={p}
+              locale={locale}
+              viewDetail={viewDetail}
+              viewOriginal={viewOriginal}
+            />
           </FadeInItem>
         ))}
       </FadeInSection>
@@ -77,27 +84,42 @@ function NewsCard({
   post,
   locale,
   viewDetail,
+  viewOriginal,
 }: {
   post: NewsPost;
   locale: string;
   viewDetail: string;
+  viewOriginal: string;
 }) {
   const isKo = locale === "ko";
   const title = isKo ? post.titleKo : post.titleEn || post.titleKo;
   const summarySource = isKo ? post.summaryKo : post.summaryEn || post.summaryKo;
   const { text: summary, truncated } = truncateSummary(summarySource);
+  const hasBody = Boolean(isKo ? post.bodyKo : post.bodyEn || post.bodyKo);
+  // With on-site body, open our detail page; otherwise go straight to the source.
+  const goExternal = !hasBody && Boolean(post.externalUrl);
 
   return (
     <MotionCard
       as="article"
       className="flex h-full flex-col gap-5 p-8 md:p-10"
     >
-      {/* Stretched link: the whole card opens the detail page. */}
-      <Link
-        href={`/news/${post.slug}`}
-        aria-label={title}
-        className="absolute inset-0 z-10"
-      />
+      {/* Stretched link covers the whole card. */}
+      {goExternal ? (
+        <a
+          href={post.externalUrl ?? "#"}
+          target="_blank"
+          rel="noopener noreferrer"
+          aria-label={title}
+          className="absolute inset-0 z-10"
+        />
+      ) : (
+        <Link
+          href={`/news/${post.slug}`}
+          aria-label={title}
+          className="absolute inset-0 z-10"
+        />
+      )}
 
       <NewsThumbnail src={post.thumbnailUrl} category={post.category} />
 
@@ -119,11 +141,18 @@ function NewsCard({
       </p>
 
       <span className="mt-auto inline-flex items-center gap-1.5 text-sm font-medium text-primary opacity-70 transition-opacity group-hover:opacity-100">
-        {viewDetail}
-        <ArrowUpRight
-          size={13}
-          className="transition-transform duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5"
-        />
+        {goExternal ? viewOriginal : viewDetail}
+        {goExternal ? (
+          <ArrowUpRight
+            size={13}
+            className="transition-transform duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5"
+          />
+        ) : (
+          <ArrowRight
+            size={13}
+            className="transition-transform duration-300 group-hover:translate-x-0.5"
+          />
+        )}
       </span>
     </MotionCard>
   );

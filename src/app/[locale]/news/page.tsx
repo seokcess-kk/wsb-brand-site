@@ -84,6 +84,7 @@ export default async function NewsPage({
               posts={posts}
               locale={locale}
               viewDetail={t("viewDetail")}
+              viewOriginal={t("viewOriginal")}
               allLabel={t("filterAll")}
             />
           )}

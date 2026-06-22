@@ -124,26 +124,27 @@ export default async function NewsDetailPage({
         </div>
       )}
 
-      {/* Body */}
-      <div className="mx-auto max-w-3xl px-6 py-12 md:py-16">
-        <p className="text-pretty-kr text-lg leading-[1.7] text-structural/85">
-          {summary}
-        </p>
-
-        {paragraphs.length > 0 && (
-          <div className="mt-8 space-y-5 border-t border-structural/10 pt-8">
+      {/* Body. With on-site body, the summary is redundant (the body opens with
+          the same lead), so show the body alone; otherwise show the summary. */}
+      <div className="mx-auto max-w-2xl px-6 py-12 md:py-16">
+        {paragraphs.length > 0 ? (
+          <div className="space-y-6">
             {paragraphs.map((para, i) => (
               <p
                 key={i}
-                className="whitespace-pre-line text-pretty-kr text-base leading-[1.85] text-structural/80"
+                className="whitespace-pre-line text-pretty-kr text-[1.0625rem] leading-[1.9] text-structural/85"
               >
                 {para}
               </p>
             ))}
           </div>
+        ) : (
+          <p className="text-pretty-kr text-lg leading-[1.8] text-structural/85">
+            {summary}
+          </p>
         )}
 
-        <div className="mt-12 flex flex-wrap items-center gap-4 border-t border-structural/10 pt-8">
+        <div className="mt-14 flex flex-wrap items-center gap-4 border-t border-structural/10 pt-8">
           {post.externalUrl && (
             <a
               href={post.externalUrl}
