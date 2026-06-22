@@ -275,7 +275,54 @@
     "pipeline": {
       "sectionTag": "PIPELINE",
       "sectionTitle": "6개 파이프라인 · 동일 플랫폼.",
-      "lede": "인삼은 상용화 완료. 대청과 참당귀는 상용화 준비 단계. 나머지 3종은 R&D 단계로 2026~2027년 상용화를 추진합니다."
+      "lede": "인삼은 상용화 완료. 대청과 참당귀는 상용화 준비 단계. 나머지 3종은 R&D 단계로 2026~2027년 상용화를 추진합니다.",
+      "stages": ["탐색", "R&D", "상용화 준비", "상용화"],
+      "investigationalTag": "연구 중",
+      "disclaimer": "적응증은 연구 대상이며 효능·효과가 확정된 것은 아닙니다. 상용화 단계 외 항목은 개발 중입니다.",
+      "items": [
+        {
+          "name": "수경인삼",
+          "latin": "Panax ginseng",
+          "api": "Ginsenoside Rh2 · Ck",
+          "indication": "면역 강화 · 피로 회복",
+          "stage": 3
+        },
+        {
+          "name": "대청엽",
+          "latin": "Isatis indigotica",
+          "api": "Indirubin",
+          "indication": "만성 염증성 장질환(크론병) 타겟",
+          "stage": 2
+        },
+        {
+          "name": "참당귀",
+          "latin": "Angelica gigas",
+          "api": "Decursin",
+          "indication": "혈관 건강 · 항염 타겟",
+          "stage": 2
+        },
+        {
+          "name": "황칠",
+          "latin": "Dendropanax morbifera",
+          "api": "Chlorogenic Acid",
+          "indication": "간 건강 · 신경 보호 · 수면 타겟",
+          "stage": 1
+        },
+        {
+          "name": "살리초",
+          "latin": "잎고추 F1",
+          "api": "Alpha-Glucosidase Inhibitor",
+          "indication": "항당뇨 타겟",
+          "stage": 1
+        },
+        {
+          "name": "콩새싹",
+          "latin": "Soybean Leaf",
+          "api": "Isoflavone",
+          "indication": "여성 갱년기 타겟",
+          "stage": 1
+        }
+      ]
     },
     "patents": {
       "sectionTag": "PATENTS",

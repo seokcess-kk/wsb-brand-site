@@ -58,15 +58,14 @@ export default async function RnDPage({
     status: string;
   }[];
 
-  // The full 6-botanical pipeline reuses the home pipeline data (items, stages,
-  // tags, disclaimer) so the home "see all" link lands on real content.
-  const tPipe = await getTranslations("home.pipeline");
-  const pipelineStages = tPipe.raw("stages") as string[];
-  const pipelineItems = [...(tPipe.raw("items") as PipelineItem[])].sort(
+  // The full 6-botanical pipeline data (items, stages, tag, disclaimer) lives in
+  // the page's own namespace so it no longer depends on the home pipeline copy.
+  const pipelineStages = t.raw("pipeline.stages") as string[];
+  const pipelineItems = [...(t.raw("pipeline.items") as PipelineItem[])].sort(
     (a, b) => b.stage - a.stage,
   );
-  const pipelineTag = tPipe("investigationalTag");
-  const pipelineDisclaimer = tPipe("disclaimer");
+  const pipelineTag = t("pipeline.investigationalTag");
+  const pipelineDisclaimer = t("pipeline.disclaimer");
 
   return (
     <>

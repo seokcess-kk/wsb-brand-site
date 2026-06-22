@@ -275,7 +275,54 @@
     "pipeline": {
       "sectionTag": "PIPELINE",
       "sectionTitle": "6 botanicals on a single platform.",
-      "lede": "Ginseng is fully commercial. Isatis and Angelica are at pre-launch. Three more pipelines are in R&D and target commercialization in 2026-2027."
+      "lede": "Ginseng is fully commercial. Isatis and Angelica are at pre-launch. Three more pipelines are in R&D and target commercialization in 2026-2027.",
+      "stages": ["Discovery", "R&D", "Pre-launch", "Commercial"],
+      "investigationalTag": "Investigational",
+      "disclaimer": "Indications are research targets and do not represent confirmed efficacy. Items beyond the commercial stage are under development.",
+      "items": [
+        {
+          "name": "Hydroponic Ginseng",
+          "latin": "Panax ginseng",
+          "api": "Ginsenoside Rh2 · Ck",
+          "indication": "Immunity · Fatigue recovery",
+          "stage": 3
+        },
+        {
+          "name": "Isatis",
+          "latin": "Isatis indigotica",
+          "api": "Indirubin",
+          "indication": "Crohn's disease · IBD (target)",
+          "stage": 2
+        },
+        {
+          "name": "Angelica",
+          "latin": "Angelica gigas",
+          "api": "Decursin",
+          "indication": "Vascular health · Anti-inflammation (target)",
+          "stage": 2
+        },
+        {
+          "name": "Dendropanax",
+          "latin": "Dendropanax morbifera",
+          "api": "Chlorogenic Acid",
+          "indication": "Liver · Neuroprotection · Sleep (target)",
+          "stage": 1
+        },
+        {
+          "name": "Sallicho",
+          "latin": "Capsicum F1 leaf",
+          "api": "Alpha-Glucosidase Inhibitor",
+          "indication": "Anti-diabetic (target)",
+          "stage": 1
+        },
+        {
+          "name": "Soybean Leaf",
+          "latin": "Glycine max",
+          "api": "Isoflavone",
+          "indication": "Menopause (target)",
+          "stage": 1
+        }
+      ]
     },
     "patents": {
       "sectionTag": "PATENTS",
