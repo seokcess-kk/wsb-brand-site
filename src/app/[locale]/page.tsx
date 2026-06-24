@@ -22,8 +22,8 @@ export default async function HomePage({
   return (
     <>
       <HeroSection />
-      <PersonaRouterSection />
       <CredibilityStripSection />
+      <PersonaRouterSection />
       <ProblemSection />
       <MatSection />
       <FdaSection />

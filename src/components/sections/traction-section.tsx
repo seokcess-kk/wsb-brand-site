@@ -1,7 +1,6 @@
-import Image from "next/image";
 import { getTranslations } from "next-intl/server";
-import { ArrowUpRight, Info } from "lucide-react";
-import { Link } from "@/i18n/navigation";
+import { Info } from "lucide-react";
+import { Cta } from "@/components/ui/cta";
 import { RevealOnView } from "@/components/motion/reveal-on-view";
 import { RevealWords } from "@/components/motion/reveal-words";
 import { CountUp } from "@/components/motion/count-up";
@@ -12,6 +11,7 @@ import {
 import { SectionEyebrow } from "@/components/layout/section-eyebrow";
 import { Lede } from "@/components/layout/lede";
 import { Tooltip } from "@/components/ui/tooltip";
+import { ImageFrame } from "@/components/visual/image-frame";
 
 type Metric = { label: string; value: string; caption: string };
 type Photo = { caption: string; src?: string };
@@ -38,9 +38,15 @@ export async function TractionSection() {
   return (
     <section
       aria-labelledby="traction-heading"
-      className="relative isolate border-t border-structural/10 bg-canvas"
+      className="relative isolate overflow-hidden border-t border-structural/10 bg-canvas"
     >
-      <div className="mx-auto max-w-7xl px-6 py-20 md:py-28 lg:py-32">
+      {/* Faint blueprint grid marks this as a data section. Masked to the top
+          and bottom edges so metric cells and photos stay clean (~2% strength). */}
+      <div
+        aria-hidden
+        className="pointer-events-none absolute inset-0 bg-grid opacity-[0.55] [mask-image:linear-gradient(to_bottom,transparent,black_10%,black_90%,transparent)]"
+      />
+      <div className="relative mx-auto max-w-7xl px-6 py-20 md:py-28 lg:py-32">
         {/* Header */}
         <div className="mb-14 flex flex-col gap-3 md:flex-row md:items-end md:justify-between">
           <RevealOnView>
@@ -104,28 +110,35 @@ export async function TractionSection() {
         >
           {lead && (
             <FadeInItem>
-              <PhotoWell
+              <ImageFrame
                 caption={lead.caption}
                 src={lead.src}
                 pending={pending}
                 ratio="21 / 9"
                 sizes="(min-width: 1280px) 1216px, 100vw"
+                index="01"
+                dataId="IMG-FAC-01"
               />
             </FadeInItem>
           )}
           {supporting.length > 0 && (
             <div className="grid gap-4 md:grid-cols-2">
-              {supporting.map((p) => (
-                <FadeInItem key={p.caption}>
-                  <PhotoWell
-                    caption={p.caption}
-                    src={p.src}
-                    pending={pending}
-                    ratio="4 / 3"
-                    sizes="(min-width: 768px) 600px, 100vw"
-                  />
-                </FadeInItem>
-              ))}
+              {supporting.map((p, i) => {
+                const n = String(i + 2).padStart(2, "0");
+                return (
+                  <FadeInItem key={p.caption}>
+                    <ImageFrame
+                      caption={p.caption}
+                      src={p.src}
+                      pending={pending}
+                      ratio="4 / 3"
+                      sizes="(min-width: 768px) 600px, 100vw"
+                      index={n}
+                      dataId={`IMG-FAC-${n}`}
+                    />
+                  </FadeInItem>
+                );
+              })}
             </div>
           )}
         </FadeInSection>
@@ -144,16 +157,14 @@ export async function TractionSection() {
                 {t("networkNote")}
               </p>
               <div className="flex items-start lg:justify-end">
-                <Link
+                <Cta
                   href="/news"
-                  className="group inline-flex items-center gap-2 border border-structural/20 px-5 py-3 text-sm font-medium text-structural transition-colors hover:border-primary hover:text-primary"
-                >
-                  {t("networkCta")}
-                  <ArrowUpRight
-                    size={14}
-                    className="transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5"
-                  />
-                </Link>
+                  label={t("networkCta")}
+                  variant="outline"
+                  tone="light"
+                  icon="up"
+                  className="px-5 py-3"
+                />
               </div>
             </div>
           </RevealOnView>
@@ -208,63 +219,3 @@ function MetricCell({
   );
 }
 
-function PhotoWell({
-  caption,
-  src,
-  pending,
-  ratio,
-  sizes,
-}: {
-  caption: string;
-  src?: string;
-  pending: string;
-  ratio: string;
-  sizes: string;
-}) {
-  const tick = src ? "border-canvas/40" : "border-structural/20";
-  return (
-    <div
-      className="group relative isolate w-full overflow-hidden bg-structural/[0.04] transition-colors duration-500 hover:bg-structural/[0.06]"
-      style={{ aspectRatio: ratio }}
-    >
-      {src ? (
-        <>
-          <Image
-            src={src}
-            alt={caption}
-            fill
-            sizes={sizes}
-            className="object-cover photo-grade-green transition-transform duration-700 group-hover:scale-[1.03]"
-          />
-          {/* Light green wash to unify mixed-source photos (verdant greens stay,
-              other casts pull gently toward Deep Cultivation Green). */}
-          <div
-            aria-hidden
-            className="absolute inset-0 bg-primary/15 mix-blend-multiply"
-          />
-          <div
-            aria-hidden
-            className="absolute inset-0 bg-gradient-to-t from-structural/55 via-transparent to-transparent"
-          />
-          <p className="absolute bottom-3 left-3 right-3 mono-label text-[11px] text-canvas">
-            {caption}
-          </p>
-        </>
-      ) : (
-        <>
-          <div className="absolute inset-0 bg-grid opacity-70" />
-          <div className="absolute inset-0 flex flex-col items-center justify-center gap-2 px-6 text-center">
-            <p className="mono-label text-[11px] text-primary">{pending}</p>
-            <p className="mono-label text-[11px] text-structural/65 max-w-[28ch]">
-              {caption}
-            </p>
-          </div>
-        </>
-      )}
-      <span aria-hidden className={`absolute top-2 left-2 h-3 w-3 border-l border-t ${tick} transition-colors duration-500 group-hover:border-primary/60`} />
-      <span aria-hidden className={`absolute top-2 right-2 h-3 w-3 border-r border-t ${tick} transition-colors duration-500 group-hover:border-primary/60`} />
-      <span aria-hidden className={`absolute bottom-2 left-2 h-3 w-3 border-l border-b ${tick} transition-colors duration-500 group-hover:border-primary/60`} />
-      <span aria-hidden className={`absolute bottom-2 right-2 h-3 w-3 border-r border-b ${tick} transition-colors duration-500 group-hover:border-primary/60`} />
-    </div>
-  );
-}

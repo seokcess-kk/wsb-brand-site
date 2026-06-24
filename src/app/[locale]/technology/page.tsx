@@ -14,6 +14,7 @@ import { MotionCard } from "@/components/motion/motion-card";
 import { MatSection } from "@/components/sections/mat-section";
 import { FdaSection } from "@/components/sections/fda-section";
 import { CtaBand } from "@/components/sections/cta-band";
+import { Check } from "lucide-react";
 import { cn } from "@/lib/utils";
 
 export async function generateMetadata({
@@ -113,8 +114,8 @@ export default async function TechnologyPage({
                   </p>
                   <div className="mt-auto border-t border-structural/10 pt-5">
                     <p
-                      className="font-sans font-extrabold tracking-tight text-primary leading-none tabular-nums"
-                      style={{ fontSize: "2.5rem" }}
+                      className="font-mono font-bold tracking-tight text-primary leading-none tabular-nums"
+                      style={{ fontSize: "clamp(2.75rem, 4.2vw, 3.5rem)" }}
                     >
                       {it.metric}
                     </p>
@@ -136,8 +137,13 @@ export default async function TechnologyPage({
       <FdaSection />
 
       {/* COMPETITIVE LANDSCAPE */}
-      <section className="bg-canvas">
-        <div className="mx-auto max-w-7xl px-6 py-24 md:py-32">
+      <section className="relative isolate overflow-hidden bg-canvas">
+        {/* Faint blueprint grid behind the comparison matrix (masked, ~2%) */}
+        <div
+          aria-hidden
+          className="pointer-events-none absolute inset-0 bg-grid opacity-[0.5] [mask-image:linear-gradient(to_bottom,transparent,black_10%,black_90%,transparent)]"
+        />
+        <div className="relative mx-auto max-w-7xl px-6 py-24 md:py-32">
           <div className="mb-12">
             <RevealOnView>
               <SectionEyebrow tag={t("competition.sectionTag")} />
@@ -155,46 +161,76 @@ export default async function TechnologyPage({
             </RevealOnView>
           </div>
 
-          {/* Desktop: comparison matrix. Mobile: one card per criterion. */}
-          <div className="mt-12 hidden overflow-x-auto md:block">
-            <table className="w-full min-w-[720px] border border-structural/10 text-sm">
+          {/* Desktop: a system-style comparison matrix. Competitor columns are
+              muted with horizontal rules only (no spreadsheet gridlines); the
+              WSB column is lifted into one solid deep-green pillar (white text,
+              lime check, soft shadow) so the strength reads at a glance. */}
+          <div className="mt-12 hidden overflow-x-auto px-1 pb-3 lg:block">
+            <table className="w-full min-w-[760px] border-separate border-spacing-0 text-sm">
+              <colgroup>
+                <col />
+                <col />
+                <col />
+                <col />
+                <col className="w-[25%]" />
+              </colgroup>
               <thead>
-                <tr className="bg-structural/[0.04] text-left font-mono text-[10px] font-medium uppercase tracking-[0.08em] text-structural/65">
-                  <th className="px-4 py-3"></th>
-                  <th className="px-4 py-3">{compHeaders.field}</th>
-                  <th className="px-4 py-3">{compHeaders.smartfarm}</th>
-                  <th className="px-4 py-3">{compHeaders.synthetic}</th>
-                  <th className="px-4 py-3 bg-primary/[0.08] text-primary">
+                <tr className="text-left align-bottom font-mono text-[10px] font-medium uppercase tracking-[0.12em] text-structural/45">
+                  <th className="px-4 pb-4 font-medium" />
+                  <th className="px-4 pb-4 font-medium">{compHeaders.field}</th>
+                  <th className="px-4 pb-4 font-medium">
+                    {compHeaders.smartfarm}
+                  </th>
+                  <th className="px-4 pb-4 font-medium">
+                    {compHeaders.synthetic}
+                  </th>
+                  <th className="rounded-t-lg bg-primary px-5 pb-4 pt-3 text-[11px] font-semibold tracking-[0.12em] text-canvas shadow-[0_-2px_24px_-8px_rgba(15,81,50,0.45)]">
                     {compHeaders.wsb}
                   </th>
                 </tr>
               </thead>
               <tbody>
-                {competition.map((r) => (
-                  <tr
-                    key={r.label}
-                    className="border-t border-structural/10 align-top"
-                  >
-                    <td className="px-4 py-5 mono-label text-structural/65 whitespace-nowrap">
-                      {r.label}
-                    </td>
-                    <td className="px-4 py-5 text-structural/65">{r.field}</td>
-                    <td className="px-4 py-5 text-structural/65">
-                      {r.smartfarm}
-                    </td>
-                    <td className="px-4 py-5 text-structural/65">
-                      {r.synthetic}
-                    </td>
-                    <td className="px-4 py-5 bg-primary/[0.04] font-medium text-primary">
-                      {r.wsb}
-                    </td>
-                  </tr>
-                ))}
+                {competition.map((r, idx) => {
+                  const last = idx === competition.length - 1;
+                  return (
+                    <tr key={r.label} className="group">
+                      <td className="border-t border-structural/10 px-4 py-5 align-top mono-label text-structural/55 whitespace-nowrap">
+                        {r.label}
+                      </td>
+                      <td className="border-t border-structural/10 px-4 py-5 align-top text-structural/55 transition-colors group-hover:text-structural/75">
+                        {r.field}
+                      </td>
+                      <td className="border-t border-structural/10 px-4 py-5 align-top text-structural/55 transition-colors group-hover:text-structural/75">
+                        {r.smartfarm}
+                      </td>
+                      <td className="border-t border-structural/10 px-4 py-5 align-top text-structural/55 transition-colors group-hover:text-structural/75">
+                        {r.synthetic}
+                      </td>
+                      <td
+                        className={cn(
+                          "bg-primary px-5 py-5 align-top text-canvas shadow-[0_0_24px_-10px_rgba(15,81,50,0.5)]",
+                          last && "rounded-b-lg",
+                        )}
+                      >
+                        <span className="flex items-start gap-2">
+                          <Check
+                            size={14}
+                            aria-hidden
+                            className="mt-0.5 flex-none text-[color:var(--color-data)]"
+                          />
+                          <span className="font-medium leading-snug">
+                            {r.wsb}
+                          </span>
+                        </span>
+                      </td>
+                    </tr>
+                  );
+                })}
               </tbody>
             </table>
           </div>
 
-          <div className="mt-12 grid gap-3 md:hidden">
+          <div className="mt-12 grid gap-3 lg:hidden">
             {competition.map((r) => (
               <div key={r.label} className="border border-structural/10">
                 <p className="border-b border-structural/10 bg-structural/[0.04] px-4 py-3 mono-label text-structural/65">
@@ -284,17 +320,31 @@ function CompRow({
     <div
       className={cn(
         "flex items-start justify-between gap-4 px-4 py-3",
-        highlight && "bg-primary/[0.04]",
+        highlight && "bg-primary text-canvas",
       )}
     >
-      <dt className="mono-label text-[10px] text-structural/55">{label}</dt>
-      <dd
+      <dt
         className={cn(
-          "text-right text-sm",
-          highlight ? "font-medium text-primary" : "text-structural/75",
+          "mono-label text-[10px]",
+          highlight ? "text-canvas/70" : "text-structural/55",
         )}
       >
-        {value}
+        {label}
+      </dt>
+      <dd
+        className={cn(
+          "flex items-start gap-1.5 text-right text-sm",
+          highlight ? "font-medium text-canvas" : "text-structural/75",
+        )}
+      >
+        {highlight && (
+          <Check
+            size={13}
+            aria-hidden
+            className="mt-0.5 flex-none text-[color:var(--color-data)]"
+          />
+        )}
+        <span>{value}</span>
       </dd>
     </div>
   );

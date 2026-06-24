@@ -13,28 +13,37 @@ type Labels = {
 
 const BATCH_IDS = ["001", "002", "003", "004", "005"] as const;
 
+// Dark halo behind the bright HUD text so it stays legible wherever the photo
+// underneath turns light. A faint outer blur reads as a screen-like glow.
+const HUD_TEXT_SHADOW =
+  "0 1px 10px rgba(10,18,12,0.6), 0 0 2px rgba(10,18,12,0.55)";
+
 /**
  * Hero right-hand visual. Brand-guide Data Overlay metaphor.
- * Plant silhouette with crosshair coordinate plane, sequentially revealed
- * data points, ambient label pulses, and a rolling batch ID. Subtle mouse
- * parallax adds depth without distracting.
+ *
+ * Per the 2026-06 client feedback this reads as a transparent instrument HUD
+ * laid directly over the facility photo (no white card, no plant illustration):
+ * just a crosshair coordinate plane, sequentially revealed data points, the
+ * ambient measurement labels (SAPONIN, PH ...) and a rolling batch ID, all in
+ * the bright canvas tone with a faint glow so they float like a hologram over
+ * the real smart-farm behind them. Subtle mouse parallax adds depth.
  */
 export function DataOverlayPlant({ labels }: { labels: Labels }) {
   const containerRef = useRef<HTMLDivElement>(null);
 
-  // Mouse parallax (subtle, max 8px shift)
+  // Mouse parallax (subtle) drifts the whole HUD over the photo for depth.
   const mx = useMotionValue(0);
   const my = useMotionValue(0);
   const sx = useSpring(mx, { stiffness: 120, damping: 18 });
   const sy = useSpring(my, { stiffness: 120, damping: 18 });
-  const plantTx = useTransform(sx, [-1, 1], [-6, 6]);
-  const plantTy = useTransform(sy, [-1, 1], [-6, 6]);
-  const overlayTx = useTransform(sx, [-1, 1], [4, -4]);
-  const overlayTy = useTransform(sy, [-1, 1], [4, -4]);
+  const overlayTx = useTransform(sx, [-1, 1], [6, -6]);
+  const overlayTy = useTransform(sy, [-1, 1], [6, -6]);
 
   useEffect(() => {
     const el = containerRef.current;
     if (!el) return;
+    // Desktop only: the mobile strip renders instead, so skip parallax wiring.
+    if (window.matchMedia("(max-width: 1023px)").matches) return;
     const handle = (e: PointerEvent) => {
       const rect = el.getBoundingClientRect();
       const nx = ((e.clientX - rect.left) / rect.width) * 2 - 1;
@@ -57,6 +66,7 @@ export function DataOverlayPlant({ labels }: { labels: Labels }) {
   // Rolling batch ID
   const [batchIdx, setBatchIdx] = useState(0);
   useEffect(() => {
+    if (window.matchMedia("(max-width: 1023px)").matches) return;
     const id = setInterval(
       () => setBatchIdx((i) => (i + 1) % BATCH_IDS.length),
       3600,
@@ -65,32 +75,27 @@ export function DataOverlayPlant({ labels }: { labels: Labels }) {
   }, []);
 
   return (
-    <div
-      ref={containerRef}
-      className="relative aspect-square w-full max-w-[520px] mx-auto"
-    >
-      <div className="absolute inset-0 rounded-sm border border-structural/15 bg-canvas overflow-hidden">
-        {/* Grid */}
+    <>
+      <div
+        ref={containerRef}
+        className="relative hidden aspect-square w-full max-w-[520px] mx-auto lg:block"
+      >
+      {/* Transparent HUD frame: the white card fill is gone so the facility
+          photo shows through; only a hairline bright border keeps the readout
+          framed like an instrument screen. */}
+      <div className="absolute inset-0 rounded-sm border border-canvas/20 overflow-hidden">
+        {/* Faint bright measurement grid (reads over the dark photo) */}
         <div
           aria-hidden
-          className="absolute inset-0 opacity-60"
+          className="absolute inset-0 opacity-40"
           style={{
             backgroundImage:
-              "linear-gradient(to right, rgba(26,31,27,0.05) 1px, transparent 1px), linear-gradient(to bottom, rgba(26,31,27,0.05) 1px, transparent 1px)",
+              "linear-gradient(to right, var(--overlay-grid) 1px, transparent 1px), linear-gradient(to bottom, var(--overlay-grid) 1px, transparent 1px)",
             backgroundSize: "16px 16px",
           }}
         />
 
-        {/* Plant (with parallax) */}
-        <motion.div
-          aria-hidden
-          className="absolute inset-0"
-          style={{ x: plantTx, y: plantTy }}
-        >
-          <PlantSvg />
-        </motion.div>
-
-        {/* Crosshair + data points (with inverse parallax for depth) */}
+        {/* Crosshair + data points (parallax drift for depth) */}
         <motion.div
           aria-hidden
           className="absolute inset-0"
@@ -99,28 +104,32 @@ export function DataOverlayPlant({ labels }: { labels: Labels }) {
           <OverlaySvg />
         </motion.div>
 
-        {/* Floating labels */}
+        {/* Floating labels. One key mark in Bioactive Lime (data accent),
+            the rest in the bright canvas tone so they float over the photo. */}
         <PulseLabel
-          className="absolute top-[15%] left-[7%] text-primary"
+          className="absolute top-[15%] left-[7%] text-[color:var(--color-data)]"
           delay={0.4}
         >
           {labels.overlay1}
         </PulseLabel>
         <PulseLabel
-          className="absolute top-[27%] right-[6%] text-primary"
+          className="absolute top-[27%] right-[6%] text-canvas"
           delay={0.7}
         >
           {labels.overlay2}
         </PulseLabel>
         <PulseLabel
-          className="absolute top-[10%] left-1/2 -translate-x-1/2 text-structural/70"
+          className="absolute top-[10%] left-1/2 -translate-x-1/2 text-canvas/75"
           delay={1.0}
         >
           {labels.overlay3}
         </PulseLabel>
 
         {/* Batch ID (rolling) */}
-        <div className="absolute bottom-3 right-3 mono-label text-[10px] tracking-widest text-structural/65 flex items-baseline gap-1.5">
+        <div
+          className="absolute bottom-3 right-3 mono-label text-[10px] tracking-widest text-canvas/70 flex items-baseline gap-1.5"
+          style={{ textShadow: HUD_TEXT_SHADOW }}
+        >
           <span>{labels.batchPrefix}</span>
           <RollingDigits idx={batchIdx} />
         </div>
@@ -132,11 +141,16 @@ export function DataOverlayPlant({ labels }: { labels: Labels }) {
           <CornerBracket key={c} corner={c} />
         ))}
 
-        <div className="absolute bottom-3 left-3 mono-label text-[11px] text-structural/35">
+        <div
+          className="absolute bottom-3 left-3 mono-label text-[11px] text-canvas/45"
+          style={{ textShadow: HUD_TEXT_SHADOW }}
+        >
           OBSERVED · CONTROLLED PLANT
         </div>
+        </div>
       </div>
-    </div>
+      <DataStripMobile labels={labels} />
+    </>
   );
 }
 
@@ -172,6 +186,7 @@ function PulseLabel({
             }
           : { duration: 0 }
       }
+      style={{ textShadow: HUD_TEXT_SHADOW }}
       className={`mono-label text-[11px] tracking-widest pointer-events-none ${className}`}
     >
       {children}
@@ -211,75 +226,30 @@ function CornerBracket({ corner }: { corner: "tl" | "tr" | "bl" | "br" }) {
   return (
     <div
       aria-hidden
-      className={`absolute h-4 w-4 border-primary ${map[corner]}`}
+      className={`absolute h-4 w-4 border-canvas/55 ${map[corner]}`}
+      style={{ filter: "drop-shadow(0 0 4px rgba(10,18,12,0.5))" }}
     />
-  );
-}
-
-function PlantSvg() {
-  return (
-    <svg viewBox="0 0 520 520" className="absolute inset-0 h-full w-full">
-      <defs>
-        <linearGradient id="leafGrad" x1="0" y1="0" x2="0" y2="1">
-          <stop offset="0%" stopColor="#0F5132" stopOpacity="0.95" />
-          <stop offset="100%" stopColor="#0F5132" stopOpacity="0.55" />
-        </linearGradient>
-      </defs>
-      <g transform="translate(260 320)">
-        <path
-          d="M0 0 L0 -160 M0 -80 L-90 -150 M0 -80 L90 -150 M0 -40 L-130 -110 M0 -40 L130 -110"
-          stroke="#0F5132"
-          strokeWidth="1.5"
-          strokeOpacity="0.65"
-          fill="none"
-          strokeLinecap="round"
-        />
-        {[
-          { x: 0, y: -200, r: -10, sway: 1.2 },
-          { x: -120, y: -180, r: -45, sway: -1.5 },
-          { x: 120, y: -180, r: 45, sway: 1.5 },
-          { x: -170, y: -140, r: -70, sway: -1.0 },
-          { x: 170, y: -140, r: 70, sway: 1.0 },
-        ].map((leaf, i) => (
-          <motion.g
-            key={i}
-            transform={`translate(${leaf.x} ${leaf.y}) rotate(${leaf.r})`}
-            animate={{ rotate: [leaf.r, leaf.r + leaf.sway, leaf.r] }}
-            transition={{
-              duration: 6 + i * 0.4,
-              repeat: Infinity,
-              ease: "easeInOut",
-            }}
-          >
-            <ellipse cx="0" cy="0" rx="14" ry="55" fill="url(#leafGrad)" />
-            <path
-              d="M0 -50 L0 50"
-              stroke="#FAFBF9"
-              strokeOpacity="0.4"
-              strokeWidth="1"
-            />
-          </motion.g>
-        ))}
-        <circle cx="0" cy="0" r="6" fill="#0F5132" opacity="0.7" />
-      </g>
-    </svg>
   );
 }
 
 function OverlaySvg() {
   return (
-    <svg viewBox="0 0 520 520" className="absolute inset-0 h-full w-full">
-      {/* Crosshair lines fade in first */}
+    <svg
+      viewBox="0 0 520 520"
+      className="absolute inset-0 h-full w-full"
+      style={{ filter: "drop-shadow(0 0 6px rgba(10,18,12,0.55))" }}
+    >
+      {/* Crosshair lines fade in first (bright, so they read over the photo) */}
       <motion.line
         x1="0"
         y1="260"
         x2="520"
         y2="260"
-        stroke="#1A1F1B"
-        strokeOpacity="0.25"
+        stroke="var(--color-canvas)"
+        strokeOpacity="0.45"
         strokeDasharray="2 4"
         initial={{ pathLength: 0, opacity: 0 }}
-        animate={{ pathLength: 1, opacity: 0.25 }}
+        animate={{ pathLength: 1, opacity: 0.45 }}
         transition={{ duration: 1.0, delay: 0.2, ease: [0.22, 1, 0.36, 1] }}
       />
       <motion.line
@@ -287,15 +257,15 @@ function OverlaySvg() {
         y1="0"
         x2="260"
         y2="520"
-        stroke="#1A1F1B"
-        strokeOpacity="0.25"
+        stroke="var(--color-canvas)"
+        strokeOpacity="0.45"
         strokeDasharray="2 4"
         initial={{ pathLength: 0, opacity: 0 }}
-        animate={{ pathLength: 1, opacity: 0.25 }}
+        animate={{ pathLength: 1, opacity: 0.45 }}
         transition={{ duration: 1.0, delay: 0.35, ease: [0.22, 1, 0.36, 1] }}
       />
 
-      {/* Sequential data points */}
+      {/* Sequential data points. Bioactive Lime marks (the key data accent). */}
       {[
         { cx: 140, cy: 180, delay: 0.6 },
         { cx: 380, cy: 180, delay: 0.85 },
@@ -307,7 +277,7 @@ function OverlaySvg() {
             cy={pt.cy}
             r="4"
             fill="none"
-            stroke="#0F5132"
+            stroke="var(--color-data)"
             strokeWidth="1.5"
             initial={{ scale: 0, opacity: 0 }}
             animate={{ scale: 1, opacity: 1 }}
@@ -338,5 +308,77 @@ function OverlaySvg() {
         </g>
       ))}
     </svg>
+  );
+}
+
+/**
+ * Mobile counterpart to the square HUD. A compact, static data strip (no
+ * parallax, no rolling interval) that keeps only the key readouts over the
+ * facility photo, so 390px never has to shrink the full desktop instrument.
+ */
+function DataStripMobile({ labels }: { labels: Labels }) {
+  const corners = {
+    tl: "top-1.5 left-1.5 border-l border-t",
+    tr: "top-1.5 right-1.5 border-r border-t",
+    bl: "bottom-1.5 left-1.5 border-l border-b",
+    br: "bottom-1.5 right-1.5 border-r border-b",
+  } as const;
+  return (
+    <div className="relative overflow-hidden rounded-sm border border-canvas/20 p-4 lg:hidden">
+      {/* Faint measurement grid */}
+      <div
+        aria-hidden
+        className="pointer-events-none absolute inset-0 opacity-40"
+        style={{
+          backgroundImage:
+            "linear-gradient(to right, var(--overlay-grid) 1px, transparent 1px), linear-gradient(to bottom, var(--overlay-grid) 1px, transparent 1px)",
+          backgroundSize: "16px 16px",
+        }}
+      />
+      <div
+        className="relative flex items-center justify-between mono-label text-[10px] text-canvas/55"
+        style={{ textShadow: HUD_TEXT_SHADOW }}
+      >
+        <span>OBSERVED</span>
+        <span className="tabular-nums">{labels.batchPrefix}001</span>
+      </div>
+      <div
+        className="relative mt-3 grid grid-cols-3 gap-2"
+        style={{ textShadow: HUD_TEXT_SHADOW }}
+      >
+        <DataCell label={labels.overlay1} tone="data" />
+        <DataCell label={labels.overlay2} tone="canvas" />
+        <DataCell label={labels.overlay3} tone="muted" />
+      </div>
+      {(["tl", "tr", "bl", "br"] as const).map((c) => (
+        <span
+          key={c}
+          aria-hidden
+          className={`pointer-events-none absolute h-2.5 w-2.5 border-canvas/45 ${corners[c]}`}
+        />
+      ))}
+    </div>
+  );
+}
+
+function DataCell({
+  label,
+  tone,
+}: {
+  label: string;
+  tone: "data" | "canvas" | "muted";
+}) {
+  const text =
+    tone === "data"
+      ? "text-[color:var(--color-data)]"
+      : tone === "canvas"
+        ? "text-canvas"
+        : "text-canvas/70";
+  const dot = tone === "data" ? "bg-[color:var(--color-data)]" : "bg-canvas/70";
+  return (
+    <div className="flex min-w-0 items-center gap-1.5">
+      <span aria-hidden className={`h-1 w-1 flex-none rounded-full ${dot}`} />
+      <span className={`mono-label truncate text-[10px] ${text}`}>{label}</span>
+    </div>
   );
 }

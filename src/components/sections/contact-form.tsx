@@ -5,6 +5,7 @@ import { useFormStatus } from "react-dom";
 import { useLocale } from "next-intl";
 import { ArrowRight, Check } from "lucide-react";
 import { submitInquiry, type InquiryFormState } from "@/app/actions/inquiry";
+import { ctaClassName, CtaScan } from "@/components/ui/cta";
 
 type Labels = {
   company: string;
@@ -172,15 +173,18 @@ function SubmitButton({ label }: { label: string }) {
     <button
       type="submit"
       disabled={pending}
-      className="group inline-flex items-center gap-3 bg-primary px-7 py-4 text-sm font-medium text-canvas transition-opacity hover:opacity-90 disabled:opacity-50"
+      className={ctaClassName("solid", "light", "px-7 py-4 disabled:opacity-50")}
     >
-      {pending ? "..." : label}
-      {!pending && (
-        <ArrowRight
-          size={16}
-          className="transition-transform group-hover:translate-x-0.5"
-        />
-      )}
+      <CtaScan variant="solid" />
+      <span className="relative inline-flex items-center gap-2.5">
+        {pending ? "..." : label}
+        {!pending && (
+          <ArrowRight
+            size={16}
+            className="transition-transform group-hover:translate-x-0.5"
+          />
+        )}
+      </span>
     </button>
   );
 }

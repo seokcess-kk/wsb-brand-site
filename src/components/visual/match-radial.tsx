@@ -85,11 +85,11 @@ export function MatchRadial({
         {/* Center label */}
         <div className="absolute inset-0 flex flex-col items-center justify-center">
           <span
-            className="font-sans font-extrabold tracking-tight text-canvas leading-none"
-            style={{ fontSize: "3rem" }}
+            className="font-mono font-bold tracking-tight text-canvas leading-none"
+            style={{ fontSize: "3.25rem" }}
           >
             <RadialCount to={filled} run={show} reduced={reduced} />
-            <span className="text-canvas/35">/{total}</span>
+            <span className="text-canvas/30">/{total}</span>
           </span>
           <span className="mono-label mt-2 text-[11px] text-canvas/50">
             {sublabel}

@@ -170,7 +170,7 @@ function BarRow({
   return (
     <>
       <p className="mono-label text-[11px] text-structural/70">{label}</p>
-      <div className="relative h-3.5 w-full overflow-hidden bg-structural/[0.06]">
+      <div className="relative h-5 w-full overflow-hidden bg-structural/[0.05]">
         <motion.div
           initial={false}
           animate={show ? { scaleX: 1 } : { scaleX: 0 }}
@@ -179,17 +179,31 @@ function BarRow({
             delay: 0.2 + index * 0.18,
             ease: [0.22, 1, 0.36, 1],
           }}
-          className={`h-full origin-left ${
-            isPrimary ? "bg-primary" : "bg-structural/30"
+          className={`relative h-full origin-left ${
+            isPrimary
+              ? "bg-primary shadow-[0_0_22px_2px] shadow-primary/40"
+              : "bg-structural/20"
           }`}
           style={{ width: `${fraction * 100}%` }}
-        />
+        >
+          {/* Bright data-mark cap on the WSB bar (key data highlight) */}
+          {isPrimary && (
+            <span
+              aria-hidden
+              className="absolute right-0 top-0 h-full w-1.5 bg-[color:var(--color-data)]"
+            />
+          )}
+        </motion.div>
       </div>
       <p
-        className={`text-right font-sans font-extrabold leading-none tabular-nums ${
-          isPrimary ? "text-primary" : "text-structural/45"
+        className={`text-right font-mono leading-none tabular-nums ${
+          isPrimary ? "font-bold text-primary" : "font-medium text-structural/35"
         }`}
-        style={{ fontSize: "clamp(1.75rem, 3.4vw, 2.5rem)" }}
+        style={{
+          fontSize: isPrimary
+            ? "clamp(2.25rem, 4.4vw, 3.25rem)"
+            : "clamp(1.25rem, 2.2vw, 1.6rem)",
+        }}
       >
         {value}
       </p>

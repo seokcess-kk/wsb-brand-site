@@ -5,6 +5,8 @@ import { HeaderShell } from "./header-shell";
 import { LanguageToggle } from "./language-toggle";
 import { NavLink } from "./nav-link";
 import { MobileNav, type MobileNavItem } from "./mobile-nav";
+import { LiveTelemetry } from "./live-telemetry";
+import { Cta } from "@/components/ui/cta";
 
 const NAV_ITEMS = [
   { key: "company", href: "/company" },
@@ -35,6 +37,7 @@ export async function SiteHeader() {
       >
         {t("skipToContent")}
       </a>
+      <LiveTelemetry />
       <div className="mx-auto flex max-w-7xl items-center justify-between px-6 py-4">
         <Link
           href="/"
@@ -62,12 +65,13 @@ export async function SiteHeader() {
         </nav>
 
         <div className="flex items-center gap-3 md:gap-5">
-          <Link
+          <Cta
             href="/contact"
-            className="hidden items-center bg-primary px-4 py-2 text-sm font-medium text-canvas transition-opacity hover:opacity-90 md:inline-flex"
-          >
-            {t("contact")}
-          </Link>
+            label={t("contact")}
+            variant="solid"
+            icon="none"
+            className="hidden px-4 py-2 md:inline-flex"
+          />
           <LanguageToggle />
           <MobileNav
             items={items}
@@ -78,6 +82,7 @@ export async function SiteHeader() {
           />
         </div>
       </div>
+      <div aria-hidden className="scroll-progress" />
     </HeaderShell>
   );
 }

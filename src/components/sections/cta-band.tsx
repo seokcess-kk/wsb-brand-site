@@ -1,5 +1,4 @@
-import { ArrowRight, ArrowUpRight } from "lucide-react";
-import { Link } from "@/i18n/navigation";
+import { Cta } from "@/components/ui/cta";
 
 type Props = {
   eyebrow?: string;
@@ -66,29 +65,21 @@ export function CtaBand({
             )}
           </div>
           <div className="flex flex-shrink-0 flex-wrap items-center gap-4">
-            <Link
+            <Cta
               href={primaryHref}
-              className="group inline-flex items-center gap-3 bg-primary px-6 py-3.5 text-sm font-medium text-canvas transition-opacity hover:opacity-90"
-            >
-              {primaryLabel}
-              <ArrowRight
-                size={16}
-                className="transition-transform group-hover:translate-x-0.5"
-              />
-            </Link>
+              label={primaryLabel}
+              variant="solid"
+              tone={dark ? "dark" : "light"}
+              icon="right"
+            />
             {secondaryLabel && secondaryHref && (
-              <Link
+              <Cta
                 href={secondaryHref}
-                className={`group inline-flex items-center gap-2 border px-6 py-3.5 text-sm font-medium transition-colors hover:border-primary hover:text-primary ${
-                  dark ? "border-canvas/25 text-canvas" : "border-structural/25 text-structural"
-                }`}
-              >
-                {secondaryLabel}
-                <ArrowUpRight
-                  size={16}
-                  className="transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5"
-                />
-              </Link>
+                label={secondaryLabel}
+                variant="outline"
+                tone={dark ? "dark" : "light"}
+                icon="up"
+              />
             )}
           </div>
         </div>

@@ -1,6 +1,5 @@
 import { getTranslations } from "next-intl/server";
-import { ArrowRight, ArrowUpRight } from "lucide-react";
-import { Link } from "@/i18n/navigation";
+import { Cta } from "@/components/ui/cta";
 import { DataOverlayPlant } from "@/components/visual/data-overlay-plant";
 import { RevealWords } from "@/components/motion/reveal-words";
 import { HeroBackdrop } from "@/components/sections/hero-backdrop";
@@ -56,26 +55,20 @@ export async function HeroSection() {
             </div>
 
             <div className="flex flex-wrap items-center gap-4 pt-2">
-              <Link
+              <Cta
                 href="/contact"
-                className="group inline-flex items-center gap-3 bg-primary px-6 py-3.5 text-sm font-medium text-canvas transition-opacity hover:opacity-90"
-              >
-                {tCta("partnership")}
-                <ArrowRight
-                  size={16}
-                  className="transition-transform group-hover:translate-x-0.5"
-                />
-              </Link>
-              <Link
+                label={tCta("partnership")}
+                variant="solid"
+                tone="dark"
+                icon="right"
+              />
+              <Cta
                 href="/technology"
-                className="group inline-flex items-center gap-2 border border-canvas/25 px-6 py-3.5 text-sm font-medium text-canvas transition-colors hover:border-primary hover:text-primary"
-              >
-                {tCta("exploreTech")}
-                <ArrowUpRight
-                  size={16}
-                  className="transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5"
-                />
-              </Link>
+                label={tCta("exploreTech")}
+                variant="outline"
+                tone="dark"
+                icon="up"
+              />
             </div>
 
             <div className="flex flex-wrap items-center gap-x-5 gap-y-2 border-t border-canvas/15 pt-6">

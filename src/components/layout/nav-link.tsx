@@ -16,11 +16,19 @@ export function NavLink({ href, label }: { href: string; label: string }) {
       href={href}
       aria-current={isActive ? "page" : undefined}
       className={cn(
-        "text-sm font-medium transition-colors hover:text-primary",
+        "group relative inline-flex items-center text-sm font-medium transition-colors hover:text-primary",
         isActive ? "text-primary" : "text-structural/70",
       )}
     >
       {label}
+      {/* Underline scan: grows from the left on hover, stays full when active. */}
+      <span
+        aria-hidden
+        className={cn(
+          "pointer-events-none absolute -bottom-1.5 left-0 h-px bg-primary transition-all duration-300 ease-out",
+          isActive ? "w-full" : "w-0 group-hover:w-full",
+        )}
+      />
     </Link>
   );
 }

@@ -14,6 +14,14 @@
   --color-surface: #F1F4EC;       /* Cultivation Mist. Subtle green-tint off-white for alternating section backgrounds. Reads as the same neutral family as canvas, not a new accent. */
   --color-data: #8BCE3C;          /* Bioactive Lime. Single restrained data-highlight, used ONLY on key data marks in visualizations (the achieved / target value) so "Engineered by Data" reads at a glance. Not for body text or large fills. */
 
+  /* Grid / overlay line constants. Named so the same rgba is reused across
+     .bg-grid, the blueprint dual-grid, and the HUD overlay instead of being
+     redefined inline. Values are unchanged for pixel parity. */
+  --grid-line: rgba(26, 31, 27, 0.04);        /* .bg-grid 32px modular */
+  --grid-major: rgba(26, 31, 27, 0.06);       /* blueprint major rule */
+  --grid-minor: rgba(26, 31, 27, 0.03);       /* blueprint minor rule */
+  --overlay-grid: rgba(250, 249, 244, 0.08);  /* HUD grid over dark photo */
+
   /* Semantic mapping */
   --background: var(--color-canvas);
   --foreground: var(--color-structural);
@@ -206,8 +214,8 @@ body {
 /* Subtle modular grid overlay utility (Data Overlay primitive) */
 .bg-grid {
   background-image:
-    linear-gradient(to right, rgba(26, 31, 27, 0.04) 1px, transparent 1px),
-    linear-gradient(to bottom, rgba(26, 31, 27, 0.04) 1px, transparent 1px);
+    linear-gradient(to right, var(--grid-line) 1px, transparent 1px),
+    linear-gradient(to bottom, var(--grid-line) 1px, transparent 1px);
   background-size: 32px 32px;
 }
 
@@ -267,4 +275,61 @@ summary:focus-visible,
 [tabindex]:focus-visible {
   outline: 2px solid var(--color-primary);
   outline-offset: 2px;
+}
+
+/* Brand text selection (instrument tint instead of the OS default blue) */
+::selection {
+  background: rgba(15, 81, 50, 0.16);
+  color: var(--color-structural);
+}
+
+/* Thin instrument-style scrollbar, fine pointers only (touch keeps native) */
+@media (pointer: fine) {
+  * {
+    scrollbar-width: thin;
+    scrollbar-color: rgba(15, 81, 50, 0.32) transparent;
+  }
+  ::-webkit-scrollbar {
+    width: 10px;
+    height: 10px;
+  }
+  ::-webkit-scrollbar-track {
+    background: transparent;
+  }
+  ::-webkit-scrollbar-thumb {
+    background-color: rgba(15, 81, 50, 0.3);
+    border: 3px solid var(--color-canvas);
+  }
+  ::-webkit-scrollbar-thumb:hover {
+    background-color: rgba(15, 81, 50, 0.5);
+  }
+}
+
+/* Header scroll-progress line. Scroll-driven so it needs no JS; on browsers
+   without scroll-timeline it simply stays hidden (graceful, not broken). */
+.scroll-progress {
+  height: 2px;
+  transform: scaleX(0);
+  transform-origin: left center;
+  background: linear-gradient(to right, var(--color-primary), var(--color-data));
+}
+@keyframes scroll-progress-grow {
+  from {
+    transform: scaleX(0);
+  }
+  to {
+    transform: scaleX(1);
+  }
+}
+@supports (animation-timeline: scroll()) {
+  .scroll-progress {
+    animation: scroll-progress-grow linear;
+    animation-timeline: scroll(root block);
+  }
+}
+
+/* Live telemetry strip collapses once the header lifts off the top, so the
+   scrolled header stays compact. */
+header[data-scrolled="true"] .telemetry-strip {
+  display: none;
 }
