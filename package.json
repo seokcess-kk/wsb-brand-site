@@ -16,7 +16,6 @@
   },
   "dependencies": {
     "@auth/drizzle-adapter": "^1.11.2",
-    "@vercel/blob": "^2.4.0",
     "clsx": "^2.1.1",
     "drizzle-orm": "^0.45.2",
     "lucide-react": "^1.16.0",

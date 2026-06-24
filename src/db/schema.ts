@@ -72,35 +72,6 @@ export const newsPosts = pgTable(
   ],
 );
 
-/**
- * Admin-editable site settings. Single-row table with key/value pairs.
- * Includes notification email recipients for the inquiry form.
- */
-export const siteSettings = pgTable("site_settings", {
-  key: varchar("key", { length: 100 }).primaryKey(),
-  value: text("value").notNull(),
-  updatedAt: timestamp("updated_at", { withTimezone: true })
-    .notNull()
-    .default(sql`now()`),
-});
-
-/**
- * Uploaded files (company intro PDF, certificates, news thumbnails).
- * Actual files live in Vercel Blob. This table tracks metadata.
- */
-export const uploadedFiles = pgTable("uploaded_files", {
-  id: serial("id").primaryKey(),
-  kind: varchar("kind", { length: 50 }).notNull(), // pdf_company_intro | cert | news_thumbnail | other
-  url: text("url").notNull(),
-  pathname: text("pathname").notNull(),
-  filename: varchar("filename", { length: 300 }).notNull(),
-  contentType: varchar("content_type", { length: 100 }),
-  sizeBytes: serial("size_bytes"),
-  createdAt: timestamp("created_at", { withTimezone: true })
-    .notNull()
-    .default(sql`now()`),
-});
-
 export type Inquiry = typeof inquiries.$inferSelect;
 export type NewInquiry = typeof inquiries.$inferInsert;
 export type NewsPost = typeof newsPosts.$inferSelect;

@@ -11,7 +11,6 @@
 - next-intl (`/` 한국어 기본, `/en` 영문)
 - Drizzle ORM + Supabase Postgres
 - Resend (transactional email)
-- Vercel Blob (file uploads)
 - Auth.js v5 (admin)
 - Motion (`motion` package, ex-Framer Motion)
 - Playwright (자체 시각 검증)
@@ -36,10 +35,9 @@ http://localhost:3000 (포트 사용 중이면 자동으로 다음 포트)
 | `DIRECT_DATABASE_URL` | 마이그레이션 전용 (direct/session, 5432) | `drizzle-kit`에서만 사용. 로컬·CI |
 | `RESEND_API_KEY` | 알림·자동회신 메일 | 없으면 콘솔 로그로 fallback |
 | `RESEND_FROM` | 발신 주소 | 도메인 verification 필요 |
-| `INQUIRY_NOTIFY_TO` | 폼 알림 수신 (콤마 구분) | 어드민 설정에서 override 가능 |
+| `INQUIRY_NOTIFY_TO` | 폼 알림 수신 (콤마 구분) | 없으면 기본 주소 사용 |
 | `AUTH_SECRET` | NextAuth 세션 서명 | `openssl rand -base64 32` |
 | `ADMIN_EMAIL` / `ADMIN_PASSWORD` | 마스터 계정 | 단일 사용자 |
-| `BLOB_READ_WRITE_TOKEN` | Vercel Blob | 어드민 파일 업로드 |
 | `NEXT_PUBLIC_GA_ID` / `NEXT_PUBLIC_GTM_ID` | 분석 | 선택 |
 | `NEXT_PUBLIC_SITE_URL` | 절대 URL | sitemap·이메일·OG |
 
@@ -55,7 +53,7 @@ pnpm db:studio      # Drizzle Studio (GUI)
 
 - 경로: `/admin/sign-in`
 - 단일 마스터 계정 (env에 `ADMIN_EMAIL` / `ADMIN_PASSWORD`)
-- 페이지: Dashboard / News / Inquiries / Files / Settings
+- 페이지: Dashboard / News / Inquiries
 - 모든 어드민 라우트는 `robots: noindex`
 
 ## Visual verification
@@ -71,8 +69,8 @@ node scripts/screenshot.mjs / hero.png desktop "section[aria-labelledby=hero-hea
 ## Deploy on Vercel
 
 1. Vercel에서 새 프로젝트 import (이 레포)
-2. **Storage** 탭에서 Neon Postgres + Vercel Blob 추가
-   - 자동으로 `DATABASE_URL`, `BLOB_READ_WRITE_TOKEN` 환경변수가 프로젝트에 주입됩니다
+2. **Storage** 탭에서 Postgres 추가
+   - 자동으로 `DATABASE_URL` 환경변수가 프로젝트에 주입됩니다
 3. **Settings → Environment Variables**에서 추가:
    - `RESEND_API_KEY` (Resend 대시보드에서 발급)
    - `RESEND_FROM` (예: `dasom@woorismartbio.com`. 도메인 verification 완료된 주소)
