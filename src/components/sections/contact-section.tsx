@@ -1,4 +1,5 @@
 import { getLocale, getTranslations } from "next-intl/server";
+import Image from "next/image";
 import { RevealOnView } from "@/components/motion/reveal-on-view";
 import { RevealWords } from "@/components/motion/reveal-words";
 import { SectionEyebrow } from "@/components/layout/section-eyebrow";
@@ -17,6 +18,21 @@ export async function ContactSection() {
       aria-labelledby="contact-heading"
       className="relative isolate bg-structural text-canvas overflow-hidden"
     >
+      {/* Full-bleed facility backdrop. The form/info cards are opaque
+          bg-structural, so the photo reads behind the heading while the form
+          stays legible on top. */}
+      <Image
+        src="/home-contact-backdrop.jpg"
+        alt=""
+        aria-hidden
+        fill
+        sizes="100vw"
+        className="absolute inset-0 -z-10 object-cover photo-grade-green opacity-30 [mask-image:linear-gradient(to_bottom,black,black_65%,transparent)]"
+      />
+      <div
+        aria-hidden
+        className="absolute inset-0 -z-10 bg-primary/25 mix-blend-multiply"
+      />
       <div
         aria-hidden
         className="absolute inset-0 opacity-[0.06] animate-grid-drift"

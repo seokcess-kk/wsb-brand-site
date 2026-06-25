@@ -3,6 +3,7 @@ import { FdaTable } from "./fda-table";
 import { MatchRadial } from "@/components/visual/match-radial";
 import { RevealWords } from "@/components/motion/reveal-words";
 import { SectionEyebrow } from "@/components/layout/section-eyebrow";
+import Image from "next/image";
 import { Lede } from "@/components/layout/lede";
 
 type Row = { label: string; fda: string; wsb: string };
@@ -16,6 +17,20 @@ export async function FdaSection() {
       aria-labelledby="fda-heading"
       className="relative isolate bg-structural text-canvas overflow-hidden"
     >
+      {/* Closed-type cleanroom backdrop, dim and masked so the table stays
+          legible while grounding the closed-type / contaminant claims. */}
+      <Image
+        src="/home-fda-closed-cleanroom.jpg"
+        alt=""
+        aria-hidden
+        fill
+        sizes="100vw"
+        className="absolute inset-0 -z-10 object-cover photo-grade-green opacity-[0.14] [mask-image:linear-gradient(to_bottom,transparent,black_25%,black_75%,transparent)]"
+      />
+      <div
+        aria-hidden
+        className="absolute inset-0 -z-10 bg-primary/30 mix-blend-multiply"
+      />
       {/* Grid drift on dark */}
       <div
         aria-hidden

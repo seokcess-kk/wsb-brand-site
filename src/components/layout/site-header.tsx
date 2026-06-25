@@ -5,7 +5,6 @@ import { HeaderShell } from "./header-shell";
 import { LanguageToggle } from "./language-toggle";
 import { NavLink } from "./nav-link";
 import { MobileNav, type MobileNavItem } from "./mobile-nav";
-import { LiveTelemetry } from "./live-telemetry";
 import { Cta } from "@/components/ui/cta";
 
 const NAV_ITEMS = [
@@ -37,7 +36,6 @@ export async function SiteHeader() {
       >
         {t("skipToContent")}
       </a>
-      <LiveTelemetry />
       <div className="mx-auto flex max-w-7xl items-center justify-between px-6 py-4">
         <Link
           href="/"

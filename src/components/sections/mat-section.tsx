@@ -6,6 +6,7 @@ import { SectionEyebrow } from "@/components/layout/section-eyebrow";
 import { Lede } from "@/components/layout/lede";
 import { Tooltip } from "@/components/ui/tooltip";
 import { MatProcessDiagram } from "@/components/visual/mat-process-diagram";
+import { FacilityHudFrame } from "@/components/visual/facility-hud-frame";
 
 const STRESSOR_KEYS = [0, 1, 2, 3] as const;
 
@@ -47,7 +48,7 @@ export async function MatSection() {
           </RevealOnView>
         </div>
 
-        {/* ROW 1: Heading + body  |  2x2 stressor grid (equal heights) */}
+        {/* ROW 1 (split): Heading + body  |  precisely-observed stress chamber */}
         <div className="grid items-stretch gap-12 lg:grid-cols-2 lg:gap-16">
           {/* LEFT */}
           <div className="flex flex-col justify-between gap-10">
@@ -81,27 +82,40 @@ export async function MatSection() {
             </RevealOnView>
           </div>
 
-          {/* RIGHT - Stressor grid 2x2 */}
-          <div className="grid gap-px bg-structural/10 sm:grid-cols-2">
-            {STRESSOR_KEYS.map((i) => {
-              const s = stressors[i];
-              return (
-                <RevealOnView
-                  key={i}
-                  delay={0.18 + i * 0.08}
-                  className="h-full"
-                >
-                  <StressorCard
-                    label={s.label}
-                    title={s.title}
-                    value={s.value}
-                    caption={s.caption}
-                    tooltip={s.tooltip}
-                  />
-                </RevealOnView>
-              );
-            })}
-          </div>
+          {/* RIGHT - stress chamber image, fills the column height (split) */}
+          <RevealOnView delay={0.2} className="relative block h-full min-h-[20rem] lg:min-h-0">
+            <FacilityHudFrame
+              fill
+              src="/home-mat-stress-chamber.jpg"
+              alt="정밀 제어 식물 스트레스 챔버"
+              tag="STRESS CHAMBER"
+              readout="UV-B 285NM"
+              dataId="FAC-MAT-CHMBR"
+              caption="PRECISION-OBSERVED"
+              focal="center 45%"
+              focus={{ x: 58, y: 42, metric: "σ < 10%" }}
+              sizes="(min-width: 1024px) 600px, 100vw"
+            />
+          </RevealOnView>
+        </div>
+
+        {/* Stressor grid: full-width 1x4 below the split, a measured rhythm
+            change from the former 2x2 beside the heading. */}
+        <div className="mt-12 grid gap-px bg-structural/10 sm:grid-cols-2 lg:grid-cols-4">
+          {STRESSOR_KEYS.map((i) => {
+            const s = stressors[i];
+            return (
+              <RevealOnView key={i} delay={0.1 + i * 0.08} className="h-full">
+                <StressorCard
+                  label={s.label}
+                  title={s.title}
+                  value={s.value}
+                  caption={s.caption}
+                  tooltip={s.tooltip}
+                />
+              </RevealOnView>
+            );
+          })}
         </div>
 
         {/* ROW 2: Full-width process diagram */}

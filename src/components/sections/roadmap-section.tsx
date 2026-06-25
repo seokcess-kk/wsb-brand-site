@@ -1,4 +1,5 @@
 import { getTranslations } from "next-intl/server";
+import Image from "next/image";
 import {
   FadeInItem,
   FadeInSection,
@@ -23,6 +24,20 @@ export async function RoadmapSection() {
       aria-labelledby="roadmap-heading"
       className="relative isolate scroll-mt-24 bg-structural text-canvas overflow-hidden"
     >
+      {/* Atmospheric facility backdrop, very dim and masked top/bottom so the
+          timeline and phase nodes stay legible over it. */}
+      <Image
+        src="/home-roadmap-atmosphere.jpg"
+        alt=""
+        aria-hidden
+        fill
+        sizes="100vw"
+        className="absolute inset-0 -z-10 object-cover photo-grade-green opacity-[0.12] [mask-image:linear-gradient(to_bottom,transparent,black_30%,black_70%,transparent)]"
+      />
+      <div
+        aria-hidden
+        className="absolute inset-0 -z-10 bg-primary/30 mix-blend-multiply"
+      />
       <div
         aria-hidden
         className="absolute inset-0 opacity-[0.06] animate-grid-drift"

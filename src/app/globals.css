@@ -328,8 +328,3 @@ summary:focus-visible,
   }
 }
 
-/* Live telemetry strip collapses once the header lifts off the top, so the
-   scrolled header stays compact. */
-header[data-scrolled="true"] .telemetry-strip {
-  display: none;
-}

@@ -37,8 +37,8 @@
   "home": {
     "hero": {
       "tag": "GREEN BIO · PRECISION SMART FARM",
-      "definition": "On a data-driven precision-control smart farm, we develop and produce plant-based green bio materials standardized to API (active pharmaceutical ingredient) grade.",
-      "subhead": "MAT regulates a plant's metabolic pathways to reproduce the same quality in every batch regardless of season or climate.",
+      "definition": "We develop and produce plant green bio materials standardized to API grade on a precision-control smart farm.",
+      "subhead": "MAT regulates plant metabolic pathways to reproduce the same quality every batch, regardless of season or climate.",
       "batchMeta": "BATCH · WSB-2026-001",
       "overlayLabel1": "SAPONIN · +8×",
       "overlayLabel2": "pH 5.8 · EC 1.4",
@@ -72,13 +72,13 @@
       "problem": {
         "label": "STANDARDIZATION",
         "title": "WSB plant compound standardization",
-        "body": "MAT cultivation and precision control regulate light, temperature, water and minerals to standardize plant and product compounds inside the pharma-spec band.",
+        "body": "MAT precision control regulates light, temperature, water and minerals to standardize compounds inside the pharma-spec band.",
         "source": "WSB batch data · full-panel HPLC"
       },
       "opportunity": {
         "label": "OPPORTUNITY",
         "title": "Botanical drug market $54.7B",
-        "body": "The FDA-aligned global botanical drug market grows from $54.7B in 2026 to $79.7B by 2031. Market entry has one prerequisite. A standardized API supply.",
+        "body": "The FDA-aligned global botanical drug market grows from $54.7B in 2026 to $79.7B by 2031. Entry has one prerequisite, a standardized API supply.",
         "metrics": [
           { "label": "GLOBAL MARKET 2026", "value": "$54.7B" },
           { "label": "CAGR 2026 ~ 2031", "value": "+7.8%" },
@@ -89,9 +89,9 @@
     "mat": {
       "sectionTag": "CORE TECHNOLOGY",
       "sectionMeta": "02 / MAT",
-      "heading": "MAT\nWe trigger the plant's own defense\nto surface active compounds on purpose",
-      "plain": "MAT precisely controls light, temperature, water, and minerals to guide plants toward producing more active compounds, more consistently.",
-      "value": "So every batch can ship the same active-compound content, reliably.",
+      "heading": "MAT\nWe trigger the plant's own defense\nto surface active compounds",
+      "plain": "Precise control of light, temperature, water, and minerals guides plants to produce more active compounds, more consistently.",
+      "value": "So every batch ships the same active-compound content, reliably.",
       "diagram": {
         "plantLabel": "GINSENG · PANAX",
         "outputLabel": "API YIELD",
@@ -101,27 +101,27 @@
         "wsbValue": "+8×",
         "note": "Basis · in-house trial vs. same-cultivar control"
       },
-      "body": "It maximizes active compound yield. Precision stressors are applied in stages to induce secondary metabolite production.",
+      "body": "Precision stressors applied in stages induce secondary metabolite production and maximize active compound yield.",
       "stressors": [
         {
           "label": "STRESSOR 01",
           "title": "UV-B Light",
           "value": "285nm",
-          "caption": "Targeted wavelength induces secondary metabolite synthesis",
+          "caption": "Targeted wavelength induces metabolite synthesis",
           "tooltip": "Secondary metabolites are the functional compounds a plant makes to defend itself. A specific UV wavelength induces their synthesis."
         },
         {
           "label": "STRESSOR 02",
           "title": "Thermal Shock",
           "value": "±ΔT",
-          "caption": "Short heat and cold pulses trigger defense pathways",
+          "caption": "Heat and cold pulses trigger defense pathways",
           "tooltip": "Brief, sharp temperature swings stress the plant and wake its defense pathways."
         },
         {
           "label": "STRESSOR 03",
           "title": "Water Deficit",
           "value": "−40% H₂O",
-          "caption": "Controlled drought stress without compromising survival",
+          "caption": "Controlled drought stress",
           "tooltip": "Water supply is deliberately reduced to induce drought stress."
         },
         {
@@ -136,8 +136,8 @@
     "fda": {
       "sectionTag": "REGULATORY FIT",
       "sectionMeta": "03 / FDA STANDARDIZATION",
-      "heading": "The FDA's five guidelines\nWSB is structured to address the core production requirements",
-      "lede": "The five core requirements the FDA applies to botanical drug approval. Conventional cultivation struggles to address them at the same time. WSB's precision-controlled smart farm and MAT are structured around all five.",
+      "heading": "The FDA's five guidelines\nWSB is built around the core requirements",
+      "lede": "The FDA's five core requirements for botanical drug approval. Conventional cultivation cannot meet them all at once. WSB's precision-controlled smart farm and MAT address all five.",
       "rows": [
         {
           "label": "01",
@@ -147,7 +147,7 @@
         {
           "label": "02",
           "fda": "Good Agricultural and Collection Practices",
-          "wsb": "Digital SOP controls every environmental variable. Every step recorded as data"
+          "wsb": "Digital SOP controls every environmental variable. Every step logged as data"
         },
         {
           "label": "03",
@@ -172,12 +172,12 @@
       "sectionTag": "PROVEN CAPABILITY",
       "sectionMeta": "04 / CAPACITY & EVIDENCE",
       "heading": "Backed by data\nSupported by production scale",
-      "lede": "MAT and the precision-controlled smart farm prove active-compound gains and batch consistency with data, backed by the Yeoncheon R&D production center's capacity and our clinical material supply record.",
+      "lede": "MAT and the precision smart farm prove active-compound gains and batch consistency with data, backed by the Yeoncheon production center's capacity and our clinical material supply record.",
       "kpis": {
         "saponin": {
           "label": "SAPONIN ↑",
           "value": "+8×",
-          "caption": "Ginsenoside content vs. control group",
+          "caption": "Ginsenoside content vs. control",
           "source": "WSB internal analysis · same-cultivar control · HPLC",
           "asOf": "2025.Q4"
         },
@@ -191,7 +191,7 @@
         "clinical": {
           "label": "CLINICAL API",
           "value": "100kg",
-          "caption": "Crohn's-disease botanical API supplied",
+          "caption": "Crohn's-disease botanical API",
           "source": "Clinical material supply record",
           "asOf": "2025"
         }
@@ -203,12 +203,12 @@
       ],
       "photos": [
         { "caption": "Precision vertical farm production hall", "src": "/scale-hall.jpg" },
-        { "caption": "Yeoncheon R&D production center", "src": "/facility-exterior.jpg" },
-        { "caption": "Precise observation · botanical material R&D", "src": "/facility-lab.jpg" }
+        { "caption": "Yeoncheon R&D production center", "src": "/home-traction-facility-aerial.jpg" },
+        { "caption": "Precise observation · botanical material R&D", "src": "/home-traction-cgmp-line.jpg" }
       ],
       "assetPending": "ASSET PENDING",
       "partnersTag": "PARTNER NETWORK",
-      "networkNote": "We collaborate with partners in Korea and abroad across solution, material, and brand lines. Publishable contracts and milestones are posted to News as they progress.",
+      "networkNote": "We work with partners in Korea and abroad across solution, material, and brand. Publishable contracts and milestones appear in News as they progress.",
       "networkCta": "See partnership updates in News"
     },
     "business": {
@@ -220,7 +220,7 @@
           "label": "PILLAR 01",
           "title": "B2B Solution",
           "subtitle": "Technology as a product",
-          "body": "We supply MAT cultivation recipes, control software, and smart farm facilities as one integrated solution that closes a customer's technology gap in a single deal.",
+          "body": "MAT recipes, control software, and smart farm facilities in one integrated supply that closes the technology gap at once.",
           "metricLabel": "DELIVERY MODEL",
           "metricValue": "3-IN-1",
           "metricCaption": "Recipe, control software, and facility as one",
@@ -231,7 +231,7 @@
           "label": "PILLAR 02",
           "title": "B2B Material",
           "subtitle": "Standardized API supply",
-          "body": "A stable revenue base, producing and supplying everything from cGMP-ready API-oriented materials to nutraceutical and cosmetic botanicals in-house.",
+          "body": "A stable revenue base, producing cGMP-ready API-oriented materials and nutraceutical and cosmetic botanicals in-house.",
           "metricLabel": "CLINICAL API SUPPLIED",
           "metricValue": "100kg",
           "metricCaption": "Crohn's-disease botanical API",
@@ -242,7 +242,7 @@
           "label": "PILLAR 03",
           "title": "Phytopresso",
           "subtitle": "Validating value as a brand",
-          "body": "A premium healthcare brand on hydroponic ginseng that validates our technology in the consumer market.",
+          "body": "A hydroponic-ginseng premium healthcare brand that validates our technology in the market.",
           "metricLabel": "PRODUCT LINE",
           "metricValue": "3 SKU",
           "metricCaption": "Hydroponic Ginseng SHOT · Angelica DECURSIN · Dendropanax CGA",
@@ -257,7 +257,7 @@
       "sectionTag": "LATEST UPDATES",
       "sectionMeta": "07 / NEWS",
       "heading": "Latest updates",
-      "lede": "Contracts, clinical material supply, and certifications from our operating pipeline.",
+      "lede": "Contracts, clinical supply, and certifications in progress.",
       "viewAll": "See all news",
       "viewDetail": "View article",
       "viewOriginal": "Read original",
@@ -271,8 +271,8 @@
         {
           "date": "2024.04",
           "category": "R&D",
-          "title": "National R&D project · Smart Farm Multi-Ministry Package",
-          "summary": "Carrying out the MAFRA intelligent aeroponic hydroponic system development project. Running through 2027."
+          "title": "Smart Farm Multi-Ministry Package · National R&D",
+          "summary": "MAFRA intelligent aeroponic hydroponic system development. Through 2027."
         },
         {
           "date": "2024.11",
@@ -286,7 +286,7 @@
       "sectionTag": "PARTNERSHIP INQUIRY",
       "sectionMeta": "08 / CONTACT",
       "heading": "Let's start a\nglobal partnership",
-      "lede": "We respond to API supply, technology solutions, and clinical collaboration inquiries within two business days.",
+      "lede": "API supply, technology solutions, clinical collaboration. We reply within two business days.",
       "form": {
         "company": "Company",
         "name": "Contact name",
@@ -303,14 +303,14 @@
           "Media / Other"
         ],
         "message": "Message",
-        "messagePlaceholder": "Tell us about your company and the area you would like to collaborate in.",
+        "messagePlaceholder": "Your company and the area you'd like to collaborate in.",
         "consent": "I agree to the collection and use of personal information.",
         "privacyTitle": "Personal data collection notice",
-        "privacyBody": "Purpose: receiving and responding to inquiries. Items collected: company, contact name, email, phone, country, and message. Retention: deleted without delay once the inquiry is resolved, except where retention is required by law. You may decline consent, in which case we cannot process your inquiry.",
+        "privacyBody": "Purpose: receiving and responding to inquiries. Items: company, contact name, email, phone, country, message. Retention: deleted without delay once resolved, except where law requires retention. You may decline, but then we cannot process your inquiry.",
         "submit": "Send inquiry",
         "required": "required",
         "successHeading": "Inquiry received.",
-        "successBody": "We will reply to your email within two business days. A confirmation email has also been sent.",
+        "successBody": "We'll reply to your email within two business days. A confirmation email is on its way.",
         "errorFallback": "Submission failed. Please try again in a moment."
       },
       "info": {
@@ -331,7 +331,7 @@
       "sectionMeta": "06 / 3 PHASES",
       "subtitle": "Woori Smart Bio growth roadmap",
       "heading": "From the home market\nto the global botanical drug standard",
-      "lede": "On an FDA-ready foundation and a proven track record, WSB expands step by step from global raw-material supplier to botanical data platform.",
+      "lede": "On an FDA-ready foundation and proven record, WSB expands from global raw-material supplier to botanical data platform.",
       "phases": [
         {
           "label": "PHASE 01",
@@ -359,7 +359,7 @@
           "title": "Market leadership and standards",
           "bullets": [
             "Core API supplier in the global botanical drug market",
-            "Botanical data platform built on proprietary cultivation and bioactive data",
+            "Botanical data platform on proprietary cultivation and bioactive data",
             "AI-driven new-material discovery and personalized healthcare"
           ]
         }
